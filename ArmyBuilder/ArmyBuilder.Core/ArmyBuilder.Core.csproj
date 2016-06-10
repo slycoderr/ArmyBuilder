@@ -42,7 +42,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
     <Compile Include="Database\ArmyBuilderDatabase.cs" />
     <Compile Include="Database\Utility.cs" />
     <Compile Include="Enums.cs" />
@@ -94,12 +93,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Equipment.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Slycoder.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Slycoder\Slycoder.csproj">
