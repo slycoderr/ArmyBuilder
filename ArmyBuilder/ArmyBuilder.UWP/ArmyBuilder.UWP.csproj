@@ -180,6 +180,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Necrons.xml" />
     <Content Include="SpaceWolves.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

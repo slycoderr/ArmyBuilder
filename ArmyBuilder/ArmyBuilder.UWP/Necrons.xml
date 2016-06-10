@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Army Id="2" Name="Necrons">
+  <Units>
+    <Unit Id="1" Name="Overlord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Overlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="80">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Hyperphase sword" Cost="0" />
+                <Equipment Id="3" Name="Voidblade" Cost="0" />
+                <Equipment Id="4" Name="Warsylthe" Cost="20" />
+                <Equipment Id="5" Name="The Solar Staff" Cost="15" />
+                <Equipment Id="6" Name="Voidreaper" Cost="30" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Gaunlet of fire" MutualId="1" Cost="10" />
+            <Equipment Id="8" Name="Tachyon arrow" MutualId="1" Cost="25" />
+            <Equipment Id="9" Name="Mindshackle scarab" MutualId="2" Cost="10" />
+            <Equipment Id="10" Name="Phylactery" MutualId="2" Cost="15" />
+            <Equipment Id="11" Name="Resurrection	orb" MutualId="2" Cost="25" />
+            <Equipment Id="12" Name="Phase shifter" MutualId="2" Cost="25" />
+            <Equipment Id="13" Name="The Veil of Darkness" MutualId="3" Cost="25" />
+            <Equipment Id="14" Name="The Gauntlet of the Conflagrator" MutualId="3" Cost="30" />
+            <Equipment Id="15" Name="The Nightmare Shroud" MutualId="3" Cost="35" />
+            <Equipment Id="16" Name="The Orb of Eternity" MutualId="3" Cost="40" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="2" Name="Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Lord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="50">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Hyperphase sword" Cost="0" />
+                <Equipment Id="3" Name="Voidblade" Cost="0" />
+                <Equipment Id="4" Name="Warsylthe" Cost="20" />
+                <Equipment Id="5" Name="The Solar Staff" Cost="15" />
+                <Equipment Id="6" Name="Voidreaper" Cost="30" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Gaunlet of fire" MutualId="1" Cost="10" />
+            <Equipment Id="8" Name="Tachyon arrow" MutualId="1" Cost="25" />
+            <Equipment Id="9" Name="Mindshackle scarab" MutualId="2" Cost="10" />
+            <Equipment Id="10" Name="Phylactery" MutualId="2" Cost="15" />
+            <Equipment Id="11" Name="Resurrection	orb" MutualId="2" Cost="25" />
+            <Equipment Id="12" Name="Phase shifter" MutualId="2" Cost="25" />
+            <Equipment Id="13" Name="The Veil of Darkness" MutualId="3" Cost="25" />
+            <Equipment Id="14" Name="The Gauntlet of the Conflagrator" MutualId="3" Cost="30" />
+            <Equipment Id="15" Name="The Nightmare Shroud" MutualId="3" Cost="35" />
+            <Equipment Id="16" Name="The Orb of Eternity" MutualId="3" Cost="40" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="2" Name="Cryptek" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Cryptek" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="65">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="2" Name="The Solar Staff" Cost="15" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="3" Name="Mindshackle scarab" MutualId="2" Cost="10" />
+            <Equipment Id="4" Name="Phylactery" MutualId="2" Cost="15" />
+            <Equipment Id="5" Name="Phase shifter" MutualId="2" Cost="25" />
+            <Equipment Id="6" Name="The Veil of Darkness" MutualId="3" Cost="25" />
+            <Equipment Id="7" Name="The Gauntlet of the Conflagrator" MutualId="3" Cost="30" />
+            <Equipment Id="8" Name="The Nightmare Shroud" MutualId="3" Cost="35" />
+            <Equipment Id="9" Name="The Orb of Eternity" MutualId="3" Cost="40" />
+            <Equipment Id="10" Name="Chronometron" Cost="25" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="3" Name="Destroyer Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Destroyer Lord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Hyperphase sword" Cost="0" />
+                <Equipment Id="3" Name="Voidblade" Cost="0" />
+                <Equipment Id="4" Name="Warsylthe" Cost="20" />
+                <Equipment Id="5" Name="The Solar Staff" Cost="15" />
+                <Equipment Id="6" Name="Voidreaper" Cost="30" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="9" Name="Mindshackle scarab" MutualId="2" Cost="10" />
+            <Equipment Id="10" Name="Phylactery" MutualId="2" Cost="15" />
+            <Equipment Id="11" Name="Resurrection	orb" MutualId="2" Cost="25" />
+            <Equipment Id="12" Name="Phase shifter" MutualId="2" Cost="25" />
+            <Equipment Id="13" Name="The Veil of Darkness" MutualId="3" Cost="25" />
+            <Equipment Id="14" Name="The Gauntlet of the Conflagrator" MutualId="3" Cost="30" />
+            <Equipment Id="15" Name="The Nightmare Shroud" MutualId="3" Cost="35" />
+            <Equipment Id="16" Name="The Orb of Eternity" MutualId="3" Cost="40" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="4" Name="Nemesor Zahndeskh" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Nemesor Zahndeskh" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="150">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1" />
+            <Equipment Id="2" Name="Phase shifter" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="5" Name="Vargard Obyron" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Vargard Obyron" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="120">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Warsylthe" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="6" Name="Illuminor Szeras" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Illuminor Szeras" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110" />
+      </Models>
+    </Unit>
+
+    <Unit Id="7" Name="Orikan the Diviner" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Orikan the Diviner" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="120">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Phase	shifter" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="8" Name="Anrakyr the Traveller" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Anrakyr the Traveller" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Warscythe" IsDefault="1" />
+            <Equipment Id="2" Name="Tachyon	arrow" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="9" Name="Trazyn the Ininite" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Trazyn the Ininite" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="130" />
+      </Models>
+    </Unit>
+
+    <Unit Id="10" Name="Catacomb Command Barge" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Catacomb Command Barge" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160">
+          <DefaultEquipment>
+            <Equipment Id="17" Name="Gauss cannon" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="18" Name="Tesla cannon" Cost="0" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="19" Name="Quantum	shielding" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+        <Model Id="2" Name="Overlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Staff of light" IsDefault="1">
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Hyperphase sword" Cost="0" />
+                <Equipment Id="3" Name="Voidblade" Cost="0" />
+                <Equipment Id="4" Name="Warsylthe" Cost="20" />
+                <Equipment Id="5" Name="The Solar Staff" Cost="15" />
+                <Equipment Id="6" Name="Voidreaper" Cost="30" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Gaunlet of fire" MutualId="1" Cost="10" />
+            <Equipment Id="8" Name="Tachyon arrow" MutualId="1" Cost="25" />
+            <Equipment Id="9" Name="Mindshackle scarab" MutualId="2" Cost="10" />
+            <Equipment Id="10" Name="Phylactery" MutualId="2" Cost="15" />
+            <Equipment Id="11" Name="Resurrection	orb" MutualId="2" Cost="25" />
+            <Equipment Id="12" Name="Phase shifter" MutualId="2" Cost="25" />
+            <Equipment Id="13" Name="The Veil of Darkness" MutualId="3" Cost="25" />
+            <Equipment Id="14" Name="The Gauntlet of the Conflagrator" MutualId="3" Cost="30" />
+            <Equipment Id="15" Name="The Nightmare Shroud" MutualId="3" Cost="35" />
+            <Equipment Id="16" Name="The Orb of Eternity" MutualId="3" Cost="40" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+    <Unit Id="11" Name="Warriors" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Necron Warrior" Minimum="10" Maximum="20" IncrementCost="13" BaseCost="130">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Gauss Flayers" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </Models>
+      <DedicatedTransports>
+        <Model Id="87" Name="Ghost Ark" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="105">
+          <DefaultEquipment>
+            <Equipment Id="88" Name="Two	gauss	flayer	arrays" IsDefault="1" />
+            <Equipment Id="89" Name="Quantum shielding" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+        <Model Id="88" Name="Night Sythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+          <DefaultEquipment>
+            <Equipment Id="90" Name="Twin-linked tesla destructor" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </DedicatedTransports>
+    </Unit>
+
+    <Unit Id="12" Name="Immortals" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Immortal" Minimum="5" Maximum="10" IncrementCost="17" BaseCost="85">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Gauss blaster" IsDefault="1" >
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Tesla	carbine" Cost="0"/>
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+        </Model>
+      </Models>
+      <DedicatedTransports>
+        <Model Id="87" Name="Night Sythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+          <DefaultEquipment>
+            <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
+          </DefaultEquipment>
+        </Model>
+      </DedicatedTransports>
+    </Unit>
+  </Units>
+</Army>
