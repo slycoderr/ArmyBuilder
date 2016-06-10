@@ -1,0 +1,72 @@
+﻿<Application x:Class="ArmyBuilder.Windows.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:templates="clr-namespace:ArmyBuilder.Templates"
+             xmlns:converters="clr-namespace:ArmyBuilder.Utility.Converters"
+             xmlns:views="clr-namespace:ArmyBuilder.Views"
+             xmlns:viewModels="clr-namespace:ArmyBuilder.Core.ViewModels;assembly=ArmyBuilder.Core"
+             xmlns:utility="clr-namespace:ArmyBuilder.Core.Utility;assembly=ArmyBuilder.Core"
+             xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core"
+             StartupUri="Views/ArmyListEditorWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter"/>
+            <converters:IndexConverter x:Key="IndexConverter"/>
+            <viewModels:MainViewModel x:Key="MainViewModel" />
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+
+            <templates:ForceOrgTextConverter x:Key="ForceOrgTextConverter"/>
+            <templates:ArmyTextConverter x:Key="ArmyTextConverter"/>
+            <views:ShowUnitSizeEditorConverter x:Key="ShowUnitSizeEditorConverter"/>
+            <CollectionViewSource x:Key="UnitEquipmentCollection"/>
+            <CollectionViewSource x:Key="ArmyListDataCollection" />
+            <CollectionViewSource x:Key="ArmyListCollection"  />
+            <SolidColorBrush x:Key="DimText" Color="#FFBDBDBD" />
+
+            <DataTemplate DataType="{x:Type models:ArmyListData}" x:Key="ArmyListDataTemplate">
+                <Grid Margin="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="1" Text="{Binding CurrentUnitSize}" Margin="0,0,10,0" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding UnitData.Name}" Margin="0,0,10,0" VerticalAlignment="Center" />
+                    <TextBlock Grid.Row="0" Grid.Column="3" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Run Text="{Binding TotalCost}"/>
+                        <Run Text=" points"/>
+                    </TextBlock>
+                    <TextBlock x:Name="EquipmentSummaryText" Grid.Row="0" Grid.Column="4" Text="{Binding EquipmentSummary}" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWithOverflow"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type CollectionViewGroup}" x:Key="ArmyListDataGroupTemplate">
+                <TextBlock Text="{Binding Name, Converter={StaticResource ForceOrgTextConverter}}"  TextWrapping="WrapWithOverflow" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type CollectionViewGroup}" x:Key="ArmyListGroupTemplate">
+                <TextBlock Text="{Binding Name, Converter={StaticResource ArmyTextConverter}}" TextWrapping="WrapWithOverflow" />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type models:ArmyList}" x:Key="ArmyListTemplate">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding PointsLimit}" TextWrapping="WrapWithOverflow" />
+                    <TextBlock Grid.Column="1" Text="{Binding Name}" TextWrapping="WrapWithOverflow" Margin="10,0,0,0" />
+                </Grid>
+                
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

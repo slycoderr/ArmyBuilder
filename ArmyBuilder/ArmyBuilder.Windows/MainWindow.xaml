@@ -1,0 +1,97 @@
+﻿<Window x:Class="ArmyBuilder.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:ArmyBuilder.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" Closing="MainWindow_OnClosing" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}, BindsDirectlyToSource=True}" DataContextChanged="MainWindow_OnDataContextChanged"
+        Title="ArmyBuilder: List Builder" Height="800" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MinHeight="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="HeaderPanel" Grid.Row="1">
+            <TextBlock FontSize="38"  Text="{Binding CurrentArmyList.Name, FallbackValue=ListName, Mode=TwoWay}" Margin="10"/>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="{Binding PointsLeft, FallbackValue=500}" FontSize="18" Margin="10,0,0,10" Foreground="{StaticResource DimText}"/>
+                <TextBlock Text="of"  FontSize="18" Margin="10,0,10,10" Foreground="{StaticResource DimText}"/>
+                <TextBlock Text="{Binding CurrentArmyList.PointsLimit, FallbackValue=1200}"  FontSize="18" Margin="0,0,0,10" Foreground="{StaticResource DimText}"/>
+                <TextBlock Text="Points Left"  FontSize="18" Margin="10,0,0,10" Foreground="{StaticResource DimText}"/>
+            </StackPanel>
+            <StackPanel  HorizontalAlignment="Left" Orientation="Horizontal" Margin="10,0,0,0">
+                <Button Width="100" Height="25" Margin="0,0,10,0" Content="Remove Unit" Command="{Binding RemoveSelectedUnitCommand, BindsDirectlyToSource=True}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid x:Name="ForceOrgPanel" Grid.Row="1" Grid.Column="1" Margin="0,10,10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock x:Name="HqTextCount" Text="{Binding HqUnitCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
+            <TextBlock Grid.Column="0" x:Name="HqText" Text="Hq" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource DimText}" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+
+            <TextBlock x:Name="TroopCountText" Grid.Column="1" Text="{Binding TroopUnitCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="TroopText" Grid.Column="1" Text="Troop" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource DimText}" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+
+            <TextBlock x:Name="EliteCountText" Grid.Column="2" Text="{Binding EliteUnitCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="EliteText" Grid.Column="2" Text="Elite" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource DimText}" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+
+            <TextBlock x:Name="FastAttackCountText" Grid.Column="3" Text="{Binding FastAttackUnitCount, FallbackValue=5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="FastAttackText" Grid.Column="3" Text="Fast Attack" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource DimText}" TextWrapping="WrapWithOverflow" TextAlignment="Center"/>
+
+            <TextBlock x:Name="HeavySupportCountText" Grid.Column="4" Text="{Binding HeavySupportUnitCount, FallbackValue=5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
+            <TextBlock x:Name="HeavySupportText" Grid.Column="4" Text="Heavy Support" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource DimText}" TextWrapping="WrapWithOverflow" TextAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <ListView x:Name="UnitListView" Grid.Row="2" ItemTemplate="{StaticResource ArmyListDataTemplate}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay}" ItemsSource="{Binding Source={StaticResource ArmyListDataCollection}, Mode=OneWay}" SelectionChanged="UnitListView_SelectionChanged" SelectionMode="Single" Grid.RowSpan="2"
+                  Grid.Column="0" Margin="10,0,0,0">
+            <ListView.GroupStyle>
+                <GroupStyle HidesIfEmpty="True" HeaderTemplate="{StaticResource ArmyListDataGroupTemplate}"/>
+            </ListView.GroupStyle>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+        </ListView>
+
+        <views:EditUnitView x:Name="UnitEditor" Grid.Column="1" Grid.Row="2" DataContext="{Binding SelectedUnit, Mode=OneWay}" Visibility="Visible" Margin="5,10,10,0" />
+        <Menu>
+            <MenuItem Header="Add Unit" >
+                <MenuItem x:Name="HqItemsMenu" Header="HQ" ItemsSource="{Binding HqUnits}"/>
+                <MenuItem x:Name="TroopItemsMenu" Header="Troop" ItemsSource="{Binding TroopUnits}" Click="TroopItemsMenu_Click"/>
+                <MenuItem x:Name="EliteItemsMenu" Header="Elite" ItemsSource="{Binding EliteUnits}" Click="TroopItemsMenu_Click"/>
+                <MenuItem x:Name="FastAttackItemsMenu" Header="Fast Attack" ItemsSource="{Binding FastAttackUnits}" />
+                <MenuItem x:Name="HeavySupportItemsMenu" Header="Heavy Support" ItemsSource="{Binding HeavySupportUnits}"/>
+                <MenuItem x:Name="LordOfWarItemsMenu" Header="Lord of War" ItemsSource="{Binding LordOfWarUnits}"/>
+            </MenuItem>
+            <MenuItem Header="Export">
+                <MenuItem Header="As .txt" Command="{Binding ExportToTextFileCommand}"/>
+            </MenuItem>
+            
+            <MenuItem Header="Tools">
+                <MenuItem x:Name="ManageArmyListButton" Header="Manage Army Lists" Click="ManageArmyListButton_Click" Command="{Binding CloseCommand}" />
+            </MenuItem>
+        </Menu>
+        
+        <StackPanel x:Name="ProgressPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Grid.RowSpan="10" Grid.ColumnSpan="10">
+            <controls:ProgressRing Width="50" Height="55" IsActive="True" />
+            <TextBlock Text="Loading... Please Wait" />
+        </StackPanel>
+    </Grid>
+</Window>

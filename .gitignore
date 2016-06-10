@@ -3,3 +3,9 @@
 ################################################################################
 
 /ArmyBuilder/ArmyBuilder.Core/bin
+/ArmyBuilder/ArmyBuilder.Core/obj
+/ArmyBuilder/ArmyBuilder.UWP/obj/x64/Debug
+/ArmyBuilder/ArmyBuilder.Windows/obj
+/ArmyBuilder/Slycoder/bin
+/ArmyBuilder/Slycoder/obj
+/packages
