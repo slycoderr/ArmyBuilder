@@ -4,8 +4,10 @@
 
 /ArmyBuilder/ArmyBuilder.Core/bin
 /ArmyBuilder/ArmyBuilder.Core/obj
-/ArmyBuilder/ArmyBuilder.UWP/obj/x64/Debug
-/ArmyBuilder/ArmyBuilder.Windows/obj
+/ArmyBuilder/ArmyBuilder.Windows/bin/
+/ArmyBuilder/ArmyBuilder.Windows/obj/
+/ArmyBuilder/ArmyBuilder.UWP/bin/
+/ArmyBuilder/ArmyBuilder.UWP/obj/
 /ArmyBuilder/Slycoder/bin
 /ArmyBuilder/Slycoder/obj
 /packages

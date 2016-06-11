@@ -1,8 +1,8 @@
 ﻿namespace ArmyBuilder.Windows.Views
 {
-    public sealed partial class EditArmyListView
+    public sealed partial class ForceOrgView
     {
-        public EditArmyListView()
+        public ForceOrgView()
         {
             InitializeComponent();
         }

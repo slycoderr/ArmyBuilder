@@ -11,6 +11,10 @@
         <converters:UnitCompositionConverter x:Key="UnitCompositionConverter" />
         <converters:ArmyTextConverter x:Key="ArmyTextConverter" />
         <viewModels:MainViewModel x:Key="MainViewModel" />
+        <converters:ModelsColumnSizeConverter x:Key="ModelsColumnSizeConverter" />
+        <converters:ListCountToVisiblityConverter x:Key="ListCountToVisiblityConverter" />
+        <converters:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector" EquipmentNormalTemplate="{StaticResource EquipmentNormalTemplate}" EquipmentUpgradeTemplate="{StaticResource EquipmentUpgradeTemplate}" />
+        <converters:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector2" EquipmentNormalTemplate="{StaticResource EquipmentNormalTemplate}" EquipmentUpgradeTemplate="{StaticResource EquipmentUpgradeTemplate}" />
         <converters:BoolToVisibilityConverter x:Name="BoolToVisibilityConverter" />
         <converters:NullToVisibilityConverter x:Name="NullToVisibilityConverter" />
         <CollectionViewSource x:Key="ArmyListDataCollection" IsSourceGrouped="True" Source="{Binding CurrentArmyListViewModel.ArmyListDataGroups, Source={StaticResource MainViewModel}}" />
@@ -261,15 +265,6 @@
                 </ListView>
             </Grid>
         </DataTemplate>
-        <!--<DataTemplate x:Key="ProfileTemplate" >
-            <Grid Padding="0,0,0,10">
-                <TextBlock Text="{Binding Description, Mode=OneWay}" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
-            </Grid>
-        </DataTemplate>-->
-        <converters:ModelsColumnSizeConverter x:Key="ModelsColumnSizeConverter" />
-        <converters:ListCountToVisiblityConverter x:Key="ListCountToVisiblityConverter" />
-        <converters:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector" EquipmentNormalTemplate="{StaticResource EquipmentNormalTemplate}" EquipmentUpgradeTemplate="{StaticResource EquipmentUpgradeTemplate}" />
-        <converters:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector2" EquipmentNormalTemplate="{StaticResource EquipmentNormalTemplate}" EquipmentUpgradeTemplate="{StaticResource EquipmentUpgradeTemplate}" />
 
         <Style TargetType="FlipView" x:Key="FlipViewUnitEditorStyle">
             <Setter Property="Background" Value="{ThemeResource SystemControlPageBackgroundListLowBrush}" />

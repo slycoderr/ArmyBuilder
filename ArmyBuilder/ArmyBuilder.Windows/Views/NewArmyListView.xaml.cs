@@ -1,13 +1,12 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.ViewModels;
 
-namespace ArmyBuilder.Views
+namespace ArmyBuilder.Windows.Views
 {
-    public sealed partial class NewArmyListView : UserControl
+    public sealed partial class NewArmyListView
     {
         private MainViewModel MainViewModel => DataContext != null && DataContext.GetType() == typeof (MainViewModel) ? (MainViewModel) DataContext : null;
 
@@ -17,12 +16,9 @@ namespace ArmyBuilder.Views
             DoneButton.IsEnabled = ValidateInput();
         }
 
-        public event EventHandler ListCreated;
-
-        private void DoneButton_Click(object sender, RoutedEventArgs routedEventArgs)
+        private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.AddList(new ArmyList(NameTextBox.Text, (Army) ArmyComboBox.SelectedItem, int.Parse(PointsTextBox.Text)));
-            ListCreated?.Invoke(this, new EventArgs());
+            MainViewModel.AddList(new ArmyList(NameTextBox.Text, int.Parse(PointsTextBox.Text),(Army) ArmyComboBox.SelectedItem));
             ArmyComboBox.SelectedIndex = -1;
             PointsTextBox.Text = string.Empty;
             NameTextBox.Text = string.Empty;
@@ -38,7 +34,7 @@ namespace ArmyBuilder.Views
             DoneButton.IsEnabled = ValidateInput();
         }
 
-        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
+        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             DoneButton.IsEnabled = ValidateInput();
         }

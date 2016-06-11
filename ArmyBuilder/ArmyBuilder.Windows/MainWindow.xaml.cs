@@ -1,5 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,54 +18,64 @@ namespace ArmyBuilder.Windows
 {
     public partial class MainWindow : Window
     {
-        private ArmyListViewModel ArmyListViewModel
+        private static bool loadedDatabase;
+
+        private MainViewModel MainViewModel
             =>
-                DataContext != null && DataContext.GetType() == typeof (ArmyListViewModel)
-                    ? (ArmyListViewModel) DataContext
+                DataContext != null && DataContext.GetType() == typeof (MainViewModel)
+                    ? (MainViewModel) DataContext
                     : null;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void UnitListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            UnitEditor.Visibility = UnitListView.SelectedItem != null ? Visibility.Visible : Visibility.Collapsed;
+            MainViewModel.UiContext = SynchronizationContext.Current;
         }
 
         private void ToggleLoading(bool show = true)
         {
-            ProgressPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            //ProgressPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
             IsEnabled = !show;
         }
 
-        private void TroopItemsMenu_Click(object sender, RoutedEventArgs e)
+        private async void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var unit = ((MenuItem) e.OriginalSource).DataContext as Unit;
-
-            ArmyListViewModel.AddUnit(unit);
+            ToggleLoading();
+            await Initalize();
+            ToggleLoading(false);
         }
 
-        private void MainWindow_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+
+        public async Task Initalize()
         {
-            if (ArmyListViewModel != null)
+            if (!loadedDatabase)
             {
-                //ArmyListViewModel.UpdateArmyListDataSource(); //force since it misses the update
-            }
-        }
+                var folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments), "ArmyBuilder");
 
-        private void ManageArmyListButton_Click(object sender, RoutedEventArgs e)
-        {
-            new ArmyListEditorWindow().Show();
-            Close();
-        }
+                if (!Directory.Exists(folder))
+                {
+                    Directory.CreateDirectory(folder);
+                }
 
-        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
-        {
-            if (ArmyListViewModel != null)
-            {
-                //ArmyListViewModel.UnitListUpdated -= UnitListUpdated;
+            List<string> dataFiles = new List<string>()
+                {
+                    Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SpaceWolves.xml"),
+                    Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Necrons.xml")
+                };
+
+                foreach (var path in dataFiles)
+                {
+                    var fileName = Path.GetFileName(path);
+                    File.Copy(path, Path.Combine(folder, fileName), true);
+                }
+
+                await MainViewModel.Load(folder, new List<Stream>
+                {
+                    new FileStream(Path.Combine(folder, "SpaceWolves.xml"), FileMode.Open),
+                    new FileStream(Path.Combine(folder, "Necrons.xml"), FileMode.Open)
+                });
+
+                loadedDatabase = true;
             }
         }
     }
