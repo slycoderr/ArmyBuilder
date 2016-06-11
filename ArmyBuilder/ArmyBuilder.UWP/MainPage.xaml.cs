@@ -49,6 +49,8 @@ namespace ArmyBuilder.UWP
                 var folder = ApplicationData.Current.LocalFolder;
                 var f = await Package.Current.InstalledLocation.GetFileAsync("SpaceWolves.xml");
                 var data = await folder.TryGetItemAsync("SpaceWolves.xml");
+                var f2 = await Package.Current.InstalledLocation.GetFileAsync("Necrons.xml");
+                var data2 = await folder.TryGetItemAsync("Necrons.xml");
 
                 if (data != null)
                 {
@@ -67,7 +69,28 @@ namespace ArmyBuilder.UWP
                     await f.CopyAsync(folder);
                 }
 
-                await MainViewModel.Load(folder.Path, new List<Stream> {new FileStream(Path.Combine(folder.Path, "SpaceWolves.xml"), FileMode.Open)});
+                if (data2 != null)
+                {
+                    var currentDbProperties = await data2.GetBasicPropertiesAsync();
+                    var projectDbProperties = await f2.GetBasicPropertiesAsync();
+
+                    if (projectDbProperties.DateModified.DateTime.CompareTo(currentDbProperties.DateModified.DateTime) > 0)
+                    {
+                        await data2.DeleteAsync();
+                        await f2.CopyAsync(folder);
+                    }
+                }
+
+                else
+                {
+                    await f2.CopyAsync(folder);
+                }
+
+                await MainViewModel.Load(folder.Path, new List<Stream>
+                {
+                    new FileStream(Path.Combine(folder.Path, "SpaceWolves.xml"), FileMode.Open),
+                    new FileStream(Path.Combine(folder.Path, "Necrons.xml"), FileMode.Open)
+                });
 
                 loadedDatabase = true;
             }

@@ -25,7 +25,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>arm</AppxBundlePlatforms>
-    <AssemblyVersion>1.0.4.654</AssemblyVersion>
+    <AssemblyVersion>1.0.4.684</AssemblyVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -180,7 +180,9 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="Package.StoreAssociation.xml" />
-    <Content Include="Necrons.xml" />
+    <Content Include="Necrons.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SpaceWolves.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

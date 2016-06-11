@@ -21,18 +21,10 @@ namespace ArmyBuilder.Core.Models
         public ObservableCollection<ModelData> Models { get; set; } = new ObservableCollection<ModelData>();
 
         [XmlIgnore]
-        public int PointsCostTotal
-        {
-            get { return pointsCostTotal; }
-            set { SetValue(ref pointsCostTotal, value); }
-        }
+        public int PointsCostTotal { get { return pointsCostTotal; } set { SetValue(ref pointsCostTotal, value); } }
 
         [XmlIgnore]
-        public int UpgradesCostTotal
-        {
-            get { return upgradesCostTotal; }
-            set { SetValue(ref upgradesCostTotal, value); }
-        }
+        public int UpgradesCostTotal { get { return upgradesCostTotal; } set { SetValue(ref upgradesCostTotal, value); } }
 
         [XmlAttribute]
         public int CurrentUnitSize
@@ -46,7 +38,7 @@ namespace ArmyBuilder.Core.Models
                 {
                     if (Model != null && oldValue > currentUnitSize)
                     {
-                        Models.TakeLast(currentUnitSize - oldValue).ForEach(m => Models.Remove(m));
+                        Models.TakeLast(oldValue - currentUnitSize).ForEach(m => Models.Remove(m));
                         UpdatePointsTotal();
                     }
 
@@ -105,7 +97,7 @@ namespace ArmyBuilder.Core.Models
         private void UpdatePointsTotal()
         {
             UpgradesCostTotal = Models.Sum(m => m.PointsCostTotal);
-            PointsCostTotal = UpgradesCostTotal + (Model.Minimum > 0 ? Model.BaseCost : 0) + (CurrentUnitSize > Model.Minimum ? Model.IncrementCost* (CurrentUnitSize - Model.Minimum) : 0);
+            PointsCostTotal = UpgradesCostTotal + (Model.Minimum > 0 ? Model.BaseCost : 0) + (CurrentUnitSize > Model.Minimum ? Model.IncrementCost*(CurrentUnitSize - Model.Minimum) : 0);
             var allEquipment = GetAllModelEquipment();
 
             var equipGroup = allEquipment.Where(ee => ee.Equipment.MutualId != 0).GroupBy(ee => ee.Equipment.MutualId);
@@ -118,20 +110,26 @@ namespace ArmyBuilder.Core.Models
                         allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) ==
                         equip.Equipment.Limit)
                     {
-                        allEquipment.Where(eee => eee.Equipment.MutualId == equip.Equipment.MutualId && !eee.IsTaken)
+                        allEquipment.Where(eee => eee.Equipment.MutualId == group.Key && !eee.IsTaken)
                             .ForEach(eee =>
                             {
                                 GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = false);
                                 eee.CanAdd = false;
-                            })
-                            ;
+                            });
+
+                        allEquipment.Where(eee => eee.Equipment.MutualId == group.Key && eee.IsTaken)
+                            .ForEach(eee =>
+                            {
+                                GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
+                                eee.CanAdd = true;
+                            });
                     }
 
                     else if (equip.Equipment.Limit > 0 &&
                              allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) <
                              equip.Equipment.Limit)
                     {
-                        allEquipment.Where(eee => eee.Equipment.MutualId == equip.Equipment.MutualId)
+                        allEquipment.Where(eee => eee.Equipment.MutualId == group.Key)
                             .ForEach(eee =>
                             {
                                 GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);

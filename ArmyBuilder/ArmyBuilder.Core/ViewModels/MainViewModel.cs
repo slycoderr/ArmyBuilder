@@ -116,7 +116,7 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateListSource(bool cacheSelection)
         {
             var currentSelectedItem = SelectedArmyList;
-            var groups = ArmyLists?.OrderBy(i => i.Army).GroupBy(i => new {i.ArmyId}).Select(i => new ArmyListGroup(i.ToList()));
+            var groups = ArmyLists?.OrderBy(i => i.Army.Name).GroupBy(i => new {i.ArmyId}).Select(i => new ArmyListGroup(i.ToList())).ToList();
 
             UiContext.Post(action =>
             {

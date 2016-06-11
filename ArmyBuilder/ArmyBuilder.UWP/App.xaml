@@ -107,9 +107,17 @@
                 <TextBlock Text="{Binding Model.Name}" FontSize="18" />
 
                 <StackPanel Grid.Row="1">
-                    <ListView Grid.Row="1" SelectionMode="None" Header="Equipment" ItemsSource="{Binding Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" />
+                    <ListView Grid.Row="1" SelectionMode="None"  ItemsSource="{Binding Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}">
+                        <ListView.Header>
+                            <TextBlock Text="Equipment" Visibility="{Binding Equipment, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                        </ListView.Header>
+                    </ListView>
                 </StackPanel>
-                <ListView Grid.Row="2" SelectionMode="None" Header="Upgrades" ItemsSource="{Binding Upgrades}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" />
+                <ListView Grid.Row="2" SelectionMode="None" ItemsSource="{Binding Upgrades}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" >
+                    <ListView.Header>
+                        <TextBlock Text="Upgrades" Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    </ListView.Header>
+                </ListView>
             </Grid>
         </DataTemplate>
 

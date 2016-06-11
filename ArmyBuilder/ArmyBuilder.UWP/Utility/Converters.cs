@@ -194,6 +194,10 @@ namespace ArmyBuilder.Utility.Converters
                     {
                         return "Space Wolves";
                     }
+                case "2":
+                    {
+                        return "Necrons";
+                    }
 
                 default:
                     throw new ArgumentException("army id not found in switch");

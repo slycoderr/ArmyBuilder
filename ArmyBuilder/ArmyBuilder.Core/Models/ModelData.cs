@@ -61,6 +61,8 @@ namespace ArmyBuilder.Core.Models
 
         private void SubscribeToEquipment(EquipmentData equipment)
         {
+            equipment.PropertyChanged += EquipmentPropertyChanged;
+
             equipment.ReplacementOptions.ForEach(e =>
             {
                 e.PropertyChanged += EquipmentPropertyChanged;

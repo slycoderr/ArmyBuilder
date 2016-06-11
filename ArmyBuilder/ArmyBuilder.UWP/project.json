@@ -1,13 +1,8 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
     "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
-    "MvvmCross": "4.1.0",
-    "MvvmCross.Core": "4.1.0",
-    "MvvmCross.Forms.Presenter": "4.1.0",
-    "MvvmCross.Plugin.SQLitePCL": "4.1.0",
-    "MvvmLight": "5.2.0",
-    "Xamarin.Forms": "2.1.0.6529"
+    "MvvmLight": "5.3.0"
   },
   "frameworks": {
     "uap10.0": {}

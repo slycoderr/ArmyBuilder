@@ -10,6 +10,10 @@
     d:DesignWidth="400">
 
     <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -20,21 +24,21 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock x:Name="HqTextCount" Text="{Binding HqCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="HqText" Text="Hq" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock Grid.Row="1" x:Name="HqText" Text="Hq" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
 
         <TextBlock x:Name="TroopCountText" Grid.Column="1" Text="{Binding TroopCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="TroopText" Grid.Column="1" Text="Troop" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock x:Name="TroopText" Grid.Row="1" Grid.Column="1" Text="Troop" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
 
         <TextBlock x:Name="EliteCountText" Grid.Column="2" Text="{Binding EliteCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="EliteText" Grid.Column="2" Text="Elite" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock x:Name="EliteText" Grid.Row="1" Grid.Column="2" Text="Elite" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
 
         <TextBlock x:Name="FastAttackCountText" Grid.Column="3" Text="{Binding FastAttackCount}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="FastAttackText" Grid.Column="3" Text="Fast Attack" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock x:Name="FastAttackText" Grid.Row="1" Grid.Column="3" Text="Fast Attack" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
 
         <TextBlock x:Name="HeavySupportCountText" Grid.Column="4" Text="{Binding HeavySupportCount, FallbackValue=5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="HeavySupportText" Grid.Column="4" Text="Heavy Support" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock x:Name="HeavySupportText" Grid.Row="1" Grid.Column="4" Text="Heavy Support" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
 
         <TextBlock x:Name="LordOfWarCountText" Grid.Column="5" Text="{Binding LordOfWarCount, FallbackValue=5}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="42" TextAlignment="Center"/>
-        <TextBlock x:Name="LordOfWarText" Grid.Column="5" Text="Lord of War" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+        <TextBlock x:Name="LordOfWarText" Grid.Row="1" Grid.Column="5" Text="Lord of War" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="16" Foreground="{StaticResource DimText}" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
     </Grid>
 </UserControl>
