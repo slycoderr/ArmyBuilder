@@ -14,9 +14,11 @@ namespace ArmyBuilder.Core.Models
     {
         private string name;
         private int pointsLimit;
+        private Army army;
 
         [Ignore]
-        public Army Army { get; set; }
+        public Army Army { get { return army; } set { SetValue(ref army, value); } }
+
         public Guid Id { get; set; }
 
         public int ArmyId { get; set; }

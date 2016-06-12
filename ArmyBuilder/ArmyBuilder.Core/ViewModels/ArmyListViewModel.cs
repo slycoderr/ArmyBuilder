@@ -138,6 +138,7 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (unit != null)
             {
+                
                 Units.Add(new ArmyListData(unit, ArmyList.Id));
                 SelectedUnit = Units.Last();
                 IsUnitFlyoutOpened = false;
