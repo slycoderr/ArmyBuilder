@@ -38,6 +38,16 @@
                 <TextBlock Text="{Binding ForceOrgId, Converter={StaticResource ForceOrgTextConverter}}" TextWrapping="WrapWithOverflow" />
             </DataTemplate>
 
+            <DataTemplate x:Key="AddUnitNavBarItemTemplate">
+                <Button Content="{Binding Mode=OneWay}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding CurrentArmyListViewModel.AddUnitCommand, Mode=OneWay, Source={StaticResource MainViewModel}}" CommandParameter="{Binding Mode=OneWay}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </DataTemplate>
+
             <DataTemplate x:Key="ArmyListDataTemplate">
                 <Grid Margin="0,0,0,10">
                     <Grid.RowDefinitions>
@@ -81,17 +91,15 @@
                     <TextBlock x:Name="PointsText" Text="{Binding PointsLimit, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" />
                     <TextBlock x:Name="NameText" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="WrapWithOverflow" />
                     <Button x:Name="EditButton" Grid.Row="0" Grid.Column="2" Content="Edit" Height="50">
-                        <!--<i:Interaction.Behaviors>-->
-                            <!--<core:EventTriggerBehavior EventName="Click">
-                                <media:ControlStoryboardAction>
-                                    <media:ControlStoryboardAction.Storyboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Duration="0:0:.5" To="140" From="0" Storyboard.TargetName="EditArmyListView" Storyboard.TargetProperty="Height"  />
-                                        </Storyboard>
-                                    </media:ControlStoryboardAction.Storyboard>
-                                </media:ControlStoryboardAction>
-                            </core:EventTriggerBehavior>
-                        </i:Interaction.Behaviors>-->
+                        <Button.Triggers>
+                            <EventTrigger RoutedEvent="ButtonBase.Click">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0:0:.5" To="140" From="0" Storyboard.TargetName="EditArmyListView" Storyboard.TargetProperty="Height" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Button.Triggers>
                     </Button>
 
                     <views1:EditArmyListView Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Column="0" x:Name="EditArmyListView" DataContext="{Binding}" Height="0" />
