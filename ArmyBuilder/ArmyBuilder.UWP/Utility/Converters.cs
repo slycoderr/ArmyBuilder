@@ -66,6 +66,7 @@ namespace ArmyBuilder.Utility.Converters
         }
     }
 
+
     public class UnitCompositionConverter : IValueConverter
     {
         public object Convert(object value, Type type, object parameter, string language)

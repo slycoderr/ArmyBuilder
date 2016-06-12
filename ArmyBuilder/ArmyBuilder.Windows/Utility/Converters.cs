@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
+using ArmyBuilder.Core.ViewModels;
 using EquipmentType = ArmyBuilder.Core.Models.EquipmentType;
 
 namespace ArmyBuilder.Windows.Utility
@@ -128,6 +129,20 @@ namespace ArmyBuilder.Windows.Utility
             }
 
             return ((List<ModelData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class UnitEditorVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((ArmyListViewModel)value)?.SelectedUnit != null ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

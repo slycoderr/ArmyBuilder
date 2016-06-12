@@ -13,6 +13,7 @@
         <ResourceDictionary>
 
             <utility1:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <utility1:UnitEditorVisibilityConverter x:Key="UnitEditorVisibilityConverter" />
             <!--<converters:IndexConverter x:Key="IndexConverter" />-->
             <utility1:ForceOrgTextConverter x:Key="ForceOrgTextConverter" />
             <utility1:UnitSizeToVisibilityConverter x:Key="UnitSizeToVisibilityConverter" />

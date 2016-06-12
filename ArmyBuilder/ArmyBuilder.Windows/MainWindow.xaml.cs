@@ -16,7 +16,7 @@ using ArmyBuilder.Windows.Views;
 
 namespace ArmyBuilder.Windows
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
         private static bool loadedDatabase;
 

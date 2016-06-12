@@ -5,6 +5,7 @@
     <Application.Resources>
 
         <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+
         <converters:IndexConverter x:Key="IndexConverter" />
         <converters:ForceOrgTextConverter x:Key="ForceOrgTextConverter" />
         <converters:UnitSizeToVisibilityConverter x:Key="UnitSizeToVisibilityConverter" />

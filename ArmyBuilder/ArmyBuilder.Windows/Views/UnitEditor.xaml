@@ -4,16 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
     mc:Ignorable="d" d:DataContext="{StaticResource ArmyListData}"
-    d:DesignHeight="300" 
+    d:DesignHeight="300" dx:ThemeManager.Theme="{dx:Theme Name=Office2010Black, AssemblyName=DevExpress.Xpf.Themes.Office2010Black.v14.2}"
     d:DesignWidth="400">
 
     <Grid>
-        <TabControl>
-            <TabItem Header="Unit Composition">
+        <dx:DXTabControl>
+            <dx:DXTabItem Header="Unit Composition">
                 <ListView x:Name="ModelGroupListView" Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Models}" ItemTemplate="{StaticResource ModelGroupDataTemplate}" Grid.ColumnSpan="{Binding DedicatedTransports, Converter={StaticResource ModelsColumnSizeConverter}}" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
-            </TabItem>
-            <TabItem Header="Dedicated Transports">
+            </dx:DXTabItem>
+            <dx:DXTabItem Header="Dedicated Transports">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -23,8 +24,8 @@
                     <ListView SelectedItem="{Binding SelectedDedicatedTransport, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="0" ItemsSource="{Binding DedicatedTransports}" ItemTemplate="{StaticResource DedicatedTransportSelectionTemplate}" Visibility="{Binding DedicatedTransports, Converter={StaticResource ListCountToVisiblityConverter}}"/>
                     <!--<ContentControl ContentTemplate="{StaticResource ModelTemplate}" Grid.Column="1" DataContext="{Binding SelectedDedicatedTransport, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding DedicatedTransports, Converter={StaticResource ListCountToVisiblityConverter}, Source={Binding DataContext, ElementName=ModelGroupListView}}"  />-->
                 </Grid>
-            </TabItem>
-        </TabControl>
+            </dx:DXTabItem>
+        </dx:DXTabControl>
 
        
     </Grid>
