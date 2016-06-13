@@ -183,6 +183,7 @@
     <Content Include="Necrons.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Skitarii.xml" />
     <Content Include="SpaceWolves.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>

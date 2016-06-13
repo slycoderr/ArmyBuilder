@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Army Id="3" Name="Skitarii">
+  <Units>
+    <Unit Id="1" Name="Skitarii Vanguard" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Skitarii Vanguard" Minimum="4" Maximum="9" IncrementCost="0" BaseCost="55">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Skitarii war plate" IsDefault="1" />
+            <Equipment Id="2" Name="Radium carbine" IsDefault="1" GroupName="vanwep">
+              <ReplacementOptions>
+                <Equipment Id="3" Name="Arc rifle" Cost="15" GroupName="vanwep" />
+                <Equipment Id="4" Name="Transuranic arquebus" Cost="25" GroupName="vanwep" />
+                <Equipment Id="5" Name="Plasma caliver" Cost="30" GroupName="vanwep" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="6" Type="1"  Name="Enhanced data-tether" Limit="1" Cost="5"  MutualId="5"/>
+            <Equipment Id="7" Type="1"  Name="Omnispex" Limit="1" Cost="10" MutualId="5"/>
+          </Upgrades>
+        </Model>
+
+        <Model Id="2" Name="Vanguard Alpha" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+          <DefaultEquipment>
+            <Equipment Id="8" Name="Skitarii war plate" IsDefault="1" />
+            <Equipment Id="9" Name="Radium carbine" IsDefault="1" GroupName="alpharangedwep">
+              <ReplacementOptions>
+                <Equipment Id="10" Name="Phosphoenix" Limit="1" MutualId="1" Cost="25" GroupName="alpharangedwep"/>
+                <Equipment Id="11" Name="Phosphor blast pistol" Cost="5" GroupName="alpharangedwep" />
+                <Equipment Id="12" Name="Radium pistol" Cost="5" GroupName="alpharangedwep" />
+                <Equipment Id="13" Name="Arc Pistol" Limit="1" Cost="10" GroupName="alpharangedwep" />
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="14" Type="1"  Name="Taser goad" Limit="1" Cost="10" MutualId="2" GroupName="VanguardWep1">
+              <ReplacementOptions>
+                <Equipment Id="15" Name="The Phase Taser" Limit="1" MutualId="1" Cost="15" GroupName="VanguardWep1"/>
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="16" Type="1"  Name="Power sword" Limit="1" Cost="15" MutualId="2" GroupName="VanguardWep2">
+              <ReplacementOptions>
+                <Equipment Id="17" Name="The Phase Taser" Limit="1" MutualId="1" Cost="15" GroupName="VanguardWep2"/>
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="18" Type="1"  Name="Arc Maul" Limit="1" Cost="20" MutualId="2" GroupName="VanguardWep3">
+              <ReplacementOptions>
+                <Equipment Id="19" Name="The Phase Taser" Limit="1" MutualId="1" Cost="15" GroupName="VanguardWep3"/>
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="20" Type="1"  Name="Refractor field" Limit="1" Cost="5" />
+            <Equipment Id="21" Type="1"  Name="Conversion field" Limit="1" Cost="10" />
+            <Equipment Id="22" Type="1"  Name="Digital weapons" Limit="1"  Cost="10" />
+            <Equipment Id="23" Type="1"  Name="Arkhan's Divinator" Limit="1" MutualId="1" Cost="5" />
+            <Equipment Id="24" Type="1"  Name="The Omniscient Mask" Limit="1" MutualId="1" Cost="20" />
+            <Equipment Id="25" Type="1"  Name="Pater Radium" Limit="1" MutualId="1" Cost="20" />
+            <Equipment Id="26" Type="1"  Name="The Skull of Elder Nikola" Limit="1" MutualId="1" Cost="25" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+  </Units>
+</Army>
+  
