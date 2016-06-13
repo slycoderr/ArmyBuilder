@@ -98,6 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\MenuItem.cs" />
     <Compile Include="Controls\SplitView.xaml.cs">
       <DependentUpon>SplitView.xaml</DependentUpon>
     </Compile>
@@ -186,6 +187,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Controls\ham_menu.png" />
     <Content Include="Necrons.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

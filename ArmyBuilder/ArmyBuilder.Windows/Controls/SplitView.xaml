@@ -40,7 +40,47 @@
                         </Style.Triggers>
                     </Style>
                 </ListView.Resources>
-                </ListView>
+                <ListView.ItemContainerStyle>
+
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <Border x:Name="border" Background="Transparent">
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Disabled" />
+                                            </VisualStateGroup>
+                                            <VisualStateGroup x:Name="SelectionStates">
+                                                <VisualState x:Name="Unselected" />
+                                                <VisualState x:Name="Selected">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
+        										Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource EZMColorMedia}" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="SelectedUnfocused">
+                                                    <Storyboard>
+                                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="border"
+        										Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource EZMColorMedia}" />
+                                                        </ColorAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <ContentPresenter/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
                 <Button x:Name="SettingsButton"  HorizontalContentAlignment="Left" Grid.Row="2" Padding="0" Click="SettingsButton_OnClick">
                 <Button.Content>
                     <Image Source="/EZMotion;component/Resources/gear.png" Margin="15, 10, 15, 10" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
