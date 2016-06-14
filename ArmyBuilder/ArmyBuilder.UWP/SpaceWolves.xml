@@ -517,9 +517,9 @@
               <ReplacementOptions>
                 <Equipment Id="5" Name="Power fist" GroupName="GhBoltgun" MutualId="1" Cost="25" Limit="1" />
                 <Equipment Id="6" Name="Power weapon" GroupName="GhBoltgun" MutualId="1" Cost="15" Limit="1" />
-                <Equipment Id="7" Name="Flamer" GroupName="GhBoltgun" MutualId="4" Cost="5" Limit="1" />
-                <Equipment Id="8" Name="Meltagun" GroupName="GhBoltgun" MutualId="4" Cost="10" Limit="1" />
-                <Equipment Id="9" Name="Plasma gun" GroupName="GhBoltgun" MutualId="4" Cost="15" Limit="1" />
+                <Equipment Id="7" Name="Flamer" GroupName="GhBoltgun" MutualId="4" Cost="5" Limit="1" PerX="10"/>
+                <Equipment Id="8" Name="Meltagun" GroupName="GhBoltgun" MutualId="4" Cost="10" Limit="1"  PerX="10"/>
+                <Equipment Id="9" Name="Plasma gun" GroupName="GhBoltgun" MutualId="4" Cost="15" Limit="1"  PerX="10"/>
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="10" Name="Frag Grenades" IsDefault="1" />
@@ -547,9 +547,9 @@
                   <ReplacementOptions>
                     <Equipment Id="21" Name="Power fist" MutualId="1" GroupName="Ghwgblcs1" Cost="25" Limit="1" />
                     <Equipment Id="22" Name="Power weapon" MutualId="1" GroupName="Ghwgblcs1" Cost="15" Limit="1" />
-                    <Equipment Id="23" Name="Flamer" MutualId="4" Cost="5" GroupName="Ghwgblcs1" Limit="1" />
-                    <Equipment Id="24" Name="Meltagun" MutualId="4" Cost="10" GroupName="Ghwgblcs1" Limit="1" />
-                    <Equipment Id="25" Name="Plasma gun" MutualId="4" Cost="15" GroupName="Ghwgblcs1" Limit="1" />
+                    <Equipment Id="23" Name="Flamer" MutualId="4" Cost="5" GroupName="Ghwgblcs1" Limit="1"  PerX="10"/>
+                    <Equipment Id="24" Name="Meltagun" MutualId="4" Cost="10" GroupName="Ghwgblcs1" Limit="1"  PerX="10"/>
+                    <Equipment Id="25" Name="Plasma gun" MutualId="4" Cost="15" GroupName="Ghwgblcs1" Limit="1"  PerX="10"/>
                   </ReplacementOptions>
                 </Equipment>
                 <Equipment Id="26" Name="Frag Grenades" IsGiven="1" />
@@ -707,9 +707,9 @@
               <ReplacementOptions>
                 <Equipment Id="5" Name="Power fist" GroupName="BCBoltgun" MutualId="1" Cost="25" Limit="1" />
                 <Equipment Id="6" Name="Power weapon" GroupName="BCBoltgun" MutualId="1" Cost="15" Limit="1" />
-                <Equipment Id="7" Name="Flamer" GroupName="BCBoltgun" MutualId="4" Cost="5" Limit="1" />
-                <Equipment Id="8" Name="Meltagun" GroupName="BCBoltgun" MutualId="4" Cost="10" Limit="1" />
-                <Equipment Id="9" Name="Plasma gun" GroupName="BCBoltgun" MutualId="4" Cost="15" Limit="1" />
+                <Equipment Id="7" Name="Flamer" GroupName="BCBoltgun" MutualId="4" Cost="5" Limit="1"  PerX="15"/>
+                <Equipment Id="8" Name="Meltagun" GroupName="BCBoltgun" MutualId="4" Cost="10" Limit="1" PerX="15"/>
+                <Equipment Id="9" Name="Plasma gun" GroupName="BCBoltgun" MutualId="4" Cost="15" Limit="1" PerX="15"/>
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="10" Name="Frag Grenades" IsDefault="1" />
@@ -733,9 +733,9 @@
                   <ReplacementOptions>
                     <Equipment Id="21" Name="Power fist" MutualId="1" GroupName="BCwgblcs1" Cost="25" Limit="1" />
                     <Equipment Id="22" Name="Power weapon" MutualId="1" GroupName="BCwgblcs1" Cost="15" Limit="1" />
-                    <Equipment Id="23" Name="Flamer" MutualId="4" Cost="5" GroupName="BCwgblcs1" Limit="1" />
-                    <Equipment Id="24" Name="Meltagun" MutualId="4" Cost="10" GroupName="BCwgblcs1" Limit="1" />
-                    <Equipment Id="25" Name="Plasma gun" MutualId="4" Cost="15" GroupName="BCwgblcs1" Limit="1" />
+                    <Equipment Id="23" Name="Flamer" MutualId="4" Cost="5" GroupName="BCwgblcs1" Limit="1"  PerX="15"/>
+                    <Equipment Id="24" Name="Meltagun" MutualId="4" Cost="10" GroupName="BCwgblcs1" Limit="1"  PerX="15"/>
+                    <Equipment Id="25" Name="Plasma gun" MutualId="4" Cost="15" GroupName="BCwgblcs1" Limit="1" PerX="15" />
                   </ReplacementOptions>
                 </Equipment>
                 <Equipment Id="26" Name="Frag Grenades" IsGiven="1" />
@@ -897,9 +897,9 @@
           <DefaultEquipment>
             <Equipment Id="1" Name="Servo-arm" GroupName="ServWeapon">
               <ReplacementOptions>
-                <Equipment Id="2" Name="Heavy Bolter" Cost="10" GroupName="ServWeapon" />
-                <Equipment Id="3" Name="Multi-melta" Cost="10" GroupName="ServWeapon" />
-                <Equipment Id="4" Name="Plasma cannon" Cost="20" GroupName="ServWeapon" />
+                <Equipment Id="2" Name="Heavy Bolter" Cost="10" GroupName="ServWeapon"  Limit="2" MutualId="1"/>
+                <Equipment Id="3" Name="Multi-melta" Cost="10" GroupName="ServWeapon"   Limit="2" MutualId="1"/>
+                <Equipment Id="4" Name="Plasma cannon" Cost="20" GroupName="ServWeapon"   Limit="2" MutualId="1"/>
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
@@ -942,12 +942,12 @@
             <Equipment Id="3" IsDefault="1" Name="Krak grenades" />
             <Equipment Id="4" GroupName="wspistol" IsDefault="1" Name="Bolt Pistol">
               <ReplacementOptions>
-                <Equipment Id="5" GroupName="wspistol" Name="Flamer" Cost="5" Limit="1" />
-                <Equipment Id="6" GroupName="wspistol" Name="Meltagun" Cost="10" Limit="1" />
-                <Equipment Id="7" GroupName="wspistol" Name="Plasma gun" Cost="15" Limit="1" />
-                <Equipment Id="8" GroupName="wspistol" Name="Heavy bolter" Cost="10" />
-                <Equipment Id="9" GroupName="wspistol" Name="Missile launcher " Cost="15" />
-                <Equipment Id="10" GroupName="wspistol" Name="Missile launcher with flakk missiles" Cost="25" />
+                <Equipment Id="5" GroupName="wspistol" Name="Flamer" Cost="5" Limit="1" MutualId="2" />
+                <Equipment Id="6" GroupName="wspistol" Name="Meltagun" Cost="10" Limit="1" MutualId="2" />
+                <Equipment Id="7" GroupName="wspistol" Name="Plasma gun" Cost="15"  Limit="1" MutualId="2"/>
+                <Equipment Id="8" GroupName="wspistol" Name="Heavy bolter" Cost="10" Limit="1" MutualId="2"/>
+                <Equipment Id="9" GroupName="wspistol" Name="Missile launcher " Cost="15" Limit="1" MutualId="2"/>
+                <Equipment Id="10" GroupName="wspistol" Name="Missile launcher with flakk missiles" Cost="25" Limit="1" MutualId="2"/>
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="11" IsDefault="1" Name="Boltgun" GroupName="wsboltgun">
@@ -955,11 +955,11 @@
                 <Equipment Id="12" Name="Shotgun" Cost="0" GroupName="wsboltgun" />
                 <Equipment Id="13" Name="Close combat weapon" Cost="0" GroupName="wsboltgun" />
                 <Equipment Id="14" Name="Sniper rifle" Cost="1" GroupName="wsboltgun" />
-                <Equipment Id="15" Name="Power weapon" Cost="15" GroupName="wsboltgun" />
-                <Equipment Id="16" Name="Plasma pistol" Cost="15" GroupName="wsboltgun" />
-                <Equipment Id="23" Name="Heavy bolter" Cost="10" GroupName="wsboltgun" />
-                <Equipment Id="24" Name="Missile launcher " Cost="15" GroupName="wsboltgun" />
-                <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" GroupName="wsboltgun" />
+                <Equipment Id="15" Name="Power weapon" Cost="15" GroupName="wsboltgun" Limit="2" MutualId="1"/>
+                <Equipment Id="16" Name="Plasma pistol" Cost="15" GroupName="wsboltgun"  Limit="2" MutualId="1"/>
+                <Equipment Id="23" Name="Heavy bolter" Cost="10" GroupName="wsboltgun" Limit="1" MutualId="2"/>
+                <Equipment Id="24" Name="Missile launcher " Cost="15" GroupName="wsboltgun" Limit="1" MutualId="2"/>
+                <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" GroupName="wsboltgun" Limit="1" MutualId="2"/>
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
@@ -971,14 +971,14 @@
           <DefaultEquipment>
             <Equipment Id="18" IsDefault="1" Name="Frag Grenades" />
             <Equipment Id="19" IsDefault="1" Name="Krak Grenades" />
-            <Equipment Id="20" Name=" " GroupName="WSUpgrade">
+            <Equipment Id="20" GroupName="WSUpgrade">
               <GivenEquipment>
                 <Equipment Id="21" IsGiven="1" Name="Scout Armor" />
                 <Equipment Id="22" IsGiven="1" Name="Bolt Pistol">
                   <ReplacementOptions>
-                    <Equipment Id="23" Name="Heavy bolter" Cost="10" />
-                    <Equipment Id="24" Name="Missile launcher " Cost="15" />
-                    <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" />
+                    <Equipment Id="23" Name="Heavy bolter" Cost="10" Limit="1" MutualId="2"/>
+                    <Equipment Id="24" Name="Missile launcher " Cost="15" Limit="1" MutualId="2"/>
+                    <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" Limit="1" MutualId="2"/>
                   </ReplacementOptions>
                 </Equipment>
                 <Equipment Id="26" IsGiven="1" Name="Boltgun" GroupName="wslboltgun" />
@@ -986,14 +986,14 @@
                   <Equipment Id="27" Name="Shotgun" Cost="0" GroupName="wslboltgun" />
                   <Equipment Id="28" Name="Close combat weapon" Cost="0" GroupName="wslboltgun" />
                   <Equipment Id="29" Name="Sniper rifle" Cost="1" GroupName="wslboltgun" />
-                  <Equipment Id="30" Name="Power weapon" Cost="15" GroupName="wslboltgun" />
-                  <Equipment Id="31" Name="Plasma pistol" Cost="15" GroupName="wslboltgun" />
-                  <Equipment Id="32" Name="Flamer" Cost="5" Limit="1" GroupName="wslboltgun" />
-                  <Equipment Id="33" Name="Meltagun" Cost="10" Limit="1" GroupName="wslboltgun" />
-                  <Equipment Id="34" Name="Plasma gun" Cost="15" Limit="1" GroupName="wslboltgun" />
-                  <Equipment Id="23" Name="Heavy bolter" Cost="10" GroupName="wslboltgun" />
-                  <Equipment Id="24" Name="Missile launcher " Cost="15" GroupName="wslboltgun" />
-                  <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" GroupName="wslboltgun" />
+                  <Equipment Id="30" Name="Power weapon" Cost="15" GroupName="wslboltgun"  Limit="2" MutualId="1"/>
+                  <Equipment Id="31" Name="Plasma pistol" Cost="15" GroupName="wslboltgun" Limit="2" MutualId="1" />
+                  <Equipment Id="32" Name="Flamer" Cost="5" Limit="1" GroupName="wslboltgun" MutualId="2"/>
+                  <Equipment Id="33" Name="Meltagun" Cost="10" Limit="1" GroupName="wslboltgun"  MutualId="2"/>
+                  <Equipment Id="34" Name="Plasma gun" Cost="15" Limit="1" GroupName="wslboltgun" MutualId="2"/>
+                  <Equipment Id="23" Name="Heavy bolter" Cost="10" GroupName="wslboltgun" Limit="1" MutualId="2"/>
+                  <Equipment Id="24" Name="Missile launcher " Cost="15" GroupName="wslboltgun" Limit="1" MutualId="2"/>
+                  <Equipment Id="25" Name="Missile launcher with flakk missiles" Cost="25" GroupName="wslboltgun"  Limit="1" MutualId="2"/>
                 </ReplacementOptions>
               </GivenEquipment>
             </Equipment>
@@ -1106,7 +1106,7 @@
         <Model Id="2" Name="Fenrisian Wolf" Minimum="0" Maximum="2" IncrementCost="8" BaseCost="0" />
       </Models>
     </Unit>
-    <!--problems-->
+
     <Unit Id="16" Name="Dreadnought" ForceOrgSlot="2" CountsTowardForceOrg="1">
       <Models>
         <Model Id="1" Name="Dreadnought" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="95">
@@ -1453,8 +1453,8 @@
             </Equipment>
             <Equipment Id="9" Name="Storm bolter" GroupName="WolfGuardTSB" IsDefault="1">
               <ReplacementOptions>
-                <Equipment Id="10" Name="Heavy flamer" Cost="10" Limit="1" GroupName="WolfGuardTSB" MutualId="1" />
-                <Equipment Id="11" Name="Assualt cannon" Cost="5" Limit="1" GroupName="WolfGuardTSB" MutualId="1" />
+                <Equipment Id="10" Name="Heavy flamer" Cost="10" Limit="1" GroupName="WolfGuardTSB" MutualId="1" PerX="10"/>
+                <Equipment Id="11" Name="Assualt cannon" Cost="5" Limit="1" GroupName="WolfGuardTSB" MutualId="1" PerX="10"/>
                 <Equipment Id="12" Name="Combi-flamer" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
                 <Equipment Id="13" Name="Combi-melta" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
                 <Equipment Id="14" Name="Combi-plasma" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
@@ -1465,7 +1465,7 @@
             <Equipment Id="17" Name="Terminator Armour" IsDefault="1" />
           </DefaultEquipment>
           <Upgrades>
-            <Equipment Id="18" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" />
+            <Equipment Id="18" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" PerX="10"/>
           </Upgrades>
         </Model>
         <Model Id="1" Name="Wolf Guard Terminator Leader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
@@ -1483,8 +1483,8 @@
             </Equipment>
             <Equipment Id="28" Name="Storm bolter" GroupName="WolfGuardTSB" IsDefault="1">
               <ReplacementOptions>
-                <Equipment Id="29" Name="Heavy flamer" Cost="10" Limit="1" GroupName="WolfGuardTSB" MutualId="1" />
-                <Equipment Id="30" Name="Assualt cannon" Cost="5" Limit="1" GroupName="WolfGuardTSB" MutualId="1" />
+                <Equipment Id="29" Name="Heavy flamer" Cost="10" Limit="1" GroupName="WolfGuardTSB" MutualId="1" PerX="10"/>
+                <Equipment Id="30" Name="Assualt cannon" Cost="5" Limit="1" GroupName="WolfGuardTSB" MutualId="1" PerX="10"/>
                 <Equipment Id="31" Name="Combi-flamer" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
                 <Equipment Id="32" Name="Combi-melta" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
                 <Equipment Id="33" Name="Combi-plasma" Cost="5" Limit="1" GroupName="WolfGuardTSB" />
@@ -1495,7 +1495,7 @@
             <Equipment Id="36" Name="Terminator Armour" IsDefault="1" />
           </DefaultEquipment>
           <Upgrades>
-            <Equipment Id="37" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" />
+            <Equipment Id="37" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" PerX="10"/>
           </Upgrades>
         </Model>
       </Models>
@@ -1642,9 +1642,9 @@
             <Equipment Id="2" Name="Bolt pistol" GroupName="SwiftClawPistol" IsDefault="1">
               <ReplacementOptions>
                 <Equipment Id="3" Name="Chainsword" Cost="0" GroupName="SwiftClawPistol" />
-                <Equipment Id="4" Name="Flamer" Cost="5" MutualId="1" GroupName="SwiftClawPistol" />
-                <Equipment Id="5" Name="Meltagun" Cost="10" MutualId="1" GroupName="SwiftClawPistol" />
-                <Equipment Id="6" Name="Plasma gun" Cost="15" MutualId="1" GroupName="SwiftClawPistol" />
+                <Equipment Id="4" Name="Flamer" Cost="5" MutualId="1" Limit="1" GroupName="SwiftClawPistol" />
+                <Equipment Id="5" Name="Meltagun" Cost="10" MutualId="1" Limit="1" GroupName="SwiftClawPistol" />
+                <Equipment Id="6" Name="Plasma gun" Cost="15" MutualId="1" Limit="1" GroupName="SwiftClawPistol" />
                 <Equipment Id="7" Name="Power weapon" GroupName="SwiftClawPistol" Cost="15" />
                 <Equipment Id="8" Name="Storm shield" GroupName="SwiftClawPistol" Cost="15" />
                 <Equipment Id="9" Name="Frost sword" GroupName="SwiftClawPistol" Cost="20" />
@@ -1898,10 +1898,10 @@
             </Equipment>
             <Equipment Id="4" Name="Bolt pistol" IsDefault="1" GroupName="GhBoltgunPistol">
               <ReplacementOptions>
-                <Equipment Id="5" Name="Flamer" Cost="5" Limit="1" />
-                <Equipment Id="6" Name="Meltagun" Cost="10" Limit="1" />
-                <Equipment Id="7" Name="Plasma gun" Cost="15" Limit="1" />
-                <Equipment Id="8" Name="Plasma pistol" Cost="15" Limit="1" />
+                <Equipment Id="5" Name="Flamer" Cost="5" Limit="2" MutualId="2"/>
+                <Equipment Id="6" Name="Meltagun" Cost="10" Limit="2" MutualId="2"/>
+                <Equipment Id="7" Name="Plasma gun" Cost="15" Limit="2" MutualId="2"/>
+                <Equipment Id="8" Name="Plasma pistol" Cost="15" Limit="2" MutualId="2" />
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="9" Name="Frag Grenades" IsDefault="1" />
@@ -1929,10 +1929,10 @@
                 </Equipment>
                 <Equipment Id="21" Name="Bolt pistol" IsDefault="1" GroupName="GhBoltgunPistol">
                   <ReplacementOptions>
-                    <Equipment Id="22" Name="Flamer" Cost="5" Limit="1" />
-                    <Equipment Id="23" Name="Meltagun" Cost="10" Limit="1" />
-                    <Equipment Id="24" Name="Plasma gun" Cost="15" Limit="1" />
-                    <Equipment Id="25" Name="Plasma pistol" Cost="15" Limit="1" />
+                    <Equipment Id="22" Name="Flamer" Cost="5" Limit="2" MutualId="2"/>
+                    <Equipment Id="23" Name="Meltagun" Cost="10" Limit="2" MutualId="2"/>
+                    <Equipment Id="24" Name="Plasma gun" Cost="15" Limit="2" MutualId="2" />
+                    <Equipment Id="25" Name="Plasma pistol" Cost="15" Limit="2" MutualId="2"/>
                   </ReplacementOptions>
                 </Equipment>
               </GivenEquipment>
@@ -2031,12 +2031,12 @@
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="LongFangPistol" IsDefault="1">
               <ReplacementOptions>
-                <Equipment Id="2" Name="Heavy bolter" GroupName="LongFangPistol" Cost="10" Limit="1" />
-                <Equipment Id="3" Name="Multi-melta" GroupName="LongFangPistol" Cost="10" Limit="1" />
-                <Equipment Id="4" Name="Missile launcher" GroupName="LongFangPistol" Cost="15" Limit="1" />
-                <Equipment Id="5" Name="Missile launcher with flakk missiles" Cost="25" GroupName="LongFangPistol" Limit="1" />
-                <Equipment Id="6" Name="Plasma cannon" GroupName="LongFangPistol" Cost="15" Limit="1" />
-                <Equipment Id="7" Name="Lascannon" GroupName="LongFangPistol" Cost="20" Limit="1" />
+                <Equipment Id="2" Name="Heavy bolter" GroupName="LongFangPistol" Cost="10" />
+                <Equipment Id="3" Name="Multi-melta" GroupName="LongFangPistol" Cost="10"  />
+                <Equipment Id="4" Name="Missile launcher" GroupName="LongFangPistol" Cost="15" />
+                <Equipment Id="5" Name="Missile launcher with flakk missiles" Cost="25" GroupName="LongFangPistol"  />
+                <Equipment Id="6" Name="Plasma cannon" GroupName="LongFangPistol" Cost="15"  />
+                <Equipment Id="7" Name="Lascannon" GroupName="LongFangPistol" Cost="20" />
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="8" Name="Frag Grenades" IsDefault="1" />
@@ -2056,9 +2056,6 @@
                 <Equipment Id="14" Name="Plasma pistol" GroupName="LongFangAncientPistol" Cost="15" />
                 <Equipment Id="15" Name="Power weapon" GroupName="LongFangAncientPistol" Cost="15" />
                 <Equipment Id="16" Name="Power fist" GroupName="LongFangAncientPistol" Cost="25" />
-                <Equipment Id="17" Name="Flamer" GroupName="LongFangAncientPistol" Cost="5" />
-                <Equipment Id="18" Name="Meltagun" GroupName="LongFangAncientPistol" Cost="10" />
-                <Equipment Id="19" Name="Plasma gun" GroupName="LongFangAncientPistol" Cost="15" />
               </ReplacementOptions>
             </Equipment>
             <Equipment Id="20" Name="Chainsword" GroupName="LongFangAncientCS" IsDefault="1">
@@ -2084,12 +2081,12 @@
               <GivenEquipment>
                 <Equipment Id="30" Name="Bolt pistol" IsGiven="1" GroupName="LongFangLeaderPistol">
                   <ReplacementOptions>
-                    <Equipment Id="31" Name="Heavy bolter" Cost="10" Limit="1" GroupName="LongFangLeaderPistol" />
-                    <Equipment Id="32" Name="Multi-melta" Cost="10" Limit="1" GroupName="LongFangLeaderPistol" />
-                    <Equipment Id="33" Name="Missile launcher" Cost="15" Limit="1" GroupName="LongFangLeaderPistol" />
-                    <Equipment Id="34" Name="Missile launcher with flakk missiles" GroupName="LongFangLeaderPistol" Cost="25" Limit="1" />
-                    <Equipment Id="35" Name="Plasma cannon" Cost="15" Limit="1" GroupName="LongFangLeaderPistol" />
-                    <Equipment Id="36" Name="Lascannon" Cost="20" Limit="1" GroupName="LongFangLeaderPistol" />
+                    <Equipment Id="31" Name="Heavy bolter" Cost="10"  GroupName="LongFangLeaderPistol" />
+                    <Equipment Id="32" Name="Multi-melta" Cost="10"  GroupName="LongFangLeaderPistol" />
+                    <Equipment Id="33" Name="Missile launcher" Cost="15" GroupName="LongFangLeaderPistol" />
+                    <Equipment Id="34" Name="Missile launcher with flakk missiles" GroupName="LongFangLeaderPistol" Cost="25"  />
+                    <Equipment Id="35" Name="Plasma cannon" Cost="15"  GroupName="LongFangLeaderPistol" />
+                    <Equipment Id="36" Name="Lascannon" Cost="20" GroupName="LongFangLeaderPistol" />
                   </ReplacementOptions>
                 </Equipment>
                 <Equipment Id="37" Name="Frag Grenades" IsGiven="1" />
