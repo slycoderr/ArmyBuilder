@@ -17,6 +17,9 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public Model Model { get; private set; }
 
+        [XmlIgnore]
+        public ArmyListData Unit { get; private set; }
+
         [XmlArray]
         public ObservableCollection<ModelData> Models { get; set; } = new ObservableCollection<ModelData>();
 
@@ -65,18 +68,20 @@ namespace ArmyBuilder.Core.Models
         {
         }
 
-        public ModelDataGroup(Model m)
+        public ModelDataGroup(Model m, ArmyListData unit)
         {
             Model = m;
+            Unit = unit;
             CurrentUnitSize = Model.Minimum;
             PropertyChanged += OnPropertyChanged;
             ModelId = Model.Id;
             UpdatePointsTotal();
         }
 
-        public void SetData(Model m)
+        public void SetData(Model m, ArmyListData unit)
         {
             Model = m;
+            Unit = unit;
 
             Models.ForEach(mm =>
             {
@@ -100,15 +105,28 @@ namespace ArmyBuilder.Core.Models
             PointsCostTotal = UpgradesCostTotal + (Model.Minimum > 0 ? Model.BaseCost : 0) + (CurrentUnitSize > Model.Minimum ? Model.IncrementCost*(CurrentUnitSize - Model.Minimum) : 0);
             var allEquipment = GetAllModelEquipment();
 
+            allEquipment.Where(e=>e.Equipment.PerX > 0).ForEach(e =>
+            { //count up all the models that have the same name just in case they are separated for leader upgrade purposes 
+                if (Unit.Models.Where(u=>u.Model.Name == Model.Name).Sum(m=>m.CurrentUnitSize) >= e.Equipment.PerX)
+                {
+                    e.Equipment.TempLimit = e.Equipment.Limit + (int) (CurrentUnitSize/e.Equipment.PerX);
+                }
+
+                else
+                {
+                    e.Equipment.TempLimit = e.Equipment.Limit;
+                }
+            });
+
             var equipGroup = allEquipment.Where(ee => ee.Equipment.MutualId != 0).GroupBy(ee => ee.Equipment.MutualId);
 
             foreach (var group in equipGroup)
             {
                 foreach (var equip in group)
                 {
-                    if (equip.Equipment.Limit > 0 &&
+                    if (equip.Equipment.TempLimit > 0 &&
                         allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) ==
-                        equip.Equipment.Limit)
+                        equip.Equipment.TempLimit)
                     {
                         allEquipment.Where(eee => eee.Equipment.MutualId == group.Key && !eee.IsTaken)
                             .ForEach(eee =>
@@ -125,9 +143,9 @@ namespace ArmyBuilder.Core.Models
                             });
                     }
 
-                    else if (equip.Equipment.Limit > 0 &&
+                    else if (equip.Equipment.TempLimit > 0 &&
                              allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) <
-                             equip.Equipment.Limit)
+                             equip.Equipment.TempLimit)
                     {
                         allEquipment.Where(eee => eee.Equipment.MutualId == group.Key)
                             .ForEach(eee =>

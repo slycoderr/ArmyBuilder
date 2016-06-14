@@ -61,6 +61,7 @@ namespace ArmyBuilder.Core.Models
             Equipment = e;
             GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
             ParentEquipment = parent;
+            Equipment.TempLimit = Equipment.Limit;
 
             EquipmentId = e.Id;
 
@@ -75,6 +76,7 @@ namespace ArmyBuilder.Core.Models
         {
             Equipment = e;
             ParentEquipment = parent;
+            Equipment.TempLimit = Equipment.Limit;
 
             EquipmentId = e.Id;
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, this)).ToList();
@@ -88,6 +90,7 @@ namespace ArmyBuilder.Core.Models
         {
             Equipment = e;
             ParentEquipment = parent;
+            Equipment.TempLimit = Equipment.Limit;
 
             ReplacementOptions.ForEach(i => i.SetData(Equipment.ReplacementOptions.Single(ii => ii.Id == i.EquipmentId), this));
             GivenEquipment.ForEach(i => i.SetData(Equipment.GivenEquipment.Single(ii => ii.Id == i.EquipmentId), this));

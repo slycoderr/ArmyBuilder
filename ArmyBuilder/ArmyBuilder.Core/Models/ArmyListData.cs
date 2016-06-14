@@ -119,7 +119,7 @@ namespace ArmyBuilder.Core.Models
                 if (Data == null)
                 {
                     DedicatedTransports = new List<ModelData>(Unit.DedicatedTransports.Select(u => new ModelData(u)).ToList());
-                    Models = new List<ModelDataGroup>(Unit.Models.Select(u => new ModelDataGroup(u)).ToList());
+                    Models = new List<ModelDataGroup>(Unit.Models.Select(u => new ModelDataGroup(u, this)).ToList());
                     Save();
                 }
 
@@ -139,7 +139,7 @@ namespace ArmyBuilder.Core.Models
                             SelectedDedicatedTransport?.SetData(unit.DedicatedTransports.Single(m => m.Id == SelectedDedicatedTransport.ModelId));
 
                             DedicatedTransports.ForEach(t=>t.SetData(Unit.DedicatedTransports.Single(m=>m.Id == t.ModelId)));
-                            Models.ForEach(t=>t.SetData(Unit.Models.Single(m=>m.Id == t.ModelId)));
+                            Models.ForEach(t=>t.SetData(Unit.Models.Single(m=>m.Id == t.ModelId), this));
 
                         }
                     }
