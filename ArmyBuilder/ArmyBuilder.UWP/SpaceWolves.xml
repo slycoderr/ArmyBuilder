@@ -694,7 +694,7 @@
 
     <Unit Id="11" Name="Blood Claws" ForceOrgSlot="1" CountsTowardForceOrg="1">
       <Models>
-        <Model Id="1" Name="Blood Claw" Minimum="5" Maximum="15" IncrementCost="12" BaseCost="60">
+        <Model Id="1" Name="Blood Claw" Minimum="4" Maximum="14" IncrementCost="12" BaseCost="60">
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="GreyHuntersPistol" IsDefault="1">
               <ReplacementOptions>
