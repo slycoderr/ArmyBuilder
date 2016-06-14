@@ -109,12 +109,12 @@ namespace ArmyBuilder.Core.Models
             { //count up all the models that have the same name just in case they are separated for leader upgrade purposes 
                 if (Unit.Models.Where(u=>u.Model.Name == Model.Name).Sum(m=>m.CurrentUnitSize) >= e.Equipment.PerX)
                 {
-                    e.Equipment.TempLimit = e.Equipment.Limit + (int) (CurrentUnitSize/e.Equipment.PerX);
+                    e.TempLimit = e.Equipment.Limit + (int) (CurrentUnitSize/e.Equipment.PerX);
                 }
 
                 else
                 {
-                    e.Equipment.TempLimit = e.Equipment.Limit;
+                    e.TempLimit = e.Equipment.Limit;
                 }
             });
 
@@ -124,9 +124,9 @@ namespace ArmyBuilder.Core.Models
             {
                 foreach (var equip in group)
                 {
-                    if (equip.Equipment.TempLimit > 0 &&
+                    if (equip.TempLimit > 0 &&
                         allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) ==
-                        equip.Equipment.TempLimit)
+                        equip.TempLimit)
                     {
                         allEquipment.Where(eee => eee.Equipment.MutualId == group.Key && !eee.IsTaken)
                             .ForEach(eee =>
@@ -143,9 +143,9 @@ namespace ArmyBuilder.Core.Models
                             });
                     }
 
-                    else if (equip.Equipment.TempLimit > 0 &&
+                    else if (equip.TempLimit > 0 &&
                              allEquipment.Count(e => e.Equipment.MutualId == equip.Equipment.MutualId && e.IsTaken) <
-                             equip.Equipment.TempLimit)
+                             equip.TempLimit)
                     {
                         allEquipment.Where(eee => eee.Equipment.MutualId == group.Key)
                             .ForEach(eee =>

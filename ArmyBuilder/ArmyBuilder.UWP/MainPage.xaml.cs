@@ -105,7 +105,7 @@ namespace ArmyBuilder.UWP
 
         private void ToggleLoading(bool show = true)
         {
-            ProgressPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            //ProgressPanel.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
             IsEnabled = !show;
         }
 

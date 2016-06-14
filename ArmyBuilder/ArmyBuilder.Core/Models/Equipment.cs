@@ -23,7 +23,6 @@ namespace ArmyBuilder.Core.Models
 
         [XmlAttribute]
         public int Limit { get; set; }
-        public int TempLimit { get; set; }
 
         [XmlAttribute]
         public int NaxPerArmy { get; set; }

@@ -25,6 +25,9 @@ namespace ArmyBuilder.Core.Models
         public List<EquipmentData> GivenEquipment { get; set; } = new List<EquipmentData>();
 
         [XmlIgnore]
+        public int TempLimit { get; set; }
+
+        [XmlIgnore]
         public bool CanAdd { get { return canAdd; } set { SetValue(ref canAdd, value); } }
 
         [XmlAttribute]
@@ -61,7 +64,7 @@ namespace ArmyBuilder.Core.Models
             Equipment = e;
             GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
             ParentEquipment = parent;
-            Equipment.TempLimit = Equipment.Limit;
+            TempLimit = Equipment.Limit;
 
             EquipmentId = e.Id;
 
@@ -76,7 +79,7 @@ namespace ArmyBuilder.Core.Models
         {
             Equipment = e;
             ParentEquipment = parent;
-            Equipment.TempLimit = Equipment.Limit;
+            TempLimit = Equipment.Limit;
 
             EquipmentId = e.Id;
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, this)).ToList();
@@ -90,7 +93,7 @@ namespace ArmyBuilder.Core.Models
         {
             Equipment = e;
             ParentEquipment = parent;
-            Equipment.TempLimit = Equipment.Limit;
+            TempLimit = Equipment.Limit;
 
             ReplacementOptions.ForEach(i => i.SetData(Equipment.ReplacementOptions.Single(ii => ii.Id == i.EquipmentId), this));
             GivenEquipment.ForEach(i => i.SetData(Equipment.GivenEquipment.Single(ii => ii.Id == i.EquipmentId), this));
