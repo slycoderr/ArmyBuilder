@@ -231,6 +231,17 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="DetachmentListItemTemplate">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Detachment.Name}"/>
+                <CheckBox Grid.Column="1" IsEnabled="False" IsChecked="{Binding IsPrimary}"/>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Key="DedicatedTransportSelectionTemplate">
             <TextBlock Text="{Binding Model.Name}" />
         </DataTemplate>

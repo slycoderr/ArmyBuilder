@@ -16,6 +16,8 @@ namespace ArmyBuilder.Core.ViewModels
     {
         public ArmyList ArmyList { get; }
 
+        public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
+
         public int PointsRemaining { get { return pointsRemaining; } set { SetValue(ref pointsRemaining, value); } }
 
         public int PointsUsed { get { return pointsUsed; } set { SetValue(ref pointsUsed, value); } }
@@ -57,6 +59,7 @@ namespace ArmyBuilder.Core.ViewModels
         private int troopCount;
         private int pointsRemaining;
         private int pointsUsed;
+        private DetachmentData selectedDetachment;
 
         public ArmyListViewModel(ArmyList armyList)
         {

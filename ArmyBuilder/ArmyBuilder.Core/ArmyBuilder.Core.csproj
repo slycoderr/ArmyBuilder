@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Database\ArmyBuilderDatabase.cs" />
     <Compile Include="Database\Utility.cs" />
-    <Compile Include="DetachmentData.cs" />
+    <Compile Include="Models\DetachmentData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Army.cs" />
     <Compile Include="Models\ArmyList.cs" />
