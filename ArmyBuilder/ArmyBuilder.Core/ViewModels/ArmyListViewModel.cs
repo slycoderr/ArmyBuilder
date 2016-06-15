@@ -29,16 +29,15 @@ namespace ArmyBuilder.Core.ViewModels
         public int HeavySupportCount { get { return heavySupportCount; } set { SetValue(ref heavySupportCount, value); } }
         public int LordOfWarCount { get { return lordOfWarCount; } set { SetValue(ref lordOfWarCount, value); } }
 
-        public List<Unit> HqUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 0).ToList();
-        public List<Unit> TroopUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 1).ToList();
-        public List<Unit> EliteUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 2).ToList();
-        public List<Unit> FastAttackUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 3).ToList();
-        public List<Unit> HeavySupportUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 4).ToList();
-        public List<Unit> LordOfWarUnits => ArmyList.Army.Units.Where(u => u.ForceOrgSlot == 5).ToList();
+        public ObservableCollection<Unit> HqUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> TroopUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> EliteUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> FastAttackUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> HeavySupportUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> LordOfWarUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> FortificationUnits { get; } = new ObservableCollection<Unit>();
 
         public ArmyListData SelectedUnit { get { return selectedUnit; } set { SetValue(ref selectedUnit, value); } }
-
-        public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
 
         public ObservableCollection<ForceOrgGroup> ArmyListDataGroups { get; } =new ObservableCollection<ForceOrgGroup>();
         public ObservableCollection<ArmyUnitGroup> ArmyUnitGroups { get; } = new ObservableCollection<ArmyUnitGroup>();
@@ -64,11 +63,43 @@ namespace ArmyBuilder.Core.ViewModels
         public ArmyListViewModel(ArmyList armyList)
         {
             ArmyList = armyList;
+
             UpdateArmyListDataSource();
-            UpdateForceOrgCount();
-            Units.CollectionChanged += UnitsOnCollectionChanged;
-            UpdateArmyUnitsListDataSource();
+            
             UpdatePointsTotal();
+            PropertyChanged += OnPropertyChanged;
+            SelectedDetachment = armyList.Detachments.First();
+
+            ArmyList.Detachments.ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
+        }
+
+        private void UpdateUnitLists()
+        {
+            HqUnits.Clear();
+            TroopUnits.Clear();
+            EliteUnits.Clear();
+            FastAttackUnits.Clear();
+            HeavySupportUnits.Clear();
+            LordOfWarUnits.Clear();
+            FortificationUnits.Clear();
+
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 0).ForEach(u=>HqUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 1).ForEach(u=> TroopUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 2).ForEach(u=> EliteUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 3).ForEach(u=> FastAttackUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 4).ForEach(u=> HeavySupportUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 5).ForEach(u=> LordOfWarUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 6).ForEach(u=> FortificationUnits.Add(u));
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedDetachment))
+            {
+                UpdateArmyUnitsListDataSource();
+                UpdateForceOrgCount();
+                UpdateUnitLists();
+            }
         }
 
         private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -113,7 +144,7 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateArmyListDataSource()
         {
             var currentSelectedItem = SelectedUnit;
-            var groups = Units.GroupBy(i => new {i.Unit.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList())).ToList();
+            var groups = SelectedDetachment.Units.GroupBy(i => new {i.Unit.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList())).ToList();
 
             ArmyListDataGroups.Clear();
             groups.ForEach(g => ArmyListDataGroups.Add(g));
@@ -141,10 +172,10 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (unit != null)
             {
-                
-                Units.Add(new ArmyListData(unit, ArmyList.Id));
-                SelectedUnit = Units.Last();
+                SelectedDetachment.Units.Add(new ArmyListData(unit, ArmyList.Id));
+                SelectedUnit = SelectedDetachment.Units.Last();
                 IsUnitFlyoutOpened = false;
+
             }
         }
 
