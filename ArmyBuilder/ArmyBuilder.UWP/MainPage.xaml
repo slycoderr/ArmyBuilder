@@ -89,7 +89,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </AppBarButton>
-                        <AppBarButton Icon="List" Label="{Binding SelectedArmyList.Name, FallbackValue='No List'}" IsEnabled="{Binding SelectedArmyList, FallbackValue=true, TargetNullValue=false}" >
+                        <AppBarButton Icon="List" Label="{Binding SelectedArmyList.Name, FallbackValue='No List'}" Visibility="{Binding SelectedArmyList, FallbackValue=Visible, TargetNullValue=Collapsed}">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="Click">
                                     <core:ChangePropertyAction PropertyName="Visibility" TargetObject="{Binding ElementName=ArmyListsGrid}" Value="Collapsed" />
