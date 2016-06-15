@@ -24,5 +24,7 @@ namespace ArmyBuilder.Core.Models
         {
             return Name;
         }
+
+        public static IReadOnlyList<string> Armies = new List<string> {"Space Wolves", "Necrons", "Skitarii", "Imperial Knights"};
     }
 }

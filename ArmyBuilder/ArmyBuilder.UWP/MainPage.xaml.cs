@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
@@ -47,50 +48,37 @@ namespace ArmyBuilder.UWP
             if (!loadedDatabase)
             {
                 var folder = ApplicationData.Current.LocalFolder;
-                var f = await Package.Current.InstalledLocation.GetFileAsync("SpaceWolves.xml");
-                var data = await folder.TryGetItemAsync("SpaceWolves.xml");
-                var f2 = await Package.Current.InstalledLocation.GetFileAsync("Necrons.xml");
-                var data2 = await folder.TryGetItemAsync("Necrons.xml");
 
-                if (data != null)
+                foreach (var army in Army.Armies)
                 {
-                    var currentDbProperties = await data.GetBasicPropertiesAsync();
-                    var projectDbProperties = await f.GetBasicPropertiesAsync();
+                    var f = await Package.Current.InstalledLocation.GetFileAsync($"{army}.xml");
+                    var data = await folder.TryGetItemAsync($"{ army}.xml");
 
-                    if (projectDbProperties.DateModified.DateTime.CompareTo(currentDbProperties.DateModified.DateTime) > 0)
+                    if (data != null)
                     {
-                        await data.DeleteAsync();
+                        var currentDbProperties = await data.GetBasicPropertiesAsync();
+                        var projectDbProperties = await f.GetBasicPropertiesAsync();
+
+                        if (projectDbProperties.DateModified.DateTime.CompareTo(currentDbProperties.DateModified.DateTime) > 0)
+                        {
+                            await data.DeleteAsync();
+                            await f.CopyAsync(folder);
+                        }
+                    }
+
+                    else
+                    {
                         await f.CopyAsync(folder);
                     }
                 }
 
-                else
-                {
-                    await f.CopyAsync(folder);
-                }
+                await MainViewModel.Load(folder.Path, Army.Armies.Select(a => new FileStream(Path.Combine(folder.Path, $"{a}.xml"), FileMode.Open)).Cast<Stream>().ToList());
 
-                if (data2 != null)
-                {
-                    var currentDbProperties = await data2.GetBasicPropertiesAsync();
-                    var projectDbProperties = await f2.GetBasicPropertiesAsync();
-
-                    if (projectDbProperties.DateModified.DateTime.CompareTo(currentDbProperties.DateModified.DateTime) > 0)
-                    {
-                        await data2.DeleteAsync();
-                        await f2.CopyAsync(folder);
-                    }
-                }
-
-                else
-                {
-                    await f2.CopyAsync(folder);
-                }
-
-                await MainViewModel.Load(folder.Path, new List<Stream>
-                {
-                    new FileStream(Path.Combine(folder.Path, "SpaceWolves.xml"), FileMode.Open),
-                    new FileStream(Path.Combine(folder.Path, "Necrons.xml"), FileMode.Open)
-                });
+                //await MainViewModel.Load(folder.Path, new List<Stream>
+                //{
+                //    new FileStream(Path.Combine(folder.Path, "SpaceWolves.xml"), FileMode.Open),
+                //    new FileStream(Path.Combine(folder.Path, "Necrons.xml"), FileMode.Open)
+                //});
 
                 loadedDatabase = true;
             }

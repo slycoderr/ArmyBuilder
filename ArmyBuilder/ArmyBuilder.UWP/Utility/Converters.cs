@@ -200,6 +200,15 @@ namespace ArmyBuilder.Utility.Converters
                         return "Necrons";
                     }
 
+
+                case "3":
+                    {
+                        return "Skitarii";
+                    }
+                case "4":
+                    {
+                        return "Imperial Knights";
+                    }
                 default:
                     throw new ArgumentException("army id not found in switch");
             }
