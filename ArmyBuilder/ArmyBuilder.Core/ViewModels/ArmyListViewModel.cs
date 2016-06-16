@@ -38,6 +38,7 @@ namespace ArmyBuilder.Core.ViewModels
         public ObservableCollection<ArmyUnitGroup> ArmyUnitGroups { get; } = new ObservableCollection<ArmyUnitGroup>();
 
         public RelayCommand<Unit> AddUnitCommand => new RelayCommand<Unit>(AddUnit);
+        public RelayCommand<Detachment> AddSubDetachmentCommand => new RelayCommand<Detachment>(AddSubDetachment);
         public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
 
         public bool IsUnitFlyoutOpened { get { return isUnitFlyoutOpened; } set { SetValue(ref isUnitFlyoutOpened, value); } }
@@ -71,13 +72,13 @@ namespace ArmyBuilder.Core.ViewModels
             LordOfWarUnits.Clear();
             FortificationUnits.Clear();
 
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 0).ForEach(u=>HqUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 1).ForEach(u=> TroopUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 2).ForEach(u=> EliteUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 3).ForEach(u=> FastAttackUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 4).ForEach(u=> HeavySupportUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 5).ForEach(u=> LordOfWarUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == 6).ForEach(u=> FortificationUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
+            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -87,6 +88,11 @@ namespace ArmyBuilder.Core.ViewModels
                 UpdateArmyUnitsListDataSource();
                 UpdateForceOrgCount();
                 UpdateUnitLists();
+
+                if (SelectedDetachment != null && SelectedDetachment.Detachment.Type == DetachmentType.BattleForged)
+                {
+                    SelectedDetachment = SelectedDetachment.SelectedDetachments.FirstOrDefault();
+                }
             }
         }
 
@@ -166,6 +172,11 @@ namespace ArmyBuilder.Core.ViewModels
                 IsUnitFlyoutOpened = false;
 
             }
+        }
+
+        private void AddSubDetachment(Detachment detachment)
+        {
+            SelectedDetachment?.SelectedDetachments.Add(new DetachmentData(detachment, SelectedDetachment.Army));
         }
 
         private void RemoveUnit(ArmyListData unit)

@@ -16,13 +16,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Create Army List" HorizontalAlignment="Stretch">
+        <Button x:Name="CreateButton" Content="Create Army List" HorizontalAlignment="Stretch">
             <Interactivity:Interaction.Behaviors>
                 <Core:EventTriggerBehavior EventName="Click">
+                    <Core:ChangePropertyAction TargetObject="{Binding ElementName=CreateButton}" PropertyName="IsEnabled" Value="False"/>
                     <media:ControlStoryboardAction>
                         <media:ControlStoryboardAction.Storyboard>
                             <Storyboard>
-                                <DoubleAnimation Duration="0:0:.5" To="180" From="0" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+                                <DoubleAnimation Duration="0:0:.5" To="222" From="0" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
                             </Storyboard>
                         </media:ControlStoryboardAction.Storyboard>
                     </media:ControlStoryboardAction>
@@ -44,37 +45,40 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="1" Text="Name:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,10,0,5"/>
-            <TextBlock Grid.Row="2" Text="Points Limit:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,5,0,5" />
-            <TextBlock Grid.Row="3" Text="Army:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,5,0,5" />
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Points Limit:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,5,0,5" />
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Army:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,5,0,5" />
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Primary Detachment:" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,5,0,5" />
 
             <TextBox Grid.Row="1" x:Name="NameTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="10,10,10,5" TextChanged="NameTextBox_TextChanged" />
             <TextBox Grid.Row="2" x:Name="PointsTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="10,5" TextChanged="PointsTextBox_TextChanged"/>
             <ComboBox Grid.Row="3" x:Name="ArmyComboBox" ItemsSource="{Binding Armies}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,5" SelectionChanged="ArmyComboBox_SelectionChanged"/>
             <ComboBox Grid.Row="4" x:Name="PrimaryDetachmentComboBox" ItemsSource="{Binding SelectedItem.Detachments, ElementName=ArmyComboBox}" IsEnabled="{Binding SelectedItem, ElementName=ArmyComboBox, TargetNullValue=False, FallbackValue=True}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10,5" SelectionChanged="ArmyComboBox_SelectionChanged"/>
 
-            <Button x:Name="DoneButton" Content="Done" Grid.Row="5" HorizontalAlignment="Right" Foreground="White" Click="DoneButton_Click" Margin="0,5,10,10" Grid.ColumnSpan="2" Width="75">
+            <Button x:Name="DoneButton" Content="Done" Grid.Row="5" HorizontalAlignment="Right" Foreground="White" Click="DoneButton_Click" Margin="0,5,10,10" Grid.ColumnSpan="2" Grid.Column="0" Width="75" VerticalAlignment="Top">
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="Click">
                         <media:ControlStoryboardAction>
                             <media:ControlStoryboardAction.Storyboard>
                                 <Storyboard>
-                                    <DoubleAnimation Duration="0:0:.5" To="0" From="180" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+                                    <DoubleAnimation Duration="0:0:.5" To="0" From="222" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
                                 </Storyboard>
                             </media:ControlStoryboardAction.Storyboard>
                         </media:ControlStoryboardAction>
+                        <Core:ChangePropertyAction TargetObject="{Binding ElementName=CreateButton}" PropertyName="IsEnabled" Value="True"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
             </Button>
-            <Button Content="Cancel" Grid.Row="5" HorizontalAlignment="Left" Foreground="White" Margin="10,5,10,10" Grid.ColumnSpan="2" Width="75">
+            <Button Content="Cancel" Grid.Row="5" HorizontalAlignment="Left" Foreground="White" Margin="10,5,10,10" Grid.ColumnSpan="2" Grid.Column="0" Width="75" VerticalAlignment="Top">
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="Click">
                         <media:ControlStoryboardAction>
                             <media:ControlStoryboardAction.Storyboard>
                                 <Storyboard>
-                                    <DoubleAnimation Duration="0:0:.5" To="0" From="180" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+                                    <DoubleAnimation Duration="0:0:.5" To="0" From="222" Storyboard.TargetName="ContentGrid"  Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
                                 </Storyboard>
                             </media:ControlStoryboardAction.Storyboard>
                         </media:ControlStoryboardAction>
+                        <Core:ChangePropertyAction TargetObject="{Binding ElementName=CreateButton}" PropertyName="IsEnabled" Value="True"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>
             </Button>

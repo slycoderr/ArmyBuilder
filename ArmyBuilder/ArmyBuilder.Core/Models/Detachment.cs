@@ -7,10 +7,14 @@ using System.Xml.Serialization;
 
 namespace ArmyBuilder.Core.Models
 {
+
     public class Detachment
     {
         [XmlAttribute]
         public int Id { get; set; }
+
+        [XmlAttribute]
+        public DetachmentType Type { get; set; }
 
         [XmlAttribute]
         public string Name { get; set; }

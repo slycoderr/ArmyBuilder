@@ -22,7 +22,6 @@ namespace ArmyBuilder.Core.Models
         {
             Detachment = detachment;
             Army = army;
-            //Detachment.SuDetachments?.ForEach(d=>);
         }
     }
 }

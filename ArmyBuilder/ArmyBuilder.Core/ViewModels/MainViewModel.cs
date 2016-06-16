@@ -74,6 +74,7 @@ namespace ArmyBuilder.Core.ViewModels
         public void AddList(ArmyList newList)
         {
             ArmyLists?.Add(newList);
+            SelectedArmyList = newList;
         }
 
         public void EditSelectedArmyList()

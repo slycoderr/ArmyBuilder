@@ -6,7 +6,7 @@ namespace ArmyBuilder.Core.Models.Groups
 {
     public class ArmyUnitGroup : ObservableCollection<Unit>
     {
-        public int ForceOrgId { get; set; }
+        public ForceOrgSlot ForceOrgId { get; set; }
 
         public ArmyUnitGroup(List<Unit> items) : base(items.OrderBy(u=>u.Name))
         {

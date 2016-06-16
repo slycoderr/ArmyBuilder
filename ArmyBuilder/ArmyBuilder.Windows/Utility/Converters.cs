@@ -7,7 +7,6 @@ using System.Windows.Data;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.ViewModels;
-using EquipmentType = ArmyBuilder.Core.Models.EquipmentType;
 
 namespace ArmyBuilder.Windows.Utility
 {

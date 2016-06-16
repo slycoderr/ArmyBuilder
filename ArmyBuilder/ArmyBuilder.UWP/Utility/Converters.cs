@@ -11,7 +11,6 @@ using Windows.UI.Xaml.Data;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.ViewModels;
-using EquipmentType = ArmyBuilder.Core.Models.EquipmentType;
 
 namespace ArmyBuilder.Utility.Converters
 {
@@ -178,7 +177,7 @@ namespace ArmyBuilder.Utility.Converters
 
         protected override DataTemplate SelectTemplateCore(object item)
         {
-            switch ((EquipmentType) ((EquipmentData) item).Equipment.Type)
+            switch (((EquipmentData) item).Equipment.Type)
             {
                 case EquipmentType.Normal:
                     return EquipmentNormalTemplate;

@@ -63,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Groups\ArmyListGroup.cs" />
     <Compile Include="Models\Utility\EquipmentListUpdatedEventArgs.cs" />
-    <Compile Include="Models\Utility\Converters.cs" />
     <Compile Include="Models\Groups\ForceOrgGroup.cs" />
     <Compile Include="Models\Utility\IntListComparer.cs" />
     <Compile Include="Models\Groups\UnitEquipmentGroup.cs" />

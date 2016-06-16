@@ -106,7 +106,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <ListView x:Name="ArmyListsListView" ItemsSource="{Binding Source={StaticResource ArmyListCollection}}" ItemTemplate="{StaticResource ArmyListTemplate}" SelectedItem="{Binding SelectedArmyList, Mode=TwoWay}" SelectionMode="Single" Margin="10" Grid.Column="1">
+                        <ListView x:Name="ArmyListsListView" ItemsSource="{Binding Source={StaticResource ArmyListCollection}}" ItemTemplate="{StaticResource ArmyListTemplate}" SelectedItem="{Binding SelectedArmyList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" Margin="10" Grid.Column="1">
                             <ListView.GroupStyle>
                                 <GroupStyle HidesIfEmpty="True" HeaderTemplate="{StaticResource ArmyListGroupTemplate}" />
                             </ListView.GroupStyle>

@@ -7,7 +7,7 @@
     <Detachment Name="The Wolves Unleashed" CanBePrimary="1"/>
     <Detachment Name="Great Company" CanBePrimary="1"/>
     <Detachment Name="Space Wolves Deathpack"  CanBePrimary="1"/>
-    <Detachment Name="Wolf Claw Strike Force"  CanBePrimary="1">
+    <Detachment Name="Wolf Claw Strike Force"  CanBePrimary="1" Type="1">
       <SubDetachments>
         <Detachment Name="The Ironwolves"  CanBePrimary="1"/>
         <Detachment Name="The Firehowlers"  CanBePrimary="1"/>

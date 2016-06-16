@@ -14,7 +14,7 @@ namespace ArmyBuilder.Core.Models
         public int Id { get; set; }
 
         [XmlAttribute]
-        public int ForceOrgSlot { get; set; }
+        public ForceOrgSlot ForceOrgSlot { get; set; }
 
         [XmlAttribute]
         public bool CountsTowardForceOrg { get; set; }

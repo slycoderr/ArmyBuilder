@@ -464,7 +464,7 @@
           <Upgrades>
             <Equipment Id="1" Name="Fabricator claw	array" Cost="5" Type="1" />
             <Equipment Id="1" Name="Gloom	prism" Cost="10" Type="1" />
-            <Equipment Id="1" Name="Twin-linked	particle beamer" Cost="5" Type="10" />
+            <Equipment Id="1" Name="Twin-linked	particle beamer" Cost="5" Type="1" />
           </Upgrades>
         </Model>
       </Models>

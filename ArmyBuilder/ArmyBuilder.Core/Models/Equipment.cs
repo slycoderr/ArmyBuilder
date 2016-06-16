@@ -3,11 +3,6 @@ using System.Xml.Serialization;
 
 namespace ArmyBuilder.Core.Models
 {
-    public enum EquipmentType
-    {
-        Normal,
-        Upgrade = 1
-    }
 
     [XmlRoot("Equipment", Namespace = "")]
     public class Equipment
@@ -37,7 +32,7 @@ namespace ArmyBuilder.Core.Models
         public int MutualId { get; set; }
 
         [XmlAttribute]
-        public int Type { get; set; }
+        public EquipmentType Type { get; set; }
 
         [XmlAttribute]
         public int PerX { get; set; }

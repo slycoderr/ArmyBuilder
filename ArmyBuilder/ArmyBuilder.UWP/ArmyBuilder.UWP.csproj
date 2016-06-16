@@ -156,6 +156,9 @@
     <Compile Include="Utility\FlyoutMenuExtension.cs" />
     <Compile Include="Utility\Popup.cs" />
     <Compile Include="Utility\UnitFlyoutMenuExtension.cs" />
+    <Compile Include="Views\DetachmentView.xaml.cs">
+      <DependentUpon>DetachmentView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditArmyListView.xaml.cs">
       <DependentUpon>EditArmyListView.xaml</DependentUpon>
     </Compile>
@@ -164,9 +167,6 @@
     </Compile>
     <Compile Include="Views\ForceOrgView.xaml.cs">
       <DependentUpon>ForceOrgView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FormationEditorView.xaml.cs">
-      <DependentUpon>FormationEditorView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewArmyListView.xaml.cs">
       <DependentUpon>NewArmyListView.xaml</DependentUpon>
@@ -214,6 +214,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\DetachmentView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditArmyListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -225,10 +229,6 @@
     <Page Include="Views\ForceOrgView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\FormationEditorView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\NewArmyListView.xaml">
       <Generator>MSBuild:Compile</Generator>
