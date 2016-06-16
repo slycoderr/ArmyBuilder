@@ -2,13 +2,17 @@
 
 <Army Id="1" Name="Space Wolves">
   <Detachments>
-    <Detachment Name="Combined Arms"/>
-    <Detachment Name="The Wolves Unleashed"/>
-    <Detachment Name="Great Company"/>
-    <Detachment Name="Death Pack"/>
-    <Detachment Name="The Ironwolves"/>
-    <Detachment Name="The Firehowlers"/>
-    <Detachment Name="The Drakeslayers"/>
+    <Detachment Name="Combined Arms" CanBePrimary="1"/>
+    <Detachment Name="Allied Forces" CanBePrimary="0"/>
+    <Detachment Name="The Wolves Unleashed" CanBePrimary="1"/>
+    <Detachment Name="Great Company" CanBePrimary="1"/>
+    <Detachment Name="Space Wolves Deathpack"  CanBePrimary="1"/>
+    <Detachment Name="The Ironwolves"  CanBePrimary="1"/>
+    <Detachment Name="The Firehowlers"  CanBePrimary="1"/>
+    <Detachment Name="The Drakeslayers"  CanBePrimary="1"/>
+    <Detachment Name="The Deathwolves"  CanBePrimary="1"/>
+    <Detachment Name="The Champions of Fenris"  CanBePrimary="1"/>
+    <Detachment Name="Greatpack"  CanBePrimary="1"/>
   </Detachments>
   
   <Units>
