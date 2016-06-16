@@ -11,7 +11,7 @@ namespace ArmyBuilder.Core.Models
 
         public Army Army { get; private set; }
 
-        public ObservableCollection<DetachmentData> SelectedDetachments { get; private set; }
+        public ObservableCollection<DetachmentData> SelectedDetachments { get; private set; } = new ObservableCollection<DetachmentData>();
 
         public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>(); 
 

@@ -86,9 +86,9 @@ namespace ArmyBuilder.Core.ViewModels
                 database.ArmyListData.Where(a=>a.ArmyListId == SelectedArmyList.Id).ForEach(a =>
                 {
                     a.SetData(SelectedArmyList.Army.Units.Single(u => u.Id == a.UnitId));
-                    CurrentArmyListViewModel.Units.Add(a);
+                    //CurrentArmyListViewModel.Units.Add(a);
                 });
-                CurrentArmyListViewModel.Units.CollectionChanged += UnitsOnCollectionChanged;
+                //CurrentArmyListViewModel.Units.CollectionChanged += UnitsOnCollectionChanged;
             }
         }
 

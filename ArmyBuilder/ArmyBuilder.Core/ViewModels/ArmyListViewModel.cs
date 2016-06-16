@@ -56,7 +56,7 @@ namespace ArmyBuilder.Core.ViewModels
             
             UpdatePointsTotal();
             PropertyChanged += OnPropertyChanged;
-            SelectedDetachment = armyList.Detachments.First();
+            SelectedDetachment = armyList.Detachments.FirstOrDefault();
 
             ArmyList.Detachments.ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
         }
@@ -132,10 +132,10 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateArmyListDataSource()
         {
             var currentSelectedItem = SelectedUnit;
-            var groups = SelectedDetachment.Units.GroupBy(i => new {i.Unit.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList())).ToList();
+            var groups = SelectedDetachment?.Units?.GroupBy(i => new {i.Unit.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList()))?.ToList();
 
             ArmyListDataGroups.Clear();
-            groups.ForEach(g => ArmyListDataGroups.Add(g));
+            groups?.ForEach(g => ArmyListDataGroups.Add(g));
             SelectedUnit = currentSelectedItem;
             UpdateForceOrgCount();
         }
@@ -153,7 +153,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdatePointsTotal()
         {
-            PointsUsed = SelectedDetachment.Units.Sum(a => a.PointsTotal);
+            PointsUsed = SelectedDetachment?.Units?.Sum(a => a.PointsTotal) ?? 0;
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
         }
 
