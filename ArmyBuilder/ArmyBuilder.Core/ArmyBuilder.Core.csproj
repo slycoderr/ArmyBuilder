@@ -52,6 +52,7 @@
     <Compile Include="Models\Detachment.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\EquipmentData.cs" />
+    <Compile Include="Models\ForceOrgCounter.cs" />
     <Compile Include="Models\Groups\ArmyUnitGroup.cs" />
     <Compile Include="Models\Groups\DesignerEquipmentGroup.cs" />
     <Compile Include="Models\Model.cs" />

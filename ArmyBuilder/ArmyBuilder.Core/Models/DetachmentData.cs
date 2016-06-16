@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Xml.Serialization;
+using MoreLinq;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -10,6 +11,8 @@ namespace ArmyBuilder.Core.Models
 
         public Army Army { get; private set; }
 
+        public ObservableCollection<DetachmentData> SelectedDetachments { get; private set; }
+
         public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>(); 
 
         [XmlAttribute]
@@ -19,6 +22,7 @@ namespace ArmyBuilder.Core.Models
         {
             Detachment = detachment;
             Army = army;
+            //Detachment.SuDetachments?.ForEach(d=>);
         }
     }
 }

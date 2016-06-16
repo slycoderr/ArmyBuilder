@@ -233,12 +233,24 @@
 
         <DataTemplate x:Key="DetachmentListItemTemplate">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="{Binding Detachment.Name}"/>
                 <CheckBox Grid.Column="1" IsEnabled="False" IsChecked="{Binding IsPrimary}"/>
+
+                <ListView Visibility="{Binding Detachment.SubDetachments, Converter={StaticResource ListCountToVisiblityConverter}}" ItemsSource="{Binding SelectedDetachments}" ItemTemplate="{StaticResource DetachmentListItemTemplate}" Grid.Row="1" Grid.ColumnSpan="2">
+                    <ListView.Header>
+                        <Grid>
+                            <ComboBox ItemsSource="{Binding Detachment.SubDetachments}"/>
+                        </Grid>
+                    </ListView.Header>
+                </ListView>
             </Grid>
         </DataTemplate>
 

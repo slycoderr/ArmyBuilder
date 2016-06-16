@@ -15,6 +15,9 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public string Name { get; set; }
 
+        [XmlArray]
+        public List<Detachment> SuDetachments { get; set; }
+
         public override string ToString()
         {
             return Name;

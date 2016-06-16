@@ -7,12 +7,16 @@
     <Detachment Name="The Wolves Unleashed" CanBePrimary="1"/>
     <Detachment Name="Great Company" CanBePrimary="1"/>
     <Detachment Name="Space Wolves Deathpack"  CanBePrimary="1"/>
-    <Detachment Name="The Ironwolves"  CanBePrimary="1"/>
-    <Detachment Name="The Firehowlers"  CanBePrimary="1"/>
-    <Detachment Name="The Drakeslayers"  CanBePrimary="1"/>
-    <Detachment Name="The Deathwolves"  CanBePrimary="1"/>
-    <Detachment Name="The Champions of Fenris"  CanBePrimary="1"/>
-    <Detachment Name="Greatpack"  CanBePrimary="1"/>
+    <Detachment Name="Wolf Claw Strike Force"  CanBePrimary="1">
+      <SubDetachments>
+        <Detachment Name="The Ironwolves"  CanBePrimary="1"/>
+        <Detachment Name="The Firehowlers"  CanBePrimary="1"/>
+        <Detachment Name="The Drakeslayers"  CanBePrimary="1"/>
+        <Detachment Name="The Deathwolves"  CanBePrimary="1"/>
+        <Detachment Name="The Champions of Fenris"  CanBePrimary="1"/>
+        <Detachment Name="Greatpack"  CanBePrimary="1"/>
+      </SubDetachments>
+    </Detachment>
   </Detachments>
   
   <Units>

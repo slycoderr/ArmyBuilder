@@ -156,6 +156,11 @@ namespace ArmyBuilder.Utility.Converters
                 return ((List<EquipmentData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             }
 
+            if (value is List<Detachment>)
+            {
+                return ((List<Detachment>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            }
+
             return ((List<ModelData>) value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 

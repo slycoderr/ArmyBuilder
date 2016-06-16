@@ -22,12 +22,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public int PointsUsed { get { return pointsUsed; } set { SetValue(ref pointsUsed, value); } }
 
-        public int HqCount { get { return hqCount; } set { SetValue(ref hqCount, value); } }
-        public int TroopCount { get { return troopCount; } set { SetValue(ref troopCount, value); } }
-        public int EliteCount { get { return eliteCount; } set { SetValue(ref eliteCount, value); } }
-        public int FastAttackCount { get { return fastAttackCount; } set { SetValue(ref fastAttackCount, value); } }
-        public int HeavySupportCount { get { return heavySupportCount; } set { SetValue(ref heavySupportCount, value); } }
-        public int LordOfWarCount { get { return lordOfWarCount; } set { SetValue(ref lordOfWarCount, value); } }
+        public ForceOrgCounter ForceOrgCount { get; } = new ForceOrgCounter();
 
         public ObservableCollection<Unit> HqUnits { get; } = new ObservableCollection<Unit>();
         public ObservableCollection<Unit> TroopUnits { get; } = new ObservableCollection<Unit>();
@@ -46,16 +41,9 @@ namespace ArmyBuilder.Core.ViewModels
         public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
 
         public bool IsUnitFlyoutOpened { get { return isUnitFlyoutOpened; } set { SetValue(ref isUnitFlyoutOpened, value); } }
-
-        private int eliteCount;
-        private int fastAttackCount;
-        private int heavySupportCount;
-        private int hqCount;
         private bool isUnitFlyoutOpened;
-        private int lordOfWarCount;
 
         private ArmyListData selectedUnit;
-        private int troopCount;
         private int pointsRemaining;
         private int pointsUsed;
         private DetachmentData selectedDetachment;
@@ -154,17 +142,18 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdateForceOrgCount()
         {
-            HqCount = Units.Count(u => u.Unit.ForceOrgSlot == 0 && u.Unit.CountsTowardForceOrg);
-            TroopCount = Units.Count(u => u.Unit.ForceOrgSlot == 1 && u.Unit.CountsTowardForceOrg);
-            EliteCount = Units.Count(u => u.Unit.ForceOrgSlot == 2 && u.Unit.CountsTowardForceOrg);
-            FastAttackCount = Units.Count(u => u.Unit.ForceOrgSlot == 3 && u.Unit.CountsTowardForceOrg);
-            HeavySupportCount = Units.Count(u => u.Unit.ForceOrgSlot == 4 && u.Unit.CountsTowardForceOrg);
-            LordOfWarCount = Units.Count(u => u.Unit.ForceOrgSlot == 5 && u.Unit.CountsTowardForceOrg);
+
+            //ForceOrgCount.HqCount = Units.Count(u => u.Unit.ForceOrgSlot == 0 && u.Unit.CountsTowardForceOrg);
+            //ForceOrgCount.TroopCount = Units.Count(u => u.Unit.ForceOrgSlot == 1 && u.Unit.CountsTowardForceOrg);
+            //EliteCount = Units.Count(u => u.Unit.ForceOrgSlot == 2 && u.Unit.CountsTowardForceOrg);
+            //FastAttackCount = Units.Count(u => u.Unit.ForceOrgSlot == 3 && u.Unit.CountsTowardForceOrg);
+            //HeavySupportCount = Units.Count(u => u.Unit.ForceOrgSlot == 4 && u.Unit.CountsTowardForceOrg);
+            //LordOfWarCount = Units.Count(u => u.Unit.ForceOrgSlot == 5 && u.Unit.CountsTowardForceOrg);
         }
 
         private void UpdatePointsTotal()
         {
-            PointsUsed = Units.Sum(a => a.PointsTotal);
+            PointsUsed = SelectedDetachment.Units.Sum(a => a.PointsTotal);
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
         }
 
@@ -181,7 +170,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void RemoveUnit(ArmyListData unit)
         {
-            Units.Remove(unit);
+            SelectedDetachment?.Units?.Remove(unit);
         }
     }
 }
