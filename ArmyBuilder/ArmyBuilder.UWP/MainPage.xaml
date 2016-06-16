@@ -89,7 +89,7 @@
                                 </core:EventTriggerBehavior>
                             </interactivity:Interaction.Behaviors>
                         </AppBarButton>
-                        <AppBarButton Icon="List" Label="{Binding SelectedArmyList.Name, FallbackValue='No List'}" IsEnabled="{Binding SelectedArmyList, FallbackValue=true, TargetNullValue=false}" >
+                        <AppBarButton Icon="List" Label="{Binding SelectedArmyList.Name, FallbackValue='No List'}" Visibility="{Binding SelectedArmyList, FallbackValue=Visible, TargetNullValue=Collapsed}">
                             <interactivity:Interaction.Behaviors>
                                 <core:EventTriggerBehavior EventName="Click">
                                     <core:ChangePropertyAction PropertyName="Visibility" TargetObject="{Binding ElementName=ArmyListsGrid}" Value="Collapsed" />
@@ -100,7 +100,7 @@
                         </AppBarButton>
                     </StackPanel>
 
-                    <Grid x:Name="ArmyListsGrid" Grid.Column="1">
+                    <Grid x:Name="ArmyListsGrid" Grid.Column="1" >
                         <Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
@@ -130,22 +130,25 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <views:ForceOrgView Grid.Row="5" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}}" x:Name="ForceOrgPanel" MinHeight="85" />
 
-
-                        <TextBlock Grid.Row="1" Margin="10">
+                        <TextBlock Grid.Row="0" Margin="10">
                             <Run FontSize="18" Text="{Binding CurrentArmyListViewModel.PointsRemaining}"/>
                         </TextBlock>
-                        <TextBlock Grid.Row="2" Margin="10, 10, 0, 10">
+                        <TextBlock Grid.Row="1" Margin="10, 10, 0, 10">
                             <Run Text="points remaining of"/>
                             <Run Text="{Binding SelectedArmyList.PointsLimit}"/>
                         </TextBlock>
+
+                        <ListView Header="Detachments" Grid.Row="2" ItemTemplate="{StaticResource DetachmentListItemTemplate}" ItemsSource="{Binding SelectedArmyList.Detachments}" SelectedItem="{Binding CurrentArmyListViewModel.SelectedDetachment}"/>
+
+                        <!--<views:ForceOrgView Grid.Row="5" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}}" x:Name="ForceOrgPanel" MinHeight="85" />-->
+
+
                     </Grid>
                 </Grid>
             </SplitView.Pane>

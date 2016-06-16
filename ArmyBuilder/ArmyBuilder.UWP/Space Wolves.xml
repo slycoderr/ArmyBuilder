@@ -1,6 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Army Id="1" Name="Space Wolves">
+  <Detachments>
+    <Detachment Name="Combined Arms"/>
+    <Detachment Name="The Wolves Unleashed"/>
+    <Detachment Name="Great Company"/>
+    <Detachment Name="Death Pack"/>
+    <Detachment Name="The Ironwolves"/>
+    <Detachment Name="The Firehowlers"/>
+    <Detachment Name="The Drakeslayers"/>
+  </Detachments>
+  
   <Units>
     <!-- wolf guard pack needs two wolf claws. -->
     <!--

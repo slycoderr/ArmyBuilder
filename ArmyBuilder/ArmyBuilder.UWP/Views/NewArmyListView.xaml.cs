@@ -18,7 +18,7 @@ namespace ArmyBuilder.UWP.Views
 
         private void DoneButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.AddList(new ArmyList(NameTextBox.Text, int.Parse(PointsTextBox.Text),(Army) ArmyComboBox.SelectedItem));
+            MainViewModel.AddList(new ArmyList(NameTextBox.Text, int.Parse(PointsTextBox.Text),(Army) ArmyComboBox.SelectedItem, (Detachment)PrimaryDetachmentComboBox.SelectedItem));
             ArmyComboBox.SelectedIndex = -1;
             PointsTextBox.Text = string.Empty;
             NameTextBox.Text = string.Empty;
@@ -54,6 +54,11 @@ namespace ArmyBuilder.UWP.Views
             //}
 
             if (ArmyComboBox.SelectedIndex == -1)
+            {
+                return false;
+            }
+
+            if (PrimaryDetachmentComboBox.SelectedIndex == -1)
             {
                 return false;
             }

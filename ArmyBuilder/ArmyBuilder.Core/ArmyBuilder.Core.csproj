@@ -44,10 +44,12 @@
   <ItemGroup>
     <Compile Include="Database\ArmyBuilderDatabase.cs" />
     <Compile Include="Database\Utility.cs" />
+    <Compile Include="Models\DetachmentData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Army.cs" />
     <Compile Include="Models\ArmyList.cs" />
     <Compile Include="Models\ArmyListData.cs" />
+    <Compile Include="Models\Detachment.cs" />
     <Compile Include="Models\Equipment.cs" />
     <Compile Include="Models\EquipmentData.cs" />
     <Compile Include="Models\Groups\ArmyUnitGroup.cs" />
