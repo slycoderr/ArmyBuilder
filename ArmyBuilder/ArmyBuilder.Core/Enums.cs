@@ -36,4 +36,12 @@ namespace ArmyBuilder.Core
         BattleForged
     }
 
+    public enum DetachmentRequirementType
+    {
+        [XmlEnum("0")]
+        ForceOrg,
+        [XmlEnum("1")]
+        Unit
+    }
+
 }

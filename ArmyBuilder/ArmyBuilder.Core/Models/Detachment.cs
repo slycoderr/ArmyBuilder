@@ -22,6 +22,9 @@ namespace ArmyBuilder.Core.Models
         [XmlArray]
         public List<Detachment> SubDetachments { get; set; }
 
+        [XmlArray]
+        public List<DetachmentRequirement> Requirements { get; set; }
+
         public override string ToString()
         {
             return Name;

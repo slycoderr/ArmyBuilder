@@ -2,14 +2,140 @@
 
 <Army Id="1" Name="Space Wolves">
   <Detachments>
-    <Detachment Name="Combined Arms" CanBePrimary="1"/>
-    <Detachment Name="Allied Forces" CanBePrimary="0"/>
-    <Detachment Name="The Wolves Unleashed" CanBePrimary="1"/>
+    <Detachment Name="Combined Arms" CanBePrimary="1">
+      <Requirements>
+        <DetachmentRequirement Minimum="1" Maximum="2">
+          <Values>
+            <Value>0</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="2" Maximum="6">
+          <Values>
+            <Value>1</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="3">
+          <Values>
+            <Value>2</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="3">
+          <Values>
+            <Value>3</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="3">
+          <Values>
+            <Value>4</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="1">
+          <Values>
+            <Value>5</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="1">
+          <Values>
+            <Value>6</Value>
+          </Values>
+        </DetachmentRequirement>
+      </Requirements>
+    </Detachment>
+    <Detachment Name="Allied Forces">
+      <Requirements>
+        <DetachmentRequirement Minimum="1" Maximum="1">
+          <Values>
+            <Value>0</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="1" Maximum="2">
+          <Values>
+            <Value>1</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="1">
+          <Values>
+            <Value>2</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="1">
+          <Values>
+            <Value>3</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="1">
+          <Values>
+            <Value>4</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="0">
+          <Values>
+            <Value>5</Value>
+          </Values>
+        </DetachmentRequirement>
+        <DetachmentRequirement Minimum="0" Maximum="0">
+          <Values>
+            <Value>6</Value>
+          </Values>
+        </DetachmentRequirement>
+      </Requirements>
+    </Detachment>
+    <Detachment Name="The Wolves Unleashed" CanBePrimary="1">
+
+        <Requirements>
+          <DetachmentRequirement Minimum="2" Maximum="2">
+            <Values>
+              <Value>0</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="2" Maximum="6">
+            <Values>
+              <Value>1</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="0" Maximum="3">
+            <Values>
+              <Value>2</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="0" Maximum="3">
+            <Values>
+              <Value>3</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="0" Maximum="3">
+            <Values>
+              <Value>4</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="0" Maximum="1">
+            <Values>
+              <Value>5</Value>
+            </Values>
+          </DetachmentRequirement>
+          <DetachmentRequirement Minimum="0" Maximum="1">
+            <Values>
+              <Value>6</Value>
+            </Values>
+          </DetachmentRequirement>
+        </Requirements>
+
+    </Detachment>
     <Detachment Name="Great Company" CanBePrimary="1"/>
     <Detachment Name="Space Wolves Deathpack"  CanBePrimary="1"/>
-    <Detachment Name="Wolf Claw Strike Force"  CanBePrimary="1" Type="1">
+    <Detachment Name="Wolf Claw Strike Force"  Type="1">
       <SubDetachments>
-        <Detachment Name="The Ironwolves"  CanBePrimary="1"/>
+        <Detachment Name="The Ironwolves"  CanBePrimary="1">
+          <Requirements>
+            <!--type 0 is force org, type 1 is a specific unit. value is either a unit id or if type is 1 or a force org slot id-->
+            <DetachmentRequirement Type="1" Minimum="2" Maximum="4">
+              <Values>
+                <Value>10</Value>
+                <Value>28</Value>
+              </Values>
+            </DetachmentRequirement>
+          </Requirements>
+        </Detachment>
         <Detachment Name="The Firehowlers"  CanBePrimary="1"/>
         <Detachment Name="The Drakeslayers"  CanBePrimary="1"/>
         <Detachment Name="The Deathwolves"  CanBePrimary="1"/>
