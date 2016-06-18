@@ -146,7 +146,7 @@
 
                         <ListView Header="Detachments" Grid.Row="2" ItemTemplate="{StaticResource DetachmentListItemTemplate}" ItemsSource="{Binding SelectedArmyList.Detachments}" SelectedItem="{Binding CurrentArmyListViewModel.SelectedDetachment}"/>
 
-                        <!--<views:ForceOrgView Grid.Row="5" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}}" x:Name="ForceOrgPanel" MinHeight="85" />-->
+                        <views:ForceOrgView Grid.Row="5" DataContext="{Binding CurrentArmyListViewModel.SelectedDetachment, Source={StaticResource MainViewModel}}" x:Name="ForceOrgPanel" MinHeight="85" />
 
 
                     </Grid>
