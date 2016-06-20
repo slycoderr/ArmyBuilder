@@ -45,6 +45,15 @@ namespace ArmyBuilder.Core.ViewModels
                 LoadArmyData(dataStreams);
                 ArmyLists.CollectionChanged += (sender, args) => { UpdateListSource(false); };
                 UpdateListSource(true);
+
+                var list = new ArmyList("test", 1500, Armies.First(), Armies.First().Detachments.First(d => d.Name.Contains("Strike")));
+
+                UiContext.Post(action => {
+                    CurrentArmyListViewModel = new ArmyListViewModel(list);
+                    ArmyLists.Add(list);
+                                             SelectedArmyList = list;
+                }, null);
+
             });
         }
 

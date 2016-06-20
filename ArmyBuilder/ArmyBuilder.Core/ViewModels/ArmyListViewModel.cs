@@ -39,6 +39,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public RelayCommand<Unit> AddUnitCommand => new RelayCommand<Unit>(AddUnit);
         public RelayCommand<Detachment> AddSubDetachmentCommand => new RelayCommand<Detachment>(AddSubDetachment);
+        public RelayCommand<Detachment> AddDetachmentCommand => new RelayCommand<Detachment>(AddDetachment);
         public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
 
         public bool IsUnitFlyoutOpened { get { return isUnitFlyoutOpened; } set { SetValue(ref isUnitFlyoutOpened, value); } }
@@ -55,11 +56,12 @@ namespace ArmyBuilder.Core.ViewModels
 
             UpdateArmyListDataSource();
             
-            UpdatePointsTotal();
+
             PropertyChanged += OnPropertyChanged;
             SelectedDetachment = armyList.Detachments.FirstOrDefault();
 
             ArmyList.Detachments.ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
+            UpdatePointsTotal();
         }
 
         private void UpdateUnitLists()
@@ -72,27 +74,30 @@ namespace ArmyBuilder.Core.ViewModels
             LordOfWarUnits.Clear();
             FortificationUnits.Clear();
 
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
-            SelectedDetachment.Army.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
+            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SelectedDetachment))
             {
-                UpdateArmyUnitsListDataSource();
-                UpdateForceOrgCount();
-                UpdateUnitLists();
+
 
                 if (SelectedDetachment != null && SelectedDetachment.Detachment.Type == DetachmentType.BattleForged)
                 {
                     SelectedDetachment = SelectedDetachment.SelectedDetachments.FirstOrDefault();
                 }
+
+                UpdateArmyUnitsListDataSource();
+                UpdateForceOrgCount();
+                UpdateUnitLists();
+
             }
         }
 
@@ -172,6 +177,11 @@ namespace ArmyBuilder.Core.ViewModels
                 IsUnitFlyoutOpened = false;
 
             }
+        }
+
+        private void AddDetachment(Detachment detachment)
+        {
+            ArmyList?.Detachments?.Add(new DetachmentData(detachment, ArmyList.Army));
         }
 
         private void AddSubDetachment(Detachment detachment)

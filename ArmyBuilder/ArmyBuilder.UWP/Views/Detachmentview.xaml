@@ -23,7 +23,7 @@
         <TextBlock Text="{Binding Detachment.Name}"/>
         <CheckBox Grid.Column="1" IsEnabled="False" IsChecked="{Binding IsPrimary}"/>
 
-        <ListView Visibility="{Binding Detachment.SubDetachments, Converter={StaticResource ListCountToVisiblityConverter}}" ItemsSource="{Binding SelectedDetachments}" ItemTemplate="{StaticResource DetachmentListItemTemplate}" Grid.Row="1" Grid.ColumnSpan="2">
+        <ListView Visibility="{Binding Detachment.SubDetachments, Converter={StaticResource ListCountToVisiblityConverter}}" SelectedItem="{Binding CurrentArmyListViewModel.SelectedDetachment, Source={StaticResource MainViewModel}}" ItemsSource="{Binding SelectedDetachments}" ItemTemplate="{StaticResource DetachmentListItemTemplate}" Grid.Row="1" Grid.ColumnSpan="2">
             <ListView.Header>
                 <Grid>
                     <ComboBox x:Name="NewDetachmentComboBox" PlaceholderText="Select a detachment to add" ItemsSource="{Binding Detachment.SubDetachments}">

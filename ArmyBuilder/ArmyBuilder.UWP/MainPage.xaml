@@ -2,7 +2,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Visibility="{Binding Converter={StaticResource NullToVisibilityConverter}, FallbackValue=Collapsed, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="AddUnitButton" Icon="Add" Label="Add Unit" DataContext="{Binding CurrentArmyListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+            <AppBarButton Visibility="{Binding SelectedDetachment, TargetNullValue=Collapsed, FallbackValue=Visible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="AddUnitButton" Icon="Add" Label="Add Unit" DataContext="{Binding CurrentArmyListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
                 <AppBarButton.Flyout>
                     <MenuFlyout>
                         <MenuFlyoutSubItem Text="HQ" utility:UnitFlyoutMenuExtension.MyItems="{Binding HqUnits}" />
@@ -37,7 +37,7 @@
                     </Flyout>
                 </AppBarButton.Flyout>
             </AppBarButton>-->
-            <AppBarButton Visibility="{Binding Converter={StaticResource NullToVisibilityConverter}, FallbackValue=Collapsed, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding CurrentArmyListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="ExportListButton" Icon="Save" Label="Export List" Command="{Binding ExportToTextFileCommand}" />
+            <AppBarButton Visibility="{Binding TargetNullValue=Collapsed, FallbackValue=Visible, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding CurrentArmyListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" x:Name="ExportListButton" Icon="Save" Label="Export List" Command="{Binding ExportToTextFileCommand}" />
 
         </CommandBar>
     </Page.BottomAppBar>
@@ -144,7 +144,21 @@
                             <Run Text="{Binding SelectedArmyList.PointsLimit}"/>
                         </TextBlock>
 
-                        <ListView Header="Detachments" Grid.Row="2" ItemTemplate="{StaticResource DetachmentListItemTemplate}" ItemsSource="{Binding SelectedArmyList.Detachments}" SelectedItem="{Binding CurrentArmyListViewModel.SelectedDetachment}"/>
+                        <ListView  Grid.Row="2" ItemTemplate="{StaticResource DetachmentListItemTemplate}" ItemsSource="{Binding SelectedArmyList.Detachments}" SelectedItem="{Binding CurrentArmyListViewModel.SelectedDetachment}">
+                            <ListView.Header>
+                                <ComboBox x:Name="NewDetachmentComboBox" PlaceholderText="Select a detachment to add" ItemsSource="{Binding CurrentArmyListViewModel.ArmyList.Army.Detachments}">
+                                    <interactivity:Interaction.Behaviors>
+                                        <core:EventTriggerBehavior EventName="SelectionChanged">
+
+                                            <core:InvokeCommandAction Command="{Binding CurrentArmyListViewModel.AddDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=NewDetachmentComboBox}"/>
+                                            <core:ChangePropertyAction TargetObject="{Binding ElementName=NewDetachmentComboBox}" PropertyName="SelectedIndex" Value="-1"/>
+
+
+                                        </core:EventTriggerBehavior>
+                                    </interactivity:Interaction.Behaviors>
+                                </ComboBox>
+                            </ListView.Header>
+                        </ListView>
 
                         <!--<views:ForceOrgView Grid.Row="5" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}}" x:Name="ForceOrgPanel" MinHeight="85" />-->
 

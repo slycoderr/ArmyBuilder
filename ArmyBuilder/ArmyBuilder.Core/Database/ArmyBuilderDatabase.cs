@@ -25,7 +25,8 @@ namespace ArmyBuilder.Core.Database
                 UserDatabase = new SQLiteConnection(Path.Combine(path, "UserData.db"));
                 //open and/or create the database
 
-                //UserDatabase.DropTable<ArmyListData>();
+                UserDatabase.DropTable<ArmyList>();
+                UserDatabase.DropTable<ArmyListData>();
 
                 UserDatabase.CreateTable<ArmyList>(); // make sure tables exists
                 UserDatabase.CreateTable<ArmyListData>();
