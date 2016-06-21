@@ -91,7 +91,7 @@ namespace ArmyBuilder.Core.ViewModels
 
                 if (SelectedDetachment != null && SelectedDetachment.Detachment.Type == DetachmentType.BattleForged)
                 {
-                    SelectedDetachment = SelectedDetachment.SelectedDetachments.FirstOrDefault();
+                    //SelectedDetachment = SelectedDetachment.SelectedDetachments.FirstOrDefault();
                 }
 
                 UpdateArmyUnitsListDataSource();
