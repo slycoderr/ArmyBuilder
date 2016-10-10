@@ -37,7 +37,7 @@ namespace ArmyBuilder.Core.Models
         public DetachmentData(Detachment detachment, Army army)
         {
             Detachment = detachment;
-            DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r)));
+            DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r, this)));
             Army = army;
         }
     }

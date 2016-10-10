@@ -13,6 +13,16 @@ namespace ArmyBuilder.Core.Models
     {
         [XmlAttribute]
         public int Id { get; set; }
+        /// <summary>
+        /// Version of the XML Army data schema.
+        /// </summary>
+        [XmlAttribute]
+        public int SchemaVersion { get; set; }
+        /// <summary>
+        /// Version of this army's data file.
+        /// </summary>
+        [XmlAttribute]
+        public int Version { get; set; }
         [XmlAttribute]
         public string Name { get; set; }
         [XmlArray]
@@ -21,6 +31,9 @@ namespace ArmyBuilder.Core.Models
         [XmlArray]
         public List<Detachment> Detachments { get; set; }
 
+        [XmlArray]
+        public List<Equipment> EquipmentDefinitions { get; set; }
+
         public Army() { }
 
         public override string ToString()
@@ -28,6 +41,6 @@ namespace ArmyBuilder.Core.Models
             return Name;
         }
 
-        public static IReadOnlyList<string> Armies = new List<string> {"Space Wolves", "Necrons", "Skitarii", "Imperial Knights"};
+        public static IReadOnlyList<string> Armies = new List<string> {"Space Wolves", "Necrons", "Skitarii", "Imperial Knights", "Dark Eldar"};
     }
 }

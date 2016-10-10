@@ -1,0 +1,16 @@
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\ArmyBuilder.Test.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\ArmyBuilder.Test.pdb
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\ArmyBuilder.Core.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\Slycoder.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\GalaSoft.MvvmLight.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\MoreLinq.Portable.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\MvvmCross.Platform.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\ArmyBuilder.Core.pdb
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\Slycoder.pdb
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\GalaSoft.MvvmLight.pdb
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\GalaSoft.MvvmLight.xml
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\MoreLinq.Portable.xml
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.csprojResolveAssemblyReference.cache
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.dll
+C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.pdb

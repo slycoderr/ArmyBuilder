@@ -37,42 +37,38 @@ namespace ArmyBuilder.Core.ViewModels
         // ReSharper disable once EmptyConstructor
         public MainViewModel(){ }
 
-        public Task Load(string path, List<Stream> dataStreams)
+        public Task LoadDatabase(string path)
         {
             return Task.Run(() =>
             {
                 database.Load(path);
-                LoadArmyData(dataStreams);
-                ArmyLists.CollectionChanged += (sender, args) => { UpdateListSource(false); };
-                UpdateListSource(true);
-
-                var list = new ArmyList("test", 1500, Armies.First(), Armies.First().Detachments.First(d => d.Name.Contains("Strike")));
-
-                UiContext.Post(action => {
-                    CurrentArmyListViewModel = new ArmyListViewModel(list);
-                    ArmyLists.Add(list);
-                                             SelectedArmyList = list;
-                }, null);
 
             });
         }
 
-        private void LoadArmyData(List<Stream> dataStreams)
+        public void LoadArmyData(params Stream[] dataStreams)
         {
+            if (dataStreams == null || dataStreams.Length == 0)
+            {
+                throw new ArgumentException("Army data cannot be null or empty.");
+            }
+
             foreach (var s in dataStreams)
             {
                 using (var reader = XmlReader.Create(s))
                 {
-                    var dsArmy = new XmlSerializer(typeof (Army));
+                    var dsArmy = new XmlSerializer(typeof(Army));
                     var army = (Army) dsArmy.Deserialize(reader);
 
-                    UiContext.Post(action=> { Armies.Add(army); }, null );
-
-                    ArmyLists.Where(a=>a.ArmyId == army.Id).ForEach(a=> a.Army = army);
+                        Armies.Add(army); 
+                    
+                    ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
                 }
 
-                s.Dispose();
+                ArmyLists.CollectionChanged += (sender, args) => { UpdateListSource(false); };
+                UpdateListSource(true);
             }
+            
         }
 
         private void RemoveSelectedList(ArmyList list)
