@@ -262,7 +262,7 @@
                     <Run Text="{Binding Model.Name}" />
                     </TextBlock>
                     <TextBlock Grid.Row="1">
-                    <Run Text="Points spent on upgrades for this unit:" />
+                    <Run Text="Points spent on upgrades for this unitEntry:" />
                     <Run Text="{Binding PointsCostTotal}" />
                     </TextBlock>
 

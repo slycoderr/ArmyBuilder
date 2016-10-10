@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Army Id="1" Name="Space Wolves">
-  <Units>
+  <ArmyListDataEntrys>
     <!-- wolf guard pack needs two wolf claws. -->
     <!--
     needs:
@@ -10,9 +10,9 @@
     maxPerArmy
     -->
 
-    <Unit Id="1" Name="Wolf Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Lord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="105">
+    <ArmyListDataEntry Id="1" Name="Wolf Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Lord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="105">
           <DefaultEquipment>
             <Equipment Id="3" Name="Belt of Russ" IsDefault="1" />
             <Equipment Id="1" Name="Power Armour" GroupName="WolfLordArmor" IsDefault="1">
@@ -105,13 +105,13 @@
             <Equipment Id="63" Name="The Wulfen Stone" Cost="40" MaxPerArmy="1" Type="1" />
             <Equipment Id="64" Name="Thunderwolf mount" Cost="50" MutualId="3" Type="1" Limit="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Fenrisian Wolf" Minimum="0" Maximum="2" IncrementCost="8" BaseCost="0" />
-      </Models>
-    </Unit>
-    <Unit Id="2" Name="Ragnar Blackmane" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Ragnar Blackmane" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="195">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Fenrisian Wolf" Minimum="0" Maximum="2" CostPerModel="8" BaseCost="0" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="2" Name="Ragnar Blackmane" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <Units>
+        <ArmyListData Id="1" Name="Ragnar Blackmane" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="195">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power armour" IsDefault="1" />
             <Equipment Id="2" Name="Frostfang" IsDefault="1" />
@@ -121,12 +121,12 @@
             <Equipment Id="6" Name="Melta Bombs" IsDefault="1" />
             <Equipment Id="7" Name="Belt of Russ" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="2" Name="Harald Deathwolf" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Harald Deathwolf" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="190">
+        </ArmyListData>
+      </Units>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="2" Name="Harald Deathwolf" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Harald Deathwolf" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="190">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power armour" IsDefault="1" />
             <Equipment Id="2" Name="Frost axe" IsDefault="1" />
@@ -136,12 +136,12 @@
             <Equipment Id="6" Name="Storm Shield" IsDefault="1" />
             <Equipment Id="7" Name="Thunderwolf mount" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="3" Name="Canis Wolfborn" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Canis Wolfborn" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="185">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="3" Name="Canis Wolfborn" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Canis Wolfborn" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="185">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power armour" IsDefault="1" />
             <Equipment Id="2" Name="Frost axe" IsDefault="1" />
@@ -151,12 +151,12 @@
             <Equipment Id="6" Name="Two wolf claws" IsDefault="1" />
             <Equipment Id="7" Name="Thunderwolf mount" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="4" Name="Rune Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Rune Priest" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="60">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="4" Name="Rune Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Rune Priest" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="60">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power Armour" GroupName="RPArmor" IsDefault="1">
               <ReplacementOptions>
@@ -221,12 +221,12 @@
             <Equipment Id="34" Name="Helm of Durfast" Cost="20" MaxPerArmy="1" Type="1" />
             <Equipment Id="35" Name="The Wulfen Stone" Cost="40" MaxPerArmy="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="5" Name="Njal Stormcaller" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Njal Stormcaller" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="180">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="5" Name="Njal Stormcaller" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Njal Stormcaller" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="180">
           <DefaultEquipment>
             <Equipment Id="1" Name="Runic armour" IsDefault="1" />
             <Equipment Id="2" Name="Nightwing" IsDefault="1" />
@@ -236,12 +236,12 @@
             <Equipment Id="6" Name="Psychic Hood" IsDefault="1" />
             <Equipment Id="7" Name="Staff of the Stormcaller" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="6" Name="Wolf Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Priest" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="6" Name="Wolf Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Priest" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="110">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power Armour" GroupName="WolfPriestArmor" IsDefault="1">
               <ReplacementOptions>
@@ -303,13 +303,13 @@
             <Equipment Id="45" Name="Helm of Durfast" Cost="20" MaxPerArmy="1" Type="1" />
             <Equipment Id="46" Name="The Wulfen Stone" Cost="40" MaxPerArmy="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="7" Name="Ulrik the Slayer" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Ulrik the Slayer" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="145">
+    <ArmyListDataEntry Id="7" Name="Ulrik the Slayer" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Ulrik the Slayer" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="145">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power armour" IsDefault="1" />
             <Equipment Id="2" Name="Crozius arcanum" IsDefault="1" />
@@ -320,13 +320,13 @@
             <Equipment Id="7" Name="Healing balms" IsDefault="1" />
             <Equipment Id="8" Name="Wolf Helm of Russ" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="8" Name="Wolf Guard Battle Leader" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Wolf Guard Battle Leader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="50">
+    <ArmyListDataEntry Id="8" Name="Wolf Guard Battle Leader" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <Unit Name="Wolf Guard Battle Leader" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="50">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power Armour" GroupName="WolfLordArmor" IsDefault="1">
               <ReplacementOptions>
@@ -418,14 +418,14 @@
             <Equipment Id="63" Name="The Wulfen Stone" Cost="40" MaxPerArmy="1" Type="1" />
             <Equipment Id="64" Name="Thunderwolf mount" Cost="50" MutualId="3" Type="1" Limit="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Fenrisian Wolf" Minimum="0" Maximum="2" IncrementCost="8" BaseCost="0" />
-      </Models>
-    </Unit>
+        </ArmyListData>
+        <ArmyListData Name="Fenrisian Wolf" Minimum="0" Maximum="2" CostPerModel="8" BaseCost="0" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="9" Name="Bjorn the Fell-Handed" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Bjorn the Fell-Handed" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="220">
+    <ArmyListDataEntry Id="9" Name="Bjorn the Fell-Handed" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Bjorn the Fell-Handed" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="220">
           <DefaultEquipment>
             <Equipment Id="1" Name="Assault cannon" GroupName="BjornWeapon">
               <ReplacementOptions>
@@ -438,10 +438,10 @@
             <Equipment Id="6" Name="Smoke launchers" />
             <Equipment Id="7" Name="Trueclaw" />
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTrasnsports>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -452,13 +452,13 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTrasnsports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="40" Name="Wolf Lord Krom" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Lord Krom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="150">
+    <ArmyListDataEntry Id="40" Name="Wolf Lord Krom" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Lord Krom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="150">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power armour" IsDefault="1" />
             <Equipment Id="2" Name="Wyrmclaw" IsDefault="1" />
@@ -467,13 +467,13 @@
             <Equipment Id="5" Name="Krak grenades" IsDefault="1" />
             <Equipment Id="6" Name="Belt of Russ" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="42" Name="Iron Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Iron Priest" Minimum="1" Maximum="1" IncrementCost="10" BaseCost="75">
+    <ArmyListDataEntry Id="42" Name="Iron Priest" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Iron Priest" Minimum="1" Maximum="1" CostPerModel="10" BaseCost="75">
           <DefaultEquipment>
             <Equipment Id="1" Name="Runic Armor" IsDefault="1" />
             <Equipment Id="2" Name="Boltgun" GroupName="IronPriestBG" IsDefault="1">
@@ -497,14 +497,14 @@
             <Equipment Id="60" Name="Space Marine bike" Cost="20" MutualId="3" Type="1" Limit="1" />
             <Equipment Id="64" Name="Thunderwolf mount" Cost="50" MutualId="3" Type="1" Limit="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Cyberwolf" Minimum="0" Maximum="4" IncrementCost="15" />
-      </Models>
-    </Unit>
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Cyberwolf" Minimum="0" Maximum="4" CostPerModel="15" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="10" Name="Grey Hunters" ForceOrgSlot="1" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Grey Hunter" Minimum="4" Maximum="9" IncrementCost="14" BaseCost="70">
+    <ArmyListDataEntry Id="10" Name="Grey Hunters" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Grey Hunter" Minimum="4" Maximum="9" CostPerModel="14" BaseCost="70">
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="GreyHuntersPistol" IsDefault="1">
               <ReplacementOptions>
@@ -530,9 +530,9 @@
             <Equipment Id="12" Name="Wolf standard" Cost="15" Type="1" GlobalMutualId="1" MaxPerArmy="1" />
             <Equipment Id="13" Name="Close combat weapons" Cost="2" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
 
-        <Model Id="2" Name="Grey Hunter" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        <ArmyListData Id="2" Name="Grey Hunter" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="14" Name=" " GroupName="ghUpgrade" IsDefault="1">
               <GivenEquipment>
@@ -629,10 +629,10 @@
               </GivenEquipment>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Rhino" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Id="87" Name="Rhino" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Id="88" Name="Stormbolter" IsDefault="1" />
             <Equipment Id="89" Name="Searchlight" IsDefault="1" />
@@ -644,8 +644,8 @@
             <Equipment Id="93" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="94" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="95" Name="Razorback" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="55">
+        </ArmyListData>
+        <ArmyListData Id="95" Name="Razorback" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="96" IsDefault="1" Name="Twin-linked heavy bolter" GroupName="RazorbackHB" MutualId="1">
               <ReplacementOptions>
@@ -663,8 +663,8 @@
             <Equipment Id="104" Name="Storm bolter" Cost="5" Limit="1" Type="1" />
             <Equipment Id="105" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        </ArmyListData>
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -675,8 +675,8 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="109" Name="Stormwolf" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="215">
+        </ArmyListData>
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -688,13 +688,13 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="11" Name="Blood Claws" ForceOrgSlot="1" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Blood Claw" Minimum="5" Maximum="15" IncrementCost="12" BaseCost="60">
+    <ArmyListDataEntry Id="11" Name="Blood Claws" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Blood Claw" Minimum="5" Maximum="15" CostPerModel="12" BaseCost="60">
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="GreyHuntersPistol" IsDefault="1">
               <ReplacementOptions>
@@ -716,9 +716,9 @@
             <Equipment Id="11" Name="Krak Grenades" IsDefault="1" />
             <Equipment Id="12" Name="Power Armour" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
 
-        <Model Id="2" Name="Blood Claw" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        <ArmyListData Id="2" Name="Blood Claw" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="14" Name=" " GroupName="BCUpgrade" IsDefault="1">
               <GivenEquipment>
@@ -813,10 +813,10 @@
               </GivenEquipment>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Rhino" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Id="87" Name="Rhino" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Id="88" Name="Stormbolter" IsDefault="1" />
             <Equipment Id="89" Name="Searchlight" IsDefault="1" />
@@ -828,8 +828,8 @@
             <Equipment Id="93" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="94" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="95" Name="Razorback" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="55">
+        </ArmyListData>
+        <ArmyListData Id="95" Name="Razorback" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="96" IsDefault="1" Name="Twin-linked heavy bolter" GroupName="RazorbackHB" MutualId="1">
               <ReplacementOptions>
@@ -847,8 +847,8 @@
             <Equipment Id="104" Name="Storm bolter" Cost="5" Limit="1" Type="1" />
             <Equipment Id="105" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        </ArmyListData>
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -859,8 +859,8 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="109" Name="Stormwolf" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="215">
+        </ArmyListData>
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -872,13 +872,13 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="38" Name="Lukas the Trickster" ForceOrgSlot="1" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Lukas the Trickster" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="80">
+    <ArmyListDataEntry Id="38" Name="Lukas the Trickster" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Lukas the Trickster" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="80">
           <DefaultEquipment>
             <Equipment Name="Power armour" Id="14" />
             <Equipment Name="Plasma pistol" Id="15" />
@@ -887,13 +887,13 @@
             <Equipment Name="Wolf claw" Id="18" />
             <Equipment Id="19" Name="Pelt of the Doppeganrel" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="13" Name="Servitors" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Servitor" Minimum="1" Maximum="5" IncrementCost="10" BaseCost="10">
+    <ArmyListDataEntry Id="13" Name="Servitors" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Servitor" Minimum="1" Maximum="5" CostPerModel="10" BaseCost="10">
           <DefaultEquipment>
             <Equipment Id="1" Name="Servo-arm" GroupName="ServWeapon">
               <ReplacementOptions>
@@ -903,13 +903,13 @@
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="41" Name="Iron Priest" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Iron Priest" Minimum="1" Maximum="1" IncrementCost="10" BaseCost="55">
+    <ArmyListDataEntry Id="41" Name="Iron Priest" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Iron Priest" Minimum="1" Maximum="1" CostPerModel="10" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="1" Name="Runic Armor" IsDefault="1" />
             <Equipment Id="3" Name="Boltgun" GroupName="IronPriestBG" IsDefault="1">
@@ -928,14 +928,14 @@
             <Equipment Id="60" Name="Space Marine bike" Cost="20" MutualId="3" Type="1" Limit="1" />
             <Equipment Id="64" Name="Thunderwolf mount" Cost="50" MutualId="3" Type="1" Limit="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Cyberwolf" Minimum="0" Maximum="4" IncrementCost="15" />
-      </Models>
-    </Unit>
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Cyberwolf" Minimum="0" Maximum="4" CostPerModel="15" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="14" Name="Wolf Scouts" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Scout" Minimum="4" Maximum="9" IncrementCost="14" BaseCost="70">
+    <ArmyListDataEntry Id="14" Name="Wolf Scouts" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Scout" Minimum="4" Maximum="9" CostPerModel="14" BaseCost="70">
           <DefaultEquipment>
             <Equipment Id="1" IsDefault="1" Name="Scout Armor" />
             <Equipment Id="2" IsDefault="1" Name="Frag grenades" />
@@ -966,8 +966,8 @@
           <Upgrades>
             <Equipment Id="17" Name="Camo cloaks" Cost="0" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Wolf Scout" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Wolf Scout" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="18" IsDefault="1" Name="Frag Grenades" />
             <Equipment Id="19" IsDefault="1" Name="Krak Grenades" />
@@ -1025,13 +1025,13 @@
               </GivenEquipment>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="15" Name="Lone Wolf" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Lone Wolf" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="20">
+    <ArmyListDataEntry Id="15" Name="Lone Wolf" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Name="Lone Wolf" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="20">
           <DefaultEquipment>
             <Equipment Id="3" Name="Belt of Russ" IsDefault="1" />
             <Equipment Id="1" Name="Power Armour" GroupName="LoneWolfArmor" IsDefault="1">
@@ -1102,14 +1102,14 @@
           <Upgrades>
             <Equipment Id="57" Name="Melta bombs" Cost="5" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Fenrisian Wolf" Minimum="0" Maximum="2" IncrementCost="8" BaseCost="0" />
-      </Models>
-    </Unit>
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Fenrisian Wolf" Minimum="0" Maximum="2" CostPerModel="8" BaseCost="0" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
     <!--problems-->
-    <Unit Id="16" Name="Dreadnought" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Dreadnought" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="95">
+    <ArmyListDataEntry Id="16" Name="Dreadnought" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Dreadnought" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="95">
           <DefaultEquipment>
             <Equipment Id="1" Name="Searchlight" IsDefault="1" />
             <Equipment Id="2" IsDefault="1" GroupName="DreadnoughtUpgrade">
@@ -1189,10 +1189,10 @@
             <Equipment Id="34" Name="Extra armour" Type="1" Cost="10" />
             <Equipment Id="35" Name="Smoke launchers" Type="1" Cost="5" />
           </Upgrades>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTrasnsports>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -1203,20 +1203,20 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTrasnsports>
-    </Unit>
-    <Unit Id="17" Name="Murderfang" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Murderfang" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="135">
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="17" Name="Murderfang" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Murderfang" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="135">
           <DefaultEquipment>
             <Equipment Id="1" Name="Searchlight" />
             <Equipment Id="2" Name="The Murderclaws" />
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTrasnsports>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -1227,12 +1227,12 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTrasnsports>
-    </Unit>
-    <Unit Id="18" Name="Wolf Guard" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Guard" Minimum="4" Maximum="9" IncrementCost="18" BaseCost="90">
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="18" Name="Wolf Guard" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Guard" Minimum="4" Maximum="9" CostPerModel="18" BaseCost="90">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power Armour" GroupName="WGArmor" IsDefault="1" />
             <Equipment Id="4" Name="Bolt pistol" GroupName="WGBP" IsDefault="1">
@@ -1277,8 +1277,8 @@
             <Equipment Id="51" Name="Jump Packs" MutualId="1" Cost="3" Type="1" />
             <Equipment Id="52" Name="Space Marine bike" MutualId="1" Cost="7" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Wolf Guard Pack Leader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Wolf Guard Pack Leader" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="53" Name="Power Armour" IsDefault="1" />
             <Equipment Id="54" Name="Bolt pistol" GroupName="WGPLBP" IsDefault="1">
@@ -1323,10 +1323,10 @@
             <Equipment Id="85" Name="Jump Packs" MutualId="1" Cost="3" Type="1" />
             <Equipment Id="86" Name="Space Marine bike" MutualId="1" Cost="7" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Rhino" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Id="87" Name="Rhino" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Id="88" Name="Stormbolter" IsDefault="1" />
             <Equipment Id="89" Name="Searchlight" IsDefault="1" />
@@ -1338,8 +1338,8 @@
             <Equipment Id="93" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="94" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="95" Name="Razorback" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="55">
+        </ArmyListData>
+        <ArmyListData Id="95" Name="Razorback" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="96" IsDefault="1" Name="Twin-linked heavy bolter" GroupName="RazorbackHB" MutualId="1">
               <ReplacementOptions>
@@ -1357,8 +1357,8 @@
             <Equipment Id="104" Name="Storm bolter" Cost="5" Limit="1" Type="1" />
             <Equipment Id="105" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        </ArmyListData>
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -1369,8 +1369,8 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="109" Name="Stormwolf" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="215">
+        </ArmyListData>
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1382,8 +1382,8 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-        <Model Id="116" Name="Land Raider" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+        <ArmyListData Id="116" Name="Land Raider" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="117" Name="Twin-linked heavy bolter" IsDefault="1" />
             <Equipment Id="118" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1398,8 +1398,8 @@
             <Equipment Id="126" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="127" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="128" Name="Land Raider Crusader" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+        <ArmyListData Id="128" Name="Land Raider Crusader" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="129" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="130" Name="Hurricane bolter" IsDefault="1" />
@@ -1415,8 +1415,8 @@
             <Equipment Id="138" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="139" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Land Raider Redeemer" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="240">
+        </ArmyListData>
+        <ArmyListData Name="Land Raider Redeemer" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="240">
           <DefaultEquipment>
             <Equipment Id="140" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="141" Name="Flamestorm cannon" IsDefault="1" />
@@ -1432,13 +1432,13 @@
             <Equipment Id="152" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="153" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="19" Name="Wolf Guard Terminators" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wolf Guard Terminator" Minimum="2" Maximum="9" IncrementCost="33" BaseCost="99">
+    <ArmyListDataEntry Id="19" Name="Wolf Guard Terminators" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wolf Guard Terminator" Minimum="2" Maximum="9" CostPerModel="33" BaseCost="99">
           <DefaultEquipment>
             <Equipment Id="1" Name="Power weapon" GroupName="WolfGuardTPW" IsDefault="1">
               <ReplacementOptions>
@@ -1467,8 +1467,8 @@
           <Upgrades>
             <Equipment Id="18" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" />
           </Upgrades>
-        </Model>
-        <Model Id="1" Name="Wolf Guard Terminator Leader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="1" Name="Wolf Guard Terminator Leader" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="19" Name="Power weapon" GroupName="WolfGuardTPW" IsDefault="1">
               <ReplacementOptions>
@@ -1497,10 +1497,10 @@
           <Upgrades>
             <Equipment Id="37" Name="Cyclone missle launcher" Cost="10" Limit="1" Type="1" MutualId="1" />
           </Upgrades>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="109" Name="Stormwolf" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="215">
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1512,8 +1512,8 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-        <Model Id="116" Name="Land Raider" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+        <ArmyListData Id="116" Name="Land Raider" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="117" Name="Twin-linked heavy bolter" IsDefault="1" />
             <Equipment Id="118" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1528,8 +1528,8 @@
             <Equipment Id="126" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="127" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="128" Name="Land Raider Crusader" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+        <ArmyListData Id="128" Name="Land Raider Crusader" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="129" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="130" Name="Hurricane bolter" IsDefault="1" />
@@ -1545,8 +1545,8 @@
             <Equipment Id="138" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="139" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Land Raider Redeemer" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="240">
+        </ArmyListData>
+        <ArmyListData Name="Land Raider Redeemer" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="240">
           <DefaultEquipment>
             <Equipment Id="140" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="141" Name="Flamestorm cannon" IsDefault="1" />
@@ -1562,25 +1562,25 @@
             <Equipment Id="152" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="153" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="39" Name="Arjac Rockfist" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Arjac Rockfist" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="115">
+    <ArmyListDataEntry Id="39" Name="Arjac Rockfist" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Arjac Rockfist" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="115">
           <DefaultEquipment>
             <Equipment Id="1" Name="Terminator Armour" IsDefault="1" />
             <Equipment Id="2" Name="Anvil Sield" IsDefault="1" />
             <Equipment Id="3" Name="Foehammer" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="43" Name="Wulfen" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Wulfen" Minimum="4" Maximum="9" IncrementCost="30" BaseCost="150">
+    <ArmyListDataEntry Id="43" Name="Wulfen" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Wulfen" Minimum="4" Maximum="9" CostPerModel="30" BaseCost="150">
           <DefaultEquipment>
             <Equipment Id="1" Name="Close combat weapon" IsDefault="1" GroupName="WulfenWeapon">
               <ReplacementOptions>
@@ -1593,8 +1593,8 @@
           <Upgrades>
             <Equipment Id="5" Name="Stormfrag auto-launcher" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Wulfen" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Wulfen" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="6">
               <GivenEquipment>
@@ -1616,10 +1616,10 @@
           <Upgrades>
             <Equipment Id="13" Name="Stormfrag auto-launcher" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="109" Name="Stormwolf" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="215">
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1631,13 +1631,13 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="20" Name="Swiftclaws" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Swiftclaw Biker" Minimum="2" Maximum="9" IncrementCost="20" BaseCost="60">
+    <ArmyListDataEntry Id="20" Name="Swiftclaws" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Swiftclaw Biker" Minimum="2" Maximum="9" CostPerModel="20" BaseCost="60">
           <DefaultEquipment>
             <Equipment Id="2" Name="Bolt pistol" GroupName="SwiftClawPistol" IsDefault="1">
               <ReplacementOptions>
@@ -1659,9 +1659,9 @@
             <Equipment Id="16" Name="Krak Grenades" IsDefault="1" />
             <Equipment Id="17" Name="Power Armour" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
 
-        <Model Id="2" Name="Swiftclaw Attack Bike" Minimum="0" Maximum="1" IncrementCost="35">
+        <ArmyListData Id="2" Name="Swiftclaw Attack Bike" Minimum="0" Maximum="1" CostPerModel="35">
           <DefaultEquipment>
             <Equipment Id="18" Name="Bolt pistol" GroupName="SwiftClawAttackPistol" IsDefault="1">
               <Equipment Id="19" Name="Chainsword" Cost="0" GroupName="SwiftClawAttackPistol" />
@@ -1676,9 +1676,9 @@
             <Equipment Id="24" Name="Krak Grenades" IsDefault="1" />
             <Equipment Id="25" Name="Power Armour" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
 
-        <Model Id="3" Name="Wolf Guard Bike Leader" Minimum="1" Maximum="1">
+        <ArmyListData Id="3" Name="Wolf Guard Bike Leader" Minimum="1" Maximum="1">
           <DefaultEquipment>
             <Equipment Id="26" Name="Space Marine bike" IsDefault="1" />
             <Equipment Id="27" Name="Frag Grenades" IsDefault="1" />
@@ -1724,13 +1724,13 @@
           <Upgrades>
             <Equipment Id="53" Name="Melta bombs" Cost="5" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="21" Name="Rhino" ForceOrgSlot="3">
-      <Models>
-        <Model Id="87" Name="Rhino" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="35">
+    <ArmyListDataEntry Id="21" Name="Rhino" ForceOrgSlot="3">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Rhino" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Id="88" Name="Stormbolter" IsDefault="1" />
             <Equipment Id="89" Name="Searchlight" IsDefault="1" />
@@ -1742,12 +1742,12 @@
             <Equipment Id="93" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="94" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="22" Name="Razorback" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="95" Name="Razorback" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="22" Name="Razorback" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="95" Name="Razorback" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="96" IsDefault="1" Name="Twin-linked heavy bolter" GroupName="RazorbackHB" MutualId="1">
               <ReplacementOptions>
@@ -1765,12 +1765,12 @@
             <Equipment Id="104" Name="Storm bolter" Cost="5" Limit="1" Type="1" />
             <Equipment Id="105" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="23" Name="Drop Pod" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Drop Pod" Id="106" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="35">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="23" Name="Drop Pod" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -1781,12 +1781,12 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="24" Name="Stormwolf" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="109" Name="Stormwolf" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="215">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="24" Name="Stormwolf" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="109" Name="Stormwolf" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="215">
           <DefaultEquipment>
             <Equipment Id="110" Name="Twin-linked helfrost cannon" IsDefault="1" />
             <Equipment Id="111" Name="Twin-linked lascannon" IsDefault="1" />
@@ -1798,12 +1798,12 @@
             </Equipment>
             <Equipment Id="115" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="25" Name="Thunderwolf Cavalry" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Thunderwolf Cavalry" Minimum="2" Maximum="5" IncrementCost="40" BaseCost="120">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="25" Name="Thunderwolf Cavalry" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Thunderwolf Cavalry" Minimum="2" Maximum="5" CostPerModel="40" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="CavPistol" IsDefault="1">
               <ReplacementOptions>
@@ -1837,8 +1837,8 @@
           <Upgrades>
             <Equipment Id="23" Name="Melta bombs" Cost="5" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Thunderwolf Cavalry Pack Leader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Thunderwolf Cavalry Pack Leader" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="24" Name="Bolt pistol" GroupName="CavPistolLeader" IsDefault="1">
               <ReplacementOptions>
@@ -1872,23 +1872,23 @@
           <Upgrades>
             <Equipment Id="44" Name="Melta bombs" Cost="5" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="26" Name="Fenrisian Wolves" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Fenrisian Wolf" Minimum="4" Maximum="14" IncrementCost="8" BaseCost="40" />
-        <Model Name="Fenrisian Wolf" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="26" Name="Fenrisian Wolves" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Name="Fenrisian Wolf" Minimum="4" Maximum="14" CostPerModel="8" BaseCost="40" />
+        <ArmyListData Name="Fenrisian Wolf" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="44" IsDefault="1" GroupName="Cyberwolf" />
             <Equipment Id="44" Name="Cyberwolf" Cost="10" GroupName="Cyberwolf" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="27" Name="Skyclaws" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Skyclaw" Minimum="4" Maximum="9" IncrementCost="15" BaseCost="75">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="27" Name="Skyclaws" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Skyclaw" Minimum="4" Maximum="9" CostPerModel="15" BaseCost="75">
           <DefaultEquipment>
             <Equipment Id="1" Name="Chainsword" IsDefault="1">
               <ReplacementOptions>
@@ -1912,8 +1912,8 @@
           <Upgrades>
 
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Skyclaw" Minimum="1" Maximum="1">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Skyclaw" Minimum="1" Maximum="1">
           <DefaultEquipment>
             <Equipment Id="13" Name="Jump pack" IsDefault="1" />
             <Equipment Id="14" Name="Frag Grenades" IsDefault="1" />
@@ -1980,12 +1980,12 @@
           <Upgrades>
             <Equipment Id="25" Name="Melta bombs" Cost="5" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="28" Name="Land Speeders" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Land Speeder" Minimum="1" Maximum="3" IncrementCost="50" BaseCost="50">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="28" Name="Land Speeders" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Name="Land Speeder" Minimum="1" Maximum="3" CostPerModel="50" BaseCost="50">
           <DefaultEquipment>
             <Equipment Id="1" Name="Heavy bolter" GroupName="LandSpeederHB" IsDefault="1">
               <ReplacementOptions>
@@ -2001,12 +2001,12 @@
             <Equipment Id="7" Name="Typhoon missile launcher" Cost="25" Type="1" MutualId="1" />
             <Equipment Id="8" Name="Assault cannon" Cost="30" Type="1" MutualId="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="29" Name="Stormfang Gunship" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Stormfang Gunship" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="220">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="29" Name="Stormfang Gunship" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Stormfang Gunship" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="220">
           <DefaultEquipment>
             <Equipment Id="2" Name="Helfrost destructor" IsDefault="1" />
             <Equipment Id="3" Name="Two stormstrike missiles" IsDefault="1" GroupName="StormFangMissile">
@@ -2022,12 +2022,12 @@
             </Equipment>
             <Equipment Id="9" Name="Ceramite plating" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="30" Name="Long Fangs" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Long Fang" Minimum="0" Maximum="4" IncrementCost="15" BaseCost="0">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="30" Name="Long Fangs" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Long Fang" Minimum="0" Maximum="4" CostPerModel="15" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="1" Name="Bolt pistol" GroupName="LongFangPistol" IsDefault="1">
               <ReplacementOptions>
@@ -2047,8 +2047,8 @@
           <Upgrades>
 
           </Upgrades>
-        </Model>
-        <Model Id="2" Name="Long Fang Ancient" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="30">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Long Fang Ancient" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="30">
           <DefaultEquipment>
             <Equipment Id="12" Name="Power armour" IsDefault="1" />
             <Equipment Id="13" Name="Bolt pistol" GroupName="LongFangAncientPistol" IsDefault="1">
@@ -2077,8 +2077,8 @@
           <Upgrades>
             <Equipment Id="28" Name="Melta bombs" Cost="5" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="3" Name="Long Fang" Cost="10" Minimum="1" Maximum="1" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="3" Name="Long Fang" Cost="10" Minimum="1" Maximum="1" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="29" GroupName="LongFangUpgrade" IsDefault="1">
               <GivenEquipment>
@@ -2168,10 +2168,10 @@
               </GivenEquipment>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Rhino" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        <ArmyListData Id="87" Name="Rhino" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Id="88" Name="Stormbolter" IsDefault="1" />
             <Equipment Id="89" Name="Searchlight" IsDefault="1" />
@@ -2183,8 +2183,8 @@
             <Equipment Id="93" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="94" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Id="95" Name="Razorback" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="55">
+        </ArmyListData>
+        <ArmyListData Id="95" Name="Razorback" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="55">
           <DefaultEquipment>
             <Equipment Id="96" IsDefault="1" Name="Twin-linked heavy bolter" GroupName="RazorbackHB" MutualId="1">
               <ReplacementOptions>
@@ -2202,8 +2202,8 @@
             <Equipment Id="104" Name="Storm bolter" Cost="5" Limit="1" Type="1" />
             <Equipment Id="105" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-        <Model Name="Drop Pod" Id="106" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="35">
+        </ArmyListData>
+        <ArmyListData Name="Drop Pod" Id="106" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="35">
           <DefaultEquipment>
             <Equipment Name="Stormbolter" GroupName="DPStorm" Id="37" IsDefault="1">
               <ReplacementOptions>
@@ -2214,12 +2214,12 @@
           <Upgrades>
             <Equipment Id="108" Name="Locator beacon" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
-    <Unit Id="31" Name="Vindicator" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Vindicator" Minimum="1" Maximum="3" IncrementCost="120" BaseCost="120">
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="31" Name="Vindicator" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Vindicator" Minimum="1" Maximum="3" CostPerModel="120" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="Demolisher cannon" IsDefault="1" />
             <Equipment Id="2" Name="Searchlight" IsDefault="1" />
@@ -2232,12 +2232,12 @@
             <Equipment Id="7" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="8" Name="Siege shield" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="32" Name="Whirlwind" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Whirlwind" Minimum="1" Maximum="3" IncrementCost="65" BaseCost="65">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="32" Name="Whirlwind" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Whirlwind" Minimum="1" Maximum="3" CostPerModel="65" BaseCost="65">
           <DefaultEquipment>
             <Equipment Id="1" Name="Whirlwind multiple missile launcher" IsDefault="1" />
             <Equipment Id="2" Name="Searchlight" IsDefault="1" />
@@ -2249,12 +2249,12 @@
             <Equipment Id="6" Name="Hunter-killer missile" Cost="10" Limit="1" Type="1" />
             <Equipment Id="7" Name="Extra armour" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="33" Name="Predator" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Predator" Minimum="1" Maximum="3" IncrementCost="75" BaseCost="75">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="33" Name="Predator" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Predator" Minimum="1" Maximum="3" CostPerModel="75" BaseCost="75">
           <DefaultEquipment>
             <Equipment Id="1" Name="Autocannon" IsDefault="1">
               <ReplacementOptions>
@@ -2272,13 +2272,13 @@
             <Equipment Id="1" Name="Heavy bolters" Cost="20" MutualId="1" Limit="1" Type="1" />
             <Equipment Id="1" Name="Lascannons" Cost="40" MutualId="1" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="34" Name="Land Raider" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="116" Name="Land Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="250">
+    <ArmyListDataEntry Id="34" Name="Land Raider" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="116" Name="Land Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="117" Name="Twin-linked heavy bolter" IsDefault="1" />
             <Equipment Id="118" Name="Twin-linked lascannon" IsDefault="1" />
@@ -2293,12 +2293,12 @@
             <Equipment Id="126" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="127" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="35" Name="Land Raider Crusader" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="128" Name="Land Raider Crusader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="35" Name="Land Raider Crusader" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="128" Name="Land Raider Crusader" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="129" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="130" Name="Hurricane bolter" IsDefault="1" />
@@ -2314,12 +2314,12 @@
             <Equipment Id="138" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="139" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="36" Name="Land Raider Redeemer" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Name="Land Raider Redeemer" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="240">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="36" Name="Land Raider Redeemer" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Name="Land Raider Redeemer" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="240">
           <DefaultEquipment>
             <Equipment Id="140" Name="Twin-linked assualt cannon" IsDefault="1" />
             <Equipment Id="141" Name="Flamestorm cannon" IsDefault="1" />
@@ -2335,12 +2335,12 @@
             <Equipment Id="152" Name="Extra armour" Cost="10" Limit="1" Type="1" />
             <Equipment Id="153" Name="Multi-melta" Cost="10" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="37" Name="Logan Grimnar" ForceOrgSlot="5" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Logan Grimar" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="250">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="37" Name="Logan Grimnar" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Logan Grimar" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="1" Name="Terminator armour" IsDefault="1" />
             <Equipment Id="2" Name="Storm bolter" IsDefault="1" />
@@ -2349,8 +2349,8 @@
           <Upgrades>
             <Equipment Id="4" Name="Stormrider" Cost="70" Limit="1" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-  </Units>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+  </ArmyListDataEntrys>
 </Army>

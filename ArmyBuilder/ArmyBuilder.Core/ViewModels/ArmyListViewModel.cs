@@ -24,20 +24,20 @@ namespace ArmyBuilder.Core.ViewModels
 
         public ForceOrgCounter ForceOrgCount { get; } = new ForceOrgCounter();
 
-        public ObservableCollection<Unit> HqUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> TroopUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> EliteUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> FastAttackUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> HeavySupportUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> LordOfWarUnits { get; } = new ObservableCollection<Unit>();
-        public ObservableCollection<Unit> FortificationUnits { get; } = new ObservableCollection<Unit>();
+        public ObservableCollection<UnitEntry> HqUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> TroopUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> EliteUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> FastAttackUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> HeavySupportUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> LordOfWarUnits { get; } = new ObservableCollection<UnitEntry>();
+        public ObservableCollection<UnitEntry> FortificationUnits { get; } = new ObservableCollection<UnitEntry>();
 
         public ArmyListData SelectedUnit { get { return selectedUnit; } set { SetValue(ref selectedUnit, value); } }
 
         public ObservableCollection<ForceOrgGroup> ArmyListDataGroups { get; } =new ObservableCollection<ForceOrgGroup>();
         public ObservableCollection<ArmyUnitGroup> ArmyUnitGroups { get; } = new ObservableCollection<ArmyUnitGroup>();
 
-        public RelayCommand<Unit> AddUnitCommand => new RelayCommand<Unit>(AddUnit);
+        public RelayCommand<UnitEntry> AddUnitCommand => new RelayCommand<UnitEntry>(AddUnit);
         public RelayCommand<Detachment> AddSubDetachmentCommand => new RelayCommand<Detachment>(AddSubDetachment);
         public RelayCommand<Detachment> AddDetachmentCommand => new RelayCommand<Detachment>(AddDetachment);
         public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
@@ -74,13 +74,13 @@ namespace ArmyBuilder.Core.ViewModels
             LordOfWarUnits.Clear();
             FortificationUnits.Clear();
 
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
-            SelectedDetachment?.Army?.Units.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
+            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -135,7 +135,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdateArmyUnitsListDataSource()
         {
-            var groups = ArmyList.Army.Units.GroupBy(i => new {i.ForceOrgSlot}).Select(i => new ArmyUnitGroup(i.ToList())).OrderBy(g => g.ForceOrgId);
+            var groups = ArmyList.Army.UnitEntries.GroupBy(i => new {i.ForceOrgSlot}).Select(i => new ArmyUnitGroup(i.ToList())).OrderBy(g => g.ForceOrgId);
 
             groups.ForEach(g => ArmyUnitGroups.Add(g));
         }
@@ -143,7 +143,7 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateArmyListDataSource()
         {
             var currentSelectedItem = SelectedUnit;
-            var groups = SelectedDetachment?.Units?.GroupBy(i => new {i.Unit.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList()))?.ToList();
+            var groups = SelectedDetachment?.Units?.GroupBy(i => new {i.UnitEntry.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList()))?.ToList();
 
             ArmyListDataGroups.Clear();
             groups?.ForEach(g => ArmyListDataGroups.Add(g));
@@ -154,12 +154,12 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateForceOrgCount()
         {
 
-            //ForceOrgCount.HqCount = Units.Count(u => u.Unit.ForceOrgSlot == 0 && u.Unit.CountsTowardForceOrg);
-            //ForceOrgCount.TroopCount = Units.Count(u => u.Unit.ForceOrgSlot == 1 && u.Unit.CountsTowardForceOrg);
-            //EliteCount = Units.Count(u => u.Unit.ForceOrgSlot == 2 && u.Unit.CountsTowardForceOrg);
-            //FastAttackCount = Units.Count(u => u.Unit.ForceOrgSlot == 3 && u.Unit.CountsTowardForceOrg);
-            //HeavySupportCount = Units.Count(u => u.Unit.ForceOrgSlot == 4 && u.Unit.CountsTowardForceOrg);
-            //LordOfWarCount = Units.Count(u => u.Unit.ForceOrgSlot == 5 && u.Unit.CountsTowardForceOrg);
+            //ForceOrgCount.HqCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 0 && u.UnitEntry.CountsTowardForceOrg);
+            //ForceOrgCount.TroopCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 1 && u.UnitEntry.CountsTowardForceOrg);
+            //EliteCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 2 && u.UnitEntry.CountsTowardForceOrg);
+            //FastAttackCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 3 && u.UnitEntry.CountsTowardForceOrg);
+            //HeavySupportCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 4 && u.UnitEntry.CountsTowardForceOrg);
+            //LordOfWarCount = UnitEntries.Count(u => u.UnitEntry.ForceOrgSlot == 5 && u.UnitEntry.CountsTowardForceOrg);
         }
 
         private void UpdatePointsTotal()
@@ -168,11 +168,11 @@ namespace ArmyBuilder.Core.ViewModels
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
         }
 
-        public void AddUnit(Unit unit)
+        public void AddUnit(UnitEntry unitEntry)
         {
-            if (unit != null)
+            if (unitEntry != null)
             {
-                SelectedDetachment.Units.Add(new ArmyListData(unit, ArmyList.Id));
+                SelectedDetachment.Units.Add(new ArmyListData(unitEntry, ArmyList.Id));
                 SelectedUnit = SelectedDetachment.Units.Last();
                 IsUnitFlyoutOpened = false;
 

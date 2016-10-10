@@ -27,7 +27,7 @@ namespace ArmyBuilder.Windows.Utility
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var model = (Model)value;
+            var model = (Unit)value;
 
             return model.Maximum == model.Minimum ? Visibility.Collapsed : Visibility.Visible;
         }
@@ -42,7 +42,7 @@ namespace ArmyBuilder.Windows.Utility
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var model = (Model)value;
+            var model = (Unit)value;
 
             return model.Maximum == model.Minimum ? $"{model.Minimum} {model.Name}(s)" : $"{model.Minimum} - {model.Maximum} {model.Name}(s)";
         }

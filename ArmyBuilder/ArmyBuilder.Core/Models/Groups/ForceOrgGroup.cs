@@ -10,7 +10,7 @@ namespace ArmyBuilder.Core.Models.Groups
 
         public ForceOrgGroup(List<ArmyListData> items) : base(items)
         {
-            ForceOrgId = items.First().Unit.ForceOrgSlot;
+            ForceOrgId = items.First().UnitEntry.ForceOrgSlot;
         }
     }
 }

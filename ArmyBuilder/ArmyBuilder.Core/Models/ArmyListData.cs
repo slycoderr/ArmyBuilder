@@ -29,7 +29,7 @@ namespace ArmyBuilder.Core.Models
         public int PointsTotal { get { return pointsTotal; } set { SetValue(ref pointsTotal, value); } }
 
         [Ignore, XmlIgnore]
-        public Unit Unit { get; private set; }
+        public UnitEntry UnitEntry { get; private set; }
 
         [XmlArray, Ignore]
         public List<ModelData> DedicatedTransports { get; set; }
@@ -72,12 +72,12 @@ namespace ArmyBuilder.Core.Models
         private byte[] data;
         private int pointsTotal;
 
-        public ArmyListData(Unit unit, Guid armyListId)
+        public ArmyListData(UnitEntry unitEntry, Guid armyListId)
         {
             Id = Guid.NewGuid();
             ArmyListId = armyListId;
-            SetData(unit);
-            UnitId = unit.Id;
+            SetData(unitEntry);
+            UnitId = unitEntry.Id;
 
             PropertyChanged += OnPropertyChanged;
             Models.ForEach(m=>m.PropertyChanged += ModelGroupOnPropertyChanged);
@@ -110,16 +110,16 @@ namespace ArmyBuilder.Core.Models
             }
         }
 
-        public void SetData(Unit unit)
+        public void SetData(UnitEntry unitEntry)
         {
             if (!initialized)
             {
-                Unit = unit;
+                UnitEntry = unitEntry;
 
                 if (Data == null)
                 {
-                    DedicatedTransports = new List<ModelData>(Unit.DedicatedTransports.Select(u => new ModelData(u)).ToList());
-                    Models = new List<ModelDataGroup>(Unit.Models.Select(u => new ModelDataGroup(u, this)).ToList());
+                    //DedicatedTransports = new List<ModelData>(UnitEntry.DedicatedTransports.Select(u => new ModelData(u)).ToList());
+                    Models = new List<ModelDataGroup>(UnitEntry.Units.Select(u => new ModelDataGroup(u, this)).ToList());
                     Save();
                 }
 
@@ -136,10 +136,10 @@ namespace ArmyBuilder.Core.Models
                             Models = obj.Models;
                             SelectedDedicatedTransport = obj.SelectedDedicatedTransport;
 
-                            SelectedDedicatedTransport?.SetData(unit.DedicatedTransports.Single(m => m.Id == SelectedDedicatedTransport.ModelId));
+                            //SelectedDedicatedTransport?.SetData(unitEntry.DedicatedTransports.Single(m => m.Id == SelectedDedicatedTransport.ModelId));
 
-                            DedicatedTransports.ForEach(t=>t.SetData(Unit.DedicatedTransports.Single(m=>m.Id == t.ModelId)));
-                            Models.ForEach(t=>t.SetData(Unit.Models.Single(m=>m.Id == t.ModelId), this));
+                            //DedicatedTransports.ForEach(t=>t.SetData(UnitEntry.DedicatedTransports.Single(m=>m.Id == t.ModelId)));
+                            Models.ForEach(t=>t.SetData(UnitEntry.Units.Single(m=>m.Id == t.ModelId), this));
 
                         }
                     }
@@ -155,7 +155,7 @@ namespace ArmyBuilder.Core.Models
 
         private void UpdatePointsTotal()
         {
-            int total = (SelectedDedicatedTransport?.PointsCostTotal ?? 0) + (SelectedDedicatedTransport?.Model?.BaseCost ?? 0);
+            int total = (SelectedDedicatedTransport?.PointsCostTotal ?? 0) + (SelectedDedicatedTransport?.Unit?.BaseCost ?? 0);
 
             total += Models.Sum(m => m.PointsCostTotal);
 

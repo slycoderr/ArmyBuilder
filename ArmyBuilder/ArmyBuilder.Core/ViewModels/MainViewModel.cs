@@ -91,10 +91,10 @@ namespace ArmyBuilder.Core.ViewModels
                 CurrentArmyListViewModel = new ArmyListViewModel(selectedArmyList);
                 database.ArmyListData.Where(a=>a.ArmyListId == SelectedArmyList.Id).ForEach(a =>
                 {
-                    a.SetData(SelectedArmyList.Army.Units.Single(u => u.Id == a.UnitId));
-                    //CurrentArmyListViewModel.Units.Add(a);
+                    a.SetData(SelectedArmyList.Army.UnitEntries.Single(u => u.Id == a.UnitId));
+                    //CurrentArmyListViewModel.UnitEntries.Add(a);
                 });
-                //CurrentArmyListViewModel.Units.CollectionChanged += UnitsOnCollectionChanged;
+                //CurrentArmyListViewModel.UnitEntries.CollectionChanged += UnitsOnCollectionChanged;
             }
         }
 
@@ -124,12 +124,9 @@ namespace ArmyBuilder.Core.ViewModels
             var currentSelectedItem = SelectedArmyList;
             var groups = ArmyLists?.OrderBy(i => i.Army.Name).GroupBy(i => new {i.ArmyId}).Select(i => new ArmyListGroup(i.ToList())).ToList();
 
-            UiContext.Post(action =>
-            {
-                ArmyListGroups.Clear();
-                groups.ForEach(g => ArmyListGroups.Add(g));
-            }, null);
-
+            ArmyListGroups.Clear();
+            groups.ForEach(g => ArmyListGroups.Add(g));
+   
             SelectedArmyList = cacheSelection ? currentSelectedItem : null;
         }
     }

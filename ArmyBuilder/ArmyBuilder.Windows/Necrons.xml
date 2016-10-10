@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Army Id="2" Name="Necrons">
-  <Units>
-    <Unit Id="1" Name="Overlord" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Overlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="80">
+  <ArmyListDataEntrys>
+    <ArmyListDataEntry Id="1" Name="Overlord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Overlord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="80">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" IsDefault="1" GroupName="OverLordWep">
               <ReplacementOptions>
@@ -28,13 +28,13 @@
             <Equipment Id="15" Name="The Nightmare Shroud" Limit="1" MutualId="3" Cost="35" />
             <Equipment Id="16" Name="The Orb of Eternity" Limit="1" MutualId="3" Cost="40" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="2" Name="Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Lord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="50">
+    <ArmyListDataEntry Id="2" Name="Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Lord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="50">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" IsDefault="1" GroupName="LordWep">
               <ReplacementOptions>
@@ -58,13 +58,13 @@
             <Equipment Id="15" Name="The Nightmare Shroud" Limit="1" MutualId="3" Cost="35" />
             <Equipment Id="16" Name="The Orb of Eternity" Limit="1" MutualId="3" Cost="40" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="2" Name="Cryptek" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Cryptek" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="65">
+    <ArmyListDataEntry Id="2" Name="Cryptek" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Cryptek" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="65">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" GroupName="TekWep" IsDefault="1">
               <ReplacementOptions>
@@ -82,13 +82,13 @@
             <Equipment Id="9" Name="The Orb of Eternity" Limit="1" MutualId="3" Cost="40" />
             <Equipment Id="10" Name="Chronometron" Cost="25" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="3" Name="Destroyer Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Destroyer Lord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110">
+    <ArmyListDataEntry Id="3" Name="Destroyer Lord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Destroyer Lord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="110">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" GroupName="DesLordWep" IsDefault="1">
               <ReplacementOptions>
@@ -110,67 +110,67 @@
             <Equipment Id="15" Name="The Nightmare Shroud" Limit="1" MutualId="3" Cost="35" />
             <Equipment Id="16" Name="The Orb of Eternity" Limit="1" MutualId="3" Cost="40" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="4" Name="Nemesor Zahndeskh" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Nemesor Zahndeskh" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="150">
+    <ArmyListDataEntry Id="4" Name="Nemesor Zahndeskh" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Nemesor Zahndeskh" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="150">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" IsDefault="1" />
             <Equipment Id="2" Name="Phase shifter" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="5" Name="Vargard Obyron" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Vargard Obyron" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="120">
+    <ArmyListDataEntry Id="5" Name="Vargard Obyron" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Vargard Obyron" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="Warsylthe" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="6" Name="Illuminor Szeras" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Illuminor Szeras" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110" />
-      </Models>
-    </Unit>
+    <ArmyListDataEntry Id="6" Name="Illuminor Szeras" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Illuminor Szeras" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="110" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="7" Name="Orikan the Diviner" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Orikan the Diviner" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="120">
+    <ArmyListDataEntry Id="7" Name="Orikan the Diviner" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Orikan the Diviner" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="Phase	shifter" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="8" Name="Anrakyr the Traveller" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Anrakyr the Traveller" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160">
+    <ArmyListDataEntry Id="8" Name="Anrakyr the Traveller" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Anrakyr the Traveller" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="160">
           <DefaultEquipment>
             <Equipment Id="1" Name="Warscythe" IsDefault="1" />
             <Equipment Id="2" Name="Tachyon	arrow" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="9" Name="Trazyn the Ininite" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Trazyn the Ininite" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="130" />
-      </Models>
-    </Unit>
+    <ArmyListDataEntry Id="9" Name="Trazyn the Ininite" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Trazyn the Ininite" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="130" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="10" Name="Catacomb Command Barge" ForceOrgSlot="0" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Catacomb Command Barge" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160">
+    <ArmyListDataEntry Id="10" Name="Catacomb Command Barge" ForceOrgSlot="0" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Catacomb Command Barge" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="160">
           <DefaultEquipment>
             <Equipment Id="17" Name="Gauss cannon" IsDefault="1">
               <ReplacementOptions>
@@ -179,8 +179,8 @@
             </Equipment>
             <Equipment Id="19" Name="Quantum	shielding" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-        <Model Id="2" Name="Overlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Overlord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="1" Name="Staff of light" GroupName="CataLordWep" IsDefault="1">
               <ReplacementOptions>
@@ -204,35 +204,35 @@
             <Equipment Id="15" Name="The Nightmare Shroud" Limit="1" MutualId="3" Cost="35" />
             <Equipment Id="16" Name="The Orb of Eternity" Limit="1" MutualId="3" Cost="40" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
-    <Unit Id="11" Name="Warriors" ForceOrgSlot="1" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Necron Warrior" Minimum="10" Maximum="20" IncrementCost="13" BaseCost="130">
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+    <ArmyListDataEntry Id="11" Name="Warriors" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Necron Warrior" Minimum="10" Maximum="20" CostPerModel="13" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="1" Name="Gauss Flayers" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Ghost Ark" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="105">
+        <ArmyListData Id="87" Name="Ghost Ark" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="105">
           <DefaultEquipment>
             <Equipment Id="88" Name="Two gauss flayer	arrays" IsDefault="1" />
             <Equipment Id="89" Name="Quantum shielding" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-        <Model Id="88" Name="Night Scythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+        </ArmyListData>
+        <ArmyListData Id="88" Name="Night Scythe" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="90" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="12" Name="Immortals" ForceOrgSlot="1" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Immortal" Minimum="5" Maximum="10" IncrementCost="17" BaseCost="85">
+    <ArmyListDataEntry Id="12" Name="Immortals" ForceOrgSlot="1" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Immortal" Minimum="5" Maximum="10" CostPerModel="17" BaseCost="85">
           <DefaultEquipment>
             <Equipment Id="1" Name="Gauss blaster" GroupName="ImmWep" IsDefault="1">
               <ReplacementOptions>
@@ -240,20 +240,20 @@
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Night Scythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+        <ArmyListData Id="87" Name="Night Scythe" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="13" Name="Lychguard" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Lychguard" Minimum="5" Maximum="10" IncrementCost="25" BaseCost="125">
+    <ArmyListDataEntry Id="13" Name="Lychguard" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Lychguard" Minimum="5" Maximum="10" CostPerModel="25" BaseCost="125">
           <DefaultEquipment>
             <Equipment Id="1" Name="Warscythe" IsDefault="1" GroupName="LycWep">
               <ReplacementOptions>
@@ -261,47 +261,47 @@
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Night Scythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+        <ArmyListData Id="87" Name="Night Scythe" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="14" Name="Deathmarks" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Deathmark" Minimum="5" Maximum="10" IncrementCost="18" BaseCost="90">
+    <ArmyListDataEntry Id="14" Name="Deathmarks" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Deathmark" Minimum="5" Maximum="10" CostPerModel="18" BaseCost="90">
           <DefaultEquipment>
             <Equipment Id="1" Name="Synaptic	disintegrator" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Night Scythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+        <ArmyListData Id="87" Name="Night Scythe" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="15" Name="Flayed Ones" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Flayed One" Minimum="5" Maximum="10" IncrementCost="13" BaseCost="65">
+    <ArmyListDataEntry Id="15" Name="Flayed Ones" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Flayed One" Minimum="5" Maximum="10" CostPerModel="13" BaseCost="65">
           <DefaultEquipment>
             <Equipment Id="1" Name="Two	flayer claws" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="16" Name="Triarch	Praetorians" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Triarch	Praetorian" Minimum="5" Maximum="10" IncrementCost="28" BaseCost="140">
+    <ArmyListDataEntry Id="16" Name="Triarch	Praetorians" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Triarch	Praetorian" Minimum="5" Maximum="10" CostPerModel="28" BaseCost="140">
           <DefaultEquipment>
             <Equipment Id="1" Name="Rod	of covenant" IsDefault="1" GroupName="TriGuns">
               <ReplacementOptions>
@@ -310,20 +310,20 @@
             </Equipment>
 
           </DefaultEquipment>
-        </Model>
-      </Models>
+        </ArmyListData>
+      </ArmyListDatas>
       <DedicatedTransports>
-        <Model Id="87" Name="Night Scythe" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="130">
+        <ArmyListData Id="87" Name="Night Scythe" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
+        </ArmyListData>
       </DedicatedTransports>
-    </Unit>
+    </ArmyListDataEntry>
 
-    <Unit Id="17" Name="Triarch	Stalkers" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Triarch	Stalker" Minimum="1" Maximum="3" IncrementCost="125" BaseCost="125">
+    <ArmyListDataEntry Id="17" Name="Triarch	Stalkers" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Triarch	Stalker" Minimum="1" Maximum="3" CostPerModel="125" BaseCost="125">
           <DefaultEquipment>
             <Equipment Id="1" Name="Heat ray" IsDefault="1" GroupName="TriarchGuns">
               <ReplacementOptions>
@@ -333,54 +333,54 @@
             </Equipment>
             <Equipment Id="4" Name="Quantum	shielding" Cost="0" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="18" Name="C'Tan Shard of the Nightbringer" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="C'Tan Shard of the Nightbringer" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="240">
+    <ArmyListDataEntry Id="18" Name="C'Tan Shard of the Nightbringer" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="C'Tan Shard of the Nightbringer" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="240">
           <DefaultEquipment>
             <Equipment Id="4" Name="Powers of the C'Tan" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="19" Name="C'Tan Shard of the Deceiver" ForceOrgSlot="2" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="C'Tan Shard of the Deceiver" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="240">
+    <ArmyListDataEntry Id="19" Name="C'Tan Shard of the Deceiver" ForceOrgSlot="2" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="C'Tan Shard of the Deceiver" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="240">
           <DefaultEquipment>
             <Equipment Id="4" Name="Powers of the C'Tan" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="20" Name="Night Scythe" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Night Scythe" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="130">
+    <ArmyListDataEntry Id="20" Name="Night Scythe" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Night Scythe" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="130">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="21" Name="Ghost Ark" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Ghost Ark" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="105">
+    <ArmyListDataEntry Id="21" Name="Ghost Ark" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Ghost Ark" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="105">
           <DefaultEquipment>
             <Equipment Id="88" Name="Two gauss flayer	arrays" IsDefault="1" />
             <Equipment Id="89" Name="Quantum shielding" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="22" Name="Canoptek Wraiths" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Canoptek Wraiths" Minimum="3" Maximum="6" IncrementCost="40" BaseCost="120">
+    <ArmyListDataEntry Id="22" Name="Canoptek Wraiths" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Canoptek Wraiths" Minimum="3" Maximum="6" CostPerModel="40" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="No Upgrade" GroupName="WraithUpgrade" IsDefault="1">
               <ReplacementOptions>
@@ -390,19 +390,19 @@
               </ReplacementOptions>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="23" Name="Canoptek Scarabs" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Canoptek Scarabs" Minimum="3" Maximum="9" IncrementCost="20" BaseCost="60" />
-      </Models>
-    </Unit>
+    <ArmyListDataEntry Id="23" Name="Canoptek Scarabs" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Canoptek Scarabs" Minimum="3" Maximum="9" CostPerModel="20" BaseCost="60" />
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="24" Name="Tomb Blades" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Tomb Blade" Minimum="3" Maximum="10" IncrementCost="18" BaseCost="54">
+    <ArmyListDataEntry Id="24" Name="Tomb Blades" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Tomb Blade" Minimum="3" Maximum="10" CostPerModel="18" BaseCost="54">
           <DefaultEquipment>
             <Equipment Id="1" Name="Twin-linked gauss blaster" Cost="3" GroupName="TBWep" IsDefault="1">
               <ReplacementOptions>
@@ -420,13 +420,13 @@
           <Upgrades>
             <Equipment Id="7" Name="Shieldvanes" Cost="2" Type="1" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="25" Name="Destroyers" ForceOrgSlot="3" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Destroyer" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="40">
+    <ArmyListDataEntry Id="25" Name="Destroyers" ForceOrgSlot="3" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Destroyer" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="40">
           <DefaultEquipment>
             <Equipment Id="1" IsDefault="1" GroupName="DestroyUpgrade">
               <GivenEquipment>
@@ -439,63 +439,63 @@
               </GivenEquipment>
             </Equipment>
           </DefaultEquipment>
-        </Model>
-        <Model Id="2" Name="Destroyer" Minimum="0" Maximum="5" IncrementCost="40" BaseCost="0">
+        </ArmyListData>
+        <ArmyListData Id="2" Name="Destroyer" Minimum="0" Maximum="5" CostPerModel="40" BaseCost="0">
           <DefaultEquipment>
             <Equipment Id="5" Name="Gauss cannon" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="26" Name="Heavy Destroyers" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Heavy Destroyer" Minimum="1" Maximum="3" IncrementCost="50" BaseCost="50">
+    <ArmyListDataEntry Id="26" Name="Heavy Destroyers" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Heavy Destroyer" Minimum="1" Maximum="3" CostPerModel="50" BaseCost="50">
           <DefaultEquipment>
             <Equipment Id="1" Name="Heavy gauss cannon" IsDefault="1" GroupName="DestroyUpgrade" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="27" Name="Canoptek Spyders" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Canoptek Spyder" Minimum="1" Maximum="3" IncrementCost="50" BaseCost="50">
+    <ArmyListDataEntry Id="27" Name="Canoptek Spyders" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Canoptek Spyder" Minimum="1" Maximum="3" CostPerModel="50" BaseCost="50">
           <Upgrades>
             <Equipment Id="1" Name="Fabricator claw	array" Cost="5" Type="1" />
             <Equipment Id="1" Name="Gloom	prism" Cost="10" Type="1"  />
             <Equipment Id="1" Name="Twin-linked	particle beamer" Cost="5" Type="10" />
           </Upgrades>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="28" Name="Doom Scythe" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Doom Scythe" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160">
+    <ArmyListDataEntry Id="28" Name="Doom Scythe" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Doom Scythe" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="160">
           <DefaultEquipment>
             <Equipment Id="89" Name="Twin-linked tesla destructor" IsDefault="1" />
             <Equipment Id="90" Name="Death ray" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="29" Name="Monolith" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Monolith" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="200">
+    <ArmyListDataEntry Id="29" Name="Monolith" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Monolith" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="200">
           <DefaultEquipment>
             <Equipment Id="1" Name="Four gauss flux arcs" IsDefault="1" />
             <Equipment Id="2" Name="Particle whip" IsDefault="1" />
             <Equipment Id="3" Name="Eternity gate" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="30" Name="Annihilation Barge" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Annihilation Barge" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="120">
+    <ArmyListDataEntry Id="30" Name="Annihilation Barge" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Annihilation Barge" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="120">
           <DefaultEquipment>
             <Equipment Id="1" Name="Gauss cannon" IsDefault="1" GroupName="annbarUpgrade">
               <ReplacementOptions>
@@ -505,63 +505,63 @@
             <Equipment Id="2" Name="Twin-linked tesla destructor" IsDefault="1" />
             <Equipment Id="3" Name="Quantum shielding" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="31" Name="Doomsday Ark" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="87" Name="Doomsday Ark" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="170">
+    <ArmyListDataEntry Id="31" Name="Doomsday Ark" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="87" Name="Doomsday Ark" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="170">
           <DefaultEquipment>
             <Equipment Id="2" Name="Doomsday cannon" IsDefault="1" />
             <Equipment Id="1" Name="Two gauss flayer arrays" IsDefault="1" />
             <Equipment Id="3" Name="Quantum shielding" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="32" Name="Transcendent C'Tan" ForceOrgSlot="4" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Transcendent C'Tan" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="250">
+    <ArmyListDataEntry Id="32" Name="Transcendent C'Tan" ForceOrgSlot="4" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Transcendent C'Tan" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="250">
           <DefaultEquipment>
             <Equipment Id="4" Name="Powers of the C'Tan" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="33" Name="Tesseract	Vault" ForceOrgSlot="5" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Tesseract	Vault" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="550">
+    <ArmyListDataEntry Id="33" Name="Tesseract	Vault" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Tesseract	Vault" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="550">
           <DefaultEquipment>
             <Equipment Id="4" Name="Powers of the C'Tan" IsDefault="1" />
             <Equipment Id="5" Name="Four tesla spheres" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="34" Name="Obelisk" ForceOrgSlot="5" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Obelisk" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="330">
+    <ArmyListDataEntry Id="34" Name="Obelisk" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Obelisk" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="330">
           <DefaultEquipment>
             <Equipment Id="4" Name="Four tesla spheres" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
 
-    <Unit Id="35" Name="Imotekh the Stormlord" ForceOrgSlot="5" CountsTowardForceOrg="1">
-      <Models>
-        <Model Id="1" Name="Imotekh the Stormlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="190">
+    <ArmyListDataEntry Id="35" Name="Imotekh the Stormlord" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <ArmyListDatas>
+        <ArmyListData Id="1" Name="Imotekh the Stormlord" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="190">
           <DefaultEquipment>
             <Equipment Id="1" Name="Gauntlets of fire" IsDefault="1" />
             <Equipment Id="2" Name="Phase shifter" IsDefault="1" />
             <Equipment Id="3" Name="Staff of the Destroyer" IsDefault="1" />
           </DefaultEquipment>
-        </Model>
-      </Models>
-    </Unit>
-  </Units>
+        </ArmyListData>
+      </ArmyListDatas>
+    </ArmyListDataEntry>
+  </ArmyListDataEntrys>
 </Army>

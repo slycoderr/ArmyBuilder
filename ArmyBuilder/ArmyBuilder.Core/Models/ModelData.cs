@@ -15,7 +15,7 @@ namespace ArmyBuilder.Core.Models
         public Guid Id { get; set; }
 
         [XmlIgnore]
-        public Model Model { get; private set; }
+        public Unit Unit { get; private set; }
 
         [XmlAttribute]
         public int ModelId { get; set; }
@@ -35,24 +35,24 @@ namespace ArmyBuilder.Core.Models
         {
         }
 
-        public ModelData(Model m)
+        public ModelData(Unit m)
         {
             Id = Guid.NewGuid();
-            Model = m;
-            Equipment = new List<EquipmentData>(Model.DefaultEquipment.Select(e => new EquipmentData(e, Id.ToString(), null)));
-            Upgrades = new List<EquipmentData>(Model.Upgrades.Select(e => new EquipmentData(e, null)));
+            Unit = m;
+            Equipment = new List<EquipmentData>(Unit.DefaultEquipment.Select(e => new EquipmentData(e, Id.ToString(), null)));
+            Upgrades = new List<EquipmentData>(Unit.Upgrades.Select(e => new EquipmentData(e, null)));
             ModelId = m.Id;
 
             Equipment.ForEach(SubscribeToEquipment);
             Upgrades.ForEach(SubscribeToEquipment);
         }
 
-        public void SetData(Model m)
+        public void SetData(Unit m)
         {
-            Model = m;
+            Unit = m;
 
-            Equipment.ForEach(e => e.SetData(Model.DefaultEquipment.Single(i => i.Id == e.EquipmentId), null));
-            Upgrades.ForEach(e => e.SetData(Model.Upgrades.Single(i => i.Id == e.EquipmentId), null));
+            Equipment.ForEach(e => e.SetData(Unit.DefaultEquipment.Single(i => i.Id == e.EquipmentId), null));
+            Upgrades.ForEach(e => e.SetData(Unit.Upgrades.Single(i => i.Id == e.EquipmentId), null));
             CalculatePointsCost();
 
             Equipment.ForEach(SubscribeToEquipment);

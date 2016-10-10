@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ArmyBuilder.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class MainViewModelTests
     {
         [TestMethod]
         public void TestArmyDataLoad()
@@ -23,7 +23,10 @@ namespace ArmyBuilder.Test
             }
 
             Assert.AreEqual(1, mv.Armies.Count);
-            Assert.AreEqual(1, mv.Armies.FirstOrDefault().Units.Count);
+            Assert.AreEqual(2, mv.Armies.FirstOrDefault().UnitEntries.Count);
+            Assert.AreEqual(1, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().DedicatedTransports.Count);
+            Assert.AreEqual(1, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().Units.Count);
+            Assert.AreEqual(3, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().Units.FirstOrDefault().DefaultEquipment.Count);
         }
     }
 }

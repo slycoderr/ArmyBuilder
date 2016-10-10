@@ -11,7 +11,7 @@
 
     <Grid>
         <dx:DXTabControl>
-            <dx:DXTabItem Header="Unit Composition">
+            <dx:DXTabItem Header="UnitEntry Composition">
                 <ListView x:Name="ModelGroupListView" Grid.Row="1" SelectionMode="Single" ItemsSource="{Binding Models}" ItemTemplate="{StaticResource ModelGroupDataTemplate}" Grid.ColumnSpan="{Binding DedicatedTransports, Converter={StaticResource ModelsColumnSizeConverter}}" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
             </dx:DXTabItem>
             <dx:DXTabItem Header="Dedicated Transports">

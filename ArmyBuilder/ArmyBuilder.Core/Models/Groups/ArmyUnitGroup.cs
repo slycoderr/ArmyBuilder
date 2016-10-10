@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace ArmyBuilder.Core.Models.Groups
 {
-    public class ArmyUnitGroup : ObservableCollection<Unit>
+    public class ArmyUnitGroup : ObservableCollection<UnitEntry>
     {
         public ForceOrgSlot ForceOrgId { get; set; }
 
-        public ArmyUnitGroup(List<Unit> items) : base(items.OrderBy(u=>u.Name))
+        public ArmyUnitGroup(List<UnitEntry> items) : base(items.OrderBy(u=>u.Name))
         {
             ForceOrgId = items.First().ForceOrgSlot;
         }

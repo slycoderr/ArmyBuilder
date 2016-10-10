@@ -93,7 +93,7 @@
         <dxg:GridControl Visibility="{Binding CurrentArmyListViewModel, TargetNullValue=Collapsed, FallbackValue=Visible, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" x:Name="UnitListView" Grid.Row="2" Grid.Column="1" SelectedItem="{Binding CurrentArmyListViewModel.SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding CurrentArmyListViewModel.Units, Mode=OneWay}" SelectionMode="Row">
             <dxg:GridControl.Columns>
                 <dxg:GridColumn FieldName="PointsTotal" />
-                <dxg:GridColumn FieldName="Unit.Name" />
+                <dxg:GridColumn FieldName="UnitEntry.Name" />
                 <dxg:GridColumn FieldName="Column" />
             </dxg:GridControl.Columns>
             <dxg:GridControl.View>
@@ -105,7 +105,7 @@
             <views1:UnitEditor x:Name="UnitEditor" Visibility="{Binding Mode=OneWay, TargetNullValue=Collapsed, FallbackValue=Visible, UpdateSourceTrigger=PropertyChanged}" DataContext="{Binding SelectedUnit, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" Margin="5,10,10,0" />
         </Grid>
         
-        <Expander Visibility="{Binding CurrentArmyListViewModel, TargetNullValue=Collapsed, FallbackValue=Visible, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="1" Grid.Column="1" Header="Add Unit" >
+        <Expander Visibility="{Binding CurrentArmyListViewModel, TargetNullValue=Collapsed, FallbackValue=Visible, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" Grid.Row="1" Grid.Column="1" Header="Add UnitEntry" >
             <dxn:NavBarControl AllowSelectItem="False" DataContext="{Binding CurrentArmyListViewModel}">
                 <dxn:NavBarGroup IsExpanded="False" Header="HQ" ItemsSource="{Binding HqUnits}" ItemTemplate="{StaticResource AddUnitNavBarItemTemplate}"/>
                 <dxn:NavBarGroup IsExpanded="False" Header="Troop" ItemsSource="{Binding TroopUnits}" ItemTemplate="{StaticResource AddUnitNavBarItemTemplate}"/>

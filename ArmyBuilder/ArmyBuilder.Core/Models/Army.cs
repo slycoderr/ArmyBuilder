@@ -26,7 +26,7 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public string Name { get; set; }
         [XmlArray]
-        public List<Unit> Units { get; set; }
+        public List<UnitEntry> UnitEntries { get; set; }
 
         [XmlArray]
         public List<Detachment> Detachments { get; set; }
