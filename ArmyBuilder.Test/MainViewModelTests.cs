@@ -16,19 +16,25 @@ namespace ArmyBuilder.Test
         {
             MainViewModel mv = new MainViewModel();
             string path = "C:\\Users\\adkerti\\OneDrive\\DarkEldar.xml";
+            int checkUnitEntryId = 1;
+            int checkArmyId = 4;
+            int numUnits = 1;
+            int numTransports = 1;
+            int numDefaultEquip = 3;
+            int numUpgrades = 10;
 
             using (var stream = new FileStream(path, FileMode.Open))
             {
                 mv.LoadArmyData(stream);
             }
 
-            Assert.AreEqual(1, mv.Armies.Count);
-            Assert.AreEqual(2, mv.Armies.First().UnitEntries.Count);
-            Assert.AreEqual(1, mv.Armies.First().UnitEntries.First().DedicatedTransports.Count);
-            Assert.AreEqual(true, mv.Armies.First().UnitEntries.First().DedicatedTransports.First().DoeNotCountsTowardForceOrg);
-            Assert.AreEqual(false, mv.Armies.First().UnitEntries.First().DoeNotCountsTowardForceOrg);
-            Assert.AreEqual(1, mv.Armies.First().UnitEntries.First().Units.Count);
-            Assert.AreEqual(3, mv.Armies.First().UnitEntries.First().Units.First().DefaultEquipment.Count);
+            var army = mv.Armies.First(a => a.Id == checkArmyId); //make sure the army is there
+            var entry = army.UnitEntries.First(u => u.Id == checkUnitEntryId);
+
+            Assert.AreEqual(numTransports, entry.DedicatedTransports?.Count ?? 0);
+            Assert.AreEqual(numUnits, entry.Units.Count);
+            Assert.AreEqual(numDefaultEquip, entry.Units.First().DefaultEquipment.Count);
+            Assert.AreEqual(numUpgrades, entry.Units.First().Upgrades.Count);
         }
     }
 }
