@@ -17,7 +17,7 @@ namespace ArmyBuilder.Core.Models
         public ForceOrgSlot ForceOrgSlot { get; set; }
 
         [XmlAttribute]
-        public bool CountsTowardForceOrg { get; set; }
+        public bool DoeNotCountsTowardForceOrg { get; set; }
 
         [XmlArray]
         public List<Unit> Units { get; set; }
@@ -45,9 +45,9 @@ namespace ArmyBuilder.Core.Models
                 ForceOrgSlot = defaultEntry.ForceOrgSlot;
             }
 
-            if (!CountsTowardForceOrg)
+            if (!DoeNotCountsTowardForceOrg) //if its the default
             {
-                CountsTowardForceOrg = defaultEntry.CountsTowardForceOrg;
+                DoeNotCountsTowardForceOrg = defaultEntry.DoeNotCountsTowardForceOrg;
             }
 
             if (Units == null || !Units.Any())

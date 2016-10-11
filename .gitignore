@@ -4,6 +4,8 @@
 
 /ArmyBuilder/ArmyBuilder.Core/bin
 /ArmyBuilder/ArmyBuilder.Core/obj
+/ArmyBuilder/ArmyBuilder.Test/bin
+/ArmyBuilder/ArmyBuilder.Test/obj
 /ArmyBuilder/ArmyBuilder.Windows/bin/
 /ArmyBuilder/ArmyBuilder.Windows/obj/
 /ArmyBuilder/ArmyBuilder.UWP/bin/

@@ -23,10 +23,12 @@ namespace ArmyBuilder.Test
             }
 
             Assert.AreEqual(1, mv.Armies.Count);
-            Assert.AreEqual(2, mv.Armies.FirstOrDefault().UnitEntries.Count);
-            Assert.AreEqual(1, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().DedicatedTransports.Count);
-            Assert.AreEqual(1, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().Units.Count);
-            Assert.AreEqual(3, mv.Armies.FirstOrDefault().UnitEntries.FirstOrDefault().Units.FirstOrDefault().DefaultEquipment.Count);
+            Assert.AreEqual(2, mv.Armies.First().UnitEntries.Count);
+            Assert.AreEqual(1, mv.Armies.First().UnitEntries.First().DedicatedTransports.Count);
+            Assert.AreEqual(true, mv.Armies.First().UnitEntries.First().DedicatedTransports.First().DoeNotCountsTowardForceOrg);
+            Assert.AreEqual(false, mv.Armies.First().UnitEntries.First().DoeNotCountsTowardForceOrg);
+            Assert.AreEqual(1, mv.Armies.First().UnitEntries.First().Units.Count);
+            Assert.AreEqual(3, mv.Armies.First().UnitEntries.First().Units.First().DefaultEquipment.Count);
         }
     }
 }
