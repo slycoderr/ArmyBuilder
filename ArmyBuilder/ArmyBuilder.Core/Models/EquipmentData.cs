@@ -62,7 +62,7 @@ namespace ArmyBuilder.Core.Models
         public EquipmentData(Equipment e, string id, EquipmentData parent)
         {
             Equipment = e;
-            GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
+            //GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
             ParentEquipment = parent;
             TempLimit = Equipment.Limit;
 

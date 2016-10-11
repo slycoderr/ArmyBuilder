@@ -60,7 +60,9 @@ namespace ArmyBuilder.Core.ViewModels
                     var dsArmy = new XmlSerializer(typeof(Army));
                     var army = (Army) dsArmy.Deserialize(reader);
 
-                        Armies.Add(army); 
+                    Armies.Add(army); 
+
+                    army.Configure();
                     
                     ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
                 }

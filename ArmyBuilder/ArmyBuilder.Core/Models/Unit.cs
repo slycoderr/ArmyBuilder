@@ -29,5 +29,8 @@ namespace ArmyBuilder.Core.Models
 
         [XmlArray]
         public List<Equipment> Upgrades { get; set; }
+
+        [XmlIgnore]
+        public UnitEntry UnitEntry { get; set; }
     }
 }

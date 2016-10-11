@@ -25,9 +25,40 @@ namespace ArmyBuilder.Core.Models
         [XmlArray]
         public List<UnitEntry> DedicatedTransports { get; set; }
 
+        [XmlIgnore]
+        public Army Army { get; set; }
+
         public override string ToString()
         {
             return Name + " (" + Units.Sum(u => u.BaseCost) + " points)";
+        }
+
+        public void PopulateDefaultPoperties(UnitEntry defaultEntry)
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                Name = defaultEntry.Name;
+            }
+
+            if (ForceOrgSlot == 0)
+            {
+                ForceOrgSlot = defaultEntry.ForceOrgSlot;
+            }
+
+            if (!CountsTowardForceOrg)
+            {
+                CountsTowardForceOrg = defaultEntry.CountsTowardForceOrg;
+            }
+
+            if (Units == null || !Units.Any())
+            {
+                Units = defaultEntry.Units;
+            }
+
+            if (DedicatedTransports == null || !DedicatedTransports.Any())
+            {
+                DedicatedTransports = defaultEntry.DedicatedTransports;
+            }
         }
     }
 }
