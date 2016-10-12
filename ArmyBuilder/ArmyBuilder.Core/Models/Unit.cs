@@ -32,5 +32,10 @@ namespace ArmyBuilder.Core.Models
 
         [XmlIgnore]
         public UnitEntry UnitEntry { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

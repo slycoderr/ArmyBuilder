@@ -4,9 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views"
-             mc:Ignorable="d"
+             mc:Ignorable="d" d:DataContext="{Binding SelectedEquipmentDefinition, Source={StaticResource MainViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Id"/>
+        <TextBlock Grid.Row="1" Text="Name"/>
+        <TextBlock Grid.Row="2" Text="Cost"/>
+        <TextBlock Grid.Row="3" Text="IsDefault"/>
+        <TextBlock Grid.Row="4" Text="IsGiven"/>
+        <TextBlock Grid.Row="5" Text="MutualId"/>
+        <TextBlock Grid.Row="6" Text="MaxPerArmy"/>
+        <TextBlock Grid.Row="7" Text="Limit"/>
+        <TextBlock Grid.Row="8" Text="PerX"/>
+        <TextBlock Grid.Row="9" Text="Type"/>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Id}"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Cost}"/>
+        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsDefault}"/>
+        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsGiven}"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding MutualId}"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding MaxPerArmy}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Limit}"/>
+        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding PerX}"/>
+        <ComboBox Grid.Row="9" Grid.Column="1" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedIndex="{Binding Type}"/>
     </Grid>
 </UserControl>

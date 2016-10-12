@@ -21,7 +21,7 @@ namespace ArmyBuilder.Core.Models
         public int Limit { get; set; }
 
         [XmlAttribute]
-        public int NaxPerArmy { get; set; }
+        public int MaxPerArmy { get; set; }
 
         [XmlAttribute]
         public bool IsDefault { get; set; }
@@ -70,9 +70,9 @@ namespace ArmyBuilder.Core.Models
                 Limit = defaultEntry.Limit;
             }
 
-            if (NaxPerArmy == 0)
+            if (MaxPerArmy == 0)
             {
-                NaxPerArmy = defaultEntry.NaxPerArmy;
+                MaxPerArmy = defaultEntry.MaxPerArmy;
             }
 
             if (!IsDefault)

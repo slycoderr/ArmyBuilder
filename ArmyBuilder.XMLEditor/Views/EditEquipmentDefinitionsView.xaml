@@ -20,6 +20,6 @@
             <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0"/>
         </StackPanel>
 
-        <local:EditEquipmentView x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>
+        <local:EditEquipmentView Grid.Row="2" x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>
     </Grid>
 </UserControl>

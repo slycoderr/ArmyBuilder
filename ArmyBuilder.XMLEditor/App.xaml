@@ -2,6 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +18,18 @@
         </ResourceDictionary.MergedDictionaries>
             
         <local:MainViewModel x:Key="MainViewModel"/>
+
+            <ObjectDataProvider x:Key="ForceOrgCollection" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="core:ForceOrgSlot"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <ObjectDataProvider x:Key="EquipmentTypeCollection" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="core:EquipmentType"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
