@@ -16,8 +16,8 @@
         <ListView x:Name="EquipmentDefinitionsListView" ItemsSource="{Binding SelectedArmy.EquipmentDefinitions}" SelectedItem="{Binding SelectedEquipmentDefinition}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Content="Add"/>
-            <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0"/>
+            <Button x:Name="AddButton" Content="Add" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
+            <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
         </StackPanel>
 
         <local:EditEquipmentView Grid.Row="2" x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>

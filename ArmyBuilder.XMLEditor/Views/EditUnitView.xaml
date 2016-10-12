@@ -16,8 +16,8 @@
         <ListView x:Name="UnitEntriesListView" ItemsSource="{Binding SelectedUnitEntry.Units}" SelectedItem="{Binding SelectedUnit}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Content="Add"/>
-            <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0"/>
+            <Button x:Name="AddButton" Content="Add" Command="{Binding AddUnitCommand}"/>
+            <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0" Command="{Binding RemoveUnitCommand}"/>
         </StackPanel>
 
         <!-- Controls for editing a Unit -->
@@ -34,8 +34,6 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
-            <!--Id="1" Name="Archon" ForceOrg="0"-->
 
             <TextBlock Text="Id"/>
             <TextBlock Grid.Row="1" Text="Name"/>

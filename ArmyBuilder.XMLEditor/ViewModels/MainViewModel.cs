@@ -4,7 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml;
+using System.Xml.Serialization;
 using ArmyBuilder.Core.Models;
+using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 
 namespace ArmyBuilder.XMLEditor
@@ -18,6 +22,15 @@ namespace ArmyBuilder.XMLEditor
         public Equipment SelectedDefaultEquipment { get; set; }
         public Equipment SelectedUpgrade { get; set; }
 
+        public RelayCommand CreateArmyCommand => new RelayCommand(CreateArmy);
+        public RelayCommand SaveXMLCommand => new RelayCommand(SaveXML);
+        public RelayCommand AddUnitEntryCommand => new RelayCommand(AddUnitEntry);
+        public RelayCommand RemoveUnitEntryCommand => new RelayCommand(RemoveUnitEntry);
+        public RelayCommand AddUnitCommand => new RelayCommand(AddUnit);
+        public RelayCommand RemoveUnitCommand => new RelayCommand(RemoveUnit);
+        public RelayCommand AddEquipmentToDefinitionsCommand => new RelayCommand(AddEquipmentToDefinitions);
+        public RelayCommand RemoveEquipmentToDefinitionsCommand => new RelayCommand(RemoveEquipmentToDefinitions);
+
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
         public MainViewModel()
@@ -28,39 +41,118 @@ namespace ArmyBuilder.XMLEditor
             }
         }
 
+        private void CreateArmy()
+        {
+            SelectedArmy = new Army();
+            SaveXML();
+        }
+
         private void SaveXML()
         {
+            if (SelectedArmy != null)
+            {
+                SelectedArmy.Version++;
 
+                try
+                {
+                    using (var s = new FileStream($"{SelectedArmy.Name} - {SelectedArmy.Version}.xml", FileMode.Truncate))
+                    {
+                        using (var reader = XmlWriter.Create(s))
+                        {
+                            var dsArmy = new XmlSerializer(typeof(Army));
+                            dsArmy.Serialize(reader, SelectedArmy);
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error - Failed to save XML", ex.Message);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedArmy)+" is null.");
+            }
         }
 
         private void AddUnitEntry()
         {
-            
+            if (SelectedArmy != null)
+            {
+                SelectedArmy.UnitEntries.Add(new UnitEntry());
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedArmy) + " is null.");
+            }
         }
 
         private void RemoveUnitEntry()
         {
+            if (SelectedUnitEntry != null)
+            {
+                SelectedArmy.UnitEntries.Remove(SelectedUnitEntry);
+            }
 
+            else
+            {
+                MessageBox.Show(nameof(SelectedUnitEntry) + " is null.");
+            }
         }
 
         private void AddUnit()
         {
+            if (SelectedUnitEntry != null)
+            {
+                SelectedUnitEntry.Units.Add(new Unit());
+            }
 
+            else
+            {
+                MessageBox.Show(nameof(SelectedUnitEntry) + " is null.");
+            }
         }
 
         private void RemoveUnit()
         {
+            if (SelectedUnit != null)
+            {
+                SelectedUnitEntry.Units.Remove(SelectedUnit);
+            }
 
+            else
+            {
+                MessageBox.Show(nameof(SelectedUnit) + " is null.");
+            }
         }
 
         private void AddEquipmentToDefinitions()
         {
+            if (SelectedArmy != null)
+            {
+                SelectedArmy.EquipmentDefinitions.Add(new Equipment());
+            }
 
+            else
+            {
+                MessageBox.Show(nameof(SelectedArmy) + " is null.");
+            }
         }
 
         private void RemoveEquipmentToDefinitions()
         {
+            if (SelectedEquipmentDefinition != null)
+            {
+                SelectedArmy.EquipmentDefinitions.Remove(SelectedEquipmentDefinition);
+            }
 
+            else
+            {
+                MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
         }
     }
 }

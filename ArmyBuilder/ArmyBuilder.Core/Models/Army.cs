@@ -17,7 +17,7 @@ namespace ArmyBuilder.Core.Models
         /// Version of the XML Army data schema.
         /// </summary>
         [XmlAttribute]
-        public int SchemaVersion { get; set; }
+        public string SchemaVersion { get; set; }
         /// <summary>
         /// Version of this army's data file.
         /// </summary>

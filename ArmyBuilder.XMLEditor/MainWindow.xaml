@@ -19,15 +19,37 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-        <views:EditEquipmentDefinitionsView/>
+            <views:EditEquipmentDefinitionsView Grid.ColumnSpan="9"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Id"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Name"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedArmy.Id}"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedArmy.Name}"/>
+   
+        </Grid>
+
+
         <views:EditUnitEntryView Grid.Column="1"/>
         <views:EditUnitView Grid.Column="2"/>
         <views:EditUnitEquipmentView Grid.Column="3"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <ComboBox Width="200" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}"/>
-            <Button Content="Save ArmyData" Margin="10,0,0,0"/>
+            <Button Content="Create Army" Margin="10,0,0,0" Command="{Binding CreateArmyCommand}"/>
+            <Button Content="Save ArmyData" Margin="10,0,0,0" Command="{Binding SaveXMLCommand}"/>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>
