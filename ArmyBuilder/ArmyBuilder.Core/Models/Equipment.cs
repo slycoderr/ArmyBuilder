@@ -105,5 +105,10 @@ namespace ArmyBuilder.Core.Models
                 equip.PopulateDefaultPoperties(Unit.UnitEntry.Army.EquipmentDefinitions.First(e => e.Id == equip.Id));
             }
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

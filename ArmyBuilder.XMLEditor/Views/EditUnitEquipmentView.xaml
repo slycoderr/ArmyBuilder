@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ArmyBuilder.XMLEditor.Views.EditUnitEquipmentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views"
+             mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TreeView x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" />
+        <TreeView Grid.Row="1" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"/>
+        
+        <local:EditEquipmentView Grid.Row="0" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
+        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
+    </Grid>
+</UserControl>
