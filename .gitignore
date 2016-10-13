@@ -14,3 +14,6 @@
 /ArmyBuilder/Slycoder/obj
 /packages
 /.vs
+bin/
+obj/
+*.suo

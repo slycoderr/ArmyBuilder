@@ -8,18 +8,23 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <TreeView x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" />
-        <TreeView Grid.Row="1" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"/>
         
-        <local:EditEquipmentView Grid.Row="0" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
-        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
+        <TextBlock Text="Default Equipment"/>
+        <TextBlock Grid.Row="2" Text="Upgrades"/>
+
+        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" DisplayMemberPath="Name"/>
+        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}" DisplayMemberPath="Name"/>
+        
+        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
+        <local:EditEquipmentView Grid.Row="3" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
     </Grid>
 </UserControl>
