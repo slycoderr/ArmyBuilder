@@ -39,7 +39,7 @@ namespace ArmyBuilder.XMLEditor
 
         public MainViewModel()
         {
-            using (var darkEldarStream = new FileStream("C:\\Users\\slyco\\OneDrive\\DarkEldar.xml", FileMode.Open))
+            using (var darkEldarStream = new FileStream("C:\\Users\\adkerti\\OneDrive\\DarkEldar.xml", FileMode.Open))
             {
                 ArmyBuilderCore.LoadArmyData(darkEldarStream);
             }

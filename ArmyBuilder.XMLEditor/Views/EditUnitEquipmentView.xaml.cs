@@ -20,6 +20,8 @@ namespace ArmyBuilder.XMLEditor.Views
 {
     public partial class EditUnitEquipmentView
     {
+        private TreeViewItem selectedDefault;
+
         public EditUnitEquipmentView()
         {
             InitializeComponent();
@@ -43,17 +45,134 @@ namespace ArmyBuilder.XMLEditor.Views
 
             foreach (var e in equip.ReplacementOptions)
             {
-                TreeViewItem i = new TreeViewItem { Header = e.Name };
+                TreeViewItem i = new TreeViewItem { Header = e.Name, DataContext = e};
                 item.Items.Add(i);
                 TraverseEquipment(i, e);
             }
 
             foreach (var e in equip.GivenEquipment)
             {
-                TreeViewItem i = new TreeViewItem { Header = e.Name };
+                TreeViewItem i = new TreeViewItem { Header = e.Name, DataContext = e};
                 item.Items.Add(i);
                 TraverseEquipment(i, e);
             }
+        }
+
+        public TreeViewItem GetSelectedTreeViewItemParent(TreeViewItem item)
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(item);
+            while (!(parent is TreeViewItem || parent is TreeView))
+            {
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+
+            return parent as TreeViewItem;
+        }
+
+        private void RemoveDefaultEquipmentItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var selectedTreeItem = DefaultEquipmentTreeView.SelectedItem as TreeViewItem;
+            var selectedEquipment = selectedTreeItem.DataContext as Equipment;
+            var parentTreeItem = GetSelectedTreeViewItemParent(selectedTreeItem);
+
+            if (parentTreeItem != null)
+            {
+                var parentEquipment = parentTreeItem.DataContext as Equipment; //got the parent
+
+                //determine whether its a replacement option or given by comparing the reference
+                foreach (var equip in parentEquipment.ReplacementOptions)
+                {
+                    if (ReferenceEquals(equip, selectedEquipment))
+                    {
+                        parentEquipment.ReplacementOptions.Remove(selectedEquipment);
+                        parentTreeItem.Items.Remove(selectedTreeItem);
+                        break;
+                    }
+                }
+
+                foreach (var equip in parentEquipment.GivenEquipment)
+                {
+                    if (ReferenceEquals(equip, selectedEquipment))
+                    {
+                        parentEquipment.GivenEquipment.Remove(selectedEquipment);
+                        parentTreeItem.Items.Remove(selectedTreeItem);
+                        break;
+                    }
+                }
+            }
+
+            else
+            {//remove that whole node
+                ((MainViewModel) FindResource("MainViewModel")).SelectedUnit.DefaultEquipment.Remove(DefaultEquipmentTreeView.SelectedItem as Equipment);
+                DefaultEquipmentTreeView.Items.Remove(selectedTreeItem);
+                selectedEquipment.ReplacementOptions = new List<Equipment>();
+                selectedEquipment.GivenEquipment = new List<Equipment>();
+            }
+        }
+
+        private void RemoveUpgradeItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var selectedTreeItem = UpgradesTreeView.SelectedItem as TreeViewItem;
+            var selectedEquipment = selectedTreeItem.DataContext as Equipment;
+            var parentTreeItem = GetSelectedTreeViewItemParent(selectedTreeItem);
+
+            if (parentTreeItem != null)
+            {
+                var parentEquipment = parentTreeItem.DataContext as Equipment; //got the parent
+
+                //determine whether its a replacement option or given by comparing the reference
+                foreach (var equip in parentEquipment.ReplacementOptions)
+                {
+                    if (ReferenceEquals(equip, selectedEquipment))
+                    {
+                        parentEquipment.ReplacementOptions.Remove(selectedEquipment);
+                        parentTreeItem.Items.Remove(selectedTreeItem);
+                        break;
+                    }
+                }
+
+                foreach (var equip in parentEquipment.GivenEquipment)
+                {
+                    if (ReferenceEquals(equip, selectedEquipment))
+                    {
+                        parentEquipment.GivenEquipment.Remove(selectedEquipment);
+                        parentTreeItem.Items.Remove(selectedTreeItem);
+                        break;
+                    }
+                }
+            }
+
+            else
+            {//remove that whole node
+                ((MainViewModel)FindResource("MainViewModel")).SelectedUnit.Upgrades.Remove(UpgradesTreeView.SelectedItem as Equipment);
+                UpgradesTreeView.Items.Remove(selectedTreeItem);
+                selectedEquipment.ReplacementOptions = new List<Equipment>();
+                selectedEquipment.GivenEquipment = new List<Equipment>();
+            }
+        }
+
+        private void OnPreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TreeViewItem treeViewItem = VisualUpwardSearch(e.OriginalSource as DependencyObject);
+
+            if (treeViewItem != null)
+            {
+                treeViewItem.Focus();
+                //e.Handled = true;
+                selectedDefault = treeViewItem;
+            }
+
+
+            
+        }
+        
+
+        static TreeViewItem VisualUpwardSearch(DependencyObject source)
+        {
+            while (source != null && !(source is TreeViewItem))
+                source = VisualTreeHelper.GetParent(source);
+
+            return source as TreeViewItem;
         }
     }
 }
