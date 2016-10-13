@@ -30,6 +30,10 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand RemoveUnitCommand => new RelayCommand(RemoveUnit);
         public RelayCommand AddEquipmentToDefinitionsCommand => new RelayCommand(AddEquipmentToDefinitions);
         public RelayCommand RemoveEquipmentToDefinitionsCommand => new RelayCommand(RemoveEquipmentToDefinitions);
+        public RelayCommand AddToDefaultEquipmentReplacements => new RelayCommand(AddEquipmentToDefaultEquipReplacements);
+        public RelayCommand AddToDefaultEquipmentGiven => new RelayCommand(AddEquipmentToDefaultEquipGiven);
+        public RelayCommand AddToUpgradesReplacements => new RelayCommand(AddEquipmentToUpgradeEquipReplacements);
+        public RelayCommand AddToUpgradesGiven => new RelayCommand(AddEquipmentToUpgradeEquipGiven);
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
@@ -147,6 +151,70 @@ namespace ArmyBuilder.XMLEditor
             if (SelectedEquipmentDefinition != null)
             {
                 SelectedArmy.EquipmentDefinitions.Remove(SelectedEquipmentDefinition);
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
+        }
+
+        /// <summary>
+        /// Adds the selected equipment definition to the DefaultEquipment sections selected item's ReplacementOptions
+        /// </summary>
+        private void AddEquipmentToDefaultEquipReplacements()
+        {
+            if (SelectedEquipmentDefinition != null && SelectedUnit != null)
+            {
+                SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition);
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
+        }
+
+        /// <summary>
+        /// Adds the selected equipment definition to the DefaultEquipment sections selected item's GivenEquipment
+        /// </summary>
+        private void AddEquipmentToDefaultEquipGiven()
+        {
+            if (SelectedEquipmentDefinition != null && SelectedUnit != null)
+            {
+                SelectedDefaultEquipment.GivenEquipment.Add(SelectedEquipmentDefinition);
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
+        }
+
+        /// <summary>
+        /// Adds the selected equipment definition to the Upgrades sections selected item's ReplacementOptions
+        /// </summary>
+        private void AddEquipmentToUpgradeEquipReplacements()
+        {
+            if (SelectedEquipmentDefinition != null && SelectedUnit != null)
+            {
+                SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition);
+            }
+
+            else
+            {
+                MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
+        }
+
+        /// <summary>
+        /// Adds the selected equipment definition to the Upgrades sections selected item's GivenEquipment
+        /// </summary>
+        private void AddEquipmentToUpgradeEquipGiven()
+        {
+            if (SelectedEquipmentDefinition != null && SelectedUnit != null)
+            {
+                SelectedUpgrade.GivenEquipment.Add(SelectedEquipmentDefinition);
             }
 
             else
