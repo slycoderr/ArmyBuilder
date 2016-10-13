@@ -43,7 +43,7 @@ namespace ArmyBuilder.XMLEditor
 
         private void CreateArmy()
         {
-            SelectedArmy = new Army();
+            SelectedArmy = new Army {Id = ArmyBuilderCore.Armies.Max(a => a.Id) + 1};
             SaveXML();
         }
 
@@ -81,7 +81,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.UnitEntries.Add(new UnitEntry());
+                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Max(a => a.Id) + 1 });
             }
 
             else
@@ -107,7 +107,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null)
             {
-                SelectedUnitEntry.Units.Add(new Unit());
+                SelectedUnitEntry.Units.Add(new Unit { Id = SelectedUnitEntry.Units.Max(a => a.Id) + 1 });
             }
 
             else
@@ -133,7 +133,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.EquipmentDefinitions.Add(new Equipment());
+                SelectedArmy.EquipmentDefinitions.Add(new Equipment { Id = SelectedArmy.EquipmentDefinitions.Max(a => a.Id) + 1 });
             }
 
             else
