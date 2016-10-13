@@ -14,4 +14,6 @@
 /ArmyBuilder/Slycoder/obj
 /packages
 /.vs
-/ArmyBuilder.XMLEditor/bin/Debug
+bin/
+obj/
+*.suo

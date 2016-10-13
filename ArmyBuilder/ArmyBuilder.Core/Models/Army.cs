@@ -5,14 +5,18 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Slycoder.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
     [XmlRoot("Army", Namespace = "")]
-    public class Army
+    public class Army : BindableBase
     {
         [XmlAttribute]
-        public int Id { get; set; }
+        public int Id { get { return id; } set { SetValue(ref id, value); } }
+
+        [XmlAttribute]
+        public string Name { get { return name; } set { SetValue(ref name, value); } }
         /// <summary>
         /// Version of the XML Army data schema.
         /// </summary>
@@ -23,8 +27,8 @@ namespace ArmyBuilder.Core.Models
         /// </summary>
         [XmlAttribute]
         public int Version { get; set; }
-        [XmlAttribute]
-        public string Name { get; set; }
+
+
         [XmlArray]
         public List<UnitEntry> UnitEntries { get; set; }
 
@@ -42,6 +46,8 @@ namespace ArmyBuilder.Core.Models
         }
 
         public static IReadOnlyList<string> Armies = new List<string> {"Space Wolves", "Necrons", "Skitarii", "Imperial Knights", "Dark Eldar"};
+        private int id;
+        private string name;
 
         /// <summary>
         /// Populates all navigation properties and overrides default values; 

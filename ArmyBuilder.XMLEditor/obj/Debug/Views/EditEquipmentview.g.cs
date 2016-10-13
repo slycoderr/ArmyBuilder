@@ -52,7 +52,7 @@ namespace ArmyBuilder.XMLEditor.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ArmyBuilder.XMLEditor;V1.0.0.17;component/views/editequipmentview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ArmyBuilder.XMLEditor;V1.0.0.25;component/views/editequipmentview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Views\EditEquipmentview.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

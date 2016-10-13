@@ -1,20 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
+using Slycoder.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
     [XmlRoot("UnitEntry", Namespace = "")]
-    public class UnitEntry
+    public class UnitEntry : BindableBase
     {
-        [XmlAttribute]
-        public string Name { get; set; }
+        private int id;
+        private string name;
+        private ForceOrgSlot forceOrgSlot;
 
         [XmlAttribute]
-        public int Id { get; set; }
+        public int Id { get { return id; } set { SetValue(ref id, value); } }
 
         [XmlAttribute]
-        public ForceOrgSlot ForceOrgSlot { get; set; }
+        public string Name { get { return name; } set { SetValue(ref name, value); } }
+
+        [XmlAttribute]
+        public ForceOrgSlot ForceOrgSlot { get { return forceOrgSlot; } set { SetValue(ref forceOrgSlot, value); } }
 
         [XmlAttribute]
         public bool DoeNotCountsTowardForceOrg { get; set; }

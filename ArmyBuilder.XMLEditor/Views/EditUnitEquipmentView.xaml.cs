@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ArmyBuilder.Core.Models;
 
 namespace ArmyBuilder.XMLEditor.Views
 {
@@ -28,7 +29,31 @@ namespace ArmyBuilder.XMLEditor.Views
 
         private void BuildEquipmentTree(TreeView tree)
         {
-            
+            var collection = tree.Items.Cast<Equipment>().ToList();
+
+            foreach (var item in collection)
+            {
+                TraverseEquipment(tree.ItemContainerGenerator.ContainerFromItem(item) as TreeViewItem, item);
+            }
+        }
+
+        private void TraverseEquipment(TreeViewItem item, Equipment equip)
+        {
+            item.IsExpanded = true;
+
+            foreach (var e in equip.ReplacementOptions)
+            {
+                TreeViewItem i = new TreeViewItem { Header = e.Name };
+                item.Items.Add(i);
+                TraverseEquipment(i, e);
+            }
+
+            foreach (var e in equip.GivenEquipment)
+            {
+                TreeViewItem i = new TreeViewItem { Header = e.Name };
+                item.Items.Add(i);
+                TraverseEquipment(i, e);
+            }
         }
     }
 }
