@@ -84,7 +84,7 @@ namespace ArmyBuilder.XMLEditor.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ArmyBuilder.XMLEditor;V1.0.0.17;component/views/editequipmentdefinitionsview.xam" +
+            System.Uri resourceLocater = new System.Uri("/ArmyBuilder.XMLEditor;V1.0.0.25;component/views/editequipmentdefinitionsview.xam" +
                     "l", System.UriKind.Relative);
             
             #line 1 "..\..\..\Views\EditEquipmentDefinitionsView.xaml"
