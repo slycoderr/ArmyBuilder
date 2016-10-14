@@ -240,5 +240,19 @@ namespace ArmyBuilder.XMLEditor
                 SelectedUnitEntry.DedicatedTransports.Remove(transport);
             }
         }
+
+        private void UpdateAllDedicatedTransports()
+        {
+            if (SelectedArmy != null)
+            {
+                foreach (var entry in SelectedArmy.UnitEntries)
+                {
+                    foreach (var tr in entry.DedicatedTransports.ToList())
+                    {
+                        
+                    }   
+                }
+            }
+        }
     }
 }
