@@ -11,45 +11,42 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
         
-        <Grid>
+        <Grid Grid.Row="0" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
-            <views:EditEquipmentDefinitionsView Grid.ColumnSpan="9"/>
+            <views:EditEquipmentDefinitionsView Grid.Row="0" Margin="0,25,0,0"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Id"/>
-            <TextBlock Grid.Row="2" Grid.Column="0" Text="Name"/>
-
-            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedArmy.Id}"/>
-            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedArmy.Name}"/>
+            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
+            <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
    
         </Grid>
 
+        <TextBlock Text="Equipment Definitions" HorizontalAlignment="Center" FontSize="22" VerticalAlignment="Top" Margin="0"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Unit Entries" HorizontalAlignment="Center" FontSize="22"/>
+        <TextBlock Text="Units" HorizontalAlignment="Center" FontSize="22" Grid.Column="2"/>
 
-        <views:EditUnitEntryView Grid.Column="1"/>
-        <views:EditUnitView Grid.Column="2"/>
-        <views:EditUnitEquipmentView Grid.Column="3"/>
+        <views:EditUnitEntryView Grid.Column="1" Grid.RowSpan="2" Margin="0,25,0,0"/>
+        <views:EditUnitView Grid.Column="2" Grid.RowSpan="2" Margin="0,25,0,0"/>
+        <views:EditUnitEquipmentView Grid.Column="3" Grid.RowSpan="2"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <ComboBox Width="200" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}"/>
-            <Button Content="Create Army" Margin="10,0,0,0" Command="{Binding CreateArmyCommand}"/>
-            <Button Content="Save ArmyData" Margin="10,0,0,0" Command="{Binding SaveXMLCommand}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}"/>
+            <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
+            <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>

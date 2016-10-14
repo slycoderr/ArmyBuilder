@@ -20,8 +20,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Default Equipment"/>
-        <TextBlock Grid.Row="2" Text="Upgrades"/>
+        <TextBlock Text="Default Equipment" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
+        <TextBlock Grid.Row="2" Text="Upgrades" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
 
         <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" DisplayMemberPath="Name" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
             <TreeView.ContextMenu>

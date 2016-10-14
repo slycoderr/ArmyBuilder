@@ -14,17 +14,22 @@
             
         </Grid.RowDefinitions>
 
-        <ListView x:Name="EquipmentDefinitionsListView" ItemsSource="{Binding SelectedArmy.EquipmentDefinitions}" SelectedItem="{Binding SelectedEquipmentDefinition}"/>
+        <ListView x:Name="EquipmentDefinitionsListView"  Margin="5" ItemsSource="{Binding SelectedArmy.EquipmentDefinitions}" SelectedItem="{Binding SelectedEquipmentDefinition}"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Content="Add" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
-            <Button x:Name="RemoveButton" Content="Remove" Margin="10,0,0,0" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
-            <Button Content="To Default - Replacements Tree" Margin="10,0,0,0" Command="{Binding AddToDefaultEquipmentReplacements}"/>
-            <Button Content="To Default - Given Tree" Margin="10,0,0,0" Command="{Binding AddToDefaultEquipmentGiven}"/>
-            <Button Content="To Upgrades - Replacements Tree" Margin="10,0,0,0" Command="{Binding AddToUpgradesReplacements}"/>
-            <Button Content="To Upgrades - Given Tree" Margin="10,0,0,0" Command="{Binding AddToUpgradesGiven}"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Button x:Name="AddButton" Content="Add"  Margin="5" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
+            <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
+            <Button Content="Default - Replacements Tree"  Margin="5" Command="{Binding AddToDefaultEquipmentReplacements}"/>
+            <Button Content="Default - Given Tree"  Margin="5" Command="{Binding AddToDefaultEquipmentGiven}"/>
+            <Button Content="Upgrades - Replacements Tree"  Margin="5" Command="{Binding AddToUpgradesReplacements}"/>
+            <Button Content="Upgrades - Given Tree" Margin="5" Command="{Binding AddToUpgradesGiven}"/>
         </StackPanel>
 
-        <local:EditEquipmentView Grid.Row="2" x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+
+        </StackPanel>
+        
+
+        <local:EditEquipmentView Grid.Row="3" x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>
     </Grid>
 </UserControl>

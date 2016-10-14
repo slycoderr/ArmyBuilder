@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" d:DataContext="{Binding SelectedEquipmentDefinition, Source={StaticResource MainViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -19,31 +20,16 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Id"/>
-        <TextBlock Grid.Row="1" Text="Name"/>
-        <TextBlock Grid.Row="2" Text="Cost"/>
-        <TextBlock Grid.Row="3" Text="IsDefault"/>
-        <TextBlock Grid.Row="4" Text="IsGiven"/>
-        <TextBlock Grid.Row="5" Text="MutualId"/>
-        <TextBlock Grid.Row="6" Text="MaxPerArmy"/>
-        <TextBlock Grid.Row="7" Text="Limit"/>
-        <TextBlock Grid.Row="8" Text="PerX"/>
-        <TextBlock Grid.Row="9" Text="Type"/>
-
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Id}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Cost}"/>
-        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsDefault}"/>
-        <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding IsGiven}"/>
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding MutualId}"/>
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding MaxPerArmy}"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Limit}"/>
-        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding PerX}"/>
-        <ComboBox Grid.Row="9" Grid.Column="1" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedIndex="{Binding Type}"/>
+        <TextBox Grid.Row="0"  Margin="5" Text="{Binding Id}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
+        <TextBox Grid.Row="1"  Margin="5" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name" />
+        <TextBox Grid.Row="2"  Margin="5" Text="{Binding Cost}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Cost" />
+        <CheckBox Grid.Row="3"  Margin="5" IsChecked="{Binding IsDefault}" Content="Is Default" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
+        <CheckBox Grid.Row="4"  Margin="5" IsChecked="{Binding IsGiven}" Content="Is Given" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
+        <TextBox Grid.Row="5"  Margin="5" Text="{Binding MutualId}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Mutual Id" />
+        <TextBox Grid.Row="6"  Margin="5" Text="{Binding MaxPerArmy}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Max Per Army" />
+        <TextBox Grid.Row="7"  Margin="5" Text="{Binding Limit}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Limit" />
+        <TextBox Grid.Row="8"  Margin="5" Text="{Binding PerX}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="PerX" />
+        <ComboBox Grid.Row="9"  Margin="5" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedIndex="{Binding Type}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Type" />
     </Grid>
 </UserControl>
