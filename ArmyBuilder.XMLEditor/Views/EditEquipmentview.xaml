@@ -30,6 +30,6 @@
         <TextBox Grid.Row="6"  Margin="5" Text="{Binding MaxPerArmy}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Max Per Army" />
         <TextBox Grid.Row="7"  Margin="5" Text="{Binding Limit}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Limit" />
         <TextBox Grid.Row="8"  Margin="5" Text="{Binding PerX}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="PerX" />
-        <ComboBox Grid.Row="9"  Margin="5" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedIndex="{Binding Type}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Type" />
+        <ComboBox Grid.Row="9"  Margin="5" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedItem="{Binding Type}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Type" />
     </Grid>
 </UserControl>

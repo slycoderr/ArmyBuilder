@@ -36,7 +36,7 @@
 
             <TextBox Grid.Row="0" Margin="5" Text="{Binding Id}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id"/>
             <TextBox Grid.Row="1" Margin="5" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
-            <ComboBox Grid.Row="2" Margin="5" ItemsSource="{Binding Source={StaticResource ForceOrgCollection}}" SelectedIndex="{Binding ForceOrgSlot}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Force Org Slot"/>
+            <ComboBox Grid.Row="2" Margin="5" ItemsSource="{Binding Source={StaticResource ForceOrgCollection}}" SelectedItem="{Binding ForceOrgSlot}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Force Org Slot"/>
             <CheckBox Grid.Row="3" Margin="5" IsChecked="{Binding DoeNotCountsTowardForceOrg}" Content="doesnt use force org"/>
 
             <TextBlock Grid.Row="4" Text="Dedicated Transports" HorizontalAlignment="Center"/>
