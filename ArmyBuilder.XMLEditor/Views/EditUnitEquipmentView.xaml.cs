@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
@@ -105,8 +106,8 @@ namespace ArmyBuilder.XMLEditor.Views
             {//remove that whole node
                 ((MainViewModel) FindResource("MainViewModel")).SelectedUnit.DefaultEquipment.Remove(DefaultEquipmentTreeView.SelectedItem as Equipment);
                 DefaultEquipmentTreeView.Items.Remove(selectedTreeItem);
-                selectedEquipment.ReplacementOptions = new List<Equipment>();
-                selectedEquipment.GivenEquipment = new List<Equipment>();
+                selectedEquipment.ReplacementOptions = new ObservableCollection<Equipment>();
+                selectedEquipment.GivenEquipment = new ObservableCollection<Equipment>();
             }
         }
 
@@ -146,8 +147,8 @@ namespace ArmyBuilder.XMLEditor.Views
             {//remove that whole node
                 ((MainViewModel)FindResource("MainViewModel")).SelectedUnit.Upgrades.Remove(UpgradesTreeView.SelectedItem as Equipment);
                 UpgradesTreeView.Items.Remove(selectedTreeItem);
-                selectedEquipment.ReplacementOptions = new List<Equipment>();
-                selectedEquipment.GivenEquipment = new List<Equipment>();
+                selectedEquipment.ReplacementOptions = new ObservableCollection<Equipment>();
+                selectedEquipment.GivenEquipment = new ObservableCollection<Equipment>();
             }
         }
 

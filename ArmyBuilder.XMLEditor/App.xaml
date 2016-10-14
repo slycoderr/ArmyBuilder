@@ -30,6 +30,10 @@
                     <x:Type TypeName="core:EquipmentType"/>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
+
+            <Style TargetType="ListView">
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

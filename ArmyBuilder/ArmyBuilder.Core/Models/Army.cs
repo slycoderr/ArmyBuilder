@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -30,13 +31,13 @@ namespace ArmyBuilder.Core.Models
 
 
         [XmlArray]
-        public List<UnitEntry> UnitEntries { get; set; }
+        public ObservableCollection<UnitEntry> UnitEntries { get; set; }
 
         [XmlArray]
-        public List<Detachment> Detachments { get; set; }
+        public ObservableCollection<Detachment> Detachments { get; set; }
 
         [XmlArray]
-        public List<Equipment> EquipmentDefinitions { get; set; }
+        public ObservableCollection<Equipment> EquipmentDefinitions { get; set; }
 
         public Army() { }
 

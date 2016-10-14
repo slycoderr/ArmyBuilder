@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
 using Slycoder.MVVM;
@@ -57,10 +58,10 @@ namespace ArmyBuilder.Core.Models
         //public string GroupName { get; set; }
 
         [XmlArray]
-        public List<Equipment> ReplacementOptions { get; set; }
+        public ObservableCollection<Equipment> ReplacementOptions { get; set; }
 
         [XmlArray]
-        public List<Equipment> GivenEquipment { get; set; }
+        public ObservableCollection<Equipment> GivenEquipment { get; set; }
 
         [XmlIgnore]
         public Unit Unit { get; set; }

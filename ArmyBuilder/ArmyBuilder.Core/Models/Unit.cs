@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 using Slycoder.MVVM;
 
@@ -33,10 +34,10 @@ namespace ArmyBuilder.Core.Models
         public int BaseCost { get { return baseCost; } set { SetValue(ref baseCost, value); } }
 
         [XmlArray]
-        public List<Equipment> DefaultEquipment { get; set; }
+        public ObservableCollection<Equipment> DefaultEquipment { get; set; }
 
         [XmlArray]
-        public List<Equipment> Upgrades { get; set; }
+        public ObservableCollection<Equipment> Upgrades { get; set; }
 
         [XmlIgnore]
         public UnitEntry UnitEntry { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
 using Slycoder.MVVM;
@@ -25,10 +26,10 @@ namespace ArmyBuilder.Core.Models
         public bool DoeNotCountsTowardForceOrg { get; set; }
 
         [XmlArray]
-        public List<Unit> Units { get; set; }
+        public ObservableCollection<Unit> Units { get; set; }
 
         [XmlArray]
-        public List<UnitEntry> DedicatedTransports { get; set; }
+        public ObservableCollection<UnitEntry> DedicatedTransports { get; set; }
 
         [XmlIgnore]
         public Army Army { get; set; }

@@ -34,12 +34,14 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand AddToDefaultEquipmentGiven => new RelayCommand(AddEquipmentToDefaultEquipGiven);
         public RelayCommand AddToUpgradesReplacements => new RelayCommand(AddEquipmentToUpgradeEquipReplacements);
         public RelayCommand AddToUpgradesGiven => new RelayCommand(AddEquipmentToUpgradeEquipGiven);
+        public RelayCommand<UnitEntry> AddDedicatedTransportCommand => new RelayCommand<UnitEntry>(AddDedicatedTransport);
+        public RelayCommand<UnitEntry> RemoveDedicatedTransportCommand => new RelayCommand<UnitEntry>(RemoveDedicatedTransport);
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
         public MainViewModel()
         {
-            using (var darkEldarStream = new FileStream("C:\\Users\\slyco\\OneDrive\\DarkEldar.xml", FileMode.Open))
+            using (var darkEldarStream = new FileStream("C:\\Users\\adkerti\\OneDrive\\DarkEldar.xml", FileMode.Open))
             {
                 ArmyBuilderCore.LoadArmyData(darkEldarStream);
             }
@@ -220,6 +222,22 @@ namespace ArmyBuilder.XMLEditor
             else
             {
                 MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
+            }
+        }
+
+        private void AddDedicatedTransport(UnitEntry newTransport)
+        {
+            if (SelectedUnitEntry != null && newTransport != null)
+            {
+                SelectedUnitEntry.DedicatedTransports.Add(newTransport);
+            }
+        }
+
+        private void RemoveDedicatedTransport(UnitEntry transport)
+        {
+            if (SelectedUnitEntry != null && transport != null)
+            {
+                SelectedUnitEntry.DedicatedTransports.Remove(transport);
             }
         }
     }
