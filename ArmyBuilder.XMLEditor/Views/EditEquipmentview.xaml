@@ -21,7 +21,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="0"  Margin="5" Text="{Binding Id}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
+        <TextBox Grid.Row="0"  IsReadOnly="True"  Margin="5" Text="{Binding Id}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
         <TextBox Grid.Row="1"  Margin="5" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name" />
         <TextBox Grid.Row="2"  Margin="5" Text="{Binding Cost}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Cost" />
         <CheckBox Grid.Row="3"  Margin="5" IsChecked="{Binding IsDefault}" Content="Is Default" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />

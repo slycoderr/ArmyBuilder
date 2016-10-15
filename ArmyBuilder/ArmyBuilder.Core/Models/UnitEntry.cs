@@ -26,17 +26,17 @@ namespace ArmyBuilder.Core.Models
         public bool DoeNotCountsTowardForceOrg { get; set; }
 
         [XmlArray]
-        public ObservableCollection<Unit> Units { get; set; }
+        public ObservableCollection<Unit> Units { get; set; } = new ObservableCollection<Unit>();
 
         [XmlArray]
-        public ObservableCollection<UnitEntry> DedicatedTransports { get; set; }
+        public ObservableCollection<Unit> DedicatedTransports { get; set; } = new ObservableCollection<Unit>();
 
         [XmlIgnore]
         public Army Army { get; set; }
 
         public override string ToString()
         {
-            return Name + " (" + Units.Sum(u => u.BaseCost) + " points)";
+            return Name;
         }
 
         public void PopulateDefaultPoperties(UnitEntry defaultEntry)

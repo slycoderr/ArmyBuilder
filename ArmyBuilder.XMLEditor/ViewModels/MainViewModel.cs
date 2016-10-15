@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -10,17 +11,29 @@ using System.Xml.Serialization;
 using ArmyBuilder.Core.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
+using Slycoder.MVVM;
 
 namespace ArmyBuilder.XMLEditor
 {
-    public class MainViewModel
+    public class MainViewModel : BindableBase
     {
-        public Army SelectedArmy { get; set; }
-        public Equipment SelectedEquipmentDefinition { get; set; }
-        public UnitEntry SelectedUnitEntry { get; set; }
-        public Unit SelectedUnit { get; set; }
-        public Equipment SelectedDefaultEquipment { get; set; }
-        public Equipment SelectedUpgrade { get; set; }
+        private Army selectedArmy;
+        private Equipment selectedEquipmentDefinition;
+        private UnitEntry selectedUnitEntry;
+        private Unit selectedUnit;
+        private Equipment selectedDefaultEquipment;
+        private Equipment selectedUpgrade;
+        public Army SelectedArmy { get { return selectedArmy; } set { SetValue(ref selectedArmy, value); } }
+
+        public Equipment SelectedEquipmentDefinition { get { return selectedEquipmentDefinition; } set { SetValue(ref selectedEquipmentDefinition, value); } }
+
+        public UnitEntry SelectedUnitEntry { get { return selectedUnitEntry; } set { SetValue(ref selectedUnitEntry, value); } }
+
+        public Unit SelectedUnit { get { return selectedUnit; } set { SetValue(ref selectedUnit, value); } }
+
+        public Equipment SelectedDefaultEquipment { get { return selectedDefaultEquipment; } set { SetValue(ref selectedDefaultEquipment, value); } }
+
+        public Equipment SelectedUpgrade { get { return selectedUpgrade; } set { SetValue(ref selectedUpgrade, value); } }
 
         public RelayCommand CreateArmyCommand => new RelayCommand(CreateArmy);
         public RelayCommand SaveXMLCommand => new RelayCommand(SaveXML);
@@ -41,15 +54,17 @@ namespace ArmyBuilder.XMLEditor
 
         public MainViewModel()
         {
-            using (var darkEldarStream = new FileStream("C:\\Users\\adkerti\\OneDrive\\DarkEldar.xml", FileMode.Open))
-            {
-                ArmyBuilderCore.LoadArmyData(darkEldarStream);
-            }
+            var files = Directory.EnumerateFiles("DataFiles/").Where(f => f.ToLower().Contains(".xml")).ToList();
+            var streams = files.Select(f => new FileStream(f, FileMode.Open)).ToList();
+
+            ArmyBuilderCore.LoadArmyData(streams.ToArray());
+            streams.ForEach(s=>s.Dispose());
         }
 
         private void CreateArmy()
         {
-            SelectedArmy = new Army {Id = ArmyBuilderCore.Armies.Max(a => a.Id) + 1};
+            ArmyBuilderCore.Armies.Add(new Army {Id = ArmyBuilderCore.Armies.Count > 0 ? ArmyBuilderCore.Armies.Max(a => a.Id) + 1 : 1, Name = "New Army"});
+            SelectedArmy = ArmyBuilderCore.Armies.Last();
             SaveXML();
         }
 
@@ -61,7 +76,9 @@ namespace ArmyBuilder.XMLEditor
 
                 try
                 {
-                    using (var s = new FileStream($"{SelectedArmy.Name} - {SelectedArmy.Version}.xml", FileMode.Truncate))
+                    var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "DataFiles", $"{SelectedArmy.Name}.xml");
+
+                    using (var s = new FileStream(path, FileMode.Truncate))
                     {
                         using (var reader = XmlWriter.Create(s))
                         {
@@ -87,7 +104,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Max(a => a.Id) + 1 });
+                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1, Name = "New Entry"});
+                SelectedUnitEntry = SelectedArmy.UnitEntries.Last();
             }
 
             else
@@ -113,7 +131,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null)
             {
-                SelectedUnitEntry.Units.Add(new Unit { Id = SelectedUnitEntry.Units.Max(a => a.Id) + 1 });
+                SelectedUnitEntry.Units.Add(new Unit { Id = SelectedUnitEntry.Units.Count > 0 ? SelectedUnitEntry.Units.Max(a => a.Id) + 1 : 1, Name = "New Unit", UnitEntryId = SelectedUnitEntry.Id});
+                SelectedUnit = SelectedUnitEntry.Units.Last();
             }
 
             else
@@ -139,7 +158,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.EquipmentDefinitions.Add(new Equipment { Id = SelectedArmy.EquipmentDefinitions.Max(a => a.Id) + 1 });
+                SelectedArmy.EquipmentDefinitions.Add(new Equipment { Id = SelectedArmy.EquipmentDefinitions.Count > 0 ? SelectedArmy.EquipmentDefinitions.Max(a => a.Id) + 1 : 1, Name = "New Equipment"});
+                SelectedEquipmentDefinition = SelectedArmy.EquipmentDefinitions.Last();
             }
 
             else
@@ -168,7 +188,15 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedEquipmentDefinition != null && SelectedUnit != null)
             {
-                SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                if (SelectedDefaultEquipment != null)
+                {
+                    SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                }
+
+                else
+                {
+                    SelectedUnit.DefaultEquipment.Add(SelectedEquipmentDefinition);
+                }
             }
 
             else
@@ -184,6 +212,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedEquipmentDefinition != null && SelectedUnit != null)
             {
+                
                 SelectedDefaultEquipment.GivenEquipment.Add(SelectedEquipmentDefinition);
             }
 
@@ -200,7 +229,16 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedEquipmentDefinition != null && SelectedUnit != null)
             {
-                SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                if (SelectedUpgrade != null)
+                {
+
+                    SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                }
+
+                else
+                {
+                    SelectedUnit.Upgrades.Add(SelectedEquipmentDefinition);
+                }
             }
 
             else
@@ -229,7 +267,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null && newTransport != null)
             {
-                SelectedUnitEntry.DedicatedTransports.Add(newTransport);
+                SelectedUnitEntry.DedicatedTransports.Add(newTransport.Units.First());
+                newTransport.Units.First().UnitEntryId = newTransport.Id;
             }
         }
 
@@ -237,7 +276,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null && transport != null)
             {
-                SelectedUnitEntry.DedicatedTransports.Remove(transport);
+                SelectedUnitEntry.DedicatedTransports.Remove(transport.Units.First());
             }
         }
 

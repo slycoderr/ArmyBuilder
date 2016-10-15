@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Army Id="4" Name="Imperial Knights">
+  <Units>
+    <Unit Id="1" Name="Knight Errant" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Knight Errant" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="370">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Heavy stubber" IsDefault="1" GroupName="erranths" >
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Meltagun" Cost="5" GroupName="erranths" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="3" Name="Thermal cannon" IsDefault="1" />
+            <Equipment Id="4" Name="Reaper chainsword" IsDefault="1" GroupName="errantcs">
+              <ReplacementOptions>
+                <Equipment Id="5" Name="Thunderstrike gauntlet" Cost="10" GroupName="errantcs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="6" Name="Ion shield" IsDefault="1" />
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Ironstorm missile pod" Cost="30" Type="1" MutualId="1" />
+            <Equipment Id="8" Name="Twin Icarus autocannon" Cost="35" Type="1" MutualId="1" />
+            <Equipment Id="9" Name="Stormspear rocket pod" Cost="40" Type="1" MutualId="1" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+    
+    <Unit Id="2" Name="Knight Paladin" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Knight Paladin" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="375">
+          <DefaultEquipment>
+            <Equipment Id="10" Name="Heavy stubber" IsDefault="1" />
+            <Equipment Id="1" Name="Heavy stubber" IsDefault="1" GroupName="pallyhs" >
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Meltagun" Cost="5" GroupName="pallyhs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="3" Name="Rapid-fire battle cannon" IsDefault="1" />
+            <Equipment Id="4" Name="Reaper chainsword" IsDefault="1" GroupName="pallycs">
+              <ReplacementOptions>
+                <Equipment Id="5" Name="Thunderstrike gauntlet" Cost="10" GroupName="pallycs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="6" Name="Ion shield" IsDefault="1" />
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Ironstorm missile pod" Cost="30" Type="1" MutualId="1" />
+            <Equipment Id="8" Name="Twin Icarus autocannon" Cost="35" Type="1" MutualId="1" />
+            <Equipment Id="9" Name="Stormspear rocket pod" Cost="40" Type="1" MutualId="1" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="3" Name="Knight Warden" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Knight Warden" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="375">
+          <DefaultEquipment>
+            <Equipment Id="10" Name="Heavy flamer" IsDefault="1" />
+            <Equipment Id="1" Name="Heavy stubber" IsDefault="1" GroupName="wardenhs" >
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Meltagun" Cost="5" GroupName="wardenhs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="3" Name="Avenger gatling cannon" IsDefault="1" />
+            <Equipment Id="4" Name="Reaper chainsword" IsDefault="1" GroupName="wardencs">
+              <ReplacementOptions>
+                <Equipment Id="5" Name="Thunderstrike gauntlet" Cost="10" GroupName="wardencs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="6" Name="Ion shield" IsDefault="1" />
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Ironstorm missile pod" Cost="30" Type="1" MutualId="1" />
+            <Equipment Id="8" Name="Twin Icarus autocannon" Cost="35" Type="1" MutualId="1" />
+            <Equipment Id="9" Name="Stormspear rocket pod" Cost="40" Type="1" MutualId="1" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="4" Name="Knight Gallant" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Knight Gallant" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="325">
+          <DefaultEquipment>
+            <Equipment Id="1" Name="Heavy stubber" IsDefault="1" GroupName="gallanths" >
+              <ReplacementOptions>
+                <Equipment Id="2" Name="Meltagun" Cost="5" GroupName="gallanths" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="5" Name="Thunderstrike gauntlet" Cost="10" />
+            <Equipment Id="4" Name="Reaper chainsword" IsDefault="1"  />
+            <Equipment Id="6" Name="Ion shield" IsDefault="1" />
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="7" Name="Ironstorm missile pod" Cost="30" Type="1" MutualId="1" />
+            <Equipment Id="8" Name="Twin Icarus autocannon" Cost="35" Type="1" MutualId="1" />
+            <Equipment Id="9" Name="Stormspear rocket pod" Cost="40" Type="1" MutualId="1" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+
+    <Unit Id="5" Name="Knight Crusader" ForceOrgSlot="5" CountsTowardForceOrg="1">
+      <Models>
+        <Model Id="1" Name="Knight Crusader" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="425">
+          <DefaultEquipment>
+            <Equipment Id="2" Name="Avenger gatling cannon" IsDefault="1" />
+            <Equipment Id="3" Name="Heavy flamer" IsDefault="1" />
+            <Equipment Id="4" Name="Heavy stubber" IsDefault="1" GroupName="Crusaderhs" >
+              <ReplacementOptions>
+                <Equipment Id="5" Name="Meltagun" Cost="5" GroupName="Crusaderhs" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="6" Name="Thermal cannon" IsDefault="1" GroupName="Crusadertc" >
+              <ReplacementOptions>
+                <Equipment Id="7" Name="Rapid-fire battle cannon" Cost="5" GroupName="Crusadertc" />
+              </ReplacementOptions>
+            </Equipment>
+            <Equipment Id="8" Name="Ion shield" IsDefault="1" />
+          </DefaultEquipment>
+          <Upgrades>
+            <Equipment Id="9" Name="Ironstorm missile pod" Cost="30" Type="1" MutualId="1" />
+            <Equipment Id="10" Name="Twin Icarus autocannon" Cost="35" Type="1" MutualId="1" />
+            <Equipment Id="11" Name="Stormspear rocket pod" Cost="40" Type="1" MutualId="1" />
+          </Upgrades>
+        </Model>
+      </Models>
+    </Unit>
+  </Units>
+</Army>
+  

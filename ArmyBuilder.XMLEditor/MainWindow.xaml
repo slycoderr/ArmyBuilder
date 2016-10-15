@@ -30,7 +30,7 @@
 
             <views:EditEquipmentDefinitionsView Grid.Row="0" Margin="0,25,0,0"/>
 
-            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
+            <TextBox Grid.Row="1" Margin="5" IsReadOnly="True"  Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
             <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
    
         </Grid>

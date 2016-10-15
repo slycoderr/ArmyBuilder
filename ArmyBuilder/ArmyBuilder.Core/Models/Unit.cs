@@ -33,11 +33,17 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public int BaseCost { get { return baseCost; } set { SetValue(ref baseCost, value); } }
 
-        [XmlArray]
-        public ObservableCollection<Equipment> DefaultEquipment { get; set; }
+        /// <summary>
+        /// Needed for loading since transports don't know what unit entry they're from.
+        /// </summary>
+        [XmlAttribute]
+        public int UnitEntryId { get; set; }
 
         [XmlArray]
-        public ObservableCollection<Equipment> Upgrades { get; set; }
+        public ObservableCollection<Equipment> DefaultEquipment { get; set; } = new ObservableCollection<Equipment>();
+
+        [XmlArray]
+        public ObservableCollection<Equipment> Upgrades { get; set; } = new ObservableCollection<Equipment>();
 
         [XmlIgnore]
         public UnitEntry UnitEntry { get; set; }

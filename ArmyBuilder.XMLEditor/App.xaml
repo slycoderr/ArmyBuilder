@@ -34,6 +34,11 @@
             <Style TargetType="ListView">
                 <Setter Property="BorderThickness" Value="0"/>
             </Style>
+            
+            <DataTemplate x:Key="ArmyBuilderGenericModelTemplate">
+                <TextBlock Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+

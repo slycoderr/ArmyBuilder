@@ -31,13 +31,13 @@ namespace ArmyBuilder.Core.Models
 
 
         [XmlArray]
-        public ObservableCollection<UnitEntry> UnitEntries { get; set; }
+        public ObservableCollection<UnitEntry> UnitEntries { get; set; } = new ObservableCollection<UnitEntry>();
 
         [XmlArray]
-        public ObservableCollection<Detachment> Detachments { get; set; }
+        public ObservableCollection<Detachment> Detachments { get; set; } = new ObservableCollection<Detachment>();
 
         [XmlArray]
-        public ObservableCollection<Equipment> EquipmentDefinitions { get; set; }
+        public ObservableCollection<Equipment> EquipmentDefinitions { get; set; } = new ObservableCollection<Equipment>();
 
         public Army() { }
 
@@ -76,29 +76,26 @@ namespace ArmyBuilder.Core.Models
                         equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
                     }
                 }
+            }
 
+            //i have to do this after the fact so that when i set the transports UnitEntry reference, that reference to its Army isn't null.
+            foreach (var unitEntry in UnitEntries)
+            {
                 //populate the dedicated transports
                 foreach (var transport in unitEntry.DedicatedTransports)
                 {
-                    transport.Army = this;
-                    transport.PopulateDefaultPoperties(UnitEntries.First(u=>u.Id == transport.Id));
+                    transport.UnitEntry = UnitEntries.First(u => u.Id == transport.UnitEntryId);
 
-                    //populate unit entries
-                    foreach (var unit in transport.Units)
+                    foreach (var equipment in transport.DefaultEquipment)
                     {
-                        unit.UnitEntry = transport;
+                        equipment.Unit = transport;
+                        equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
+                    }
 
-                        foreach (var equipment in unit.DefaultEquipment)
-                        {
-                            equipment.Unit = unit;
-                            equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
-                        }
-
-                        foreach (var equipment in unit.Upgrades)
-                        {
-                            equipment.Unit = unit;
-                            equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
-                        }
+                    foreach (var equipment in transport.Upgrades)
+                    {
+                        equipment.Unit = transport;
+                        equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
                     }
                 }
             }

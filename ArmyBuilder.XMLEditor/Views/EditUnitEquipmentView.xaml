@@ -23,7 +23,7 @@
         <TextBlock Text="Default Equipment" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
         <TextBlock Grid.Row="2" Text="Upgrades" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
 
-        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" DisplayMemberPath="Name" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
+        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}"  ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
             <TreeView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Name="RemoveDefaultEquipmentItem" Header="Remove" Click="RemoveDefaultEquipmentItem_OnClick"/>
@@ -33,7 +33,7 @@
                 <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedDefaultEquipment, Mode=TwoWay}" />
             </i:Interaction.Behaviors>
         </TreeView>
-        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}" DisplayMemberPath="Name" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
+        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"  ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
             <TreeView.ContextMenu>
                 <ContextMenu>
                     <MenuItem Name="RemoveUpgradeItem" Header="Remove" Click="RemoveUpgradeItem_OnClick"/>
@@ -44,7 +44,7 @@
             </i:Interaction.Behaviors>
         </TreeView>
 
-        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedDefaultEquipment}"/>
-        <local:EditEquipmentView Grid.Row="3" Grid.Column="1" DataContext="{Binding SelectedUpgrade}"/>
+        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
+        <local:EditEquipmentView Grid.Row="3" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
     </Grid>
 </UserControl>

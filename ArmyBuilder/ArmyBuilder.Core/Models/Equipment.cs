@@ -58,10 +58,10 @@ namespace ArmyBuilder.Core.Models
         //public string GroupName { get; set; }
 
         [XmlArray]
-        public ObservableCollection<Equipment> ReplacementOptions { get; set; }
+        public ObservableCollection<Equipment> ReplacementOptions { get; set; } = new ObservableCollection<Equipment>();
 
         [XmlArray]
-        public ObservableCollection<Equipment> GivenEquipment { get; set; }
+        public ObservableCollection<Equipment> GivenEquipment { get; set; } = new ObservableCollection<Equipment>();
 
         [XmlIgnore]
         public Unit Unit { get; set; }
