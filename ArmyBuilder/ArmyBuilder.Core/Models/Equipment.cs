@@ -60,11 +60,17 @@ namespace ArmyBuilder.Core.Models
         [XmlArray]
         public ObservableCollection<Equipment> ReplacementOptions { get; set; } = new ObservableCollection<Equipment>();
 
-        [XmlArray]
-        public ObservableCollection<Equipment> GivenEquipment { get; set; } = new ObservableCollection<Equipment>();
-
         [XmlIgnore]
         public Unit Unit { get; set; }
+
+        public Equipment Clone()
+        {
+            var clone = (Equipment)MemberwiseClone();
+
+            clone.ReplacementOptions = new ObservableCollection<Equipment>();
+
+            return clone;
+        }
 
         public void PopulateDefaultPoperties(Equipment defaultEntry)
         {
@@ -111,11 +117,6 @@ namespace ArmyBuilder.Core.Models
             foreach (var equip in ReplacementOptions)
             {
                 equip.PopulateDefaultPoperties(Unit.UnitEntry.Army.EquipmentDefinitions.First(e=>e.Id == equip.Id));
-            }
-
-            foreach (var equip in GivenEquipment)
-            {
-                equip.PopulateDefaultPoperties(Unit.UnitEntry.Army.EquipmentDefinitions.First(e => e.Id == equip.Id));
             }
         }
 

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
+             xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core" 
+             xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -33,11 +34,53 @@
 
             <Style TargetType="ListView">
                 <Setter Property="BorderThickness" Value="0"/>
+                <Style.Triggers>
+                    <Trigger Property="HasItems"
+                         Value="False">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListView">
+                                    <TextBlock Text="No items..."/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
             
             <DataTemplate x:Key="ArmyBuilderGenericModelTemplate">
                 <TextBlock Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </DataTemplate>
+
+            <HierarchicalDataTemplate x:Key="ArmyBuilderGenericModelTemplate2" >
+
+            </HierarchicalDataTemplate>
+
+            <HierarchicalDataTemplate x:Key="DefaultEquipmentTemplate" DataType="models:Equipment" ItemsSource="{Binding ReplacementOptions}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="X" Command="{Binding RemoveDefaultEquipmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,0"/>
+                       
+                </Grid>
+            </HierarchicalDataTemplate>
+
+            <HierarchicalDataTemplate x:Key="UpgradeEquipmentTemplate" DataType="models:Equipment" ItemsSource="{Binding ReplacementOptions}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="X" Command="{Binding RemoveUpgradeCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                    <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="5,0,0,0"/>
+
+                </Grid>
+            </HierarchicalDataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

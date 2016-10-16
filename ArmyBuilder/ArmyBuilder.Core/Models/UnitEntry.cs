@@ -12,9 +12,16 @@ namespace ArmyBuilder.Core.Models
         private int id;
         private string name;
         private ForceOrgSlot forceOrgSlot;
+        private int maxUnitSize;
 
         [XmlAttribute]
         public int Id { get { return id; } set { SetValue(ref id, value); } }
+
+        /// <summary>
+        /// Used for validating a unit size
+        /// </summary>
+        [XmlAttribute]
+        public int MaxUnitSize { get { return maxUnitSize; } set { SetValue(ref maxUnitSize, value); } }
 
         [XmlAttribute]
         public string Name { get { return name; } set { SetValue(ref name, value); } }

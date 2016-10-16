@@ -5,9 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-             xmlns:xmlEditor="clr-namespace:ArmyBuilder.XMLEditor"
+             xmlns:xmlEditor="clr-namespace:ArmyBuilder.XMLEditor" 
+             xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core"
              mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,22 +28,12 @@
         <TextBlock Text="Default Equipment" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
         <TextBlock Grid.Row="2" Text="Upgrades" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
 
-        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}"  ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
-            <TreeView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Name="RemoveDefaultEquipmentItem" Header="Remove" Click="RemoveDefaultEquipmentItem_OnClick"/>
-                </ContextMenu>
-            </TreeView.ContextMenu>
+        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" ItemTemplate="{StaticResource DefaultEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"><!--PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"-->
             <i:Interaction.Behaviors>
                 <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedDefaultEquipment, Mode=TwoWay}" />
             </i:Interaction.Behaviors>
         </TreeView>
-        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"  ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
-            <TreeView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Name="RemoveUpgradeItem" Header="Remove" Click="RemoveUpgradeItem_OnClick"/>
-                </ContextMenu>
-            </TreeView.ContextMenu>
+        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"  ItemTemplate="{StaticResource UpgradeEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"><!---->
             <i:Interaction.Behaviors>
                 <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedUpgrade, Mode=TwoWay}" />
             </i:Interaction.Behaviors>

@@ -10,25 +10,23 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
             
         </Grid.RowDefinitions>
 
         <ListView x:Name="EquipmentDefinitionsListView"  Margin="5" ItemsSource="{Binding SelectedArmy.EquipmentDefinitions}" SelectedItem="{Binding SelectedEquipmentDefinition}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
-        <StackPanel Grid.Row="1" Orientation="Vertical">
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="AddButton" Content="Add"  Margin="5" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
-            <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
             <Button Content="Default - Replacements Tree"  Margin="5" Command="{Binding AddToDefaultEquipmentReplacements}"/>
-            <Button Content="Default - Given Tree"  Margin="5" Command="{Binding AddToDefaultEquipmentGiven}"/>
-            <Button Content="Upgrades - Replacements Tree"  Margin="5" Command="{Binding AddToUpgradesReplacements}"/>
-            <Button Content="Upgrades - Given Tree" Margin="5" Command="{Binding AddToUpgradesGiven}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-
+            <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
+            <Button Content="Upgrades - Replacements Tree"  Margin="5" Command="{Binding AddToUpgradesReplacements}"/>
         </StackPanel>
-        
+
 
         <local:EditEquipmentView Grid.Row="3" x:Name="SelectedEquipmentView" DataContext="{Binding SelectedEquipmentDefinition}"/>
     </Grid>

@@ -69,7 +69,7 @@ namespace ArmyBuilder.Core.Models
             EquipmentId = e.Id;
 
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, id, this)).ToList();
-            GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, id, this)).ToList();
+            //GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, id, this)).ToList();
             IsTaken = Equipment.IsDefault || ((ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven);
 
             TraverseEquipment(this);
@@ -83,7 +83,7 @@ namespace ArmyBuilder.Core.Models
 
             EquipmentId = e.Id;
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, this)).ToList();
-            GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, this)).ToList();
+            //GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, this)).ToList();
 
             IsTaken = Equipment.IsDefault || ((ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven);
             TraverseEquipment(this);
@@ -96,7 +96,7 @@ namespace ArmyBuilder.Core.Models
             TempLimit = Equipment.Limit;
 
             ReplacementOptions.ForEach(i => i.SetData(Equipment.ReplacementOptions.Single(ii => ii.Id == i.EquipmentId), this));
-            GivenEquipment.ForEach(i => i.SetData(Equipment.GivenEquipment.Single(ii => ii.Id == i.EquipmentId), this));
+            //GivenEquipment.ForEach(i => i.SetData(Equipment.GivenEquipment.Single(ii => ii.Id == i.EquipmentId), this));
             TraverseEquipment(this);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -17,6 +18,8 @@ namespace ArmyBuilder.XMLEditor
 {
     public class MainViewModel : BindableBase
     {
+        public EventHandler OnEquipmentTreeChanged;
+
         private Army selectedArmy;
         private Equipment selectedEquipmentDefinition;
         private UnitEntry selectedUnitEntry;
@@ -44,11 +47,11 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand AddEquipmentToDefinitionsCommand => new RelayCommand(AddEquipmentToDefinitions);
         public RelayCommand RemoveEquipmentToDefinitionsCommand => new RelayCommand(RemoveEquipmentToDefinitions);
         public RelayCommand AddToDefaultEquipmentReplacements => new RelayCommand(AddEquipmentToDefaultEquipReplacements);
-        public RelayCommand AddToDefaultEquipmentGiven => new RelayCommand(AddEquipmentToDefaultEquipGiven);
         public RelayCommand AddToUpgradesReplacements => new RelayCommand(AddEquipmentToUpgradeEquipReplacements);
-        public RelayCommand AddToUpgradesGiven => new RelayCommand(AddEquipmentToUpgradeEquipGiven);
         public RelayCommand<UnitEntry> AddDedicatedTransportCommand => new RelayCommand<UnitEntry>(AddDedicatedTransport);
         public RelayCommand<UnitEntry> RemoveDedicatedTransportCommand => new RelayCommand<UnitEntry>(RemoveDedicatedTransport);
+        public RelayCommand<Equipment> RemoveDefaultEquipmentCommand => new RelayCommand<Equipment>(RemoveEquipmentFromDefaultEquipment);
+        public RelayCommand<Equipment> RemoveUpgradeCommand => new RelayCommand<Equipment>(RemoveEquipmentFromUpgradeEquipment);
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
@@ -106,6 +109,7 @@ namespace ArmyBuilder.XMLEditor
             {
                 SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1, Name = "New Entry"});
                 SelectedUnitEntry = SelectedArmy.UnitEntries.Last();
+                AddUnit();
             }
 
             else
@@ -181,6 +185,11 @@ namespace ArmyBuilder.XMLEditor
             }
         }
 
+        private void AddEQuipmentToCurrentLevel()
+        {
+            
+        }
+
         /// <summary>
         /// Adds the selected equipment definition to the DefaultEquipment sections selected item's ReplacementOptions
         /// </summary>
@@ -190,13 +199,15 @@ namespace ArmyBuilder.XMLEditor
             {
                 if (SelectedDefaultEquipment != null)
                 {
-                    SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                    SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition.Clone());
                 }
 
                 else
                 {
-                    SelectedUnit.DefaultEquipment.Add(SelectedEquipmentDefinition);
+                    SelectedUnit.DefaultEquipment.Add(SelectedEquipmentDefinition.Clone());
                 }
+
+                OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
             }
 
             else
@@ -213,7 +224,8 @@ namespace ArmyBuilder.XMLEditor
             if (SelectedEquipmentDefinition != null && SelectedUnit != null)
             {
                 
-                SelectedDefaultEquipment.GivenEquipment.Add(SelectedEquipmentDefinition);
+                //SelectedDefaultEquipment.GivenEquipment.Add(SelectedEquipmentDefinition.Clone());
+                OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
             }
 
             else
@@ -232,13 +244,15 @@ namespace ArmyBuilder.XMLEditor
                 if (SelectedUpgrade != null)
                 {
 
-                    SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition);
+                    SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition.Clone());
                 }
 
                 else
                 {
-                    SelectedUnit.Upgrades.Add(SelectedEquipmentDefinition);
+                    SelectedUnit.Upgrades.Add(SelectedEquipmentDefinition.Clone());
                 }
+
+                OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
             }
 
             else
@@ -254,7 +268,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedEquipmentDefinition != null && SelectedUnit != null)
             {
-                SelectedUpgrade.GivenEquipment.Add(SelectedEquipmentDefinition);
+                //SelectedUpgrade.GivenEquipment.Add(SelectedEquipmentDefinition.Clone());
+                OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
             }
 
             else
@@ -269,6 +284,78 @@ namespace ArmyBuilder.XMLEditor
             {
                 SelectedUnitEntry.DedicatedTransports.Add(newTransport.Units.First());
                 newTransport.Units.First().UnitEntryId = newTransport.Id;
+                OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        public void RemoveEquipmentFromDefaultEquipment(Equipment equipmentToRemove)
+        {
+            foreach (var e in selectedUnit.DefaultEquipment) //find the parent so i can delete the selected item from its parent list
+            {
+                var res = Find(e, equipmentToRemove);
+
+                if (res != null)
+                {
+                    if (res.Parent != null)
+                    {
+                        res.Parent.ReplacementOptions.Remove(res.EquipmentToDelete);
+                        return;
+                    }
+
+                    else
+                    {
+                        selectedUnit.DefaultEquipment.Remove(res.EquipmentToDelete);
+                        return;
+                    }
+                }
+            }
+        }
+
+        public class SearchResult
+        {
+            public Equipment EquipmentToDelete;
+            public Equipment Parent;
+        }
+
+        public static SearchResult Find(Equipment node, Equipment target)
+        {
+
+            if (node == null)
+                return null;
+
+            if (ReferenceEquals(node, target))
+                return new SearchResult { EquipmentToDelete = node, Parent = null };
+
+            foreach (var child in node.ReplacementOptions)
+            {
+                var found = Find(child, target);
+                if (found != null)
+                    return new SearchResult { EquipmentToDelete = target, Parent = node };
+            }
+
+            return null;
+        }
+
+        public void RemoveEquipmentFromUpgradeEquipment(Equipment equipmentToRemove)
+        {
+            foreach (var e in selectedUnit.Upgrades) //find the parent so i can delete the selected item from its parent list
+            {
+                var res = Find(e, equipmentToRemove);
+
+                if (res != null)
+                {
+                    if (res.Parent != null)
+                    {
+                        res.Parent.ReplacementOptions.Remove(res.EquipmentToDelete);
+                        return;
+                    }
+
+                    else
+                    {
+                        selectedUnit.Upgrades.Remove(res.EquipmentToDelete);
+                        return;
+                    }
+                }
             }
         }
 
