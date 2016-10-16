@@ -17,7 +17,7 @@
         <ListView x:Name="UnitEntriesListView" Margin="5" ItemsSource="{Binding SelectedArmy.UnitEntries}" SelectedItem="{Binding SelectedUnitEntry}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Margin="5" Content="Add" Command="{Binding AddUnitEntryCommand}"/>
+            <Button x:Name="AddButton" Margin="5" Content="Add (F2)" Command="{Binding AddUnitEntryCommand}"/>
             <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveUnitEntryCommand}"/>
         </StackPanel>
         

@@ -52,6 +52,7 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<UnitEntry> RemoveDedicatedTransportCommand => new RelayCommand<UnitEntry>(RemoveDedicatedTransport);
         public RelayCommand<Equipment> RemoveDefaultEquipmentCommand => new RelayCommand<Equipment>(RemoveEquipmentFromDefaultEquipment);
         public RelayCommand<Equipment> RemoveUpgradeCommand => new RelayCommand<Equipment>(RemoveEquipmentFromUpgradeEquipment);
+        public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
@@ -107,7 +108,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1, Name = "New Entry"});
+                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1, Name = "New Entry", Army = selectedArmy});
                 SelectedUnitEntry = SelectedArmy.UnitEntries.Last();
                 AddUnit();
             }
@@ -135,7 +136,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null)
             {
-                SelectedUnitEntry.Units.Add(new Unit { Id = SelectedUnitEntry.Units.Count > 0 ? SelectedUnitEntry.Units.Max(a => a.Id) + 1 : 1, Name = "New Unit", UnitEntryId = SelectedUnitEntry.Id});
+                SelectedUnitEntry.Units.Add(new Unit { Id = SelectedUnitEntry.Units.Count > 0 ? SelectedUnitEntry.Units.Max(a => a.Id) + 1 : 1, Name = "New Unit", UnitEntryId = SelectedUnitEntry.Id, UnitEntry = selectedUnitEntry});
                 SelectedUnit = SelectedUnitEntry.Units.Last();
             }
 
@@ -183,11 +184,6 @@ namespace ArmyBuilder.XMLEditor
             {
                 MessageBox.Show(nameof(SelectedEquipmentDefinition) + " is null.");
             }
-        }
-
-        private void AddEQuipmentToCurrentLevel()
-        {
-            
         }
 
         /// <summary>
@@ -375,7 +371,9 @@ namespace ArmyBuilder.XMLEditor
                 {
                     foreach (var tr in entry.DedicatedTransports.ToList())
                     {
-                        
+                        var id = tr.UnitEntryId;
+                        entry.DedicatedTransports.Remove(tr);
+                        entry.DedicatedTransports.Add(selectedArmy.UnitEntries.First(u=> u.Id == id).Units.First());
                     }   
                 }
             }

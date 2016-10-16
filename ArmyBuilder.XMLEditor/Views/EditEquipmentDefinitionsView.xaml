@@ -18,13 +18,13 @@
         <ListView x:Name="EquipmentDefinitionsListView"  Margin="5" ItemsSource="{Binding SelectedArmy.EquipmentDefinitions}" SelectedItem="{Binding SelectedEquipmentDefinition}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Content="Add"  Margin="5" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
-            <Button Content="Default - Replacements Tree"  Margin="5" Command="{Binding AddToDefaultEquipmentReplacements}"/>
+            <Button x:Name="AddButton" Content="Add (F1)"  Margin="5" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
+            <Button Content="Default - Replacements Tree (F4)"  Margin="5" Command="{Binding AddToDefaultEquipmentReplacements}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveEquipmentToDefinitionsCommand}"/>
-            <Button Content="Upgrades - Replacements Tree"  Margin="5" Command="{Binding AddToUpgradesReplacements}"/>
+            <Button Content="Upgrades - Replacements Tree (F5)"  Margin="5" Command="{Binding AddToUpgradesReplacements}"/>
         </StackPanel>
 
 

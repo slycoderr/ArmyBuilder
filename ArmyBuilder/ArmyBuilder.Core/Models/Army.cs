@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using MoreLinq;
 using Slycoder.MVVM;
 
 namespace ArmyBuilder.Core.Models
@@ -67,12 +68,14 @@ namespace ArmyBuilder.Core.Models
                     foreach (var equipment in unit.DefaultEquipment)
                     {
                         equipment.Unit = unit;
+                        Utility.Util.GetAllEquipmentSubEquipment(equipment).ForEach(e => e.Unit = unit);
                         equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e=> e.Id == equipment.Id));
                     }
 
                     foreach (var equipment in unit.Upgrades)
                     {
                         equipment.Unit = unit;
+                        Utility.Util.GetAllEquipmentSubEquipment(equipment).ForEach(e => e.Unit = unit);
                         equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
                     }
                 }
@@ -89,12 +92,14 @@ namespace ArmyBuilder.Core.Models
                     foreach (var equipment in transport.DefaultEquipment)
                     {
                         equipment.Unit = transport;
+                        Utility.Util.GetAllEquipmentSubEquipment(equipment).ForEach(e => e.Unit = transport);
                         equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
                     }
 
                     foreach (var equipment in transport.Upgrades)
                     {
                         equipment.Unit = transport;
+                        Utility.Util.GetAllEquipmentSubEquipment(equipment).ForEach(e => e.Unit = transport);
                         equipment.PopulateDefaultPoperties(EquipmentDefinitions.First(e => e.Id == equipment.Id));
                     }
                 }

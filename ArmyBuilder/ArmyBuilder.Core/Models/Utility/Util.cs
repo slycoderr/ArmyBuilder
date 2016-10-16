@@ -36,5 +36,19 @@ namespace ArmyBuilder.Core.Models.Utility
 
             return allEquip;
         }
+
+        public static List<Equipment> GetAllEquipmentSubEquipment(Equipment e)
+        {
+            var allEquip = new List<Equipment>();
+
+            allEquip.AddRange(e.ReplacementOptions);
+
+            foreach (var ee in allEquip.ToList())
+            {
+                allEquip.AddRange(GetAllEquipmentSubEquipment(ee));
+            }
+
+            return allEquip;
+        }
     }
 }

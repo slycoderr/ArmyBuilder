@@ -8,6 +8,16 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
         Title="{Binding SelectedArmy.Name}" Height="800" Width="1200">
+    
+    
+    <Window.InputBindings>
+        <KeyBinding Key="F1" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
+        <KeyBinding Key="F2" Command="{Binding AddUnitEntryCommand}"/>
+        <KeyBinding Key="F3" Command="{Binding AddUnitCommand}"/>
+        <KeyBinding Key="F4" Command="{Binding AddToDefaultEquipmentReplacements}"/>
+        <KeyBinding Key="F5" Command="{Binding AddToUpgradesReplacements}"/>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveXMLCommand}"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -47,7 +57,10 @@
             <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}"/>
             <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
             <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
+            <Button Content="Update Transports"  Margin="5" Command="{Binding UpdateTransportsCommand}"/>
         </StackPanel>
     </Grid>
 </controls:MetroWindow>
+
+
 
