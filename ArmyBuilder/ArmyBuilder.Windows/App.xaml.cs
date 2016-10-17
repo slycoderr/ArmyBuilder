@@ -13,8 +13,6 @@ namespace ArmyBuilder.Windows
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             base.OnStartup(e);
-            ((CollectionViewSource) Current.FindResource("ArmyListDataCollection"))?.GroupDescriptions?.Add(new PropertyGroupDescription("UnitEntry.ForceOrgSlot"));
-            ((CollectionViewSource) Current.FindResource("ArmyListCollection"))?.GroupDescriptions?.Add(new PropertyGroupDescription("ArmyId"));
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs e)

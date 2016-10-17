@@ -4,8 +4,51 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" 
+                      xmlns:views="clr-namespace:ArmyBuilder.Windows.Views"
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="ArmyBuilder" Height="800" Width="1200" >
+    <controls:MetroWindow.Resources>
+        <Storyboard x:Key="TransitionToEditListStoryboard">
+            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="EditArmyListView" To="1">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="ManageArmyListsView" To="0">
+                <DoubleAnimation.EasingFunction>
+                    <PowerEase EasingMode="EaseIn"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+        </Storyboard>
+    </controls:MetroWindow.Resources>
+    
+    <controls:MetroWindow.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CreateListButton">
+            <BeginStoryboard Storyboard="{StaticResource TransitionToEditListStoryboard}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="EditListButton">
+            <BeginStoryboard Storyboard="{StaticResource TransitionToEditListStoryboard}"/>
+        </EventTrigger>
+    </controls:MetroWindow.Triggers>
     <Grid>
-      
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <views:ManageArmyListsView x:Name="ManageArmyListsView" Grid.Column="1" Width="0"/>
+        <views:EditArmyListView x:Name="EditArmyListView" Grid.Column="1" Width="0"/>
+
+        <StackPanel x:Name="ManageArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="{Binding Opacity, ElementName=ManageArmyListPanel}">
+            <Button x:Name="CreateListButton" Content="Create List" Margin="5"/>
+            <Button x:Name="EditListButton" Content="Edit List" Margin="5"/>
+            <Button x:Name="DeleteListButton" Content="Delete List" Margin="5"/>
+        </StackPanel>
+
+        <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Opacity="0" Visibility="{Binding Opacity, ElementName=ManageArmyListPanel}">
+            <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
+        </StackPanel>
     </Grid>
 </controls:MetroWindow>
