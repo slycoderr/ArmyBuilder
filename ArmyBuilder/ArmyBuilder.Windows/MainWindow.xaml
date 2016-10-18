@@ -4,31 +4,39 @@
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls" 
-                      xmlns:views="clr-namespace:ArmyBuilder.Windows.Views"
+                      xmlns:views="clr-namespace:ArmyBuilder.Windows.Views" 
+                      xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                      DataContext="{StaticResource MainViewModel}"
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="ArmyBuilder" Height="800" Width="1200" >
-    <controls:MetroWindow.Resources>
-        <Storyboard x:Key="TransitionToEditListStoryboard">
-            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="EditArmyListView" To="1">
-                <DoubleAnimation.EasingFunction>
-                    <PowerEase EasingMode="EaseIn"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-            <DoubleAnimation Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="ManageArmyListsView" To="0">
-                <DoubleAnimation.EasingFunction>
-                    <PowerEase EasingMode="EaseIn"/>
-                </DoubleAnimation.EasingFunction>
-            </DoubleAnimation>
-        </Storyboard>
-    </controls:MetroWindow.Resources>
     
-    <controls:MetroWindow.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="CreateListButton">
-            <BeginStoryboard Storyboard="{StaticResource TransitionToEditListStoryboard}"/>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="EditListButton">
-            <BeginStoryboard Storyboard="{StaticResource TransitionToEditListStoryboard}"/>
-        </EventTrigger>
-    </controls:MetroWindow.Triggers>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=CreateListButton}">
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=EditListButton}">
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=ArmyListsListView}">
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=BackButton}">
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Visible"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Collapsed"/>
+            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -38,16 +46,17 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <views:ManageArmyListsView x:Name="ManageArmyListsView" Grid.Column="1" Width="0"/>
-        <views:EditArmyListView x:Name="EditArmyListView" Grid.Column="1" Width="0"/>
+        
+        <ListView x:Name="ArmyListsListView" Grid.Column="1" Width="0" ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}"/>
+        <views:EditArmyListView x:Name="EditArmyListView" Grid.Column="1" Visibility="Collapsed"/>
 
-        <StackPanel x:Name="ManageArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="{Binding Opacity, ElementName=ManageArmyListPanel}">
-            <Button x:Name="CreateListButton" Content="Create List" Margin="5"/>
-            <Button x:Name="EditListButton" Content="Edit List" Margin="5"/>
-            <Button x:Name="DeleteListButton" Content="Delete List" Margin="5"/>
+        <StackPanel x:Name="ManageArmyListPanel" Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="CreateListButton" Content="Create List" Margin="5" Command="{Binding AddListCommand}"/>
+            <Button x:Name="EditListButton" Content="Edit List" Margin="5" />
+            <Button x:Name="DeleteListButton" Content="Delete List" Margin="5" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
         </StackPanel>
 
-        <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Opacity="0" Visibility="{Binding Opacity, ElementName=ManageArmyListPanel}">
+        <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
             <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
         </StackPanel>
     </Grid>

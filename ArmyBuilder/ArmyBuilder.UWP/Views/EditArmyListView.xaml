@@ -31,7 +31,7 @@
 
         <TextBox Grid.Row="1" x:Name="PointsTextBox" Grid.Column="1" VerticalAlignment="Center" Margin="10,5,10,10" Text="{Binding PointsLimit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" InputScope="Digits"/>
 
-        <Button Grid.Row="2" Grid.Column="1"  Content="Remove" Command="{Binding RemoveSelectedListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" HorizontalAlignment="Left" Margin="10,0" Width="78">
+        <Button Grid.Row="2" Grid.Column="1"  Content="Remove" Command="{Binding RemoveListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" HorizontalAlignment="Left" Margin="10,0" Width="78">
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="Click">
                     <media:ControlStoryboardAction>

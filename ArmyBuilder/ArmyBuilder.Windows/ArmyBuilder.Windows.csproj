@@ -87,9 +87,6 @@
     <Compile Include="Views\EditArmyListView.xaml.cs">
       <DependentUpon>EditArmyListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ManageArmyListsView.xaml.cs">
-      <DependentUpon>ManageArmyListsView.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,10 +100,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\EditArmyListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ManageArmyListsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
