@@ -58,6 +58,14 @@
 
         <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
             <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
+            <Button x:Name="AddDetachmentButton" Content="Add Detachment" Margin="5"/>
+            <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5"/>
         </StackPanel>
+
+
+            <controls:Flyout AnimateOpacity="True" FocusedElement="{Binding }">
+                <ListView/>
+            </controls:Flyout>
+
     </Grid>
 </controls:MetroWindow>

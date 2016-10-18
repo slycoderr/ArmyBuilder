@@ -23,6 +23,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
+        public ObservableCollection<Detachment> Detachments { get; } = new ObservableCollection<Detachment>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
