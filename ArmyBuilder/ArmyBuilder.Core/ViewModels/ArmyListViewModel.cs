@@ -186,12 +186,12 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddSubDetachment(Detachment detachment)
         {
-            SelectedDetachment?.SelectedDetachments.Add(new DetachmentData(detachment, SelectedDetachment.Army));
+            //SelectedDetachment?.SelectedDetachments.Add(new DetachmentData(detachment, SelectedDetachment.Army));
         }
 
         private void RemoveUnit(ArmyListData unit)
         {
-            SelectedDetachment?.Units?.Remove(unit);
+            //SelectedDetachment?.Units?.Remove(unit);
         }
     }
 }

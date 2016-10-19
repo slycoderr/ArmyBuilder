@@ -59,15 +59,12 @@
 
         <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
             <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
-            <Button x:Name="AddDetachmentButton" Margin="5" Click="AddDetachmentButton_Click" >
-                <Button.ContextMenu>
-                    <ContextMenu ItemsSource="{Binding Armies}" Name="AddDetachmentMenu" Placement="Top"  PlacementTarget="{Binding ElementName=AddDetachmentButton}"/>
-                </Button.ContextMenu>
+            <Button x:Name="AddDetachmentButton" Margin="5" >
             </Button>
             <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5"/>
         </StackPanel>
 
-        <controls:Flyout AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}">
+        <controls:Flyout x:Name="AddDetachmentMenu" AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}">
             <ListView>
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="models:Army">

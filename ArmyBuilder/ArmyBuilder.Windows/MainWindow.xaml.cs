@@ -13,7 +13,7 @@ namespace ArmyBuilder.Windows
 
         private void AddDetachmentButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            AddDetachmentMenu.IsOpen = true;
+            //AddDetachmentMenu.IsOpen = true;
         }
     }
 }
