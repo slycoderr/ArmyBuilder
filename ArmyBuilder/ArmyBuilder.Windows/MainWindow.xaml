@@ -67,7 +67,23 @@
             <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5"/>
         </StackPanel>
 
-
+        <controls:Flyout AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}">
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="models:Army">
+                    <Expander Header="{Binding Name}" IsExpanded="False">
+                            <ListBox ItemsSource="{Binding Detachments}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="models:Detachment">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Expander>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </controls:Flyout>
 
     </Grid>
 </controls:MetroWindow>
