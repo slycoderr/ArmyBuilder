@@ -17,9 +17,8 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public int Maximum { get; set; }
 
-        [XmlArray]
-        [XmlArrayItem("Value")]
-        public List<int> Values { get; set; }
+        [XmlAttribute]
+        public int Value { get; set; }
 
     }
 }

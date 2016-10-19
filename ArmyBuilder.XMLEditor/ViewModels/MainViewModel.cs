@@ -54,6 +54,8 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<Equipment> RemoveUpgradeCommand => new RelayCommand<Equipment>(RemoveEquipmentFromUpgradeEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
 
+        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\Data\\");
+
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
         public MainViewModel()
@@ -82,6 +84,11 @@ namespace ArmyBuilder.XMLEditor
                 {
                     var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "DataFiles", $"{SelectedArmy.Name}.xml");
 
+                    if (!Directory.Exists(ArmyDataPath))
+                    {
+                        Directory.CreateDirectory(ArmyDataPath);
+                    }
+
                     using (var s = new FileStream(path, FileMode.Truncate))
                     {
                         using (var reader = XmlWriter.Create(s))
@@ -91,6 +98,7 @@ namespace ArmyBuilder.XMLEditor
                         }
                     }
 
+                    File.Copy(path, Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
                 }
                 catch (Exception ex)
                 {

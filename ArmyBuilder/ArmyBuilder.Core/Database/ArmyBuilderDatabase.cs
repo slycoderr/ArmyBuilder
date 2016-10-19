@@ -33,17 +33,17 @@ namespace ArmyBuilder.Core.Database
 
                 var armylists = UserDatabase.Table<ArmyList>();
                 var armyData = UserDatabase.Table<ArmyListData>();
-                bool doneAdding = false;
+                //bool doneAdding = false;
 
 
-                MainViewModel.UiContext.Post(a =>
-                {
-                    armylists.ForEach(l => ArmyLists.Add(l));
-                    armyData.ForEach(l => ArmyListData.Add(l));
-                    doneAdding = true;
-                }, null);
+                //MainViewModel.UiContext.Post(a =>
+                //{
+                //    armylists.ForEach(l => ArmyLists.Add(l));
+                //    armyData.ForEach(l => ArmyListData.Add(l));
+                //    doneAdding = true;
+                //}, null);
 
-                while (!doneAdding) { }
+                //while (!doneAdding) { }
 
                 ArmyLists.CollectionChanged += OnCollectionChanged;
                 ArmyListData.CollectionChanged += OnCollectionChanged;

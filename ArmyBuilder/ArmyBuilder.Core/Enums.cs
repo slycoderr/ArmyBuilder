@@ -31,7 +31,7 @@ namespace ArmyBuilder.Core
     public enum DetachmentType
     {
         [XmlEnum("0")]
-        Normal,
+        UnitDetachment,
         [XmlEnum("1")]
         BattleForged
     }
@@ -41,7 +41,9 @@ namespace ArmyBuilder.Core
         [XmlEnum("0")]
         ForceOrg,
         [XmlEnum("1")]
-        Unit
+        Unit,
+        [XmlEnum("2")]
+        Detachment
     }
 
 }

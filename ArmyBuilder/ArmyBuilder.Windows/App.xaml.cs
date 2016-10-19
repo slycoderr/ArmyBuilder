@@ -1,17 +1,34 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Data;
+using ArmyBuilder.Core.ViewModels;
 
 namespace ArmyBuilder.Windows
 {
     public partial class App
     {
         public static readonly string DataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\");
+        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\Data\\");
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            MainViewModel.UiContext = SynchronizationContext.Current;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+
+            if (!Directory.Exists(ArmyDataPath))
+            {
+                Directory.CreateDirectory(ArmyDataPath);
+            }
+
+            var files = Directory.EnumerateFiles(ArmyDataPath).Where(f => f.ToLower().Contains(".xml")).ToList();
+            var streams = files.Select(f => new FileStream(f, FileMode.Open)).ToList();
+
+            ((MainViewModel)FindResource("MainViewModel")).LoadArmyData(streams.ToArray());
+            ((MainViewModel)FindResource("MainViewModel")).LoadDatabase(DataPath);
+
             base.OnStartup(e);
         }
 

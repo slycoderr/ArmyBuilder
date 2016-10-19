@@ -19,7 +19,7 @@
         
         <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22"/>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding SelectedArmyList.Detachments}"/>
-        <TreeView Grid.Row="1" Grid.Column="1"/>
+        <ListView Grid.Row="1" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0"/>
+        <TreeView Grid.Row="1" Grid.Column="1" BorderThickness="0"/>
     </Grid>
 </UserControl>

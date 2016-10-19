@@ -23,7 +23,6 @@ namespace ArmyBuilder.Core.ViewModels
 
         public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
-        public ObservableCollection<Detachment> Detachments { get; } = new ObservableCollection<Detachment>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
@@ -35,13 +34,10 @@ namespace ArmyBuilder.Core.ViewModels
         // ReSharper disable once EmptyConstructor
         public MainViewModel(){ }
 
-        public Task LoadDatabase(string path)
+        public void LoadDatabase(string path)
         {
-            return Task.Run(() =>
-            {
-                database.Load(path);
 
-            });
+                database.Load(path);
         }
 
         public void LoadArmyData(params Stream[] dataStreams)
