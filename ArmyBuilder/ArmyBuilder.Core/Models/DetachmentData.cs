@@ -9,16 +9,12 @@ namespace ArmyBuilder.Core.Models
 {
     public class DetachmentData : BindableBase
     {
-        private DetachmentData selectedDetachment;
+        //private DetachmentData selectedDetachment;
 
         [XmlIgnore]
-        public Detachment Detachment { get; private set; }
+        public Detachment Detachment { get; }
 
-        public Army Army { get; private set; }
-
-        public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
-
-        public ObservableCollection<DetachmentData> SelectedDetachments { get; private set; } = new ObservableCollection<DetachmentData>();
+        public Army Army { get;}
 
         public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
 
@@ -28,11 +24,16 @@ namespace ArmyBuilder.Core.Models
 
         private void AddSubDetachment(Detachment detachment)
         {
-            SelectedDetachments.Add(new DetachmentData(detachment, Army));
+            //SelectedDetachments.Add(new DetachmentData(detachment, Army));
         }
 
         [XmlAttribute]
         public bool IsPrimary { get; set; }
+
+        public DetachmentData()
+        {
+            
+        }
 
         public DetachmentData(Detachment detachment, Army army)
         {
@@ -46,6 +47,7 @@ namespace ArmyBuilder.Core.Models
     {
         public DetachmentRequirement Requirement { get; }
         public DetachmentData DetachmentData { get; }
+        
 
         public DetachmentRequirementData(DetachmentRequirement require, DetachmentData detach)
         {

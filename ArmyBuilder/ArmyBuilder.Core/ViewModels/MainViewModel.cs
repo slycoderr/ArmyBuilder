@@ -25,6 +25,7 @@ namespace ArmyBuilder.Core.ViewModels
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
+        public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
         public static SynchronizationContext UiContext; 
@@ -36,8 +37,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public void LoadDatabase(string path)
         {
-
-                database.Load(path);
+            database.Load(path);
         }
 
         public void LoadArmyData(params Stream[] dataStreams)
@@ -72,6 +72,11 @@ namespace ArmyBuilder.Core.ViewModels
         {
             ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
             SelectedArmyList = ArmyLists.Last();
+        }
+
+        private void AddDetachmentToList(Detachment detachment)
+        {
+            SelectedArmyList.Detachments.Add(new DetachmentData(detachment, SelectedArmyList.Army));
         }
 
         private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

@@ -75,7 +75,7 @@
                             <ListBox ItemsSource="{Binding Detachments}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="models:Detachment">
-                                        <TextBlock Text="{Binding Name}"/>
+                                        <Button Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>
