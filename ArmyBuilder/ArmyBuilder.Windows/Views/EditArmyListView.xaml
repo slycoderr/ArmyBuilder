@@ -17,9 +17,9 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22"/>
+        <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22" Margin="5"/>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0"/>
+        <ListView Grid.Row="1" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplate="{StaticResource DetachmentTemplate}"/>
         <TreeView Grid.Row="1" Grid.Column="1" BorderThickness="0"/>
     </Grid>
 </UserControl>

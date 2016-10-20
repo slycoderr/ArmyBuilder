@@ -43,10 +43,7 @@ namespace ArmyBuilder.Core.Models
             Army = newArmy;
             ArmyId = newArmy.Id;
             Id = Guid.NewGuid();
-            Detachments.Add(new DetachmentData(detach, army)
-            {
-                IsPrimary = true
-            });
+
         }
     }
 }

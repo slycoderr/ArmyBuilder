@@ -74,13 +74,13 @@ namespace ArmyBuilder.Core.ViewModels
             LordOfWarUnits.Clear();
             FortificationUnits.Clear();
 
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
-            SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HQ).ForEach(u=>HqUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Troop).ForEach(u=> TroopUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Elite).ForEach(u=> EliteUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.FastAttack).ForEach(u=> FastAttackUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.HeavySupport).ForEach(u=> HeavySupportUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.LordOfWar).ForEach(u=> LordOfWarUnits.Add(u));
+            //SelectedDetachment?.Army?.UnitEntries.Where(u => u.ForceOrgSlot == ForceOrgSlot.Fortification).ForEach(u=> FortificationUnits.Add(u));
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -181,7 +181,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddDetachment(Detachment detachment)
         {
-            ArmyList?.Detachments?.Add(new DetachmentData(detachment, ArmyList.Army));
+            ArmyList?.Detachments?.Add(new DetachmentData(detachment));
         }
 
         private void AddSubDetachment(Detachment detachment)

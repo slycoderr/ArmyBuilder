@@ -47,7 +47,6 @@ namespace ArmyBuilder.Core.Models
             return Name;
         }
 
-        public static IReadOnlyList<string> Armies = new List<string> {"Space Wolves", "Necrons", "Skitarii", "Imperial Knights", "Dark Eldar"};
         private int id;
         private string name;
 
@@ -56,6 +55,11 @@ namespace ArmyBuilder.Core.Models
         /// </summary>
         public void Configure()
         {
+            foreach(var detachment in Detachments)
+            {
+                detachment.Army = this;
+            }
+
             foreach (var unitEntry in UnitEntries)
             {
                 unitEntry.Army = this;

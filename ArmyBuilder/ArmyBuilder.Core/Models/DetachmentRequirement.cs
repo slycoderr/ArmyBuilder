@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace ArmyBuilder.Core.Models
 {
+    [XmlRoot("DetachmentRequirement", Namespace = "")]
     public class DetachmentRequirement
     {
         [XmlAttribute]

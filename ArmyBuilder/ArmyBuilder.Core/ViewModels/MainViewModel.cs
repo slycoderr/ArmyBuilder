@@ -20,6 +20,7 @@ namespace ArmyBuilder.Core.ViewModels
     public class MainViewModel : BindableBase
     {
         public ArmyList SelectedArmyList { get { return selectedArmyList; } set { SetValue(ref selectedArmyList, value); } }
+        public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
 
         public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
@@ -31,9 +32,18 @@ namespace ArmyBuilder.Core.ViewModels
         public static SynchronizationContext UiContext; 
         private readonly ArmyBuilderDatabase database = new ArmyBuilderDatabase();
         private ArmyList selectedArmyList;
+        private DetachmentData selectedDetachment;
 
         // ReSharper disable once EmptyConstructor
-        public MainViewModel(){ }
+        public MainViewModel()
+        {
+            PropertyChanged += MainViewModel_PropertyChanged;
+        }
+
+        private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+        }
 
         public void LoadDatabase(string path)
         {
@@ -76,7 +86,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddDetachmentToList(Detachment detachment)
         {
-            SelectedArmyList.Detachments.Add(new DetachmentData(detachment, SelectedArmyList.Army));
+            SelectedArmyList.Detachments.Add(new DetachmentData(detachment));
         }
 
         private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

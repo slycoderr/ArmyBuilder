@@ -14,13 +14,14 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public Detachment Detachment { get; }
 
-        public Army Army { get;}
-
         public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
 
         public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
 
         public RelayCommand<Detachment> AddSubDetachmentCommand => new RelayCommand<Detachment>(AddSubDetachment);
+
+        public ObservableCollection<UnitEntry> AvailableUnits { get; } = new ObservableCollection<UnitEntry>();
+
 
         private void AddSubDetachment(Detachment detachment)
         {
@@ -35,11 +36,28 @@ namespace ArmyBuilder.Core.Models
             
         }
 
-        public DetachmentData(Detachment detachment, Army army)
+        public DetachmentData(Detachment detachment)
         {
             Detachment = detachment;
             DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r, this)));
-            Army = army;
+
+            //add all the allowed units
+            if (Detachment.Type == DetachmentType.UnitDetachment)
+            {
+                foreach (var req in Detachment.Requirements)
+                {
+                    AvailableUnits.Add(Detachment.Army.UnitEntries.First(u => u.Id == req.Value));
+                }
+            }
+
+            //Add all the allowed force org slot units
+            else if (Detachment.Type == DetachmentType.ForceOrgDetachment)
+            {
+                foreach (var req in Detachment.Requirements)
+                {
+                    Detachment.Army.UnitEntries.Where(u => (int)u.ForceOrgSlot == req.Value).ForEach(AvailableUnits.Add);
+                }
+            }
         }
     }
 

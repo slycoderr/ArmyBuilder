@@ -98,6 +98,11 @@ namespace ArmyBuilder.XMLEditor
                         }
                     }
 
+                    if(File.Exists(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml")))
+                    {
+                        File.Delete(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
+                    }
+
                     File.Copy(path, Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
                 }
                 catch (Exception ex)

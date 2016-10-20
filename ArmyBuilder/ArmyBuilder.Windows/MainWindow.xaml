@@ -24,12 +24,6 @@
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Visible"/>
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
         </i:EventTrigger>
-        <!--<i:EventTrigger EventName="Selected" SourceObject="{Binding ElementName=ArmyListsListView}">
-            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
-            <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
-            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListView}" PropertyName="Visibility" Value="Visible"/>
-            <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
-        </i:EventTrigger>-->
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=BackButton}">
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Visible"/>
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>
@@ -37,7 +31,6 @@
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditArmyListPanel}" PropertyName="Visibility" Value="Visible"/>
         </i:EventTrigger>
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=AddDetachmentButton}">
-            <!--<ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsEnabled" Value="True"/>-->
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="True"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
@@ -59,20 +52,26 @@
 
         <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
             <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
-            <Button x:Name="AddDetachmentButton" Margin="5" >
+            <Button x:Name="AddDetachmentButton" Margin="5" Content="Add Detachment" >
             </Button>
             <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5"/>
         </StackPanel>
 
-        <controls:Flyout x:Name="AddDetachmentMenu" AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}">
-            <ListView>
+        <controls:Flyout x:Name="AddDetachmentMenu" AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}" Header="Choose a detachment">
+            <ListView ItemsSource="{Binding Armies}">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="models:Army">
                     <Expander Header="{Binding Name}" IsExpanded="False">
                             <ListBox ItemsSource="{Binding Detachments}">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate DataType="models:Detachment">
-                                        <Button Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                                        <Button Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" BorderThickness="0,1" controls:ButtonHelper.CornerRadius="0">
+                                            <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Click">
+                                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="False"/>
+                                            </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </Button>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
                             </ListBox>

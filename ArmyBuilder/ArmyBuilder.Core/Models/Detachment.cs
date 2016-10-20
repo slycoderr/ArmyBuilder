@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,9 +8,11 @@ using System.Xml.Serialization;
 
 namespace ArmyBuilder.Core.Models
 {
-
+    [XmlRoot("Detachment", Namespace = "")]
     public class Detachment
     {
+        [XmlIgnore]
+        public Army Army { get; set; }
         [XmlAttribute]
         public int Id { get; set; }
 
@@ -20,10 +23,10 @@ namespace ArmyBuilder.Core.Models
         public string Name { get; set; }
 
         [XmlArray]
-        public List<Detachment> SubDetachments { get; set; }
+        public ObservableCollection<Detachment> SubDetachments { get; set; } = new ObservableCollection<Detachment>();
 
         [XmlArray]
-        public List<DetachmentRequirement> Requirements { get; set; }
+        public ObservableCollection<DetachmentRequirement> Requirements { get; set; } = new ObservableCollection<DetachmentRequirement>();
 
         public override string ToString()
         {
