@@ -7,36 +7,5 @@
              xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
              mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        
-        <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22" Margin="5"/>
 
-        <ListView ItemsSource="{Binding Source={StaticResource AvailableUnitsForceOrgGroupsCollection}}" >
-            <ListView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate DataType="core:ForceOrgSlot">
-                            <Grid>
-                                <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding }"/>
-                            </Grid>
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                </GroupStyle>
-            </ListView.GroupStyle>
-        </ListView>
-
-        <ListView Grid.Row="1" ItemsSource="{Binding SelectedDetachment.AvailableUnits}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}"/>
-        <ListView Grid.Row="1" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}"/>
-        <TreeView Grid.Row="1" Grid.Column="1" BorderThickness="0"/>
-    </Grid>
 </UserControl>

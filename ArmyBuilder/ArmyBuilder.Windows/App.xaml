@@ -18,17 +18,34 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
+            <Style TargetType="ListView">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Style.Triggers>
+                    <Trigger Property="HasItems"
+                         Value="False">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListView">
+                                    <TextBlock Text="Nothing to see here..." Foreground="{StaticResource AccentColorBrush4}"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
             <viewModels:MainViewModel x:Key="MainViewModel"/>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
+            <windows:ForceOrgGroupToText x:Key="ForceOrgGroupToText"/>
 
-            <CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}, BindsDirectlyToSource=True}" IsLiveGroupingRequested="True">
+            <CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
                 <CollectionViewSource.GroupDescriptions>
-                    <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                    <PropertyGroupDescription PropertyName="UnitEntry.ForceOrgSlot" />
                 </CollectionViewSource.GroupDescriptions>
             </CollectionViewSource>
 
             <DataTemplate x:Key="UnitDetachmentTemplate" DataType="models:DetachmentData">
-                <Grid>
+                <Grid Width="200" Height="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
@@ -58,31 +75,27 @@
                             </CollectionViewSource.GroupDescriptions>
                         </CollectionViewSource>
                     </Grid.Resources>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"/>
-                    
-                    <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}">
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1" Margin="5"/>
+
+                    <ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}">
                         <ListView.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
-                                    <DataTemplate DataType="core:ForceOrgSlot">
+                                    <DataTemplate>
                                         <Grid>
-                                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding }"/>
+                                            <TextBlock Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
                                         </Grid>
                                     </DataTemplate>
                                 </GroupStyle.HeaderTemplate>
                             </GroupStyle>
                         </ListView.GroupStyle>
                     </ListView>
-
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="BattleForgedDetachmentTemplate" DataType="models:DetachmentData">
@@ -115,9 +128,35 @@
                     <TextBlock Text="{Binding Detachment.Name}"></TextBlock>
                 </Grid>
             </DataTemplate>
+
+            <DataTemplate x:Key="ForceOrgGroupHeaderTemplate">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

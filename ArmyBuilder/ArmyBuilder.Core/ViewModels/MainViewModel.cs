@@ -27,6 +27,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
+        public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
         public static SynchronizationContext UiContext; 
@@ -82,6 +83,11 @@ namespace ArmyBuilder.Core.ViewModels
         {
             ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
             SelectedArmyList = ArmyLists.Last();
+        }
+
+        private void AddUnitEntryToDetachment(UnitEntry unit)
+        {
+            SelectedDetachment.Units.Add(new ArmyListData(unit, Guid.Empty));
         }
 
         private void AddDetachmentToList(Detachment detachment)

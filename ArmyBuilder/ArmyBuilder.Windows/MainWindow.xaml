@@ -7,7 +7,8 @@
                       xmlns:views="clr-namespace:ArmyBuilder.Windows.Views" 
                       xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-                      xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core"
+                      xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
+                      xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
                       DataContext="{StaticResource MainViewModel}"
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="ArmyBuilder" Height="800" Width="1200" >
     
@@ -42,7 +43,45 @@
         </Grid.RowDefinitions>
 
         <ListView x:Name="ArmyListsListView" ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" BorderThickness="0"/>
-        <views:EditArmyListView x:Name="EditArmyListView" Visibility="Collapsed"/>
+
+        <Grid x:Name="EditArmyListView" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22" Margin="5"/>
+
+            <ListView x:Name="AvailableUnitsListView"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Source={StaticResource AvailableUnitsForceOrgGroupsCollection}}" >
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate DataType="core:ForceOrgSlot">
+                                <Grid>
+                                    <TextBlock Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+            </ListView>
+
+
+            <ListView Grid.Row="1" Grid.Column="1" SelectedItem="{Binding SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+            <TreeView Grid.Row="1" Grid.Column="2" BorderThickness="0"/>
+        </Grid>
 
         <StackPanel x:Name="ManageArmyListPanel" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="CreateListButton" Content="Create List" Margin="5" Command="{Binding AddListCommand}"/>
@@ -54,7 +93,7 @@
             <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
             <Button x:Name="AddDetachmentButton" Margin="5" Content="Add Detachment" >
             </Button>
-            <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5"/>
+            <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5" Command="{Binding AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=AvailableUnitsListView}"/>
         </StackPanel>
 
         <controls:Flyout x:Name="AddDetachmentMenu" AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}" Header="Choose a detachment">
