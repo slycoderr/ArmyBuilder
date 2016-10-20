@@ -21,6 +21,12 @@
             <viewModels:MainViewModel x:Key="MainViewModel"/>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
 
+            <CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}, BindsDirectlyToSource=True}" IsLiveGroupingRequested="True">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+
             <DataTemplate x:Key="UnitDetachmentTemplate" DataType="models:DetachmentData">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -46,12 +52,10 @@
             <DataTemplate x:Key="ForceOrgDetachmentTemplate" DataType="models:DetachmentData">
                 <Grid Name="Grid">
                     <Grid.Resources>
-                        <CollectionViewSource x:Key="ForceOrgGroupsCollection" Source="{Binding AvailableUnits}" IsLiveGroupingRequested="True">
-
+                        <CollectionViewSource x:Key="UnitForceOrgGroupsCollection" Source="{Binding Units}" IsLiveGroupingRequested="True">
                             <CollectionViewSource.GroupDescriptions>
                                 <PropertyGroupDescription PropertyName="ForceOrgSlot" />
                             </CollectionViewSource.GroupDescriptions>
-
                         </CollectionViewSource>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
@@ -62,25 +66,22 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-
-                    <Expander IsExpanded="False" ExpandDirection="Right">
-                        <ListView ItemsSource="{Binding Source={StaticResource ForceOrgGroupsCollection}}" >
-                            <ListView.GroupStyle>
-                                <GroupStyle>
-                                    <GroupStyle.HeaderTemplate>
-                                        <DataTemplate DataType="core:ForceOrgSlot">
-                                            <Grid>
-                                                <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding }"/>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </GroupStyle.HeaderTemplate>
-                                </GroupStyle>
-                            </ListView.GroupStyle>
-                        </ListView>
-                    </Expander>
-
-                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
-                    <ListView Grid.Row="1" Grid.Column="1"/>
+                    
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"/>
+                    
+                    <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}">
+                        <ListView.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.HeaderTemplate>
+                                    <DataTemplate DataType="core:ForceOrgSlot">
+                                        <Grid>
+                                            <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding }"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GroupStyle.HeaderTemplate>
+                            </GroupStyle>
+                        </ListView.GroupStyle>
+                    </ListView>
 
                 </Grid>
             </DataTemplate>
@@ -117,6 +118,14 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+
+
+
+
+
+
+
+
 
 
 
