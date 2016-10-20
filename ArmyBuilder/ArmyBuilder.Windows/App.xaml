@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
              xmlns:viewModels="clr-namespace:ArmyBuilder.Core.ViewModels;assembly=ArmyBuilder.Core"
              xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
-             xmlns:windows="clr-namespace:ArmyBuilder.Windows"
+             xmlns:windows="clr-namespace:ArmyBuilder.Windows" 
+             xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -43,7 +44,16 @@
 
             <!--Needs grouping in the listview by force org id-->
             <DataTemplate x:Key="ForceOrgDetachmentTemplate" DataType="models:DetachmentData">
-                <Grid>
+                <Grid Name="Grid">
+                    <Grid.Resources>
+                        <CollectionViewSource x:Key="ForceOrgGroupsCollection" Source="{Binding AvailableUnits}" IsLiveGroupingRequested="True">
+
+                            <CollectionViewSource.GroupDescriptions>
+                                <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                            </CollectionViewSource.GroupDescriptions>
+
+                        </CollectionViewSource>
+                    </Grid.Resources>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
@@ -54,12 +64,24 @@
                     </Grid.RowDefinitions>
 
                     <Expander IsExpanded="False" ExpandDirection="Right">
-                        <ListView ItemsSource="{Binding AvailableUnits}"/>
+                        <ListView ItemsSource="{Binding Source={StaticResource ForceOrgGroupsCollection}}" >
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate DataType="core:ForceOrgSlot">
+                                            <Grid>
+                                                <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding }"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                </GroupStyle>
+                            </ListView.GroupStyle>
+                        </ListView>
                     </Expander>
 
                     <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
+                    <ListView Grid.Row="1" Grid.Column="1"/>
 
-                    <ListView ItemsSource="{Binding Units}" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="BattleForgedDetachmentTemplate" DataType="models:DetachmentData">
@@ -77,7 +99,7 @@
                         <ListView ItemsSource="{Binding AvailableUnits}"/>
                     </Expander>
 
-                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"/>
 
                     <ListView ItemsSource="{Binding Units}" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
@@ -95,6 +117,10 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+
+
+
+
 
 
 
