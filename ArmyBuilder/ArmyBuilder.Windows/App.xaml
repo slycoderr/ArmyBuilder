@@ -2,7 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
              xmlns:viewModels="clr-namespace:ArmyBuilder.Core.ViewModels;assembly=ArmyBuilder.Core"
-             xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core"
+             xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
+             xmlns:windows="clr-namespace:ArmyBuilder.Windows"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -17,8 +18,9 @@
             </ResourceDictionary.MergedDictionaries>
 
             <viewModels:MainViewModel x:Key="MainViewModel"/>
+            <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
 
-            <DataTemplate x:Key="DetachmentTemplate" DataType="models:DetachmentData">
+            <DataTemplate x:Key="UnitDetachmentTemplate" DataType="models:DetachmentData">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -33,6 +35,48 @@
                         <ListView ItemsSource="{Binding AvailableUnits}"/>
                     </Expander>
                     
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
+
+                    <ListView ItemsSource="{Binding Units}" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+
+            <!--Needs grouping in the listview by force org id-->
+            <DataTemplate x:Key="ForceOrgDetachmentTemplate" DataType="models:DetachmentData">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Expander IsExpanded="False" ExpandDirection="Right">
+                        <ListView ItemsSource="{Binding AvailableUnits}"/>
+                    </Expander>
+
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
+
+                    <ListView ItemsSource="{Binding Units}" Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="BattleForgedDetachmentTemplate" DataType="models:DetachmentData">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Expander IsExpanded="False" ExpandDirection="Right">
+                        <ListView ItemsSource="{Binding AvailableUnits}"/>
+                    </Expander>
+
                     <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1"></TextBlock>
 
                     <ListView ItemsSource="{Binding Units}" Grid.Row="1" Grid.Column="1"/>
