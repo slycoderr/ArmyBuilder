@@ -84,6 +84,13 @@
                     <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1" Margin="5"/>
 
                     <ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate DataType="models:ArmyListData">
+                                <Grid>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                         <ListView.GroupStyle>
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
