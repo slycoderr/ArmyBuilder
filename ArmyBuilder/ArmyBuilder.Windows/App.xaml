@@ -40,7 +40,7 @@
 
             <CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
                 <CollectionViewSource.GroupDescriptions>
-                    <PropertyGroupDescription PropertyName="UnitEntry.ForceOrgSlot" />
+                    <PropertyGroupDescription PropertyName="ForceOrgSlot" />
                 </CollectionViewSource.GroupDescriptions>
             </CollectionViewSource>
 
@@ -71,7 +71,7 @@
                     <Grid.Resources>
                         <CollectionViewSource x:Key="UnitForceOrgGroupsCollection" Source="{Binding Units}" IsLiveGroupingRequested="True">
                             <CollectionViewSource.GroupDescriptions>
-                                <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                                <PropertyGroupDescription PropertyName="UnitEntry.ForceOrgSlot" />
                             </CollectionViewSource.GroupDescriptions>
                         </CollectionViewSource>
                     </Grid.Resources>
@@ -87,7 +87,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate DataType="models:ArmyListData">
                                 <Grid>
-                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding UnitEntry.Name}"/>
                                 </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
