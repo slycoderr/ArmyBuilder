@@ -4,18 +4,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ArmyBuilder.Core.Database;
+
 using Slycoder.MVVM;
 using SQLite;
 
 namespace ArmyBuilder.Core.Models
 {
-    [UserData]
-    public class ArmyList : BindableBase
+
+    public class ArmyList : BindableBase, IArmyList
     {
         private string name;
-        private int pointsLimit;
+        private uint pointsLimit;
         private Army army;
+        private GameSystem system;
 
         [Ignore]
         public Army Army { get { return army; } set { SetValue(ref army, value); } }
@@ -25,9 +26,13 @@ namespace ArmyBuilder.Core.Models
         public int ArmyId { get; set; }
         public string Name { get { return name; } set { SetValue(ref name, value); } }
 
-        public ObservableCollection<DetachmentData> Detachments { get; } = new ObservableCollection<DetachmentData>();
+        public GameSystem System
+        {
+            get { return system; }
+            set { SetValue(ref system, value); }
+        }
 
-        public int PointsLimit { get { return pointsLimit; } set { SetValue(ref pointsLimit, value); } }
+        public uint PointsLimit { get { return pointsLimit; } set { SetValue(ref pointsLimit, value); } }
 
         public ArmyList(Army army)
         {
@@ -36,7 +41,7 @@ namespace ArmyBuilder.Core.Models
 
         public ArmyList() { }
 
-        public ArmyList(string newName, int points, Army newArmy, Detachment detach)
+        public ArmyList(string newName, uint points, Army newArmy, Detachment detach)
         {
             Name = newName;
             PointsLimit = points;
@@ -45,5 +50,8 @@ namespace ArmyBuilder.Core.Models
             Id = Guid.NewGuid();
 
         }
+
+        public DateTime DateCreated { get; set; }
+        public ObservableCollection<DetachmentData> Detachments { get; set; }
     }
 }

@@ -48,4 +48,22 @@ namespace ArmyBuilder.Core
         Detachment
     }
 
+    public enum GameSystem
+    {
+        [XmlEnum("0")]
+        W40K,
+        [XmlEnum("1")]
+        AoS
+    }
+
+    public enum Allegiance
+    {
+        [XmlEnum("0")]
+        Order,
+        [XmlEnum("1")]
+        Death,
+        Chaos,
+        Destruction,
+        Sylvaneth
+    }
 }

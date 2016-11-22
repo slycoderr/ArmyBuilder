@@ -35,43 +35,12 @@ namespace ArmyBuilder.Core.Models
         [XmlArray]
         public ObservableCollection<Unit> Units { get; set; } = new ObservableCollection<Unit>();
 
-        [XmlArray]
-        public ObservableCollection<Unit> DedicatedTransports { get; set; } = new ObservableCollection<Unit>();
-
         [XmlIgnore]
         public Army Army { get; set; }
 
         public override string ToString()
         {
             return Name;
-        }
-
-        public void PopulateDefaultPoperties(UnitEntry defaultEntry)
-        {
-            if (string.IsNullOrEmpty(Name))
-            {
-                Name = defaultEntry.Name;
-            }
-
-            if (ForceOrgSlot == 0)
-            {
-                ForceOrgSlot = defaultEntry.ForceOrgSlot;
-            }
-
-            if (!DoeNotCountsTowardForceOrg) //if its the default
-            {
-                DoeNotCountsTowardForceOrg = defaultEntry.DoeNotCountsTowardForceOrg;
-            }
-
-            if (Units == null || !Units.Any())
-            {
-                Units = defaultEntry.Units;
-            }
-
-            if (DedicatedTransports == null || !DedicatedTransports.Any())
-            {
-                DedicatedTransports = defaultEntry.DedicatedTransports;
-            }
         }
     }
 }

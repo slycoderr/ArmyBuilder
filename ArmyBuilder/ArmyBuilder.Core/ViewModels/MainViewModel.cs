@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using ArmyBuilder.Core.Database;
+
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.Models.Groups;
 using GalaSoft.MvvmLight.Command;
@@ -19,25 +19,27 @@ namespace ArmyBuilder.Core.ViewModels
 {
     public class MainViewModel : BindableBase
     {
+        public ParserEngineViewModel ParserEngineViewModel { get; }
+
+
         public ArmyList SelectedArmyList { get { return selectedArmyList; } set { SetValue(ref selectedArmyList, value); } }
         public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
 
-        public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
+
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
-        public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
-        public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
         public static SynchronizationContext UiContext; 
-        private readonly ArmyBuilderDatabase database = new ArmyBuilderDatabase();
+
         private ArmyList selectedArmyList;
         private DetachmentData selectedDetachment;
 
         // ReSharper disable once EmptyConstructor
         public MainViewModel()
         {
+            ParserEngineViewModel = new ParserEngineViewModel(this);
             PropertyChanged += MainViewModel_PropertyChanged;
         }
 
@@ -48,7 +50,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public void LoadDatabase(string path)
         {
-            database.Load(path);
+            //database.Load(path);
         }
 
         public void LoadArmyData(params Stream[] dataStreams)
@@ -67,47 +69,23 @@ namespace ArmyBuilder.Core.ViewModels
 
                     Armies.Add(army); 
 
-                    army.Configure();
+                    //army.Configure();
                     
-                    ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
+                    //ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
                 }
             }
         }
 
         private void RemoveSelectedList(ArmyList list)
         {
-            ArmyLists?.Remove(list);
+            //ArmyLists?.Remove(list);
         }
 
         private void AddList()
         {
-            ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
-            SelectedArmyList = ArmyLists.Last();
+            //ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
+            //SelectedArmyList = ArmyLists.Last();
         }
 
-        private void AddUnitEntryToDetachment(UnitEntry unit)
-        {
-            SelectedDetachment.Units.Add(new ArmyListData(unit, Guid.Empty));
-        }
-
-        private void AddDetachmentToList(Detachment detachment)
-        {
-            SelectedArmyList.Detachments.Add(new DetachmentData(detachment));
-        }
-
-        private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    e.NewItems.Cast<ArmyListData>().ForEach(d=> database.ArmyListData.Add(d));
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    e.OldItems.Cast<ArmyListData>().ForEach(d => database.ArmyListData.Remove(d));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
     }
 }

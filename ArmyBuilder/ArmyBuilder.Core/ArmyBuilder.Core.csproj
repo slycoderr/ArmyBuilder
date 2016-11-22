@@ -42,8 +42,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database\ArmyBuilderDatabase.cs" />
-    <Compile Include="Database\Utility.cs" />
+    <Compile Include="Models\AgeOfSigmarArmyList.cs" />
     <Compile Include="Models\DetachmentData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Army.cs" />
@@ -56,6 +55,7 @@
     <Compile Include="Models\ForceOrgCounter.cs" />
     <Compile Include="Models\Groups\ArmyUnitGroup.cs" />
     <Compile Include="Models\Groups\DesignerEquipmentGroup.cs" />
+    <Compile Include="Models\IArmyList.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\ModelDataGroup.cs" />
     <Compile Include="Models\ModelData.cs" />
@@ -67,8 +67,8 @@
     <Compile Include="Models\Groups\ForceOrgGroup.cs" />
     <Compile Include="Models\Utility\IntListComparer.cs" />
     <Compile Include="Models\Groups\UnitEquipmentGroup.cs" />
-    <Compile Include="ViewModels\ArmyListViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ParserEngineViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
