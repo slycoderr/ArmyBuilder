@@ -121,8 +121,8 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                SelectedArmy.UnitEntries.Add(new UnitEntry { Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1, Name = "New Entry", Army = selectedArmy});
-                SelectedUnitEntry = SelectedArmy.UnitEntries.Last();
+                SelectedArmy.Units.Add(new UnitEntry { Id = SelectedArmy.Units.Count > 0 ? SelectedArmy.Units.Max(a => a.Id) + 1 : 1, Name = "New Entry", Army = selectedArmy});
+                SelectedUnitEntry = SelectedArmy.Units.Last();
                 AddUnit();
             }
 
@@ -136,7 +136,7 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedUnitEntry != null)
             {
-                SelectedArmy.UnitEntries.Remove(SelectedUnitEntry);
+                SelectedArmy.Units.Remove(SelectedUnitEntry);
             }
 
             else
@@ -380,13 +380,13 @@ namespace ArmyBuilder.XMLEditor
         {
             if (SelectedArmy != null)
             {
-                foreach (var entry in SelectedArmy.UnitEntries)
+                foreach (var entry in SelectedArmy.Units)
                 {
                     foreach (var tr in entry.DedicatedTransports.ToList())
                     {
                         var id = tr.UnitEntryId;
                         entry.DedicatedTransports.Remove(tr);
-                        entry.DedicatedTransports.Add(selectedArmy.UnitEntries.First(u=> u.Id == id).Units.First());
+                        entry.DedicatedTransports.Add(selectedArmy.Units.First(u=> u.Id == id).Units.First());
                     }   
                 }
             }

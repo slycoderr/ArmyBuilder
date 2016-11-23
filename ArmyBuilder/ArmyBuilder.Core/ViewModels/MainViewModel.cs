@@ -22,18 +22,19 @@ namespace ArmyBuilder.Core.ViewModels
         public ParserEngineViewModel ParserEngineViewModel { get; }
 
 
-        public ArmyList SelectedArmyList { get { return selectedArmyList; } set { SetValue(ref selectedArmyList, value); } }
+        public IArmyList SelectedArmyList { get { return selectedArmyList; } set { SetValue(ref selectedArmyList, value); } }
         public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
 
 
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
+        public ObservableCollection<IArmyList> ArmyLists { get; } = new ObservableCollection<IArmyList>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
         public static SynchronizationContext UiContext; 
 
-        private ArmyList selectedArmyList;
+        private IArmyList selectedArmyList;
         private DetachmentData selectedDetachment;
 
         // ReSharper disable once EmptyConstructor
@@ -87,5 +88,9 @@ namespace ArmyBuilder.Core.ViewModels
             //SelectedArmyList = ArmyLists.Last();
         }
 
+        public void UpdateListCost()
+        {
+            SelectedArmyList.CurrentPointsTotal =(uint)SelectedArmyList.Detachments.SelectMany(u => u.Units).Sum(u => (u.Count * u.Unit.CostPerModel) + u.Unit.BaseCost);
+        }
     }
 }

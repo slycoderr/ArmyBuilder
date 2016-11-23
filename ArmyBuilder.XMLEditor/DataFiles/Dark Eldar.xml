@@ -46,7 +46,7 @@
   <UnitEntries>
     <UnitEntry Id="1" MaxUnitSize="1" Name="Archon" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="0" Name="Archon" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="60" UnitEntryId="0">
+        <Unit Id="0" Name="Archon" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="60" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="39" Name="Splinter pistol" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -125,7 +125,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -154,7 +154,7 @@
     </UnitEntry>
     <UnitEntry Id="2" MaxUnitSize="12" Name="Court of the Archon" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="0" Name="Lhamaean" Minimum="0" Maximum="12" CostPerModel="10" BaseCost="0" UnitEntryId="0">
+        <Unit Id="0" Name="Lhamaean" Minimum="0" Maximum="12" IncrementCost="10" BaseCost="0" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="39" Name="Splinter pistol" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -168,10 +168,10 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="0" Name="Ur-Ghul" Minimum="0" Maximum="12" CostPerModel="15" BaseCost="0" UnitEntryId="0">
+        <Unit Id="0" Name="Ur-Ghul" Minimum="0" Maximum="12" IncrementCost="15" BaseCost="0" UnitEntryId="0">
           <DefaultEquipment /><Upgrades />
         </Unit>
-        <Unit Id="0" Name="Medusae" Minimum="0" Maximum="12" CostPerModel="25" BaseCost="0" UnitEntryId="0">
+        <Unit Id="0" Name="Medusae" Minimum="0" Maximum="12" IncrementCost="25" BaseCost="0" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="41" Name="Kabalite armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -182,7 +182,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="0" Name="Sslyth" Minimum="0" Maximum="12" CostPerModel="25" BaseCost="0" UnitEntryId="0">
+        <Unit Id="0" Name="Sslyth" Minimum="0" Maximum="12" IncrementCost="25" BaseCost="0" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="39" Name="Splinter pistol" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -201,7 +201,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -235,7 +235,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -264,7 +264,7 @@
     </UnitEntry>
     <UnitEntry Id="3" MaxUnitSize="1" Name="Succubus" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="0" Name="Succubus" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="75" UnitEntryId="0">
+        <Unit Id="0" Name="Succubus" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="75" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="39" Name="Splinter pistol" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -343,7 +343,7 @@
     </UnitEntry>
     <UnitEntry Id="15" MaxUnitSize="1" Name="Raider" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -382,7 +382,7 @@
     </UnitEntry>
     <UnitEntry Id="16" MaxUnitSize="1" Name="Venom" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -412,7 +412,7 @@
     </UnitEntry>
     <UnitEntry Id="17" MaxUnitSize="1" Name="Lelith Hesperax" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Lelith Hesperax" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="150" UnitEntryId="17">
+        <Unit Id="1" Name="Lelith Hesperax" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="150" UnitEntryId="17">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -442,7 +442,7 @@
     </UnitEntry>
     <UnitEntry Id="18" MaxUnitSize="1" Name="Drazhar" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Drazhar" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="190" UnitEntryId="18">
+        <Unit Id="1" Name="Drazhar" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="190" UnitEntryId="18">
           <DefaultEquipment>
             <Equipment Id="54" Name="Demiklaives" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -458,7 +458,7 @@
     </UnitEntry>
     <UnitEntry Id="19" MaxUnitSize="20" Name="Kabalite Warriors" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Kabalite Warrior" Minimum="5" Maximum="20" CostPerModel="8" BaseCost="40" UnitEntryId="19">
+        <Unit Id="1" Name="Kabalite Warrior" Minimum="5" Maximum="20" IncrementCost="8" BaseCost="40" UnitEntryId="19">
           <DefaultEquipment>
             <Equipment Id="41" Name="Kabalite armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -485,7 +485,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Sybarite" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="19">
+        <Unit Id="2" Name="Sybarite" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="19">
           <DefaultEquipment>
             <Equipment Id="41" Name="Kabalite armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -522,7 +522,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -556,7 +556,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -585,7 +585,7 @@
     </UnitEntry>
     <UnitEntry Id="20" MaxUnitSize="20" Name="Kabalite Trueborn" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Kabalite Trueborn" Minimum="5" Maximum="20" CostPerModel="11" BaseCost="55" UnitEntryId="20">
+        <Unit Id="1" Name="Kabalite Trueborn" Minimum="5" Maximum="20" IncrementCost="11" BaseCost="55" UnitEntryId="20">
           <DefaultEquipment>
             <Equipment Id="41" Name="Kabalite armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -612,7 +612,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Dracon" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="20">
+        <Unit Id="2" Name="Dracon" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="20">
           <DefaultEquipment>
             <Equipment Id="41" Name="Kabalite armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -649,7 +649,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -683,7 +683,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -712,7 +712,7 @@
     </UnitEntry>
     <UnitEntry Id="21" MaxUnitSize="15" Name="Wyches" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Wych" Minimum="5" Maximum="15" CostPerModel="10" BaseCost="50" UnitEntryId="21">
+        <Unit Id="1" Name="Wych" Minimum="5" Maximum="15" IncrementCost="10" BaseCost="50" UnitEntryId="21">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -739,7 +739,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Hekatrix" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="21">
+        <Unit Id="2" Name="Hekatrix" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="21">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -776,7 +776,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -814,7 +814,7 @@
     </UnitEntry>
     <UnitEntry Id="22" MaxUnitSize="15" Name="Bloodbrides" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Bloodbrides" Minimum="5" Maximum="15" CostPerModel="13" BaseCost="65" UnitEntryId="22">
+        <Unit Id="1" Name="Bloodbrides" Minimum="5" Maximum="15" IncrementCost="13" BaseCost="65" UnitEntryId="22">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -841,7 +841,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Syren" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="22">
+        <Unit Id="2" Name="Syren" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="22">
           <DefaultEquipment>
             <Equipment Id="39" Name="Splinter pistol" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -878,7 +878,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -912,7 +912,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -941,7 +941,7 @@
     </UnitEntry>
     <UnitEntry Id="23" MaxUnitSize="10" Name="Incubi" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Incubi" Minimum="5" Maximum="10" CostPerModel="20" BaseCost="60" UnitEntryId="23">
+        <Unit Id="1" Name="Incubi" Minimum="5" Maximum="10" IncrementCost="20" BaseCost="60" UnitEntryId="23">
           <DefaultEquipment>
             <Equipment Id="56" Name="Incubus warsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -952,7 +952,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Klaivex" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="23">
+        <Unit Id="2" Name="Klaivex" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="23">
           <DefaultEquipment>
             <Equipment Id="56" Name="Incubus warsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -969,7 +969,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1003,7 +1003,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1032,7 +1032,7 @@
     </UnitEntry>
     <UnitEntry Id="24" MaxUnitSize="10" Name="Mandrake" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Mandrakes" Minimum="3" Maximum="10" CostPerModel="0" BaseCost="36" UnitEntryId="24">
+        <Unit Id="1" Name="Mandrakes" Minimum="3" Maximum="10" IncrementCost="0" BaseCost="36" UnitEntryId="24">
           <DefaultEquipment>
             <Equipment Id="40" Name="Close combat weapon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1043,7 +1043,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Nightfiend" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="24">
+        <Unit Id="2" Name="Nightfiend" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="24">
           <DefaultEquipment>
             <Equipment Id="40" Name="Close combat weapon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1059,7 +1059,7 @@
     </UnitEntry>
     <UnitEntry Id="25" MaxUnitSize="10" Name="Wracks" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Wracks" Minimum="5" Maximum="10" CostPerModel="0" BaseCost="50" UnitEntryId="25">
+        <Unit Id="1" Name="Wracks" Minimum="5" Maximum="10" IncrementCost="0" BaseCost="50" UnitEntryId="25">
           <DefaultEquipment>
             <Equipment Id="59" Name="Gnarkskin" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1087,7 +1087,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Acothyst" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="25">
+        <Unit Id="2" Name="Acothyst" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="25">
           <DefaultEquipment>
             <Equipment Id="60" Name="Wrack tools" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1159,7 +1159,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1193,7 +1193,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="16">
+        <Unit Id="0" Name="Venom" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="16">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1222,7 +1222,7 @@
     </UnitEntry>
     <UnitEntry Id="26" MaxUnitSize="1" Name="Haemonculus" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Haemonculus" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="70" UnitEntryId="26">
+        <Unit Id="1" Name="Haemonculus" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="70" UnitEntryId="26">
           <DefaultEquipment>
             <Equipment Id="59" Name="Gnarkskin" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1323,7 +1323,7 @@
     </UnitEntry>
     <UnitEntry Id="27" MaxUnitSize="1" Name="Urien Rakarth" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Urien Rakarth" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="140" UnitEntryId="27">
+        <Unit Id="1" Name="Urien Rakarth" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="140" UnitEntryId="27">
           <DefaultEquipment>
             <Equipment Id="59" Name="Gnarkskin" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1348,7 +1348,7 @@
     </UnitEntry>
     <UnitEntry Id="28" MaxUnitSize="10" Name="Grotesques" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Grotesque" Minimum="3" Maximum="10" CostPerModel="0" BaseCost="105" UnitEntryId="28">
+        <Unit Id="1" Name="Grotesque" Minimum="3" Maximum="10" IncrementCost="0" BaseCost="105" UnitEntryId="28">
           <DefaultEquipment>
             <Equipment Id="59" Name="Gnarkskin" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1366,7 +1366,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Aberration" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="28">
+        <Unit Id="2" Name="Aberration" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="28">
           <DefaultEquipment>
             <Equipment Id="59" Name="Gnarkskin" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1408,7 +1408,7 @@
         </Unit>
       </Units>
       <DedicatedTransports>
-        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="55" UnitEntryId="15">
+        <Unit Id="0" Name="Raider" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="55" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1446,7 +1446,7 @@
     </UnitEntry>
     <UnitEntry Id="29" MaxUnitSize="12" Name="Beastmasters" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Beastmaster" Minimum="0" Maximum="12" CostPerModel="10" BaseCost="0" UnitEntryId="29">
+        <Unit Id="1" Name="Beastmaster" Minimum="0" Maximum="12" IncrementCost="10" BaseCost="0" UnitEntryId="29">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1471,13 +1471,13 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Khymera" Minimum="0" Maximum="12" CostPerModel="0" BaseCost="0" UnitEntryId="29">
+        <Unit Id="2" Name="Khymera" Minimum="0" Maximum="12" IncrementCost="0" BaseCost="0" UnitEntryId="29">
           <DefaultEquipment /><Upgrades />
         </Unit>
-        <Unit Id="3" Name="Razorwing Flock" Minimum="0" Maximum="12" CostPerModel="20" BaseCost="0" UnitEntryId="29">
+        <Unit Id="3" Name="Razorwing Flock" Minimum="0" Maximum="12" IncrementCost="20" BaseCost="0" UnitEntryId="29">
           <DefaultEquipment /><Upgrades />
         </Unit>
-        <Unit Id="4" Name="Clawed Fiend" Minimum="0" Maximum="12" CostPerModel="30" BaseCost="0" UnitEntryId="29">
+        <Unit Id="4" Name="Clawed Fiend" Minimum="0" Maximum="12" IncrementCost="30" BaseCost="0" UnitEntryId="29">
           <DefaultEquipment /><Upgrades />
         </Unit>
       </Units>
@@ -1485,7 +1485,7 @@
     </UnitEntry>
     <UnitEntry Id="30" MaxUnitSize="12" Name="Reavers" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Reaver" Minimum="3" Maximum="12" CostPerModel="16" BaseCost="48" UnitEntryId="30">
+        <Unit Id="1" Name="Reaver" Minimum="3" Maximum="12" IncrementCost="16" BaseCost="48" UnitEntryId="30">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1520,7 +1520,7 @@
             </Equipment>
           </Upgrades>
         </Unit>
-        <Unit Id="2" Name="Arena Champion" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="30">
+        <Unit Id="2" Name="Arena Champion" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="30">
           <DefaultEquipment>
             <Equipment Id="51" Name="Wychsuit" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1556,7 +1556,7 @@
     </UnitEntry>
     <UnitEntry Id="31" MaxUnitSize="20" Name="Hellions" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hellion" Minimum="5" Maximum="20" CostPerModel="13" BaseCost="65" UnitEntryId="31">
+        <Unit Id="1" Name="Hellion" Minimum="5" Maximum="20" IncrementCost="13" BaseCost="65" UnitEntryId="31">
           <DefaultEquipment>
             <Equipment Id="40" Name="Close combat weapon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1570,7 +1570,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Helliarch" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="31">
+        <Unit Id="2" Name="Helliarch" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="31">
           <DefaultEquipment>
             <Equipment Id="40" Name="Close combat weapon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1615,7 +1615,7 @@
     </UnitEntry>
     <UnitEntry Id="32" MaxUnitSize="1" Name="Razorwing Jetfighter" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Razorwing Jetfighter" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="130" UnitEntryId="32">
+        <Unit Id="1" Name="Razorwing Jetfighter" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="130" UnitEntryId="32">
           <DefaultEquipment>
             <Equipment Id="45" Name="Twin-linked splinter rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1683,7 +1683,7 @@
     </UnitEntry>
     <UnitEntry Id="33" MaxUnitSize="10" Name="Scourges" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Scourge" Minimum="5" Maximum="10" CostPerModel="16" BaseCost="80" UnitEntryId="33">
+        <Unit Id="1" Name="Scourge" Minimum="5" Maximum="10" IncrementCost="16" BaseCost="80" UnitEntryId="33">
           <DefaultEquipment>
             <Equipment Id="78" Name="Ghostplate armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1719,7 +1719,7 @@
           </DefaultEquipment>
           <Upgrades />
         </Unit>
-        <Unit Id="2" Name="Solarite" Minimum="0" Maximum="1" CostPerModel="0" BaseCost="10" UnitEntryId="33">
+        <Unit Id="2" Name="Solarite" Minimum="0" Maximum="1" IncrementCost="0" BaseCost="10" UnitEntryId="33">
           <DefaultEquipment>
             <Equipment Id="78" Name="Ghostplate armor" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1782,7 +1782,7 @@
     </UnitEntry>
     <UnitEntry Id="34" MaxUnitSize="3" Name="Talos" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Talos" Minimum="1" Maximum="3" CostPerModel="120" BaseCost="120" UnitEntryId="34">
+        <Unit Id="1" Name="Talos" Minimum="1" Maximum="3" IncrementCost="120" BaseCost="120" UnitEntryId="34">
           <DefaultEquipment>
             <Equipment Id="80" Name="Armoured carapace" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1821,7 +1821,7 @@
     </UnitEntry>
     <UnitEntry Id="35" MaxUnitSize="3" Name="Cronos" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Cronos" Minimum="1" Maximum="3" CostPerModel="100" BaseCost="100" UnitEntryId="35">
+        <Unit Id="1" Name="Cronos" Minimum="1" Maximum="3" IncrementCost="100" BaseCost="100" UnitEntryId="35">
           <DefaultEquipment>
             <Equipment Id="80" Name="Armoured carapace" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -1844,7 +1844,7 @@
     </UnitEntry>
     <UnitEntry Id="36" MaxUnitSize="1" Name="Ravager" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Ravager" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="110" UnitEntryId="36">
+        <Unit Id="1" Name="Ravager" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="110" UnitEntryId="36">
           <DefaultEquipment>
             <Equipment Id="50" Name="Disintegrator cannon" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -1897,7 +1897,7 @@
     </UnitEntry>
     <UnitEntry Id="37" MaxUnitSize="1" Name="Voidraven Bomber" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Voidraven Bomber" Minimum="1" Maximum="1" CostPerModel="0" BaseCost="160" UnitEntryId="37">
+        <Unit Id="1" Name="Voidraven Bomber" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="160" UnitEntryId="37">
           <DefaultEquipment>
             <Equipment Id="91" Name="Two void lances" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>

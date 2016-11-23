@@ -72,7 +72,7 @@ namespace ArmyBuilder.Core.Models
         {
             Unit = m;
             ArmyListData = data;
-            CurrentUnitSize = Unit.Minimum;
+            CurrentUnitSize = (int)Unit.Minimum;
             PropertyChanged += OnPropertyChanged;
             ModelId = Unit.Id;
             UpdatePointsTotal();
@@ -102,7 +102,7 @@ namespace ArmyBuilder.Core.Models
         private void UpdatePointsTotal()
         {
             //UpgradesCostTotal = Units.Sum(m => m.PointsCostTotal);
-            //PointsCostTotal = UpgradesCostTotal + (Unit.Minimum > 0 ? Unit.BaseCost : 0) + (CurrentUnitSize > Unit.Minimum ? Unit.CostPerModel * (CurrentUnitSize - Unit.Minimum) : 0);
+            //PointsCostTotal = UpgradesCostTotal + (Unit.Minimum > 0 ? Unit.BaseCost : 0) + (CurrentUnitSize > Unit.Minimum ? Unit.IncrementCost * (CurrentUnitSize - Unit.Minimum) : 0);
             //var allEquipment = GetAllModelEquipment();
 
             //if (Unit.Units != null)

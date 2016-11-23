@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="UnitEntriesListView" Margin="5" ItemsSource="{Binding SelectedArmy.UnitEntries}" SelectedItem="{Binding SelectedUnitEntry}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
+        <ListView x:Name="UnitEntriesListView" Margin="5" ItemsSource="{Binding SelectedArmy.Units}" SelectedItem="{Binding SelectedUnitEntry}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="AddButton" Margin="5" Content="Add (F2)" Command="{Binding AddUnitEntryCommand}"/>
@@ -46,7 +46,7 @@
 
 
             <StackPanel Grid.Row="7" Orientation="Horizontal">
-                <ComboBox x:Name="DedicatedTransportsComboBox" Margin="5" ItemsSource="{Binding Army.UnitEntries}" Width="150" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
+                <ComboBox x:Name="DedicatedTransportsComboBox" Margin="5" ItemsSource="{Binding Army.Units}" Width="150" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
                 <Button Margin="5" Content="Add Transport" Command="{Binding AddDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=DedicatedTransportsComboBox}">
                 </Button>
                 <Button Content="Remove transport"  Margin="5" Command="{Binding RemoveDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=TransportsListView}"/>

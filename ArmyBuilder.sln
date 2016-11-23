@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmyBuilder.Test", "ArmyBui
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArmyBuilder.XMLEditor", "ArmyBuilder.XMLEditor\ArmyBuilder.XMLEditor.csproj", "{28E9E1CD-44C9-41E9-A129-848460474B62}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ArmyData", "ArmyData", "{B86A43DB-717B-402D-876C-EAC2EA4EE209}"
+	ProjectSection(SolutionItems) = preProject
+		ARmyData\Sylvaneth.xml = ARmyData\Sylvaneth.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

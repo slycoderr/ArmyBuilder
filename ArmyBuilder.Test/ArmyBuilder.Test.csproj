@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ParseEngine.cs" />
+    <Compile Include="MainViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ArmyBuilder\ArmyBuilder.Core\ArmyBuilder.Core.csproj">

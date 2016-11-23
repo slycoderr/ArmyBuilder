@@ -47,7 +47,8 @@ namespace ArmyBuilder.Core.ViewModels
 
                             if (currentDetachment == null)
                             {
-                                list.Detachments.Add(new DetachmentData(new Detachment{Name = "Uncategorized" }));
+                                currentDetachment =new DetachmentData(new Detachment {Name = "Uncategorized", Army = list.Army});
+                                list.Detachments.Add(currentDetachment);
                             }
                     }
 
@@ -107,6 +108,8 @@ namespace ArmyBuilder.Core.ViewModels
                         }
                     }
 
+                    mainViewModel.SelectedArmyList = list;
+
                     break;
                 }
 
@@ -114,7 +117,7 @@ namespace ArmyBuilder.Core.ViewModels
                 {
                     if (list == null)
                     {
-                            throw new ArgumentException($"The army list parameter {line} is invalid. The game system must be declared first");
+                        throw new ArgumentException($"The army list parameter {line} is invalid. The game system must be declared first");
                     }
 
                     if (!uint.TryParse(value, out uint points))
@@ -157,6 +160,23 @@ namespace ArmyBuilder.Core.ViewModels
 
                     ((AgeOfSigmarArmyList) list).Allegiance = a;
 
+                    switch (a)
+                    {
+                        case Allegiance.Order:
+                            break;
+                        case Allegiance.Death:
+                            break;
+                        case Allegiance.Chaos:
+                            break;
+                        case Allegiance.Destruction:
+                            break;
+                        case Allegiance.Sylvaneth:
+                            list.Army = mainViewModel.Armies.First(ar => ar.Id == 10);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
                     break;
                 }
 
@@ -190,27 +210,52 @@ namespace ArmyBuilder.Core.ViewModels
         public void ParseListUnit(IArmyList list, DetachmentData detachment, string line)
         {
             var split = line.Split('^');
-            var field = split.ElementAtOrDefault(0);
-            var value = split.ElementAtOrDefault(1);
+            var inputUnitSize = split.ElementAtOrDefault(0);
+            var inputUnitName = split.ElementAtOrDefault(1);
+            Army army = detachment.Detachment.Army;
+            uint unitSize;
 
-            if (string.IsNullOrEmpty(field))
+            if (string.IsNullOrEmpty(inputUnitSize))
             {
                 throw new ArgumentException($"The army list parameter {line} is invalid. The field is empty.");
             }
 
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(inputUnitName))
             {
                 throw new ArgumentException($"The army list parameter {line} is invalid. The value is empty.");
             }
 
-            var unit = mainViewModel.Armies.FirstOrDefault(a => a.Id == list.Army.Id).UnitEntries.FirstOrDefault(d => d.Name == value);
+            var unit = army.Units.FirstOrDefault(d => d.Name.ToLower() == inputUnitName.ToLower());
 
             if (unit == null)
             {
-                throw new ArgumentException($"The army list parameter {line} is invalid. The unit {value} is not known.");
+                throw new ArgumentException($"The army list parameter {line} is invalid. The unit {inputUnitName} is not known.");
             }
 
-            detachment.Units.Add(new ArmyListData(unit, list.Army));
+
+            if (!uint.TryParse(inputUnitSize, out unitSize))
+            {
+                throw new ArgumentException($"The army list parameter {line} is invalid. The unit size must be a whole number greater than 1.");
+            }
+
+            if (unitSize < unit.Minimum)
+            {
+                throw new ArgumentException($"The army list parameter {line} is invalid. The number {inputUnitSize} is lower than the minimum unit size of {unit.Minimum}.");
+            }
+
+            if (unitSize > unit.Maximum)
+            {
+                throw new ArgumentException($"The army list parameter {line} is invalid. The number {inputUnitSize} is greater than the maximum unit size of {unit.Maximum}.");
+            }
+
+            if (unitSize % unit.IncrementSize != 0)
+            {
+                throw new ArgumentException($"The army list parameter {line} is invalid. The number {inputUnitSize} is not in increments of {unit.IncrementSize}.");
+            }
+
+            detachment.Units.Add(new ArmyListData(unit, list.Army){Count = unitSize});
+
+            mainViewModel.UpdateListCost();
         }
     }
 }

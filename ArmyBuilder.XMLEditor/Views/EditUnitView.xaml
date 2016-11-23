@@ -37,7 +37,7 @@
             <TextBox Grid.Row="2" Margin="5" Text="{Binding Minimum}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Minimum" />
             <TextBox Grid.Row="3" Margin="5" Text="{Binding Maximum}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Maximum" />
             <TextBox Grid.Row="4" Margin="5" Text="{Binding BaseCost}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="BaseCost" />
-            <TextBox Grid.Row="5" Margin="5" Text="{Binding CostPerModel}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="CostPerModel" />
+            <TextBox Grid.Row="5" Margin="5" Text="{Binding IncrementCost}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="IncrementCost" />
         </Grid>
     </Grid>
 </UserControl>

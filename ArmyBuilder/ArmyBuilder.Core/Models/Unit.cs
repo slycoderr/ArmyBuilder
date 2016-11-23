@@ -10,10 +10,11 @@ namespace ArmyBuilder.Core.Models
     {
         private int id;
         private string name;
-        private int minimum;
-        private int maximum;
-        private int costPerModel;
-        private int baseCost;
+        private uint minimum;
+        private uint maximum;
+        private uint incrementCost;
+        private uint baseCost;
+        private uint incrementSize;
 
         [XmlAttribute]
         public int Id { get { return id; } set { SetValue(ref id, value); } }
@@ -22,16 +23,22 @@ namespace ArmyBuilder.Core.Models
         public string Name { get { return name; } set { SetValue(ref name, value); } }
 
         [XmlAttribute]
-        public int Minimum { get { return minimum; } set { SetValue(ref minimum, value); } }
+        public uint Minimum { get { return minimum; } set { SetValue(ref minimum, value); } }
 
         [XmlAttribute]
-        public int Maximum { get { return maximum; } set { SetValue(ref maximum, value); } }
+        public uint Maximum { get { return maximum; } set { SetValue(ref maximum, value); } }
 
         [XmlAttribute]
-        public int CostPerModel { get { return costPerModel; } set { SetValue(ref costPerModel, value); } }
+        public uint IncrementCost { get { return incrementCost; } set { SetValue(ref incrementCost, value); } }
 
         [XmlAttribute]
-        public int BaseCost { get { return baseCost; } set { SetValue(ref baseCost, value); } }
+        public uint IncrementSize { get { return incrementSize; } set { SetValue(ref incrementSize, value); } }
+
+        [XmlIgnore]
+        public uint CostPerModel => IncrementCost / (IncrementSize > 0 ? IncrementSize : 1);
+
+        [XmlAttribute]
+        public uint BaseCost { get { return baseCost; } set { SetValue(ref baseCost, value); } }
 
         /// <summary>
         /// Needed for loading since transports don't know what unit entry they're from.

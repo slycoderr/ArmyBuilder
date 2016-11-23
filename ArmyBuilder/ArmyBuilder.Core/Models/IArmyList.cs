@@ -12,6 +12,7 @@ namespace ArmyBuilder.Core.Models
         string Name { get; set; }
         DateTime DateCreated { get; set; }
         uint PointsLimit { get; set; }
+        uint CurrentPointsTotal { get; set; }
         GameSystem System { get; set; }
         ObservableCollection<DetachmentData> Detachments { get; set; }
         Army Army { get; set; }

@@ -12,9 +12,10 @@ namespace ArmyBuilder.Core.Models
         public string Name { get; set; }
         public DateTime DateCreated { get; set; }
         public uint PointsLimit { get; set; }
-        public ObservableCollection<DetachmentData> Detachments { get; set; }
+        public ObservableCollection<DetachmentData> Detachments { get; set; } = new ObservableCollection<DetachmentData>();
         public Allegiance Allegiance { get; set; }
         public GameSystem System { get; set; }
         public Army Army { get; set; }
+        public uint CurrentPointsTotal { get; set; }
     }
 }

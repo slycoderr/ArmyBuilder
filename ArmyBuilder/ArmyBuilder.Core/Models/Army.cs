@@ -32,7 +32,7 @@ namespace ArmyBuilder.Core.Models
 
         
         [XmlArray]
-        public ObservableCollection<Unit> UnitEntries { get; set; } = new ObservableCollection<Unit>();
+        public ObservableCollection<Unit> Units { get; set; } = new ObservableCollection<Unit>();
 
         [XmlArray]
         public ObservableCollection<Detachment> Detachments { get; set; } = new ObservableCollection<Detachment>();

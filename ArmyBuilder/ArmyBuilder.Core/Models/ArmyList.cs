@@ -17,6 +17,7 @@ namespace ArmyBuilder.Core.Models
         private uint pointsLimit;
         private Army army;
         private GameSystem system;
+        private uint currentPointsTotal;
 
         [Ignore]
         public Army Army { get { return army; } set { SetValue(ref army, value); } }
@@ -33,6 +34,7 @@ namespace ArmyBuilder.Core.Models
         }
 
         public uint PointsLimit { get { return pointsLimit; } set { SetValue(ref pointsLimit, value); } }
+        public uint CurrentPointsTotal { get { return currentPointsTotal; } set { SetValue(ref currentPointsTotal, value); } }
 
         public ArmyList(Army army)
         {

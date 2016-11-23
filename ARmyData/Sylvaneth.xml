@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
-<Army Name="Sylvaneth" LocalAllegiance="Sylvaneth" GlobalAllegiance="Order" SchemaVersion="2">
+<Army Name="Sylvaneth" Id="10" LocalAllegiance="Sylvaneth" GlobalAllegiance="Order" SchemaVersion="2">
   <Units>
-    <Unit Name="Dryads" Minimum="10" Maximum="30" Increment="10" BaseCost="100" CostPerModel="100"/>
-    <Unit Name="Tree-Revenants" Minimum="5" Maximum="20" Increment="5" BaseCost="100" CostPerModel="100"/>
-    <Unit Name="Sprite-Revenants" Minimum="5" Maximum="20" Increment="5" BaseCost="100" CostPerModel="100"/>
-    <Unit Name="Treelord" Minimum="1" Maximum="1"  BaseCost="100" />
-    <Unit Name="Treelord Ancient" Minimum="1" Maximum="1" BaseCost="100"/>
-    <Unit Name="Spirit of Durthu" Minimum="1" Maximum="1"  BaseCost="100" />
-    <Unit Name="Kurnoth Hunters" Minimum="3" Maximum="9" Increment="5" BaseCost="180" CostPerModel="180"/>
-    <Unit Name="Branchwych" Minimum="1" Maximum="1"  BaseCost="100" />
-    <Unit Name="Branchwraith" Minimum="1" Maximum="1"  BaseCost="100" />
-    <Unit Name="Alarielle the Everqueen" Minimum="5" Maximum="20" BaseCost="600" Limit="1"/>
-    <Unit Name="Drycha Hamadrench" Minimum="1" Maximum="1" BaseCost="280" Limit="1"/>
+    <Unit Name="Dryads" Minimum="10" Maximum="30" IncrementSize="10" IncrementCost="120"/>
+    <Unit Name="Tree-Revenants" Minimum="5" Maximum="20" IncrementSize="5" IncrementCost="100"/>
+    <Unit Name="Sprite-Revenants" Minimum="5" Maximum="20" IncrementSize="5" IncrementCost="100"/>
+    <Unit Name="Treelord" Minimum="1" Maximum="1" IncrementCost="260" IncrementSize="1"/>
+    <Unit Name="Treelord Ancient" Minimum="1" Maximum="1" IncrementCost="300" IncrementSize="1"/>
+    <Unit Name="Spirit of Durthu" Minimum="1" Maximum="1"  IncrementCost="400"  IncrementSize="1"/>
+    <Unit Name="Kurnoth Hunters" Minimum="3" Maximum="9" IncrementSize="3" IncrementCost="180"/>
+    <Unit Name="Branchwych" Minimum="1" Maximum="1"  IncrementCost="100" IncrementSize="1" />
+    <Unit Name="Branchwraith" Minimum="1" Maximum="1"  IncrementCost="100"  IncrementSize="1"/>
+    <Unit Name="Alarielle the Everqueen" Minimum="5" Maximum="20" IncrementCost="620" Limit="1" IncrementSize="1"/>
+    <Unit Name="Drycha Hamadrench" Minimum="1" Maximum="1" IncrementCost="280" Limit="1" IncrementSize="1"/>
   </Units>
 </Army>
