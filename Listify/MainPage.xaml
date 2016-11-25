@@ -2,10 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Listify"
-             x:Class="Listify.MainPage">
+             x:Class="Listify.MainPage" BindingContext="{StaticResource MainViewModel}">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
-
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Label Text="{Binding ListViewModel.SelectedArmyList.Name}"/>
+        
+    <ListView Grid.Row="1" ItemsSource="{Binding ListViewModel.SelectedArmyList.Data}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <ViewCell.View>
+                        <StackLayout Orientation="Vertical">
+                            <Entry Text="{Binding}" />
+                            <!--<Label Text="{Binding Description}" />-->
+                        </StackLayout>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        
+        <StackLayout Grid.Row="2" Orientation="Horizontal">
+            <Button Text="Verify"/>
+            <Button Text="Verify and Export"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

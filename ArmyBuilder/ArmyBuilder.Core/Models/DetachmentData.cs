@@ -1,9 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
 using System.Xml.Serialization;
-using GalaSoft.MvvmLight.Command;
-using MoreLinq;
-using Slycoder.MVVM;
+using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -21,13 +18,11 @@ namespace ArmyBuilder.Core.Models
 
         public DetachmentData()
         {
-            
         }
 
         public DetachmentData(Detachment detachment)
         {
             Detachment = detachment;
-       
         }
     }
 }

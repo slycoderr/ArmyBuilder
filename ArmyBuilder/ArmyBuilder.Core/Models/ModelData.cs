@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
 using MoreLinq;
-using Slycoder.MVVM;
+using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -27,7 +27,11 @@ namespace ArmyBuilder.Core.Models
         public List<EquipmentData> Upgrades { get; set; } = new List<EquipmentData>();
 
         [XmlIgnore]
-        public int PointsCostTotal { get { return pointsCostTotal; } set { SetValue(ref pointsCostTotal, value); } }
+        public int PointsCostTotal
+        {
+            get { return pointsCostTotal; }
+            set { SetValue(ref pointsCostTotal, value); }
+        }
 
         private int pointsCostTotal;
 
@@ -39,7 +43,8 @@ namespace ArmyBuilder.Core.Models
         {
             Id = Guid.NewGuid();
             Unit = m;
-            Equipment = new List<EquipmentData>(Unit.DefaultEquipment.Select(e => new EquipmentData(e, Id.ToString(), null)));
+            Equipment =
+                new List<EquipmentData>(Unit.DefaultEquipment.Select(e => new EquipmentData(e, Id.ToString(), null)));
             Upgrades = new List<EquipmentData>(Unit.Upgrades.Select(e => new EquipmentData(e, null)));
             ModelId = m.Id;
 
@@ -77,15 +82,15 @@ namespace ArmyBuilder.Core.Models
 
         private int TotalEquipmentCost(EquipmentData equipment)
         {
-            return (equipment.IsTaken ? equipment.Equipment.Cost : 0) + equipment.ReplacementOptions.Sum(TotalEquipmentCost) + equipment.GivenEquipment.Sum(TotalEquipmentCost);
+            return (equipment.IsTaken ? equipment.Equipment.Cost : 0) +
+                   equipment.ReplacementOptions.Sum(TotalEquipmentCost) +
+                   equipment.GivenEquipment.Sum(TotalEquipmentCost);
         }
 
         private void EquipmentPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsTaken")
-            {
                 CalculatePointsCost();
-            }
         }
 
         private void CalculatePointsCost()

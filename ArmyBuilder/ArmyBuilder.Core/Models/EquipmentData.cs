@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Xml.Serialization;
 using MoreLinq;
-using Slycoder.MVVM;
+using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -70,7 +70,7 @@ namespace ArmyBuilder.Core.Models
 
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, id, this)).ToList();
             //GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, id, this)).ToList();
-            IsTaken = Equipment.IsDefault || ((ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven);
+            IsTaken = Equipment.IsDefault || (ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven;
 
             TraverseEquipment(this);
         }
@@ -85,7 +85,7 @@ namespace ArmyBuilder.Core.Models
             ReplacementOptions = Equipment.ReplacementOptions.Select(eq => new EquipmentData(eq, this)).ToList();
             //GivenEquipment = Equipment.GivenEquipment.Select(eq => new EquipmentData(eq, this)).ToList();
 
-            IsTaken = Equipment.IsDefault || ((ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven);
+            IsTaken = Equipment.IsDefault || (ParentEquipment?.IsTaken ?? false) && Equipment.IsGiven;
             TraverseEquipment(this);
         }
 
@@ -112,7 +112,7 @@ namespace ArmyBuilder.Core.Models
 
             else
             {
-                equipment.CanAdd = equipment.ParentEquipment == null || (ParentEquipment != null && (equipment.ParentEquipment.IsTaken || equipment.ParentEquipment.ReplacementOptions.Any(e => e.IsTaken))); //top most equipment can never be not taken
+                equipment.CanAdd = equipment.ParentEquipment == null || ParentEquipment != null && (equipment.ParentEquipment.IsTaken || equipment.ParentEquipment.ReplacementOptions.Any(e => e.IsTaken)); //top most equipment can never be not taken
 
                 equipment.ReplacementOptions.ForEach(e =>
                 {

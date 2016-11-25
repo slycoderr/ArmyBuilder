@@ -1,4 +1,4 @@
-﻿using Slycoder.MVVM;
+﻿using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -17,6 +17,7 @@ namespace ArmyBuilder.Core.Models
         public int LordOfWar { get { return lordOfWar; } set { SetValue(ref lordOfWar, value); } }
 
         public int Fortification { get { return fortification; } set { SetValue(ref fortification, value); } }
+
         private int elite;
         private int fastAttack;
         private int fortification;

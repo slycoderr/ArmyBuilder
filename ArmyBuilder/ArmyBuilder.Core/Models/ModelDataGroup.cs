@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
 using MoreLinq;
-using Slycoder.MVVM;
+using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -72,7 +72,7 @@ namespace ArmyBuilder.Core.Models
         {
             Unit = m;
             ArmyListData = data;
-            CurrentUnitSize = (int)Unit.Minimum;
+            CurrentUnitSize = (int) Unit.Minimum;
             PropertyChanged += OnPropertyChanged;
             ModelId = Unit.Id;
             UpdatePointsTotal();

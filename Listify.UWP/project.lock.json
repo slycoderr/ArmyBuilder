@@ -1899,8 +1899,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm": {
@@ -3658,8 +3664,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -5380,8 +5392,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64": {
@@ -7146,8 +7164,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -8868,8 +8892,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86": {
@@ -10634,8 +10664,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -12356,8 +12392,14 @@
           "lib/uap10.0/Xamarin.Forms.Xaml.dll": {}
         }
       },
-      "Listify/1.0.0": {
+      "ArmyBuilder.Core/1.0.0": {
         "type": "project"
+      },
+      "Listify/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ArmyBuilder.Core": "1.0.0"
+        }
       }
     }
   },
@@ -15703,6 +15745,10 @@
         "xamarin.forms.2.0.0.6482.nupkg.sha512",
         "xamarin.forms.nuspec"
       ]
+    },
+    "ArmyBuilder.Core/1.0.0": {
+      "type": "project",
+      "msbuildProject": "../ArmyBuilder/ArmyBuilder.Core/ArmyBuilder.Core.csproj"
     },
     "Listify/1.0.0": {
       "type": "project",

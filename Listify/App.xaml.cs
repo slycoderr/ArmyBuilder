@@ -1,24 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-
+using ArmyBuilder.Core.ViewModels;
 using Xamarin.Forms;
+
+[assembly: Dependency(typeof(MainViewModel))]
 
 namespace Listify
 {
-    public partial class App : Application
+    public partial class App
     {
-        public App()
+        public App(params string[] files)
         {
             InitializeComponent();
 
-            MainPage = new Listify.MainPage();
+            MainPage = new MainPage();
+            ((MainViewModel) Current.Resources["MainViewModel"]).LoadArmyData(files);
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
         }
 
         protected override void OnSleep()

@@ -1,26 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
-using Slycoder.MVVM;
+using Slycoder.Portable.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
-
     [XmlRoot("Equipment", Namespace = "")]
     public class Equipment : BindableBase
     {
-        private int cost;
-        private int limit;
-        private int maxPerArmy;
-        private bool isDefault;
-        private bool isGiven;
-        private int mutualId;
-        private EquipmentType type;
-        private int perX;
-        private int id;
-        private string name;
-
         [XmlAttribute]
         public int Id { get { return id; } set { SetValue(ref id, value); } }
 
@@ -63,9 +50,20 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public Unit Unit { get; set; }
 
+        private int cost;
+        private int id;
+        private bool isDefault;
+        private bool isGiven;
+        private int limit;
+        private int maxPerArmy;
+        private int mutualId;
+        private string name;
+        private int perX;
+        private EquipmentType type;
+
         public Equipment Clone()
         {
-            var clone = (Equipment)MemberwiseClone();
+            var clone = (Equipment) MemberwiseClone();
 
             clone.ReplacementOptions = new ObservableCollection<Equipment>();
 
@@ -116,7 +114,7 @@ namespace ArmyBuilder.Core.Models
 
             foreach (var equip in ReplacementOptions)
             {
-                equip.PopulateDefaultPoperties(Unit.UnitEntry.Army.EquipmentDefinitions.First(e=>e.Id == equip.Id));
+                equip.PopulateDefaultPoperties(Unit.UnitEntry.Army.EquipmentDefinitions.First(e => e.Id == equip.Id));
             }
         }
 

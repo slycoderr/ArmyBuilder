@@ -16,5 +16,6 @@ namespace ArmyBuilder.Core.Models
         GameSystem System { get; set; }
         ObservableCollection<DetachmentData> Detachments { get; set; }
         Army Army { get; set; }
+        ObservableCollection<string> Data { get; set; }
     }
 }

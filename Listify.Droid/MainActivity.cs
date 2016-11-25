@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.IO;
+using System.Linq;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -18,9 +19,17 @@ namespace Listify.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
+            
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+
+            var s = Application.Context.Resources.Assets.Open("Sylvaneth.xml");
+
+            var r = new StreamReader(s);
+
+            var text = r.ReadToEnd();
+            s.Dispose();
+
+            LoadApplication(new App(text));
         }
     }
 }
