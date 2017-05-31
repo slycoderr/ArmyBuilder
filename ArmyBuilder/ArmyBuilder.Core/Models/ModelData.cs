@@ -27,7 +27,7 @@ namespace ArmyBuilder.Core.Models
         public List<EquipmentData> Upgrades { get; set; } = new List<EquipmentData>();
 
         [XmlIgnore]
-        public int PointsCostTotal { get { return pointsCostTotal; } set { SetValue(ref pointsCostTotal, value); } }
+        public int PointsCostTotal { get => pointsCostTotal; set => SetValue(ref pointsCostTotal, value); }
 
         private int pointsCostTotal;
 

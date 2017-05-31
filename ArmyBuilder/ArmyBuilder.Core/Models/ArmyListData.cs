@@ -23,10 +23,10 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public int UnitId { get; set; }
         [XmlIgnore]
-        public byte[] Data { get { return data; } set { SetValue(ref data, value); } }
+        public byte[] Data { get => data; set => SetValue(ref data, value); }
 
         [Ignore, XmlIgnore]
-        public int PointsTotal { get { return pointsTotal; } set { SetValue(ref pointsTotal, value); } }
+        public int PointsTotal { get => pointsTotal; set => SetValue(ref pointsTotal, value); }
 
         [Ignore, XmlIgnore]
         public UnitEntry UnitEntry { get; private set; }
@@ -40,7 +40,7 @@ namespace ArmyBuilder.Core.Models
         [XmlElement, Ignore]
         public ModelData SelectedDedicatedTransport
         {
-            get { return selectedDedicatedTransport; }
+            get => selectedDedicatedTransport;
             set
             {
                 var oldValue = selectedDedicatedTransport;

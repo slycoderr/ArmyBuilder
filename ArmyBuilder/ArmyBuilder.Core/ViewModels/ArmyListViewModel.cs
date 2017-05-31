@@ -16,11 +16,11 @@ namespace ArmyBuilder.Core.ViewModels
     {
         public ArmyList ArmyList { get; }
 
-        public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
+        public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
 
-        public int PointsRemaining { get { return pointsRemaining; } set { SetValue(ref pointsRemaining, value); } }
+        public int PointsRemaining { get => pointsRemaining; set => SetValue(ref pointsRemaining, value); }
 
-        public int PointsUsed { get { return pointsUsed; } set { SetValue(ref pointsUsed, value); } }
+        public int PointsUsed { get => pointsUsed; set => SetValue(ref pointsUsed, value); }
 
         public ForceOrgCounter ForceOrgCount { get; } = new ForceOrgCounter();
 
@@ -32,7 +32,7 @@ namespace ArmyBuilder.Core.ViewModels
         public ObservableCollection<UnitEntry> LordOfWarUnits { get; } = new ObservableCollection<UnitEntry>();
         public ObservableCollection<UnitEntry> FortificationUnits { get; } = new ObservableCollection<UnitEntry>();
 
-        public ArmyListData SelectedUnit { get { return selectedUnit; } set { SetValue(ref selectedUnit, value); } }
+        public ArmyListData SelectedUnit { get => selectedUnit; set => SetValue(ref selectedUnit, value); }
 
         public ObservableCollection<ForceOrgGroup> ArmyListDataGroups { get; } =new ObservableCollection<ForceOrgGroup>();
         public ObservableCollection<ArmyUnitGroup> ArmyUnitGroups { get; } = new ObservableCollection<ArmyUnitGroup>();
@@ -42,7 +42,7 @@ namespace ArmyBuilder.Core.ViewModels
         public RelayCommand<Detachment> AddDetachmentCommand => new RelayCommand<Detachment>(AddDetachment);
         public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
 
-        public bool IsUnitFlyoutOpened { get { return isUnitFlyoutOpened; } set { SetValue(ref isUnitFlyoutOpened, value); } }
+        public bool IsUnitFlyoutOpened { get => isUnitFlyoutOpened; set => SetValue(ref isUnitFlyoutOpened, value); }
         private bool isUnitFlyoutOpened;
 
         private ArmyListData selectedUnit;
@@ -87,12 +87,6 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (e.PropertyName == nameof(SelectedDetachment))
             {
-
-
-                if (SelectedDetachment != null && SelectedDetachment.Detachment.Type == DetachmentType.BattleForged)
-                {
-                    //SelectedDetachment = SelectedDetachment.SelectedDetachments.FirstOrDefault();
-                }
 
                 UpdateArmyUnitsListDataSource();
                 UpdateForceOrgCount();

@@ -15,10 +15,10 @@ namespace ArmyBuilder.Core.Models
     public class Army : BindableBase
     {
         [XmlAttribute]
-        public int Id { get { return id; } set { SetValue(ref id, value); } }
+        public int Id { get => id; set => SetValue(ref id, value); }
 
         [XmlAttribute]
-        public string Name { get { return name; } set { SetValue(ref name, value); } }
+        public string Name { get => name; set => SetValue(ref name, value); }
         /// <summary>
         /// Version of the XML Army data schema.
         /// </summary>

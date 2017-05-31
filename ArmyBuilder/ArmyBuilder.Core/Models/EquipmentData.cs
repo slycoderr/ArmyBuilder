@@ -28,12 +28,12 @@ namespace ArmyBuilder.Core.Models
         public int TempLimit { get; set; }
 
         [XmlIgnore]
-        public bool CanAdd { get { return canAdd; } set { SetValue(ref canAdd, value); } }
+        public bool CanAdd { get => canAdd; set => SetValue(ref canAdd, value); }
 
         [XmlAttribute]
         public bool IsTaken
         {
-            get { return isTaken; }
+            get => isTaken;
             set
             {
                 if (SetValue(ref isTaken, value))
@@ -44,10 +44,10 @@ namespace ArmyBuilder.Core.Models
         }
 
         [XmlAttribute]
-        public string GroupName { get { return groupName; } set { SetValue(ref groupName, value); } }
+        public string GroupName { get => groupName; set => SetValue(ref groupName, value); }
 
         [XmlIgnore]
-        public int PointsCostTotal { get { return pointsCostTotal; } set { SetValue(ref pointsCostTotal, value); } }
+        public int PointsCostTotal { get => pointsCostTotal; set => SetValue(ref pointsCostTotal, value); }
 
         private bool canAdd;
         private string groupName;

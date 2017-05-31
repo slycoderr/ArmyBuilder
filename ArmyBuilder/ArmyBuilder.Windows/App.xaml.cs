@@ -24,9 +24,9 @@ namespace ArmyBuilder.Windows
             }
 
             var files = Directory.EnumerateFiles(ArmyDataPath).Where(f => f.ToLower().Contains(".xml")).ToList();
-            var streams = files.Select(f => new FileStream(f, FileMode.Open)).ToList();
+            var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
 
-            ((MainViewModel)FindResource("MainViewModel")).LoadArmyData(streams.ToArray());
+            ((MainViewModel)FindResource("MainViewModel")).LoadArmyData(streams);
             ((MainViewModel)FindResource("MainViewModel")).LoadDatabase(DataPath);
 
             base.OnStartup(e);

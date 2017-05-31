@@ -22,34 +22,34 @@ namespace ArmyBuilder.Core.Models
         private string name;
 
         [XmlAttribute]
-        public int Id { get { return id; } set { SetValue(ref id, value); } }
+        public int Id { get => id; set => SetValue(ref id, value); }
 
         [XmlAttribute]
-        public string Name { get { return name; } set { SetValue(ref name, value); } }
+        public string Name { get => name; set => SetValue(ref name, value); }
 
         [XmlAttribute]
-        public int Cost { get { return cost; } set { SetValue(ref cost, value); } }
+        public int Cost { get => cost; set => SetValue(ref cost, value); }
 
         [XmlAttribute]
-        public int Limit { get { return limit; } set { SetValue(ref limit, value); } }
+        public int Limit { get => limit; set => SetValue(ref limit, value); }
 
         [XmlAttribute]
-        public int MaxPerArmy { get { return maxPerArmy; } set { SetValue(ref maxPerArmy, value); } }
+        public int MaxPerArmy { get => maxPerArmy; set => SetValue(ref maxPerArmy, value); }
 
         [XmlAttribute]
-        public bool IsDefault { get { return isDefault; } set { SetValue(ref isDefault, value); } }
+        public bool IsDefault { get => isDefault; set => SetValue(ref isDefault, value); }
 
         [XmlAttribute]
-        public bool IsGiven { get { return isGiven; } set { SetValue(ref isGiven, value); } }
+        public bool IsGiven { get => isGiven; set => SetValue(ref isGiven, value); }
 
         [XmlAttribute]
-        public int MutualId { get { return mutualId; } set { SetValue(ref mutualId, value); } }
+        public int MutualId { get => mutualId; set => SetValue(ref mutualId, value); }
 
         [XmlAttribute]
-        public EquipmentType Type { get { return type; } set { SetValue(ref type, value); } }
+        public EquipmentType Type { get => type; set => SetValue(ref type, value); }
 
         [XmlAttribute]
-        public int PerX { get { return perX; } set { SetValue(ref perX, value); } }
+        public int PerX { get => perX; set => SetValue(ref perX, value); }
 
         ///// <summary>
         ///// todo: remove this. too annoying in the xml

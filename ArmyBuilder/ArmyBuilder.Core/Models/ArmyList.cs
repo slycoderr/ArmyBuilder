@@ -18,16 +18,16 @@ namespace ArmyBuilder.Core.Models
         private Army army;
 
         [Ignore]
-        public Army Army { get { return army; } set { SetValue(ref army, value); } }
+        public Army Army { get => army; set => SetValue(ref army, value); }
 
         public Guid Id { get; set; }
 
         public int ArmyId { get; set; }
-        public string Name { get { return name; } set { SetValue(ref name, value); } }
+        public string Name { get => name; set => SetValue(ref name, value); }
 
         public ObservableCollection<DetachmentData> Detachments { get; } = new ObservableCollection<DetachmentData>();
 
-        public int PointsLimit { get { return pointsLimit; } set { SetValue(ref pointsLimit, value); } }
+        public int PointsLimit { get => pointsLimit; set => SetValue(ref pointsLimit, value); }
 
         public ArmyList(Army army)
         {

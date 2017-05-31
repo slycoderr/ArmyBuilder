@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using MvvmCross.Platform;
 using SQLite;
 
 namespace ArmyBuilder.Core.Database
@@ -14,7 +13,8 @@ namespace ArmyBuilder.Core.Database
     {
         public static bool IsIgnoredProperty(Type t, string propertyName)
         {
-            return (t.GetProperties().ToList().FirstOrDefault(m => m.Name == propertyName)?.GetCustomAttributes(typeof (IgnoreAttribute), true)).Any();
+            return t?.GetRuntimeProperty(propertyName)?.GetCustomAttributes(typeof(IgnoreAttribute))?.FirstOrDefault() != null;
+            //return (t.GetProperties().ToList().FirstOrDefault(m => m.Name == propertyName)?.GetCustomAttributes(typeof (IgnoreAttribute), true)).Any();
         }
 
         public static bool IsUserData(Type t)

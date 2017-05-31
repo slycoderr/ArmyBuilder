@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Army Id="3" Name="Skitarii">
+<Army Id="6" Name="Skitarii">
   <Units>
     <Unit Id="1" Name="Skitarii Vanguard" ForceOrgSlot="1" CountsTowardForceOrg="1">
       <Models>

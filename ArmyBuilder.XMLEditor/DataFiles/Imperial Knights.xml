@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<Army Id="4" Name="Imperial Knights">
+<Army Id="3" Name="Imperial Knights">
   <Units>
     <Unit Id="1" Name="Knight Errant" ForceOrgSlot="5" CountsTowardForceOrg="1">
       <Models>

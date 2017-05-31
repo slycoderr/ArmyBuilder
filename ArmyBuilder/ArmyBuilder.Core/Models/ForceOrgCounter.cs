@@ -4,19 +4,19 @@ namespace ArmyBuilder.Core.Models
 {
     public class ForceOrgCounter : BindableBase
     {
-        public int HQ { get { return hq; } set { SetValue(ref hq, value); } }
+        public int HQ { get => hq; set => SetValue(ref hq, value); }
 
-        public int Troop { get { return troop; } set { SetValue(ref troop, value); } }
+        public int Troop { get => troop; set => SetValue(ref troop, value); }
 
-        public int Elite { get { return elite; } set { SetValue(ref elite, value); } }
+        public int Elite { get => elite; set => SetValue(ref elite, value); }
 
-        public int FastAttack { get { return fastAttack; } set { SetValue(ref fastAttack, value); } }
+        public int FastAttack { get => fastAttack; set => SetValue(ref fastAttack, value); }
 
-        public int HeavySupport { get { return heavySupport; } set { SetValue(ref heavySupport, value); } }
+        public int HeavySupport { get => heavySupport; set => SetValue(ref heavySupport, value); }
 
-        public int LordOfWar { get { return lordOfWar; } set { SetValue(ref lordOfWar, value); } }
+        public int LordOfWar { get => lordOfWar; set => SetValue(ref lordOfWar, value); }
 
-        public int Fortification { get { return fortification; } set { SetValue(ref fortification, value); } }
+        public int Fortification { get => fortification; set => SetValue(ref fortification, value); }
         private int elite;
         private int fastAttack;
         private int fortification;

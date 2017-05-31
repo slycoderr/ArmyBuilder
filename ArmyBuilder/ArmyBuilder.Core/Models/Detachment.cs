@@ -17,13 +17,7 @@ namespace ArmyBuilder.Core.Models
         public int Id { get; set; }
 
         [XmlAttribute]
-        public DetachmentType Type { get; set; }
-
-        [XmlAttribute]
         public string Name { get; set; }
-
-        [XmlArray]
-        public ObservableCollection<Detachment> SubDetachments { get; set; } = new ObservableCollection<Detachment>();
 
         [XmlArray]
         public ObservableCollection<DetachmentRequirement> Requirements { get; set; } = new ObservableCollection<DetachmentRequirement>();

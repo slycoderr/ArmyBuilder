@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Army Id="2" Name="Heretic Astartes" Version="6">
+  <UnitEntries>
+    <UnitEntry Id="1" MaxUnitSize="0" Name="Chaos Bikers" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
+      <Units>
+        <Unit Id="1" Name="Chaos Biker" Minimum="2" Maximum="8" CostPerModel="31" BaseCost="0" UnitEntryId="1">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+        <Unit Id="2" Name="Chaos Biker Champion" Minimum="1" Maximum="1" CostPerModel="31" BaseCost="0" UnitEntryId="1">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+      </Units>
+      <DedicatedTransports />
+    </UnitEntry>
+    <UnitEntry Id="2" MaxUnitSize="0" Name="Chaos Cultists" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
+      <Units>
+        <Unit Id="1" Name="Cultist Champion" Minimum="1" Maximum="1" CostPerModel="5" BaseCost="0" UnitEntryId="2">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+        <Unit Id="2" Name="Chaos Cultist" Minimum="9" Maximum="29" CostPerModel="5" BaseCost="0" UnitEntryId="2">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+      </Units>
+      <DedicatedTransports />
+    </UnitEntry>
+    <UnitEntry Id="3" MaxUnitSize="0" Name="Chaos Land Raider" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
+      <Units>
+        <Unit Id="1" Name="Chaos Land Raider" Minimum="1" Maximum="1" CostPerModel="239" BaseCost="0" UnitEntryId="3">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+      </Units>
+      <DedicatedTransports />
+    </UnitEntry>
+    <UnitEntry Id="4" MaxUnitSize="0" Name="Chaos Lord" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
+      <Units>
+        <Unit Id="1" Name="Chaos Lord" Minimum="1" Maximum="1" CostPerModel="74" BaseCost="0" UnitEntryId="4">
+          <DefaultEquipment />
+          <Upgrades />
+        </Unit>
+      </Units>
+      <DedicatedTransports />
+    </UnitEntry>
+  </UnitEntries>
+  <Detachments />
+  <EquipmentDefinitions />
+</Army>

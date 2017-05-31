@@ -60,10 +60,10 @@ namespace ArmyBuilder.XMLEditor
 
         public MainViewModel()
         {
-            var files = Directory.EnumerateFiles("DataFiles/").Where(f => f.ToLower().Contains(".xml")).ToList();
-            var streams = files.Select(f => new FileStream(f, FileMode.Open)).ToList();
+            var files = Directory.GetParent("DataFiles").Parent.Parent.GetDirectories().FirstOrDefault(d => d.Name == "DataFiles").GetFiles().Where(f=>f.Extension == ".xml");
+            var streams = files.Select(f => new FileStream(f.FullName, FileMode.Open)).Cast<Stream>().ToList();
 
-            ArmyBuilderCore.LoadArmyData(streams.ToArray());
+            ArmyBuilderCore.LoadArmyData(streams);
             streams.ForEach(s=>s.Dispose());
         }
 
@@ -89,12 +89,20 @@ namespace ArmyBuilder.XMLEditor
                         Directory.CreateDirectory(ArmyDataPath);
                     }
 
+                    if (!File.Exists(path))
+                    {
+                        File.WriteAllText(path, string.Empty);
+                    }
+
                     using (var s = new FileStream(path, FileMode.Truncate))
                     {
-                        using (var reader = XmlWriter.Create(s))
+                        using (var reader = XmlWriter.Create(s, new XmlWriterSettings { Indent = true }))
                         {
                             var dsArmy = new XmlSerializer(typeof(Army));
-                            dsArmy.Serialize(reader, SelectedArmy);
+                            var ns = new XmlSerializerNamespaces();
+                            ns.Add("", ""); //remove garbage namespaces in xml
+
+                            dsArmy.Serialize(reader, SelectedArmy, ns);
                         }
                     }
 

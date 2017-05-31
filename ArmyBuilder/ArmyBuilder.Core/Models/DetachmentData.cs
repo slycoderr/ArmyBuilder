@@ -40,24 +40,11 @@ namespace ArmyBuilder.Core.Models
         {
             Detachment = detachment;
             DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r, this)));
-
-            //add all the allowed units
-            if (Detachment.Type == DetachmentType.UnitDetachment)
-            {
-                foreach (var req in Detachment.Requirements)
-                {
-                    AvailableUnits.Add(Detachment.Army.UnitEntries.First(u => u.Id == req.Value));
-                }
-            }
-
-            //Add all the allowed force org slot units
-            else if (Detachment.Type == DetachmentType.ForceOrgDetachment)
-            {
                 foreach (var req in Detachment.Requirements)
                 {
                     Detachment.Army.UnitEntries.Where(u => (int)u.ForceOrgSlot == req.Value).ForEach(AvailableUnits.Add);
                 }
-            }
+            
         }
     }
 

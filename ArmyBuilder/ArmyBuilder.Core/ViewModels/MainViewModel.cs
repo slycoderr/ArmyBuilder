@@ -19,8 +19,8 @@ namespace ArmyBuilder.Core.ViewModels
 {
     public class MainViewModel : BindableBase
     {
-        public ArmyList SelectedArmyList { get { return selectedArmyList; } set { SetValue(ref selectedArmyList, value); } }
-        public DetachmentData SelectedDetachment { get { return selectedDetachment; } set { SetValue(ref selectedDetachment, value); } }
+        public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
+        public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
 
         public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
@@ -51,9 +51,9 @@ namespace ArmyBuilder.Core.ViewModels
             database.Load(path);
         }
 
-        public void LoadArmyData(params Stream[] dataStreams)
+        public void LoadArmyData(List<Stream> dataStreams)
         {
-            if (dataStreams == null || dataStreams.Length == 0)
+            if (dataStreams == null || !dataStreams.Any())
             {
                 throw new ArgumentException("Army data cannot be null or empty.");
             }
@@ -63,6 +63,7 @@ namespace ArmyBuilder.Core.ViewModels
                 using (var reader = XmlReader.Create(s))
                 {
                     var dsArmy = new XmlSerializer(typeof(Army));
+
                     var army = (Army) dsArmy.Deserialize(reader);
 
                     Armies.Add(army); 

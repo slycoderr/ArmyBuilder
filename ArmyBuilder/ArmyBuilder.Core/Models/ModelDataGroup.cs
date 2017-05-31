@@ -24,15 +24,15 @@ namespace ArmyBuilder.Core.Models
         public ObservableCollection<ModelData> Models { get; set; } = new ObservableCollection<ModelData>();
 
         [XmlIgnore]
-        public int PointsCostTotal { get { return pointsCostTotal; } set { SetValue(ref pointsCostTotal, value); } }
+        public int PointsCostTotal { get => pointsCostTotal; set => SetValue(ref pointsCostTotal, value); }
 
         [XmlIgnore]
-        public int UpgradesCostTotal { get { return upgradesCostTotal; } set { SetValue(ref upgradesCostTotal, value); } }
+        public int UpgradesCostTotal { get => upgradesCostTotal; set => SetValue(ref upgradesCostTotal, value); }
 
         [XmlAttribute]
         public int CurrentUnitSize
         {
-            get { return currentUnitSize; }
+            get => currentUnitSize;
             set
             {
                 var oldValue = currentUnitSize;
@@ -101,81 +101,81 @@ namespace ArmyBuilder.Core.Models
 
         private void UpdatePointsTotal()
         {
-            //UpgradesCostTotal = Units.Sum(m => m.PointsCostTotal);
-            //PointsCostTotal = UpgradesCostTotal + (Unit.Minimum > 0 ? Unit.BaseCost : 0) + (CurrentUnitSize > Unit.Minimum ? Unit.CostPerModel * (CurrentUnitSize - Unit.Minimum) : 0);
-            //var allEquipment = GetAllModelEquipment();
+            UpgradesCostTotal = Models.Sum(m => m.PointsCostTotal);
+            PointsCostTotal = UpgradesCostTotal + (Unit.Minimum > 0 ? Unit.BaseCost : 0) + (CurrentUnitSize > Unit.Minimum ? Unit.CostPerModel * (CurrentUnitSize - Unit.Minimum) : 0);
+            var allEquipment = GetAllModelEquipment();
 
-            //if (Unit.Units != null)
-            //{
-            //    allEquipment.Where(e => e.Equipment.PerX > 0).ForEach(e =>
-            //    {
-            //        var unitSize = Unit.Units.Where(u => u.Unit != null).Sum(m => m.CurrentUnitSize);
+            if (Unit.UnitEntry.Units != null)
+            {
+                allEquipment.Where(e => e.Equipment.PerX > 0).ForEach(e =>
+                {
+                    var unitSize = Models.Count;
 
-            //        count up all the models that have the same name just in case they are separated for leader upgrade purposes
-            //        if (unitSize >= e.Equipment.PerX)
-            //            {
-            //                e.TempLimit = e.Equipment.Limit + unitSize / e.Equipment.PerX;
-            //            }
+                    //count up all the models that have the same name just in case they are separated for leader upgrade purposes
+                    if (unitSize >= e.Equipment.PerX)
+                        {
+                            e.TempLimit = e.Equipment.Limit + unitSize / e.Equipment.PerX;
+                        }
 
-            //            else
-            //            {
-            //                e.TempLimit = e.Equipment.Limit;
-            //            }
-            //    });
-            //}
+                        else
+                        {
+                            e.TempLimit = e.Equipment.Limit;
+                        }
+                });
+            }
 
-            //var equipGroup = allEquipment.Where(ee => ee.Equipment.MutualId != 0).GroupBy(ee => ee.Equipment.MutualId);
+            var equipGroup = allEquipment.Where(ee => ee.Equipment.MutualId != 0).GroupBy(ee => ee.Equipment.MutualId);
 
-            //foreach (var group in equipGroup)
-            //{
-            //    var targetMutualId = group.Key;
+            foreach (var group in equipGroup)
+            {
+                var targetMutualId = group.Key;
 
-            //    foreach (var equip in group)
-            //    {
-            //        if (equip.TempLimit > 0)
-            //        {
-            //            var numTaken = group.Count(e => e.IsTaken);
+                foreach (var equip in group)
+                {
+                    if (equip.TempLimit > 0)
+                    {
+                        var numTaken = group.Count(e => e.IsTaken);
 
-            //            if (numTaken == equip.TempLimit) //don't let more equipment be taken with the same id
-            //            {
-            //                allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (!eee.IsTaken && !eee.ParentEquipment.ReplacementOptions.Any(e => e.IsTaken))).ForEach(eee =>
-            //                {
-            //                    GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = false);
-            //                    eee.CanAdd = false;
-            //                });
+                        if (numTaken == equip.TempLimit) //don't let more equipment be taken with the same id
+                        {
+                            allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (!eee.IsTaken && !eee.ParentEquipment.ReplacementOptions.Any(e => e.IsTaken))).ForEach(eee =>
+                            {
+                                GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = false);
+                                eee.CanAdd = false;
+                            });
 
-            //                allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (eee.IsTaken)).ForEach(eee =>
-            //                {
-            //                    GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
-            //                    eee.CanAdd = true;
-            //                });
-            //            }
+                            allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (eee.IsTaken)).ForEach(eee =>
+                            {
+                                GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
+                                eee.CanAdd = true;
+                            });
+                        }
 
-            //            else if (numTaken > equip.TempLimit) //remove equipment until the rules are satisfied 
-            //            {
-            //                while (numTaken > equip.TempLimit)
-            //                {
-            //                    var ee = allEquipment.FirstOrDefault(eee => eee.Equipment.MutualId == targetMutualId && eee.IsTaken);
+                        else if (numTaken > equip.TempLimit) //remove equipment until the rules are satisfied 
+                        {
+                            while (numTaken > equip.TempLimit)
+                            {
+                                var ee = allEquipment.FirstOrDefault(eee => eee.Equipment.MutualId == targetMutualId && eee.IsTaken);
 
-            //                    GetAllEquipmentSubEquipment(ee).ForEach(eq => eq.CanAdd = false);
-            //                    GetAllEquipmentSubEquipment(ee).ForEach(eq => eq.IsTaken = false);
-            //                    ee.CanAdd = false;
-            //                    ee.IsTaken = false;
-            //                    numTaken--;
-            //                }
-            //            }
+                                GetAllEquipmentSubEquipment(ee).ForEach(eq => eq.CanAdd = false);
+                                GetAllEquipmentSubEquipment(ee).ForEach(eq => eq.IsTaken = false);
+                                ee.CanAdd = false;
+                                ee.IsTaken = false;
+                                numTaken--;
+                            }
+                        }
 
-            //            else if (numTaken < equip.TempLimit) //allow the equipment to be taken
-            //            {
-            //                allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId).ForEach(eee =>
-            //                {
-            //                    GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
-            //                    eee.CanAdd = true;
-            //                });
-            //            }
-            //        }
-            //    }
-            //}
+                        else if (numTaken < equip.TempLimit) //allow the equipment to be taken
+                        {
+                            allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId).ForEach(eee =>
+                            {
+                                GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
+                                eee.CanAdd = true;
+                            });
+                        }
+                    }
+                }
+            }
         }
 
         private List<EquipmentData> GetAllModelEquipment()

@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:ArmyBuilder.XMLEditor.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
-        Title="{Binding SelectedArmy.Name}" Height="800" Width="1200">
+        Title="{Binding SelectedArmy.Name}" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     
     
     <Window.InputBindings>
@@ -40,7 +40,7 @@
 
             <views:EditEquipmentDefinitionsView Grid.Row="0" Margin="0,25,0,0"/>
 
-            <TextBox Grid.Row="1" Margin="5" IsReadOnly="True"  Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
+            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
             <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
    
         </Grid>
@@ -54,7 +54,13 @@
         <views:EditUnitEquipmentView Grid.Column="3" Grid.RowSpan="2"/>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
-            <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}"/>
+            <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name, UpdateSourceTrigger=LostFocus}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
             <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
             <Button Content="Update Transports"  Margin="5" Command="{Binding UpdateTransportsCommand}"/>

@@ -2,7 +2,7 @@
 
 <Army Id="2" Name="Necrons">
   <Units>
-    <Unit Id="1" Name="Overlord" ForceOrgSlot="0" CountsTowardForceOrg="1">
+    <Unit Id="4" Name="Overlord" ForceOrgSlot="0" CountsTowardForceOrg="1">
       <Models>
         <Model Id="1" Name="Overlord" Minimum="1" Maximum="1" IncrementCost="0" BaseCost="80">
           <DefaultEquipment>

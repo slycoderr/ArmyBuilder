@@ -17,7 +17,9 @@ namespace ArmyBuilder.Core
         [XmlEnum("5")]
         LordOfWar = 5,
         [XmlEnum("6")]
-        Fortification = 6
+        Fortification = 6,
+        [XmlEnum("7")]
+        Flyer = 7
     }
 
     public enum EquipmentType
@@ -26,16 +28,6 @@ namespace ArmyBuilder.Core
         Normal,
         [XmlEnum("1")]
         Upgrade = 1
-    }
-
-    public enum DetachmentType
-    {
-        [XmlEnum("0")]
-        UnitDetachment,
-        [XmlEnum("1")]
-        BattleForged,
-        [XmlEnum("2")]
-        ForceOrgDetachment
     }
 
     public enum DetachmentRequirementType

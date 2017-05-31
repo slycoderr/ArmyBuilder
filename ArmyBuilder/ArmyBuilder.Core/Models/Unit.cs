@@ -16,22 +16,22 @@ namespace ArmyBuilder.Core.Models
         private int baseCost;
 
         [XmlAttribute]
-        public int Id { get { return id; } set { SetValue(ref id, value); } }
+        public int Id { get => id; set => SetValue(ref id, value); }
 
         [XmlAttribute]
-        public string Name { get { return name; } set { SetValue(ref name, value); } }
+        public string Name { get => name; set => SetValue(ref name, value); }
 
         [XmlAttribute]
-        public int Minimum { get { return minimum; } set { SetValue(ref minimum, value); } }
+        public int Minimum { get => minimum; set => SetValue(ref minimum, value); }
 
         [XmlAttribute]
-        public int Maximum { get { return maximum; } set { SetValue(ref maximum, value); } }
+        public int Maximum { get => maximum; set => SetValue(ref maximum, value); }
 
         [XmlAttribute]
-        public int CostPerModel { get { return costPerModel; } set { SetValue(ref costPerModel, value); } }
+        public int CostPerModel { get => costPerModel; set => SetValue(ref costPerModel, value); }
 
         [XmlAttribute]
-        public int BaseCost { get { return baseCost; } set { SetValue(ref baseCost, value); } }
+        public int BaseCost { get => baseCost; set => SetValue(ref baseCost, value); }
 
         /// <summary>
         /// Needed for loading since transports don't know what unit entry they're from.
