@@ -19,7 +19,9 @@ namespace ArmyBuilder.Core
         [XmlEnum("6")]
         Fortification = 6,
         [XmlEnum("7")]
-        Flyer = 7
+        Flyer = 7,
+        [XmlEnum("8")]
+        DedicatedTransport = 8
     }
 
     public enum EquipmentType

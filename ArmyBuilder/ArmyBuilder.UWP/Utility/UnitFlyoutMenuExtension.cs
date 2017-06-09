@@ -29,15 +29,15 @@ namespace ArmyBuilder.Utility
 
                 if (e.NewValue != null && menu != null)
                 {
-                    foreach (var item in e.NewValue as List<Unit>)
+                    foreach (var item in e.NewValue as List<UnitEntry>)
                     {
-                        var newitem = new MenuFlyoutItem() {Text = string.Format("{0} ({1} points)", item.Name, item.Models.Sum(m=>m.BaseCost)), Tag = item};
+                        var newitem = new MenuFlyoutItem() {Text = string.Format("{0} ({1} points)", item.Name, item.Units.Sum(m=>m.BaseCost)), Tag = item};
 
                         newitem.Click += (o, args) =>
                         {
                             MainViewModel mainViewModel = (MainViewModel)Application.Current.Resources["MainViewModel"];
 
-                            mainViewModel.CurrentArmyListViewModel.AddUnit(((MenuFlyoutItem)o).Tag as Unit);
+                            mainViewModel.SelectedDetachment.Units.Add(((MenuFlyoutItem)o).Tag as UnitEntry);
                         };
 
                         menu.Items?.Add(newitem);

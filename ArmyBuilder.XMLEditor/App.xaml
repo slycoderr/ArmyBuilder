@@ -19,7 +19,8 @@
         </ResourceDictionary.MergedDictionaries>
             
         <local:MainViewModel x:Key="MainViewModel"/>
-
+            <local:NullToBoolConverter x:Key="NullToBoolConverter"/>
+            
             <ObjectDataProvider x:Key="ForceOrgCollection" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
                 <ObjectDataProvider.MethodParameters>
                     <x:Type TypeName="core:ForceOrgSlot"/>

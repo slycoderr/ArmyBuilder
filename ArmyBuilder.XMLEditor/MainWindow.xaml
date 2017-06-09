@@ -53,7 +53,7 @@
         <views:EditUnitView Grid.Column="2" Grid.RowSpan="2" Margin="0,25,0,0"/>
         <views:EditUnitEquipmentView Grid.Column="3" Grid.RowSpan="2"/>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
+        <WrapPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
             <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -63,8 +63,10 @@
             </ComboBox>
             <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
             <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
+            <Button Content="Add Mass Units"  Margin="5" Click="AddMassUnits_OnClick" IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
+            <Button Content="Add Mass Equipment"  Margin="5" Click="AddMassEquipment_OnClick"  IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
             <Button Content="Update Transports"  Margin="5" Command="{Binding UpdateTransportsCommand}"/>
-        </StackPanel>
+        </WrapPanel>
     </Grid>
 </controls:MetroWindow>
 

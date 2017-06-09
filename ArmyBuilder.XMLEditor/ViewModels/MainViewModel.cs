@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,6 +11,7 @@ using System.Windows;
 using System.Xml;
 using System.Xml.Serialization;
 using ArmyBuilder.Core.Models;
+using ArmyBuilder.XMLEditor.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using Slycoder.MVVM;
@@ -52,6 +54,8 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<UnitEntry> RemoveDedicatedTransportCommand => new RelayCommand<UnitEntry>(RemoveDedicatedTransport);
         public RelayCommand<Equipment> RemoveDefaultEquipmentCommand => new RelayCommand<Equipment>(RemoveEquipmentFromDefaultEquipment);
         public RelayCommand<Equipment> RemoveUpgradeCommand => new RelayCommand<Equipment>(RemoveEquipmentFromUpgradeEquipment);
+        public RelayCommand<MassUnitEntryCollection> AddMassUnitsCommand => new RelayCommand<MassUnitEntryCollection>(AddMassUnits);
+        public RelayCommand<MassEquipmentEntryCollection> AddMassEquipmentCommand => new RelayCommand<MassEquipmentEntryCollection>(AddMassEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
 
         public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\Data\\");
@@ -65,6 +69,15 @@ namespace ArmyBuilder.XMLEditor
 
             ArmyBuilderCore.LoadArmyData(streams);
             streams.ForEach(s=>s.Dispose());
+            PropertyChanged += OnPropertyChanged;
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedUnitEntry))
+            {
+                SelectedUnit = SelectedUnitEntry?.Units?.FirstOrDefault();
+            }
         }
 
         private void CreateArmy()
@@ -123,6 +136,52 @@ namespace ArmyBuilder.XMLEditor
             {
                 MessageBox.Show(nameof(SelectedArmy)+" is null.");
             }
+        }
+
+        private void AddMassEquipment(MassEquipmentEntryCollection equipmentCollection)
+        {
+            foreach (var equipment in equipmentCollection)
+            {
+                SelectedArmy.EquipmentDefinitions.Add(new Equipment
+                {
+                    Id = SelectedArmy.EquipmentDefinitions.Count > 0 ? SelectedArmy.EquipmentDefinitions.Max(a => a.Id) + 1 : 1,
+                    Name = equipment.Name,
+                    Cost = equipment.Cost,
+                    Type = equipment.Type
+                });
+            }
+
+            SaveXML();
+        }
+
+        private void AddMassUnits(MassUnitEntryCollection units)
+        {
+            foreach (var unit in units.Where(u=>u.Name != "New Entry"))
+            {
+                var newEntry = new UnitEntry
+                {
+                    Name = unit.Name,
+                    MaxUnitSize = unit.MaxUnitSize,
+                    ForceOrgSlot = unit.ForceOrgSlot,
+                    Id = SelectedArmy.UnitEntries.Count > 0 ? SelectedArmy.UnitEntries.Max(a => a.Id) + 1 : 1
+                };
+
+                SelectedArmy.UnitEntries.Add(newEntry);
+
+                newEntry.Units.Add(new Unit
+                {
+                    Id = newEntry.Units.Count > 0 ? newEntry.Units.Max(a => a.Id) + 1 : 1,
+                    Name = unit.Name,
+                    UnitEntryId = newEntry.Id,
+                    UnitEntry = newEntry,
+                    Minimum = unit.MinUnitSize,
+                    Maximum = unit.MaxUnitSize,
+                    CostPerModel = unit.CostPerModel
+                });
+                
+            }
+
+            SaveXML();
         }
 
         private void AddUnitEntry()

@@ -10,8 +10,8 @@ namespace ArmyBuilder.Windows
 {
     public partial class App
     {
-        public static readonly string DataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\");
-        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\Data\\");
+        public static readonly string DataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\");
+        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\Data\\");
 
         protected override void OnStartup(StartupEventArgs e)
         {

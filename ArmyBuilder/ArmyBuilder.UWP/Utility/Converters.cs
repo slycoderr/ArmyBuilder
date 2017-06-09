@@ -54,7 +54,7 @@ namespace ArmyBuilder.Utility.Converters
     {
         public object Convert(object value, Type type, object parameter, string language)
         {
-            var model = (Model)value;
+            var model = (Unit)value;
 
             return model.Maximum == model.Minimum ? Visibility.Collapsed : Visibility.Visible;
         }
@@ -70,7 +70,7 @@ namespace ArmyBuilder.Utility.Converters
     {
         public object Convert(object value, Type type, object parameter, string language)
         {
-            var model = (Model)value;
+            var model = (Unit)value;
 
             return model.Maximum == model.Minimum ? $"{model.Minimum} {model.Name}(s)" : $"{model.Minimum} - {model.Maximum} {model.Name}(s)";
         }
