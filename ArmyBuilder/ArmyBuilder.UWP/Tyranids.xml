@@ -535,7 +535,32 @@
       <DedicatedTransports />
     </UnitEntry>
   </UnitEntries>
-  <Detachments />
+  <Detachments>
+	<Detachment Id="1" Name="Patrol">
+		<Requirements>
+			<DetachmentRequirement Value="0" Minimum="1" Maximum="2"/>
+			<DetachmentRequirement Value="1" Minimum="1" Maximum="3"/>
+			<DetachmentRequirement Value="2" Minimum="0" Maximum="2"/>
+			<DetachmentRequirement Value="3" Minimum="0" Maximum="2"/>
+			<DetachmentRequirement Value="4" Minimum="0" Maximum="2"/>
+			<DetachmentRequirement Value="5" Minimum="0" Maximum="0"/>
+			<DetachmentRequirement Value="6" Minimum="0" Maximum="0"/>
+			<DetachmentRequirement Value="7" Minimum="0" Maximum="2"/>
+		</Requirements>
+	</Detachment>
+	<Detachment Id="2" Name="Battalion">
+		<Requirements>
+			<DetachmentRequirement Value="0" Minimum="2" Maximum="3"/>
+			<DetachmentRequirement Value="1" Minimum="3" Maximum="6"/>
+			<DetachmentRequirement Value="2" Minimum="0" Maximum="6"/>
+			<DetachmentRequirement Value="3" Minimum="0" Maximum="3"/>
+			<DetachmentRequirement Value="4" Minimum="0" Maximum="3"/>
+			<DetachmentRequirement Value="5" Minimum="0" Maximum="0"/>
+			<DetachmentRequirement Value="6" Minimum="0" Maximum="0"/>
+			<DetachmentRequirement Value="7" Minimum="0" Maximum="2"/>
+		</Requirements>
+	</Detachment>
+  </Detachments>
   <EquipmentDefinitions>
     <Equipment Id="1" Name="Acid Maw" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />

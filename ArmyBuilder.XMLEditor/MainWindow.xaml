@@ -18,6 +18,8 @@
         <KeyBinding Key="F5" Command="{Binding AddToUpgradesReplacements}"/>
         <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveXMLCommand}"/>
     </Window.InputBindings>
+    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>

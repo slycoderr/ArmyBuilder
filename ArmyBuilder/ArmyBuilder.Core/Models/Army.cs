@@ -53,7 +53,7 @@ namespace ArmyBuilder.Core.Models
         /// <summary>
         /// Populates all navigation properties and overrides default values; 
         /// </summary>
-        public void Configure()
+        public void  Configure()
         {
             foreach(var detachment in Detachments)
             {

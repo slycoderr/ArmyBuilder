@@ -9,9 +9,11 @@
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
                       xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
                       xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:views1="clr-namespace:ArmyBuilder.UWP.Views"
                       DataContext="{StaticResource MainViewModel}"
-                      WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="ArmyBuilder" Height="800" Width="1200" >
-    
+                      WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="{Binding SelectedArmyList.Name, FallbackValue='Armybuilder', TargetNullValue='Armybuilder'}" Height="800" Width="1200" >
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=CreateListButton}">
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
@@ -36,89 +38,185 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
 
-        <ListView x:Name="ArmyListsListView" ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" BorderThickness="0"/>
+    <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}">
+        <controls:HamburgerMenu.OptionsItemsSource>
+            <controls:HamburgerMenuItemCollection>
+                <controls:HamburgerMenuGlyphItem Label="About" Command="{Binding AddListCommand}" >
+                    <controls:HamburgerMenuGlyphItem.Tag>
+                        <iconPacks:PackIconMaterial Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Plus" />
+                    </controls:HamburgerMenuGlyphItem.Tag>
+                </controls:HamburgerMenuGlyphItem>
+                <controls:HamburgerMenuGlyphItem Label="About" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}">
+                    <controls:HamburgerMenuGlyphItem.Tag>
+                        <iconPacks:PackIconMaterial Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Delete" />
+                    </controls:HamburgerMenuGlyphItem.Tag>
+                </controls:HamburgerMenuGlyphItem>
+            </controls:HamburgerMenuItemCollection>
 
-        <Grid x:Name="EditArmyListView" Visibility="Collapsed">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        </controls:HamburgerMenu.OptionsItemsSource>
 
-            <TextBlock Text="{Binding SelectedArmyList.Name}" FontSize="22" Margin="5"/>
+        <controls:HamburgerMenu.Content>
 
-            <ListView x:Name="AvailableUnitsListView"  Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Source={StaticResource AvailableUnitsForceOrgGroupsCollection}}" >
-                <ListView.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
-                            <DataTemplate DataType="core:ForceOrgSlot">
-                                <Grid>
-                                    <TextBlock Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
-                                </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+
+                <!--<ListView x:Name="ArmyListsListView"  BorderThickness="0"/>-->
+
+                <Grid x:Name="EditArmyListView">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Expander Grid.Row="1" Grid.Column="0" ExpandDirection="Left" Header="Available Units" IsExpanded="False">
+                        <Expander.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}">
+                                    <TextBlock.LayoutTransform>
+                                        <RotateTransform Angle="-90"/>
+                                    </TextBlock.LayoutTransform>
+                                </TextBlock>
                             </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                    </GroupStyle>
-                </ListView.GroupStyle>
-            </ListView>
+                        </Expander.HeaderTemplate>
+                        <ListView x:Name="AvailableUnitsListView"   ItemsSource="{Binding Source={StaticResource AvailableUnitsCollection}}" >
+                            <ListView.GroupStyle>
+                                <GroupStyle>
+                                    <GroupStyle.HeaderTemplate>
+                                        <DataTemplate DataType="core:ForceOrgSlot">
+                                            <Grid Margin="0,0,0,2" >
+                                                <Border BorderThickness="0,0,0,2" BorderBrush="Black"/>
+                                                <TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Name}" />
+                                                <!--<TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Converter={StaticResource ForceOrgGroupToText}}" />-->
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GroupStyle.HeaderTemplate>
+                                    <GroupStyle.ContainerStyle>
+                                        <Style TargetType="{x:Type GroupItem}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <Expander Header="{Binding Name}" IsExpanded="False" d:DataContext="{d:DesignInstance CollectionViewGroup}" >
+                                                            <Expander.Resources>
+                                                                <CollectionViewSource x:Key="HoursByProjectCollection" Source="{Binding Items}" IsLiveGroupingRequested="True" IsLiveSortingRequested="True">
+                                                                    <CollectionViewSource.GroupDescriptions>
+                                                                        <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                                                                    </CollectionViewSource.GroupDescriptions>
+                                                                </CollectionViewSource>
+                                                            </Expander.Resources>
+                                                            <ListView ItemsSource="{Binding Source={StaticResource HoursByProjectCollection}}">
+                                                                <ListView.GroupStyle>
+                                                                    <GroupStyle>
+                                                                        <GroupStyle.HeaderTemplate>
+                                                                            <DataTemplate DataType="{x:Type CollectionViewGroup}" >
+
+                                                                            </DataTemplate>
+                                                                        </GroupStyle.HeaderTemplate>
+
+                                                                        <GroupStyle.ContainerStyle>
+                                                                            <Style TargetType="{x:Type GroupItem}">
+                                                                                <Setter Property="Template">
+                                                                                    <Setter.Value>
+                                                                                        <ControlTemplate>
+                                                                                            <Expander Header="{Binding Name}" IsExpanded="False" d:DataContext="{d:DesignInstance CollectionViewGroup}">
+
+                                                                                                <ItemsPresenter  />
+
+                                                                                            </Expander>
+                                                                                        </ControlTemplate>
+                                                                                    </Setter.Value>
+                                                                                </Setter>
+                                                                            </Style>
+                                                                        </GroupStyle.ContainerStyle>
+                                                                    </GroupStyle >
+                                                                </ListView.GroupStyle>
+                                                                <ListView.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <Button Content="{Binding Name}" Command="{Binding AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}">
+
+                                                                        </Button>
+                                                                    </DataTemplate>
+                                                                </ListView.ItemTemplate>
+                                                            </ListView>
+                                                        </Expander>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </GroupStyle.ContainerStyle>
+                                </GroupStyle>
+                            </ListView.GroupStyle>
+                        </ListView>
+                    </Expander>
+                    
+                    <Grid Grid.Row="1" Grid.Column="1">
 
 
-            <ListView Grid.Row="1" Grid.Column="1" SelectedItem="{Binding SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
-            <TreeView Grid.Row="1" Grid.Column="2" BorderThickness="0"/>
-        </Grid>
-
-        <StackPanel x:Name="ManageArmyListPanel" Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="CreateListButton" Content="Create List" Margin="5" Command="{Binding AddListCommand}"/>
-            <Button x:Name="EditListButton" Content="Edit List" Margin="5" />
-            <Button x:Name="DeleteListButton" Content="Delete List" Margin="5" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
-        </StackPanel>
-
-        <StackPanel x:Name="EditArmyListPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-            <Button x:Name="BackButton" Content="Manage Army Lists" Margin="5"/>
-            <Button x:Name="AddDetachmentButton" Margin="5" Content="Add Detachment" >
-            </Button>
-            <Button x:Name="AddUnitButton" Content="Add Unit Entry" Margin="5" Command="{Binding AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=AvailableUnitsListView}"/>
-        </StackPanel>
-
-        <controls:Flyout x:Name="AddDetachmentMenu" AnimateOpacity="True" FocusedElement="{Binding ElementName=AddDetachmentButton}" Header="Choose a detachment">
-            <ListView ItemsSource="{Binding Armies}">
-                <ListView.ItemTemplate>
-                    <DataTemplate DataType="models:Army">
-                    <Expander Header="{Binding Name}" IsExpanded="False">
-                            <ListBox ItemsSource="{Binding Detachments}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate DataType="models:Detachment">
-                                        <Button Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" BorderThickness="0,1" controls:ButtonHelper.CornerRadius="0">
-                                            <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="Click">
-                                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="False"/>
-                                            </i:EventTrigger>
-                                            </i:Interaction.Triggers>
-                                        </Button>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Expander Header="Add a Detachment" ExpandDirection="Down">
+                            <ListView ItemsSource="{Binding Armies}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate DataType="models:Army">
+                                        <Expander Header="{Binding Name}" IsExpanded="True" Visibility="{Binding Detachments, Converter={StaticResource ListCountToVisiblityConverter}}">
+                                            <ListBox ItemsSource="{Binding Detachments}">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate DataType="models:Detachment" >
+                                                        
+                                                        <Button Style="{StaticResource MetroFlatButton}" Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" BorderThickness="0" controls:ButtonHelper.CornerRadius="0">
+                                                            <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="False"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                        </Expander>
                                     </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                                </ListView.ItemTemplate>
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MetroListBoxItem}">
+                                        <Style.Triggers>
+                                            <!--Hide Groups if there are no items in them-->
+                                            <DataTrigger Binding="{Binding Detachments.Count}" Value="0">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+                            </ListView>
                         </Expander>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </controls:Flyout>
 
-    </Grid>
+                        <ListView Grid.Row="1" SelectedItem="{Binding SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}">
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+                    </Grid>
+
+                    <TreeView Grid.Row="1" Grid.Column="2" BorderThickness="0"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SelectedUnit.UnitEntry.Name}"/>
+                    <views1:UnitEditor Grid.Row="1" Grid.Column="2" DataContext="{Binding SelectedUnit}"/>
+                </Grid>
+            </Grid>
+        </controls:HamburgerMenu.Content>
+    </controls:HamburgerMenu>
+
 </controls:MetroWindow>

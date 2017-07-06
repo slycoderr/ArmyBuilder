@@ -13,7 +13,7 @@ namespace ArmyBuilder.UWP.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            DataContext = ((MainViewModel) Application.Current.Resources["MainViewModel"]).CurrentArmyListViewModel.SelectedUnit;
+            //DataContext = ((MainViewModel) Application.Current.Resources["MainViewModel"])..SelectedUnit;
         }
     }
 }

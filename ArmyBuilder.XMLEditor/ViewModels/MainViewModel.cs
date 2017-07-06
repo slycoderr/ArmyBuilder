@@ -58,14 +58,15 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<MassEquipmentEntryCollection> AddMassEquipmentCommand => new RelayCommand<MassEquipmentEntryCollection>(AddMassEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
 
-        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + "\\ArmyBuilder\\Data\\");
+        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\Data\\");
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
         public MainViewModel()
         {
-            var files = Directory.GetParent("DataFiles").Parent.Parent.GetDirectories().FirstOrDefault(d => d.Name == "DataFiles").GetFiles().Where(f=>f.Extension == ".xml");
-            var streams = files.Select(f => new FileStream(f.FullName, FileMode.Open)).Cast<Stream>().ToList();
+            //var files = Directory.GetParent("DataFiles").Parent.Parent.GetDirectories().FirstOrDefault(d => d.Name == "DataFiles").GetFiles().Where(f=>f.Extension == ".xml");
+            var files = Directory.GetFiles(ArmyDataPath).Where(f => Path.GetExtension(f) == ".xml");
+            var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
 
             ArmyBuilderCore.LoadArmyData(streams);
             streams.ForEach(s=>s.Dispose());
@@ -95,7 +96,7 @@ namespace ArmyBuilder.XMLEditor
 
                 try
                 {
-                    var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "DataFiles", $"{SelectedArmy.Name}.xml");
+                    var path = Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml");
 
                     if (!Directory.Exists(ArmyDataPath))
                     {
@@ -119,12 +120,12 @@ namespace ArmyBuilder.XMLEditor
                         }
                     }
 
-                    if(File.Exists(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml")))
-                    {
-                        File.Delete(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
-                    }
+                    //if(File.Exists(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml")))
+                    //{
+                    //    File.Delete(Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
+                    //}
 
-                    File.Copy(path, Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
+                    //File.Copy(path, Path.Combine(ArmyDataPath, $"{SelectedArmy.Name}.xml"));
                 }
                 catch (Exception ex)
                 {

@@ -21,9 +21,11 @@ namespace ArmyBuilder.Core.ViewModels
     {
         public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
         public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
+        public ArmyListData SelectedUnit { get => selectedUnit; set => SetValue(ref selectedUnit, value); }
 
         public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
+        public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
@@ -34,6 +36,7 @@ namespace ArmyBuilder.Core.ViewModels
         private readonly ArmyBuilderDatabase database = new ArmyBuilderDatabase();
         private ArmyList selectedArmyList;
         private DetachmentData selectedDetachment;
+        private ArmyListData selectedUnit;
 
         // ReSharper disable once EmptyConstructor
         public MainViewModel()
@@ -71,6 +74,8 @@ namespace ArmyBuilder.Core.ViewModels
                     army.Configure();
                     
                     ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
+
+                    army.UnitEntries.ForEach(AvailableUnitEntries.Add);
                 }
             }
         }
@@ -88,12 +93,30 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddUnitEntryToDetachment(UnitEntry unit)
         {
-            SelectedDetachment.Units.Add(new ArmyListData(unit, Guid.Empty));
+            if (SelectedDetachment == null)
+            {
+
+            }
+
+            else
+            {
+                SelectedDetachment.Units.Add(new ArmyListData(unit, Guid.Empty));
+            }
+
+            
         }
 
         private void AddDetachmentToList(Detachment detachment)
         {
-            SelectedArmyList.Detachments.Add(new DetachmentData(detachment));
+            if (SelectedArmyList == null)
+            {
+
+            }
+
+            else
+            {
+                SelectedArmyList.Detachments.Add(new DetachmentData(detachment));
+            }
         }
 
         private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

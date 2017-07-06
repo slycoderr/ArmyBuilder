@@ -19,7 +19,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="Unit Composition" FontSize="32" Margin="10"/>
-                        <ListView x:Name="ModelGroupListView" Grid.Row="1" SelectionMode="None" ItemsSource="{Binding Models}" ItemTemplate="{StaticResource ModelGroupDataTemplate}" Grid.ColumnSpan="{Binding DedicatedTransports, Converter={StaticResource ModelsColumnSizeConverter}}" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
+                        <ListView x:Name="ModelGroupListView" Grid.Row="1" SelectionMode="None" ItemsSource="{Binding ModelGroups}" ItemTemplate="{StaticResource ModelGroupDataTemplate}" Grid.ColumnSpan="{Binding DedicatedTransports, Converter={StaticResource ModelsColumnSizeConverter}}" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Auto" />
                     </Grid>
                 </FlipViewItem>
                 <FlipViewItem>

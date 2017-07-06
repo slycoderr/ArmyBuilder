@@ -5,6 +5,10 @@
              xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
              xmlns:windows="clr-namespace:ArmyBuilder.Windows" 
              xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:views="clr-namespace:ArmyBuilder.UWP.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -16,6 +20,8 @@
                 <!-- Accent and AppTheme setting -->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+                <!--<ResourceDictionary Source="/Resources/Icons.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="ListView">
@@ -36,13 +42,45 @@
 
             <viewModels:MainViewModel x:Key="MainViewModel"/>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
+            <windows:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector"/>
             <windows:ForceOrgGroupToText x:Key="ForceOrgGroupToText"/>
+            <windows:UnitSizeToVisibilityConverter x:Key="UnitSizeToVisibilityConverter"/>
+            <windows:UnitCompositionConverter x:Key="UnitCompositionConverter"/>
+            <windows:ForceOrgTextConverter x:Key="ForceOrgTextConverter"/>
+            <windows:IntToBoolConverter x:Key="IntToBoolConverter"/>
+            <windows:ModelsColumnSizeConverter x:Key="ModelsColumnSizeConverter"/>
+            <windows:ListCountToVisiblityConverter x:Key="ListCountToVisiblityConverter"/>
 
-            <CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
+            <!--<CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
                 <CollectionViewSource.GroupDescriptions>
                     <PropertyGroupDescription PropertyName="ForceOrgSlot" />
                 </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>-->
+
+
+            <CollectionViewSource x:Key="AvailableUnitsCollection" Source="{Binding AvailableUnitEntries, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
+                <CollectionViewSource.GroupDescriptions>
+                    <PropertyGroupDescription PropertyName="Army.Name" />
+                </CollectionViewSource.GroupDescriptions>
             </CollectionViewSource>
+
+
+            <DataTemplate x:Key="HamburgerMenuItemTemplate" DataType="{x:Type controls:HamburgerMenuItem}">
+                <Grid Height="48">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ContentControl Grid.Column="0"
+                                    Content="{Binding Tag}"
+                                    Focusable="False"
+                                    IsTabStop="False" />
+                    <TextBlock Grid.Column="1"
+                               VerticalAlignment="Center"
+                               FontSize="16"
+                               Text="{Binding Label}" />
+                </Grid>
+            </DataTemplate>
 
             <DataTemplate x:Key="UnitDetachmentTemplate" DataType="models:DetachmentData">
                 <Grid Width="200" Height="400">
@@ -81,9 +119,9 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1" Margin="5"/>
+                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1" Margin="5" FontSize="22"/>
 
-                    <ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}">
+                    <ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}" SelectedItem="{Binding SelectedUnit, Source={StaticResource MainViewModel}}">
                         <ListView.ItemTemplate>
                             <DataTemplate DataType="models:ArmyListData">
                                 <Grid>
@@ -95,8 +133,12 @@
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <TextBlock Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
+                                        <!--<Grid>
+                                            <TextBlock font Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
+                                        </Grid>-->
+                                        <Grid Margin="0,0,0,2" >
+                                            <Border BorderThickness="0,0,0,2" BorderBrush="Black"/>
+                                            <TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Converter={StaticResource ForceOrgGroupToText}}" />
                                         </Grid>
                                     </DataTemplate>
                                 </GroupStyle.HeaderTemplate>
@@ -143,6 +185,254 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     
+                </Grid>
+            </DataTemplate>
+
+
+            <DataTemplate x:Key="ArmyListDataGroupTemplate">
+                <TextBlock Text="{Binding ForceOrgId, Converter={StaticResource ForceOrgTextConverter}}" TextWrapping="Wrap" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="ArmyListDataTemplate" DataType="models:ArmyListData">
+                <Grid Margin="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--<TextBlock Grid.Column="1" Text="{Binding Models.Count}" Margin="0,0,10,0" VerticalAlignment="Center" />-->
+                    <TextBlock Grid.Column="2" Text="{Binding UnitEntry.Name }" Margin="0,0,10,0" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="3" Margin="0,0,10,0" VerticalAlignment="Center">
+                        <Run Text="{Binding PointsTotal}" />
+                        <Run Text=" points" />
+                    </TextBlock>
+                    <TextBlock x:Name="EquipmentSummaryText" Grid.Column="4" Text="{Binding EquipmentSummary}" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" />
+                    <Button Grid.Row="0" Height="50" Grid.Column="5" CommandParameter="{Binding}" Command="{Binding CurrentArmyListViewModel.RemoveUnitCommand, Source={StaticResource MainViewModel}}"/>
+                </Grid>
+            </DataTemplate>
+
+            <!--<DataTemplate x:Key="ArmyListGroupTemplate">
+                <TextBlock Text="{Binding ArmyId, Converter={StaticResource ArmyTextConverter}}" Foreground="{StaticResource DimText}" TextWrapping="Wrap" />
+            </DataTemplate>
+            <DataTemplate x:Key="ArmyListTemplate">
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="PointsText" Text="{Binding PointsLimit, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                    <TextBlock x:Name="NameText" Grid.Row="0" Grid.Column="1" Margin="10,0,0,0" Text="{Binding Name, Mode=OneWay}" VerticalAlignment="Center" TextWrapping="Wrap" />
+                    <Button x:Name="EditButton" Grid.Row="0" Grid.Column="2" Icon="Edit" Height="50">
+                        --><!--<interactivity:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="Click">
+                                <media:ControlStoryboardAction>
+                                    <media:ControlStoryboardAction.Storyboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:.5" To="140" From="0" Storyboard.TargetName="EditArmyListView" Storyboard.TargetProperty="Height" EnableDependentAnimation="True" />
+                                        </Storyboard>
+                                    </media:ControlStoryboardAction.Storyboard>
+                                </media:ControlStoryboardAction>
+                            </core:EventTriggerBehavior>
+                        </interactivity:Interaction.Behaviors>--><!--
+                    </Button>
+
+                    <views:EditArmyListView Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Grid.Column="0" x:Name="EditArmyListView" DataContext="{Binding}" Height="0" />
+                </Grid>
+            </DataTemplate>-->
+
+            <DataTemplate x:Key="UnitListHeaderTemplate">
+                <StackPanel Orientation="Horizontal" DataContext="{Binding CurrentArmyListViewModel, Source={StaticResource MainViewModel}, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+                    <TextBlock Text="{Binding PointsLeft, FallbackValue=500}" FontSize="18" Margin="10,0,0,10" Foreground="{StaticResource DimText}" />
+                    <TextBlock Text="of" FontSize="18" Margin="10,0,10,10" Foreground="{StaticResource DimText}" />
+                    <TextBlock Text="{Binding CurrentArmyList.PointsLimit, FallbackValue=1200}" FontSize="18" Margin="0,0,0,10" Foreground="{StaticResource DimText}" />
+                    <TextBlock Text="Points Left" FontSize="18" Margin="10,0,0,10" Foreground="{StaticResource DimText}" />
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ModelTemplate" DataType="models:ModelData">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="{Binding Unit.Name}" FontSize="18" />
+
+                    <TextBlock Grid.Row="1" Text="Equipment" Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Grid.Row="2" ItemsSource="{Binding  Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}">
+
+                        </ListView>
+
+                    <TextBlock Grid.Row="3" Text="Upgrades" Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Grid.Row="4" ItemsSource="{Binding Upgrades}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}">
+
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ModelGroupDataTemplate" DataType="models:ModelDataGroup">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock FontSize="24" HorizontalAlignment="Left">
+                            <Run Text="{Binding CurrentUnitSize}" />
+                            <Run Text="{Binding Unit.Name}" />
+                            <Run Text="(s) " />
+                        </TextBlock>
+                        <Slider x:Name="UnitSizeSlider" Width="400" HorizontalAlignment="Left" Grid.Row="1" Visibility="{Binding Unit, Converter={StaticResource UnitSizeToVisibilityConverter}}" Minimum="{Binding Unit.Minimum}" Maximum="{Binding Unit.Maximum}" Value="{Binding CurrentUnitSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
+                    </Grid>
+                    <ListView Grid.Row="3" ItemsSource="{Binding Models, Mode=OneWay}"  ItemTemplate="{StaticResource ModelTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+
+                            <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        </Style>
+                        </ListView.ItemContainerStyle>
+
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="EquipmentNormalTemplate" DataType="models:EquipmentData">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"  />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <RadioButton Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" GroupName="{Binding GroupName}" />
+
+                    <TextBlock Grid.Column="1" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
+                    <TextBlock Grid.Column="2" Text="{Binding Equipment.Name}" />
+
+                    <TextBlock Grid.Row="1" Text="May replace with:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Margin="10,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ReplacementOptions}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="2" Grid.ColumnSpan="3" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" > 
+
+                    </ListView>
+                    <TextBlock Grid.Row="3" Text="Gives:" Visibility="{Binding GivenEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Margin="10,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding GivenEquipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="4" Grid.ColumnSpan="3" Visibility="{Binding GivenEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" >
+
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="EquipmentUpgradeTemplate" DataType="models:EquipmentData">
+                <!--x:DataType="models:EquipmentData"-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <CheckBox Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" />
+
+                    <TextBlock Grid.Column="1" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
+                    <TextBlock Grid.Column="2" Text="{Binding Equipment.Name}" />
+                    <TextBlock Grid.Row="1" Text="May replace with:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Margin="10,0,0,0" ItemsSource="{Binding ReplacementOptions}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="2" Grid.ColumnSpan="3">
+
+                    </ListView>
+                    <TextBlock Grid.Row="3" Text="Gives:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <ListView Margin="10,0,0,0" ItemsSource="{Binding GivenEquipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="4" Grid.ColumnSpan="3">
+
+                    </ListView>
+                </Grid>
+            </DataTemplate>
+
+
+                <DataTemplate x:Key="UnitTemplate">
+                <Grid>
+                    <views:UnitEditor DataContext="{Binding}" />
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate x:Key="DetachmentListItemTemplate">
+                <views:DetachmentView/>
+            </DataTemplate>
+
+            <DataTemplate x:Key="DedicatedTransportSelectionTemplate">
+                <TextBlock Text="{Binding Model.Name}" />
+            </DataTemplate>
+
+            <DataTemplate x:Key="DedicatedTransportUnitTemplate" DataType="models:UnitEntry">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock>
+                        <Run Text="{Binding  Unit.Minimum}" />
+                        <Run Text="-" />
+                        <Run Text="{Binding Model.Maximum}" />
+                        <Run Text="{Binding Model.Name}" />
+                    </TextBlock>
+                    <TextBlock Grid.Row="1">
+                        <Run Text="Points spent on upgrades for this unit:" />
+                        <Run Text="{Binding PointsCostTotal}" />
+                    </TextBlock>
+
+                    <ListView Grid.Row="3" ItemsSource="{Binding Models}" ItemTemplate="{StaticResource ModelTemplate}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <Style TargetType="ListViewItem" />
+                    </ListView>
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>

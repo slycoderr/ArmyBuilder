@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -50,6 +51,176 @@ namespace ArmyBuilder.Windows
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+    }
+
+    public class UnitSizeToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var model = (Unit)value;
+
+            return model.Maximum == model.Minimum ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class UnitCompositionConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var model = (Unit)value;
+
+            return model.Maximum == model.Minimum ? $"{model.Minimum} {model.Name}(s)" : $"{model.Minimum} - {model.Maximum} {model.Name}(s)";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ForceOrgTextConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            switch ((ForceOrgSlot)(int)value)
+            {
+                case ForceOrgSlot.HQ:
+                    return "HQ";
+                case ForceOrgSlot.Troop:
+                    return "Troop";
+                case ForceOrgSlot.Elite:
+                    return "Elite";
+                case ForceOrgSlot.FastAttack:
+                    return "Fast Attack";
+                case ForceOrgSlot.HeavySupport:
+                    return "Heavy Support";
+                case ForceOrgSlot.LordOfWar:
+                    return "Lord Of War";
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class IntToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return value.ToString() != "0";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? 1 : 0;
+        }
+    }
+
+    public class ModelsColumnSizeConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return 1;
+            }
+
+            if (value is List<ArmyListData>)
+            {
+                return ((List<ArmyListData>)value).Count > 0 ? 1 : 2;
+            }
+
+            return ((List<ModelData>)value).Count > 0 ? 1 : 2;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ListCountToVisiblityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return Visibility.Visible;
+            }
+
+            IList f = (IList)value;
+
+            return f.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+
+            //if (value is List<ArmyListData>)
+            //{
+            //    return ((List<ArmyListData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            //}
+
+            //if (value is List<EquipmentData>)
+            //{
+            //    return ((List<EquipmentData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            //}
+
+            //if (value is List<Detachment>)
+            //{
+            //    return ((List<Detachment>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            //}
+
+            
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class EquipmentTemplateSelector : DataTemplateSelector
+    {
+        public override DataTemplate
+            SelectTemplate(object item, DependencyObject container)
+        {
+            FrameworkElement element = container as FrameworkElement;
+            //if (element != null && item != null && item is DetachmentData)
+            //{
+            //    DetachmentData detachment = item as DetachmentData;
+
+            //    switch (detachment.Detachment.Type)
+            //    {
+            //        case DetachmentType.UnitDetachment:
+            //            return element.FindResource("UnitDetachmentTemplate") as DataTemplate;
+            //        case DetachmentType.BattleForged:
+            //            return element.FindResource("BattleForgedDetachmentTemplate") as DataTemplate;
+            //        case DetachmentType.ForceOrgDetachment:
+            //            return element.FindResource("ForceOrgDetachmentTemplate") as DataTemplate;
+            //        default:
+            //            throw new ArgumentOutOfRangeException();
+            //    }
+            //}
+
+            switch (((EquipmentData)item).Equipment.Type)
+            {
+                case EquipmentType.Normal:
+                    return element.FindResource("EquipmentNormalTemplate") as DataTemplate;
+                case EquipmentType.Upgrade:
+                    return element.FindResource("EquipmentUpgradeTemplate") as DataTemplate;
+                default:
+                    throw new ArgumentException();
+            }
+
+            return null;
         }
     }
 }

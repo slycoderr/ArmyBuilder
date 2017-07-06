@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -32,10 +33,10 @@ namespace ArmyBuilder.Core.Models
         public UnitEntry UnitEntry { get; private set; }
 
         [XmlArray, Ignore]
-        public List<ModelData> DedicatedTransports { get; set; }
+        public ObservableCollection<ModelData> DedicatedTransports { get; set; }
 
         [XmlArray, Ignore]
-        public List<ModelDataGroup> Models { get; set; }
+        public ObservableCollection<ModelDataGroup> ModelGroups { get; set; }
 
         [XmlElement, Ignore]
         public ModelData SelectedDedicatedTransport
@@ -80,7 +81,7 @@ namespace ArmyBuilder.Core.Models
             UnitId = unitEntry.Id;
 
             PropertyChanged += OnPropertyChanged;
-            Models.ForEach(m=>m.PropertyChanged += ModelGroupOnPropertyChanged);
+            ModelGroups.ForEach(m=>m.PropertyChanged += ModelGroupOnPropertyChanged);
         }
 
         private void ModelGroupOnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -119,7 +120,7 @@ namespace ArmyBuilder.Core.Models
                 if (Data == null)
                 {
                     //DedicatedTransports = new List<ModelData>(UnitEntry.DedicatedTransports.Select(u => new ModelData(u)).ToList());
-                    Models = new List<ModelDataGroup>(UnitEntry.Units.Select(u => new ModelDataGroup(u, this)).ToList());
+                    ModelGroups = new ObservableCollection<ModelDataGroup>(UnitEntry.Units.Select(u => new ModelDataGroup(u, this)).ToList());
                     Save();
                 }
 
@@ -133,13 +134,13 @@ namespace ArmyBuilder.Core.Models
                             var obj = (ArmyListData) dsArmy.Deserialize(reader);
 
                             DedicatedTransports = obj.DedicatedTransports;
-                            Models = obj.Models;
+                            ModelGroups = obj.ModelGroups;
                             SelectedDedicatedTransport = obj.SelectedDedicatedTransport;
 
                             //SelectedDedicatedTransport?.SetData(unitEntry.DedicatedTransports.Single(m => m.Id == SelectedDedicatedTransport.ModelId));
 
                             //DedicatedTransports.ForEach(t=>t.SetData(UnitEntry.DedicatedTransports.Single(m=>m.Id == t.ModelId)));
-                            Models.ForEach(t=>t.SetData(UnitEntry.Units.Single(m=>m.Id == t.ModelId), this));
+                            ModelGroups.ForEach(t=>t.SetData(UnitEntry.Units.Single(m=>m.Id == t.ModelId), this));
 
                         }
                     }
@@ -148,7 +149,7 @@ namespace ArmyBuilder.Core.Models
 
                 initialized = true;
                 PropertyChanged += OnPropertyChanged;
-                Models.ForEach(m => m.PropertyChanged += ModelGroupOnPropertyChanged);
+                ModelGroups.ForEach(m => m.PropertyChanged += ModelGroupOnPropertyChanged);
 
             }
         }
@@ -157,7 +158,7 @@ namespace ArmyBuilder.Core.Models
         {
             int total = (SelectedDedicatedTransport?.PointsCostTotal ?? 0) + (SelectedDedicatedTransport?.Unit?.BaseCost ?? 0);
 
-            total += Models.Sum(m => m.PointsCostTotal);
+            total += ModelGroups.Sum(m => m.PointsCostTotal);
 
             PointsTotal = total;
             Save();

@@ -17,6 +17,7 @@ namespace ArmyBuilder.Core.Database
     {
         public ObservableCollection<ArmyList> ArmyLists { get; } = new ObservableCollection<ArmyList>();
         public ObservableCollection<ArmyListData> ArmyListData { get; } = new ObservableCollection<ArmyListData>();
+        public ObservableCollection<DetachmentData> ArmyListDetachments { get; } = new ObservableCollection<DetachmentData>();
 
         public void Load(string path)
         {
@@ -25,31 +26,36 @@ namespace ArmyBuilder.Core.Database
                 UserDatabase = new SQLiteConnection(Path.Combine(path, "UserData.db"));
                 //open and/or create the database
 
-                UserDatabase.DropTable<ArmyList>();
-                UserDatabase.DropTable<ArmyListData>();
+                //UserDatabase.DropTable<ArmyList>();
+                //UserDatabase.DropTable<ArmyListData>();
 
-                UserDatabase.CreateTable<ArmyList>(); // make sure tables exists
-                UserDatabase.CreateTable<ArmyListData>();
+                //UserDatabase.CreateTable<ArmyList>(); // make sure tables exists
+                //UserDatabase.CreateTable<ArmyListData>();
+                //UserDatabase.CreateTable<DetachmentData>();
 
-                var armylists = UserDatabase.Table<ArmyList>();
-                var armyData = UserDatabase.Table<ArmyListData>();
-                //bool doneAdding = false;
+                //var armylists = UserDatabase.Table<ArmyList>();
+                //var armyData = UserDatabase.Table<ArmyListData>();
+                //var detachments = UserDatabase.Table<DetachmentData>();
+                ////bool doneAdding = false;
 
 
-                //MainViewModel.UiContext.Post(a =>
-                //{
+                ////MainViewModel.UiContext.Post(a =>
+                ////{
                 //    armylists.ForEach(l => ArmyLists.Add(l));
                 //    armyData.ForEach(l => ArmyListData.Add(l));
-                //    doneAdding = true;
-                //}, null);
+                //detachments.ForEach(l => ArmyListDetachments.Add(l));
+                ////    doneAdding = true;
+                ////}, null);
 
-                //while (!doneAdding) { }
+                ////while (!doneAdding) { }
 
-                ArmyLists.CollectionChanged += OnCollectionChanged;
-                ArmyListData.CollectionChanged += OnCollectionChanged;
+                //ArmyLists.CollectionChanged += OnCollectionChanged;
+                //ArmyListData.CollectionChanged += OnCollectionChanged;
+                //ArmyListDetachments.CollectionChanged += OnCollectionChanged;
 
-                ArmyLists.ForEach(a => a.PropertyChanged += OnPropertyChanged);
-                ArmyListData.ForEach(a => a.PropertyChanged += OnPropertyChanged);
+                //ArmyLists.ForEach(a => a.PropertyChanged += OnPropertyChanged);
+                //ArmyListData.ForEach(a => a.PropertyChanged += OnPropertyChanged);
+                //ArmyListDetachments.ForEach(a => a.PropertyChanged += OnPropertyChanged);
 
                 Loaded = true;
             }

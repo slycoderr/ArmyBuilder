@@ -14,3 +14,6 @@ C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\bin\Debug\MoreLinq.Po
 C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.csprojResolveAssemblyReference.cache
 C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.dll
 C:\Users\adkerti\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.pdb
+C:\Users\slyco\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.csprojResolveAssemblyReference.cache
+C:\Users\slyco\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.dll
+C:\Users\slyco\Source\Repos\armybuilder\ArmyBuilder.Test\obj\Debug\ArmyBuilder.Test.pdb
