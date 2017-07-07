@@ -245,10 +245,6 @@
       <Project>{74043e51-ef7b-4ce1-af3f-7612ed1d05b6}</Project>
       <Name>ArmyBuilder.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Slycoder\Slycoder.csproj">
-      <Project>{e00901db-1497-4ff4-ac41-5e4a8e9b5851}</Project>
-      <Name>Slycoder</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">

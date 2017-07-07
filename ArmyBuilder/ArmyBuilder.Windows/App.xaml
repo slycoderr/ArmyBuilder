@@ -40,7 +40,11 @@
                 </Style.Triggers>
             </Style>
 
-            <viewModels:MainViewModel x:Key="MainViewModel"/>
+            <viewModels:MainViewModel x:Key="MainViewModel">
+                <viewModels:MainViewModel.PlatformService>
+                    <windows:WindowsPlatformService />
+                </viewModels:MainViewModel.PlatformService>
+            </viewModels:MainViewModel>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
             <windows:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector"/>
             <windows:ForceOrgGroupToText x:Key="ForceOrgGroupToText"/>
@@ -438,6 +442,38 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

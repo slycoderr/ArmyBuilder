@@ -95,6 +95,7 @@
     <Compile Include="Views\UnitEditor.xaml.cs">
       <DependentUpon>UnitEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowsPlatformService.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -153,15 +154,6 @@
       <Project>{74043e51-ef7b-4ce1-af3f-7612ed1d05b6}</Project>
       <Name>ArmyBuilder.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Slycoder\Slycoder.csproj">
-      <Project>{e00901db-1497-4ff4-ac41-5e4a8e9b5851}</Project>
-      <Name>Slycoder</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="sqlite3.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

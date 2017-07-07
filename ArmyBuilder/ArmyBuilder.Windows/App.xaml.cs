@@ -10,25 +10,14 @@ namespace ArmyBuilder.Windows
 {
     public partial class App
     {
-        public static readonly string DataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\");
-        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\Data\\");
+        public static string DataPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ArmyBuilder");
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             MainViewModel.UiContext = SynchronizationContext.Current;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
-            if (!Directory.Exists(ArmyDataPath))
-            {
-                Directory.CreateDirectory(ArmyDataPath);
-            }
-
-            var files = Directory.EnumerateFiles(ArmyDataPath).Where(f => f.ToLower().Contains(".xml")).ToList();
-            var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
-
-            ((MainViewModel)FindResource("MainViewModel")).LoadArmyData(streams);
-            ((MainViewModel)FindResource("MainViewModel")).LoadDatabase(DataPath);
-
+            await ((MainViewModel) FindResource("MainViewModel")).Load(DataPath);
             base.OnStartup(e);
         }
 

@@ -96,6 +96,7 @@
     <Compile Include="Views\EditUnitView.xaml.cs">
       <DependentUpon>EditUnitView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowsPlatformService.cs" />
     <Compile Include="Windows\MassEquipmentEditorWindow.xaml.cs">
       <DependentUpon>MassEquipmentEditorWindow.xaml</DependentUpon>
     </Compile>
@@ -176,10 +177,6 @@
     <ProjectReference Include="..\ArmyBuilder\ArmyBuilder.Core\ArmyBuilder.Core.csproj">
       <Project>{74043e51-ef7b-4ce1-af3f-7612ed1d05b6}</Project>
       <Name>ArmyBuilder.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ArmyBuilder\Slycoder\Slycoder.csproj">
-      <Project>{e00901db-1497-4ff4-ac41-5e4a8e9b5851}</Project>
-      <Name>Slycoder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

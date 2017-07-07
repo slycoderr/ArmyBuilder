@@ -8,7 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using ArmyBuilder.Core.Database;
+
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.Models.Groups;
 using GalaSoft.MvvmLight.Command;
@@ -19,11 +19,15 @@ namespace ArmyBuilder.Core.ViewModels
 {
     public class MainViewModel : BindableBase
     {
+        public string DataRootDirectory { get; set; }
+        public string ArmyDataDirectory => Path.Combine(DataRootDirectory, "Data");
+        public string ArmyListDirectory => Path.Combine(DataRootDirectory, "ArmyLists");
+
         public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
         public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
         public ArmyListData SelectedUnit { get => selectedUnit; set => SetValue(ref selectedUnit, value); }
 
-        public ObservableCollection<ArmyList> ArmyLists => database.ArmyLists;
+        public ObservableCollection<ArmyList> ArmyLists { get; } = new ObservableCollection<ArmyList>();
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
         public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
 
@@ -32,16 +36,22 @@ namespace ArmyBuilder.Core.ViewModels
         public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
-        public static SynchronizationContext UiContext; 
-        private readonly ArmyBuilderDatabase database = new ArmyBuilderDatabase();
+        public IPlatformService PlatformService { get; set; }
+        public static SynchronizationContext UiContext;
+
         private ArmyList selectedArmyList;
         private DetachmentData selectedDetachment;
         private ArmyListData selectedUnit;
 
-        // ReSharper disable once EmptyConstructor
+    
+
+    // ReSharper disable once EmptyConstructor
         public MainViewModel()
         {
             PropertyChanged += MainViewModel_PropertyChanged;
+
+
+
         }
 
         private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -49,34 +59,25 @@ namespace ArmyBuilder.Core.ViewModels
 
         }
 
-        public void LoadDatabase(string path)
+        public async Task Load(string baseDirectory)
         {
-            database.Load(path);
-        }
+            DataRootDirectory = baseDirectory;
+            PlatformService.CreateDirectory(ArmyDataDirectory);
+            PlatformService.CreateDirectory(ArmyListDirectory);
 
-        public void LoadArmyData(List<Stream> dataStreams)
-        {
-            if (dataStreams == null || !dataStreams.Any())
+            (await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Select(n => new ArmyList {Name = Path.GetFileNameWithoutExtension(n)}).ForEach(ArmyLists.Add);
+            var dataFiles = (await PlatformService.DiscoverXmlFiles(ArmyDataDirectory));
+
+            foreach (var file in dataFiles)
             {
-                throw new ArgumentException("Army data cannot be null or empty.");
-            }
+                var army = await PlatformService.DeserializeXml<Army>(file);
+                Armies.Add(army);
 
-            foreach (var s in dataStreams)
-            {
-                using (var reader = XmlReader.Create(s))
-                {
-                    var dsArmy = new XmlSerializer(typeof(Army));
+                army.Configure();
 
-                    var army = (Army) dsArmy.Deserialize(reader);
+                ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
 
-                    Armies.Add(army); 
-
-                    army.Configure();
-                    
-                    ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
-
-                    army.UnitEntries.ForEach(AvailableUnitEntries.Add);
-                }
+                army.UnitEntries.ForEach(AvailableUnitEntries.Add);
             }
         }
 
@@ -119,19 +120,9 @@ namespace ArmyBuilder.Core.ViewModels
             }
         }
 
-        private void UnitsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        public async Task SaveArmyList(ArmyList list)
         {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    e.NewItems.Cast<ArmyListData>().ForEach(d=> database.ArmyListData.Add(d));
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    e.OldItems.Cast<ArmyListData>().ForEach(d => database.ArmyListData.Remove(d));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            await PlatformService.SerializeXml<ArmyList>(list, Path.Combine(ArmyListDirectory, list.Name));
         }
     }
 }

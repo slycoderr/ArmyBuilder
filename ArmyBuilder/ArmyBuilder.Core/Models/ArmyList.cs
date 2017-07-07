@@ -1,32 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ArmyBuilder.Core.Database;
+using System.Xml.Serialization;
 using Slycoder.MVVM;
-using SQLite;
 
 namespace ArmyBuilder.Core.Models
 {
-    [UserData]
+    [XmlRoot(Namespace = "")]
     public class ArmyList : BindableBase
     {
         private string name;
         private int pointsLimit;
         private Army army;
 
-        [Ignore]
+        [XmlIgnore]
         public Army Army { get => army; set => SetValue(ref army, value); }
 
+        [XmlAttribute]
         public Guid Id { get; set; }
-
+        [XmlAttribute]
         public int ArmyId { get; set; }
+        [XmlAttribute]
         public string Name { get => name; set => SetValue(ref name, value); }
 
+        [XmlArray]
         public ObservableCollection<DetachmentData> Detachments { get; } = new ObservableCollection<DetachmentData>();
 
+        [XmlAttribute]
         public int PointsLimit { get => pointsLimit; set => SetValue(ref pointsLimit, value); }
 
         public ArmyList(Army army)

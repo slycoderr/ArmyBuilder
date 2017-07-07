@@ -11,6 +11,7 @@ using System.Windows;
 using System.Xml;
 using System.Xml.Serialization;
 using ArmyBuilder.Core.Models;
+using ArmyBuilder.Windows;
 using ArmyBuilder.XMLEditor.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
@@ -58,18 +59,19 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<MassEquipmentEntryCollection> AddMassEquipmentCommand => new RelayCommand<MassEquipmentEntryCollection>(AddMassEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
 
-        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\ArmyBuilder\\Data\\");
+        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder","Data");
+        public static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder");
 
-        public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
+        public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel(){PlatformService = new WindowsPlatformService()};
 
         public MainViewModel()
         {
             //var files = Directory.GetParent("DataFiles").Parent.Parent.GetDirectories().FirstOrDefault(d => d.Name == "DataFiles").GetFiles().Where(f=>f.Extension == ".xml");
-            var files = Directory.GetFiles(ArmyDataPath).Where(f => Path.GetExtension(f) == ".xml");
-            var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
+            //var files = Directory.GetFiles(ArmyDataPath).Where(f => Path.GetExtension(f) == ".xml");
+            //var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
 
-            ArmyBuilderCore.LoadArmyData(streams);
-            streams.ForEach(s=>s.Dispose());
+            ArmyBuilderCore.Load(RootPath);
+
             PropertyChanged += OnPropertyChanged;
         }
 

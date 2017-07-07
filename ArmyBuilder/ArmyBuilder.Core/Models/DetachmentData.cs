@@ -1,10 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Serialization;
-using GalaSoft.MvvmLight.Command;
-using MoreLinq;
 using Slycoder.MVVM;
-using SQLite;
 
 namespace ArmyBuilder.Core.Models
 {
@@ -12,10 +9,11 @@ namespace ArmyBuilder.Core.Models
     {
         //private DetachmentData selectedDetachment;
 
-        [XmlIgnore, Ignore]
+        [XmlIgnore]
         public Detachment Detachment { get; }
-        [Ignore]
+        [XmlIgnore]
         public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
+        [XmlArray]
         public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
 
         public DetachmentData()

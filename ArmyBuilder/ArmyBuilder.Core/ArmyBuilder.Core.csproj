@@ -42,8 +42,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Database\ArmyBuilderDatabase.cs" />
-    <Compile Include="Database\Utility.cs" />
+    <Compile Include="IPlatformService.cs" />
     <Compile Include="Models\DetachmentData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Army.cs" />
@@ -60,6 +59,7 @@
     <Compile Include="Models\ModelDataGroup.cs" />
     <Compile Include="Models\ModelData.cs" />
     <Compile Include="Models\UnitEntry.cs" />
+    <Compile Include="Models\Utility\BindableBase.cs" />
     <Compile Include="Models\Utility\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Groups\ArmyListGroup.cs" />
@@ -92,12 +92,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Slycoder\Slycoder.csproj">
-      <Project>{e00901db-1497-4ff4-ac41-5e4a8e9b5851}</Project>
-      <Name>Slycoder</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
