@@ -1,4 +1,4 @@
-﻿using System;
+Bio﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -117,14 +117,9 @@ namespace ArmyBuilder.Core.ViewModels
 
             else
             {
-            var detach =new DetachmentData(detachment) ;
-            
-            
+           		 var detach =new DetachmentData(detachment) ;
 
-SelectedArmyList.Detachments.Add(detach);SelectedDetachment=detach; 
-​
-
-
+				SelectedArmyList.Detachments.Add(detach);SelectedDetachment=detach; 
             }
         }
 
