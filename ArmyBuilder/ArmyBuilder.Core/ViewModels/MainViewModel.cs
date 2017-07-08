@@ -86,6 +86,7 @@ namespace ArmyBuilder.Core.ViewModels
             ArmyLists?.Remove(list);
         }
 
+
         private void AddList()
         {
             ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
@@ -116,7 +117,14 @@ namespace ArmyBuilder.Core.ViewModels
 
             else
             {
-                SelectedArmyList.Detachments.Add(new DetachmentData(detachment));
+            var detach =new DetachmentData(detachment) ;
+            
+            
+
+SelectedArmyList.Detachments.Add(detach);SelectedDetachment=detach; 
+​
+
+
             }
         }
 
