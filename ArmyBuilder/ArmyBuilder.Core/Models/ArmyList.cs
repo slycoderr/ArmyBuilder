@@ -10,38 +10,23 @@ namespace ArmyBuilder.Core.Models
     {
         private string name;
         private int pointsLimit;
-        private Army army;
+        private ObservableCollection<DetachmentData> detachments = new ObservableCollection<DetachmentData>();
 
-        [XmlIgnore]
-        public Army Army { get => army; set => SetValue(ref army, value); }
-
-        [XmlAttribute]
-        public Guid Id { get; set; }
-        [XmlAttribute]
-        public int ArmyId { get; set; }
         [XmlAttribute]
         public string Name { get => name; set => SetValue(ref name, value); }
 
         [XmlArray]
-        public ObservableCollection<DetachmentData> Detachments { get; } = new ObservableCollection<DetachmentData>();
+        public ObservableCollection<DetachmentData> Detachments { get => detachments; internal set => SetValue(ref detachments, value); }
 
         [XmlAttribute]
         public int PointsLimit { get => pointsLimit; set => SetValue(ref pointsLimit, value); }
 
-        public ArmyList(Army army)
-        {
-            Army = army;
-        }
-
         public ArmyList() { }
 
-        public ArmyList(string newName, int points, Army newArmy, Detachment detach)
+        public ArmyList(string newName, int points)
         {
             Name = newName;
             PointsLimit = points;
-            Army = newArmy;
-            ArmyId = newArmy.Id;
-            Id = Guid.NewGuid();
 
         }
     }

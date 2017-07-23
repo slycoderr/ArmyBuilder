@@ -17,8 +17,10 @@ namespace ArmyBuilder.Core.Models
     [XmlRoot(Namespace = "")]
     public class ArmyListData : BindableBase
     { 
-        [XmlIgnore]
+
         public int UnitId { get; set; }
+
+        public int ArmyId { get; set; }
         [XmlIgnore]
         public int PointsTotal { get => pointsTotal; set => SetValue(ref pointsTotal, value); }
 
@@ -66,7 +68,7 @@ namespace ArmyBuilder.Core.Models
 
         private int pointsTotal;
 
-        public ArmyListData(UnitEntry unitEntry, Guid armyListId)
+        public ArmyListData(UnitEntry unitEntry)
         {
 
             SetData(unitEntry);

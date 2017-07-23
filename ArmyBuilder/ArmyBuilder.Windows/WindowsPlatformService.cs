@@ -17,12 +17,16 @@ namespace ArmyBuilder.Windows
         {
             return Task.Run(() =>
             {
-                using (var stream = new FileStream(path, FileMode.Create))
+                using (var stream = new FileStream(path + ".xml", FileMode.Create))
                 {
-                    using (var writer = XmlWriter.Create(stream))
+                    using (var writer = XmlWriter.Create(stream, new XmlWriterSettings(){Indent = true}))
                     {
+                        
                         var dsArmy = new XmlSerializer(typeof(T));
-                        dsArmy.Serialize(writer, this);
+                        XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+                        ns.Add("", "");
+                        dsArmy.Serialize(writer, obj, ns);
+
                     }
                 }
             });

@@ -11,9 +11,17 @@
                       xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:views1="clr-namespace:ArmyBuilder.UWP.Views"
-                      DataContext="{StaticResource MainViewModel}"
+                      DataContext="{StaticResource MainViewModel}" TitleAlignment="Center"
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="{Binding SelectedArmyList.Name, FallbackValue='Armybuilder', TargetNullValue='Armybuilder'}" Height="800" Width="1200" >
 
+    <controls:MetroWindow.LeftWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Create List" Command="{Binding AddListCommand}"/>
+            <Button Content="Save List"  Command="{Binding SaveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
+            <Button Content="Delete List" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
+        </controls:WindowCommands>
+    </controls:MetroWindow.LeftWindowCommands>
+    
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=CreateListButton}">
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
@@ -39,22 +47,7 @@
     </i:Interaction.Triggers>
 
 
-    <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}">
-        <controls:HamburgerMenu.OptionsItemsSource>
-            <controls:HamburgerMenuItemCollection>
-                <controls:HamburgerMenuGlyphItem Label="About" Command="{Binding AddListCommand}" >
-                    <controls:HamburgerMenuGlyphItem.Tag>
-                        <iconPacks:PackIconMaterial Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Plus" />
-                    </controls:HamburgerMenuGlyphItem.Tag>
-                </controls:HamburgerMenuGlyphItem>
-                <controls:HamburgerMenuGlyphItem Label="About" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}">
-                    <controls:HamburgerMenuGlyphItem.Tag>
-                        <iconPacks:PackIconMaterial Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Delete" />
-                    </controls:HamburgerMenuGlyphItem.Tag>
-                </controls:HamburgerMenuGlyphItem>
-            </controls:HamburgerMenuItemCollection>
-
-        </controls:HamburgerMenu.OptionsItemsSource>
+    <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}" >
 
         <controls:HamburgerMenu.Content>
 

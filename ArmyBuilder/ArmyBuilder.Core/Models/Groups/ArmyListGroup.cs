@@ -10,7 +10,7 @@ namespace ArmyBuilder.Core.Models.Groups
 
         public ArmyListGroup(List<ArmyList> items) : base(items.OrderBy(i => i.PointsLimit))
         {
-            ArmyId = items.ToList().First().ArmyId;
+            //ArmyId = items.ToList().First().ArmyId;
         }
     }
 }

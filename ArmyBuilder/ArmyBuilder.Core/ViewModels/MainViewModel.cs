@@ -1,4 +1,4 @@
-Bio﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -32,6 +32,7 @@ namespace ArmyBuilder.Core.ViewModels
         public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
+        public RelayCommand<ArmyList> SaveListCommand => new RelayCommand<ArmyList>(async s=>await SaveArmyList(s));
         public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
         public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
         public RelayCommand AddListCommand => new RelayCommand(AddList);
@@ -54,9 +55,14 @@ namespace ArmyBuilder.Core.ViewModels
 
         }
 
-        private void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private async void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-
+            if (e.PropertyName == nameof(SelectedArmyList) && SelectedArmyList != null)
+            {
+                var data = await PlatformService.DeserializeXml<ArmyList>(Path.Combine(ArmyListDirectory, SelectedArmyList.Name+".xml"));
+                SelectedArmyList.Detachments = data.Detachments;
+                SelectedArmyList.PointsLimit = data.PointsLimit;
+            }
         }
 
         public async Task Load(string baseDirectory)
@@ -75,7 +81,7 @@ namespace ArmyBuilder.Core.ViewModels
 
                 army.Configure();
 
-                ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
+                //ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
 
                 army.UnitEntries.ForEach(AvailableUnitEntries.Add);
             }
@@ -89,8 +95,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddList()
         {
-            ArmyLists.Add(new ArmyList { Id = Guid.NewGuid(), Name = "New List", PointsLimit = 1500});
-            SelectedArmyList = ArmyLists.Last();
+            ArmyLists.Add(SelectedArmyList = new ArmyList { Name = "New List", PointsLimit = 1500});
         }
 
         private void AddUnitEntryToDetachment(UnitEntry unit)
@@ -102,7 +107,7 @@ namespace ArmyBuilder.Core.ViewModels
 
             else
             {
-                SelectedDetachment.Units.Add(new ArmyListData(unit, Guid.Empty));
+                SelectedDetachment.Units.Add(SelectedUnit = new ArmyListData(unit));
             }
 
             
@@ -117,9 +122,7 @@ namespace ArmyBuilder.Core.ViewModels
 
             else
             {
-           		 var detach =new DetachmentData(detachment) ;
-
-				SelectedArmyList.Detachments.Add(detach);SelectedDetachment=detach; 
+				SelectedArmyList.Detachments.Add(SelectedDetachment = new DetachmentData(detachment)); 
             }
         }
 

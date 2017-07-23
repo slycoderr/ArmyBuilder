@@ -129,9 +129,9 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdateArmyUnitsListDataSource()
         {
-            var groups = ArmyList.Army.UnitEntries.GroupBy(i => new {i.ForceOrgSlot}).Select(i => new ArmyUnitGroup(i.ToList())).OrderBy(g => g.ForceOrgId);
-
-            groups.ForEach(g => ArmyUnitGroups.Add(g));
+            //var groups = ArmyList.Army.UnitEntries.GroupBy(i => new {i.ForceOrgSlot}).Select(i => new ArmyUnitGroup(i.ToList())).OrderBy(g => g.ForceOrgId);
+            
+            //groups.ForEach(g => ArmyUnitGroups.Add(g));
         }
 
         private void UpdateArmyListDataSource()
@@ -166,7 +166,7 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (unitEntry != null)
             {
-                SelectedDetachment.Units.Add(new ArmyListData(unitEntry, ArmyList.Id));
+                SelectedDetachment.Units.Add(new ArmyListData(unitEntry));
                 SelectedUnit = SelectedDetachment.Units.Last();
                 IsUnitFlyoutOpened = false;
 

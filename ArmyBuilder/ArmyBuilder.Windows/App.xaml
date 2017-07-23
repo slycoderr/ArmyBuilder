@@ -316,7 +316,8 @@
 
                             <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True" />
+                                <!--<WrapPanel IsItemsHost="True" />-->
+                            <UniformGrid IsItemsHost="True" Columns="5"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                         <ListView.ItemContainerStyle>
@@ -348,7 +349,7 @@
                     <RadioButton Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" GroupName="{Binding GroupName}" />
 
                     <TextBlock Grid.Column="1" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
-                    <TextBlock Grid.Column="2" Text="{Binding Equipment.Name}" />
+                    <TextBlock Grid.Column="2" Text="{Binding Equipment.Name}" TextWrapping="WrapWithOverflow" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
 
                     <TextBlock Grid.Row="1" Text="May replace with:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />
                     <ListView Margin="10,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ReplacementOptions}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="2" Grid.ColumnSpan="3" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" > 
