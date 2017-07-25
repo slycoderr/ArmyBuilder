@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Xml.Serialization;
 using Slycoder.MVVM;
@@ -43,7 +44,7 @@ namespace ArmyBuilder.Core.Models
         }
 
         [XmlIgnore]
-        public int SlotsUsed { get { return slotsUsed; } set { SetValue(ref slotsUsed, value); } }
+        public int SlotsUsed { get => slotsUsed; set => SetValue(ref slotsUsed, value); }
         [XmlIgnore]
         public DetachmentRequirement Requirement { get; }
         [XmlIgnore]
@@ -56,6 +57,8 @@ namespace ArmyBuilder.Core.Models
         {
             Requirement = require;
             DetachmentData = detach;
+
+            Units.CollectionChanged += delegate { SlotsUsed = Units.Count; };
         } 
     }
 }
