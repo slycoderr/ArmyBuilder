@@ -5,16 +5,15 @@ using Slycoder.MVVM;
 
 namespace ArmyBuilder.Core.Models
 {
+    [XmlRoot(Namespace = "")]
     public class DetachmentData : BindableBase
     {
-        //private DetachmentData selectedDetachment;
-
+        [XmlAttribute]
+        public int DetachmentId { get; set; }
         [XmlIgnore]
         public Detachment Detachment { get; }
-        [XmlIgnore]
-        public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
         [XmlArray]
-        public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
+        public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
 
         public DetachmentData()
         {
@@ -34,12 +33,24 @@ namespace ArmyBuilder.Core.Models
             return Detachment.Name;
         }
     }
-
-    public class DetachmentRequirementData
+    [XmlRoot(Namespace = "")]
+    public class DetachmentRequirementData : BindableBase
     {
+        private int slotsUsed;
+
+        public DetachmentRequirementData()
+        {
+        }
+
+        [XmlIgnore]
+        public int SlotsUsed { get { return slotsUsed; } set { SetValue(ref slotsUsed, value); } }
+        [XmlIgnore]
         public DetachmentRequirement Requirement { get; }
+        [XmlIgnore]
         public DetachmentData DetachmentData { get; }
-        
+        [XmlArray]
+        public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
+
 
         public DetachmentRequirementData(DetachmentRequirement require, DetachmentData detach)
         {

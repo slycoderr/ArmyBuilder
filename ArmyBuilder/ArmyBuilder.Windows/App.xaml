@@ -110,22 +110,50 @@
             <!--Needs grouping in the listview by force org id-->
             <DataTemplate x:Key="ForceOrgDetachmentTemplate" DataType="models:DetachmentData">
                 <Grid Name="Grid">
-                    <Grid.Resources>
-                        <CollectionViewSource x:Key="UnitForceOrgGroupsCollection" Source="{Binding Units}" IsLiveGroupingRequested="True">
-                            <CollectionViewSource.GroupDescriptions>
-                                <PropertyGroupDescription PropertyName="UnitEntry.ForceOrgSlot" />
-                            </CollectionViewSource.GroupDescriptions>
-                        </CollectionViewSource>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    
-                    <TextBlock Text="{Binding Detachment.Name}" Grid.Column="1" Margin="5" FontSize="22"/>
 
-                    <ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}" SelectedItem="{Binding SelectedUnit, Source={StaticResource MainViewModel}}">
+                    <TextBlock Text="{Binding Detachment.Name}"  Margin="5" FontSize="22" Grid.Row="0" />
+
+                    <ListView Grid.Row="1" ItemsSource="{Binding DetachmentRequirementData}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}}"/>
+                                    <TextBlock FontSize="20" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding SlotsUsed}"/>
+                                    <TextBlock Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Requirement.Minimum}"/>
+                                    <TextBlock Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Text="{Binding Requirement.Maximum}"/>
+
+                                    <ListView Grid.Row="3" ItemsSource="{Binding Units}" SelectedItem="{Binding SelectedUnit, Source={StaticResource MainViewModel}}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate DataType="models:ArmyListData">
+                                                <Grid>
+                                                    <!--<TextBlock Text="{Binding ModelGroups.Count}"/>-->
+                                                    <TextBlock Text="{Binding UnitEntry.Name}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" IsItemsHost="True"  ScrollViewer.HorizontalScrollBarVisibility="Disabled"></UniformGrid>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                    </ListView>
+                    
+                    <!--<ListView Grid.Row="1" Grid.Column="1" Margin="5" ItemsSource="{Binding Source={StaticResource UnitForceOrgGroupsCollection}}" SelectedItem="{Binding SelectedUnit, Source={StaticResource MainViewModel}}">
                         <ListView.ItemTemplate>
                             <DataTemplate DataType="models:ArmyListData">
                                 <Grid>
@@ -137,9 +165,9 @@
                             <GroupStyle>
                                 <GroupStyle.HeaderTemplate>
                                     <DataTemplate>
-                                        <!--<Grid>
+                                        --><!--<Grid>
                                             <TextBlock font Text="{Binding Converter={StaticResource ForceOrgGroupToText}}"/>
-                                        </Grid>-->
+                                        </Grid>--><!--
                                         <Grid Margin="0,0,0,2" >
                                             <Border BorderThickness="0,0,0,2" BorderBrush="Black"/>
                                             <TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Converter={StaticResource ForceOrgGroupToText}}" />
@@ -148,7 +176,7 @@
                                 </GroupStyle.HeaderTemplate>
                             </GroupStyle>
                         </ListView.GroupStyle>
-                    </ListView>
+                    </ListView>-->
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="BattleForgedDetachmentTemplate" DataType="models:DetachmentData">

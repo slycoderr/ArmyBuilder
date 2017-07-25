@@ -19,6 +19,13 @@
             <Button Content="Create List" Command="{Binding AddListCommand}"/>
             <Button Content="Save List"  Command="{Binding SaveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
             <Button Content="Delete List" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
+            <Button Content="Add Unit" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                    <ei:ChangePropertyAction TargetObject="{Binding ElementName=UnitFlyout}" PropertyName="IsOpen" Value="True"/>
+                </i:EventTrigger>
+                    </i:Interaction.Triggers>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
     
@@ -46,7 +53,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-
+<Grid>
     <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}" >
 
         <controls:HamburgerMenu.Content>
@@ -155,56 +162,24 @@
                     <Grid Grid.Row="1" Grid.Column="1">
 
 
-                        <Grid.RowDefinitions>
+                        <!--<Grid.RowDefinitions>
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Expander Header="Add a Detachment" ExpandDirection="Down">
-                            <ListView ItemsSource="{Binding Armies}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate DataType="models:Army">
-                                        <Expander Header="{Binding Name}" IsExpanded="True" Visibility="{Binding Detachments, Converter={StaticResource ListCountToVisiblityConverter}}">
-                                            <ListBox ItemsSource="{Binding Detachments}">
-                                                <ListBox.ItemTemplate>
-                                                    <DataTemplate DataType="models:Detachment" >
-                                                        
-                                                        <Button Style="{StaticResource MetroFlatButton}" Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" BorderThickness="0" controls:ButtonHelper.CornerRadius="0">
-                                                            <!--<i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="False"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
-                                                        </Button>
-                                                    </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                            </ListBox>
-                                        </Expander>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MetroListBoxItem}">
-                                        <Style.Triggers>
-                                            <!--Hide Groups if there are no items in them-->
-                                            <DataTrigger Binding="{Binding Detachments.Count}" Value="0">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                            </ListView>
-                        </Expander>
+                            
+                        </Expander>-->
 
                         <ListView Grid.Row="1" SelectedItem="{Binding SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}">
-                            <ListView.ItemsPanel>
+                            <!--<ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal" />
+                                    <UniformGrid Columns="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
                                 </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
+                            </ListView.ItemsPanel>-->
                         </ListView>
                     </Grid>
 
-                    <TreeView Grid.Row="1" Grid.Column="2" BorderThickness="0"/>
+                    <!--<TreeView Grid.Row="1" Grid.Column="2" BorderThickness="0"/>-->
                     <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding SelectedUnit.UnitEntry.Name}"/>
                     <views1:UnitEditor Grid.Row="1" Grid.Column="2" DataContext="{Binding SelectedUnit}"/>
                 </Grid>
@@ -212,4 +187,42 @@
         </controls:HamburgerMenu.Content>
     </controls:HamburgerMenu>
 
+    <controls:FlyoutsControl Background="Transparent">
+        <controls:Flyout x:Name="UnitFlyout" Theme="Accent" Position="Top" Header="Add a Detachment" Background="Transparent">
+            <ListView ItemsSource="{Binding Armies}">
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="models:Army">
+                        <Expander Header="{Binding Name}" IsExpanded="True" Visibility="{Binding Detachments, Converter={StaticResource ListCountToVisiblityConverter}}">
+                            <ListBox ItemsSource="{Binding Detachments}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate DataType="models:Detachment" >
+
+                                        <Button Style="{StaticResource MetroFlatButton}" Content="{Binding Name}" Command="{Binding AddDetachmentToListCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}" BorderThickness="0" controls:ButtonHelper.CornerRadius="0">
+                                            <!--<i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=AddDetachmentMenu}" PropertyName="IsOpen" Value="False"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                                        </Button>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Expander>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource MetroListBoxItem}">
+                        <Style.Triggers>
+                            <!--Hide Groups if there are no items in them-->
+                            <DataTrigger Binding="{Binding Detachments.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListView>
+        </controls:Flyout>
+    </controls:FlyoutsControl>
+</Grid>
 </controls:MetroWindow>

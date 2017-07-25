@@ -60,7 +60,7 @@ namespace ArmyBuilder.Core.ViewModels
             PropertyChanged += OnPropertyChanged;
             SelectedDetachment = armyList.Detachments.FirstOrDefault();
 
-            ArmyList.Detachments.ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
+            ArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
             UpdatePointsTotal();
         }
 
@@ -121,7 +121,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UnitPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "PointsTotal")
+            if (e.PropertyName == "PointsTotal") 
             {
                 UpdatePointsTotal();
             }
@@ -137,7 +137,7 @@ namespace ArmyBuilder.Core.ViewModels
         private void UpdateArmyListDataSource()
         {
             var currentSelectedItem = SelectedUnit;
-            var groups = SelectedDetachment?.Units?.GroupBy(i => new {i.UnitEntry.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList()))?.ToList();
+            var groups = SelectedDetachment?.DetachmentRequirementData.SelectMany(d => d.Units)?.GroupBy(i => new {i.UnitEntry.ForceOrgSlot}).Select(i => new ForceOrgGroup(i.ToList()))?.ToList();
 
             ArmyListDataGroups.Clear();
             groups?.ForEach(g => ArmyListDataGroups.Add(g));
@@ -158,7 +158,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdatePointsTotal()
         {
-            PointsUsed = SelectedDetachment?.Units?.Sum(a => a.PointsTotal) ?? 0;
+            PointsUsed = SelectedDetachment?.DetachmentRequirementData.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0;
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
         }
 
@@ -166,8 +166,7 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (unitEntry != null)
             {
-                SelectedDetachment.Units.Add(new ArmyListData(unitEntry));
-                SelectedUnit = SelectedDetachment.Units.Last();
+                SelectedDetachment.DetachmentRequirementData.FirstOrDefault(d=>d.Requirement.Slot == unitEntry.ForceOrgSlot)?.Units?.Add(SelectedUnit = new ArmyListData(unitEntry));
                 IsUnitFlyoutOpened = false;
 
             }

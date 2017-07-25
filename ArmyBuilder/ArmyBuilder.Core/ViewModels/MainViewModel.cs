@@ -59,9 +59,12 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (e.PropertyName == nameof(SelectedArmyList) && SelectedArmyList != null)
             {
-                var data = await PlatformService.DeserializeXml<ArmyList>(Path.Combine(ArmyListDirectory, SelectedArmyList.Name+".xml"));
-                SelectedArmyList.Detachments = data.Detachments;
-                SelectedArmyList.PointsLimit = data.PointsLimit;
+                if ((await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Any(l => l.Contains(SelectedArmyList.Name)))
+                {
+                    var data = await PlatformService.DeserializeXml<ArmyList>(Path.Combine(ArmyListDirectory, SelectedArmyList.Name + ".xml"));
+                    SelectedArmyList.Detachments = data.Detachments;
+                    SelectedArmyList.PointsLimit = data.PointsLimit;
+                }
             }
         }
 
@@ -95,7 +98,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddList()
         {
-            ArmyLists.Add(SelectedArmyList = new ArmyList { Name = "New List", PointsLimit = 1500});
+            ArmyLists.Add(SelectedArmyList = new ArmyList { Name = "New List "+ArmyLists.Count, PointsLimit = 1500});
         }
 
         private void AddUnitEntryToDetachment(UnitEntry unit)
@@ -107,7 +110,7 @@ namespace ArmyBuilder.Core.ViewModels
 
             else
             {
-                SelectedDetachment.Units.Add(SelectedUnit = new ArmyListData(unit));
+                SelectedDetachment.DetachmentRequirementData.FirstOrDefault(d => d.Requirement.Slot == unit.ForceOrgSlot)?.Units?.Add(SelectedUnit = new ArmyListData(unit));
             }
 
             

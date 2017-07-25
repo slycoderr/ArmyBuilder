@@ -103,6 +103,10 @@ namespace ArmyBuilder.Windows
                     return "Heavy Support";
                 case ForceOrgSlot.LordOfWar:
                     return "Lord Of War";
+                case ForceOrgSlot.Fortification:
+                    return "Fortification";
+                case ForceOrgSlot.Flyer:
+                    return "Flyer";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
             }

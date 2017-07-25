@@ -16,7 +16,7 @@ namespace ArmyBuilder.Core.Models
         public int Maximum { get; set; }
 
         [XmlAttribute]
-        public int Value { get; set; }
+        public ForceOrgSlot Slot { get; set; }
 
     }
 }
