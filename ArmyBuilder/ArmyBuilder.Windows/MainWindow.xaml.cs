@@ -8,7 +8,6 @@ namespace ArmyBuilder.Windows
         public MainWindow()
         {
             InitializeComponent();
-            MainViewModel.UiContext = SynchronizationContext.Current;
         }
 
         private void AddDetachmentButton_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -14,7 +14,6 @@ namespace ArmyBuilder.Windows
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            MainViewModel.UiContext = SynchronizationContext.Current;
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
 
             await ((MainViewModel) FindResource("MainViewModel")).Load(DataPath);

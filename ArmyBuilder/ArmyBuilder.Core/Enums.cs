@@ -32,6 +32,14 @@ namespace ArmyBuilder.Core
         Upgrade = 1
     }
 
+    public enum ArmyListType
+    {
+        [XmlEnum("0")]
+        MatchedPlay,
+        [XmlEnum("1")]
+        OpenPlay = 1
+    }
+
     public enum DetachmentRequirementType
     {
         [XmlEnum("0")]

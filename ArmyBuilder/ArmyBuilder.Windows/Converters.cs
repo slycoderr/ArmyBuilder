@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
 
@@ -38,6 +39,71 @@ namespace ArmyBuilder.Windows
             //}
 
             return null;
+        }
+    }
+
+    public class ModelDataGroupToNumColumnsConverter : System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return 1;
+            }
+
+            int val = (int) value;
+
+            if (val >= 20)
+            {
+                return 5;
+            }
+
+            if (val >= 9)
+            {
+                return 3;
+            }
+
+            if (val >= 4)
+            {
+                return 2;
+            }
+
+            return 1;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class DetachmentRequirementsToTextColorConverter : System.Windows.Data.IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values == null || values.Length == 0 || !(values[0] is DetachmentRequirementData))
+            {
+                return new SolidColorBrush(Colors.Black);
+            }
+
+            var data = (DetachmentRequirementData)values[0];
+
+            if (data.SlotsUsed < data.Requirement.Minimum)
+            {
+                return new SolidColorBrush(Colors.Red);
+            }
+
+            else if (data.SlotsUsed > data.Requirement.Maximum)
+            {
+                return new SolidColorBrush(Colors.Red);
+            }
+
+            return new SolidColorBrush(Colors.Black);
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 

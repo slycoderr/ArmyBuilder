@@ -88,7 +88,7 @@ namespace ArmyBuilder.Core.Models
             }
         }
 
-        private void CalculatePointsCost()
+        internal void CalculatePointsCost()
         {
             PointsCostTotal = Equipment.Select(TotalEquipmentCost).Sum() + Upgrades.Select(TotalEquipmentCost).Sum();
         }

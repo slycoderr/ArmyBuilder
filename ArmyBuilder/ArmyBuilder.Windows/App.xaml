@@ -21,10 +21,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
-                <!--<ResourceDictionary Source="/Resources/Icons.xaml" />-->
+                <ResourceDictionary Source="/Resources/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <Style TargetType="ListView">
+            <Style TargetType="ListView" x:Key="NoListItemsStyleTrigger">
                 <Setter Property="BorderThickness" Value="0"/>
                 <Style.Triggers>
                     <Trigger Property="HasItems"
@@ -38,6 +38,11 @@
                         </Setter>
                     </Trigger>
                 </Style.Triggers>
+            </Style>
+
+            <Style TargetType="ListView" BasedOn="{StaticResource MetroListView}">
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             </Style>
 
             <viewModels:MainViewModel x:Key="MainViewModel">
@@ -54,6 +59,8 @@
             <windows:IntToBoolConverter x:Key="IntToBoolConverter"/>
             <windows:ModelsColumnSizeConverter x:Key="ModelsColumnSizeConverter"/>
             <windows:ListCountToVisiblityConverter x:Key="ListCountToVisiblityConverter"/>
+            <windows:ModelDataGroupToNumColumnsConverter x:Key="ModelDataGroupToNumColumnsConverter"/>
+            <windows:DetachmentRequirementsToTextColorConverter x:Key="DetachmentRequirementsToTextColorConverter"/>
 
             <!--<CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
                 <CollectionViewSource.GroupDescriptions>
@@ -116,9 +123,9 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="{Binding Detachment.Name}"  Margin="5" FontSize="22" Grid.Row="0" />
+                    <TextBlock Text="{Binding Detachment.Name}" HorizontalAlignment="Center" Margin="5" FontSize="22" Grid.Row="0" />
 
-                    <ListView Grid.Row="1" ItemsSource="{Binding DetachmentRequirementData}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView Grid.Row="1" ItemsSource="{Binding DetachmentRequirementData}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -129,11 +136,20 @@
                                         <RowDefinition />
                                     </Grid.RowDefinitions>
                                     <TextBlock FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Text="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}}"/>
-                                    <TextBlock FontSize="20" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding SlotsUsed}"/>
+                                    <TextBlock FontSize="20" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding SlotsUsed}" >
+                                        <TextBlock.Foreground>
+                                            <MultiBinding Converter="{StaticResource DetachmentRequirementsToTextColorConverter}">
+                                                <Binding />
+                                                <Binding Path="SlotsUsed" />
+ 
+                                            </MultiBinding>
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
                                     <TextBlock Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" Text="{Binding Requirement.Minimum}"/>
                                     <TextBlock Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Text="{Binding Requirement.Maximum}"/>
 
-                                    <ListView Grid.Row="3" ItemsSource="{Binding Units}" SelectedItem="{Binding SelectedUnit, Source={StaticResource MainViewModel}}">
+                                    <ListView Grid.Row="3" ItemsSource="{Binding Units}" SelectedItem="{Binding ArmyListEditor.SelectedUnit, Source={StaticResource MainViewModel}}" >
+
                                         <ListView.ItemTemplate>
                                             <DataTemplate DataType="models:ArmyListData">
                                                 <Grid>
@@ -306,7 +322,7 @@
 
                     <TextBlock Text="{Binding Unit.Name}" FontSize="18" />
 
-                    <TextBlock Grid.Row="1" Text="Equipment" Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <TextBlock Grid.Row="1" Text="Equipment" Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" HorizontalAlignment="Left"/>
                     <ListView Grid.Row="2" ItemsSource="{Binding  Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}">
 
                         </ListView>
@@ -335,8 +351,8 @@
                         </Grid.RowDefinitions>
                         <TextBlock FontSize="24" HorizontalAlignment="Left">
                             <Run Text="{Binding CurrentUnitSize}" />
-                            <Run Text="{Binding Unit.Name}" />
-                            <Run Text="(s) " />
+                            <Run Text="{Binding Unit.Name, StringFormat='{}{0}(s)'}"/>
+                            <Run Text="{Binding Unit.CostPerModel, StringFormat='{}- {0} points each'}" />
                         </TextBlock>
                         <Slider x:Name="UnitSizeSlider" Width="400" HorizontalAlignment="Left" Grid.Row="1" Visibility="{Binding Unit, Converter={StaticResource UnitSizeToVisibilityConverter}}" Minimum="{Binding Unit.Minimum}" Maximum="{Binding Unit.Maximum}" Value="{Binding CurrentUnitSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
                     </Grid>
@@ -345,7 +361,9 @@
                             <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                                 <!--<WrapPanel IsItemsHost="True" />-->
-                            <UniformGrid IsItemsHost="True" Columns="5"/>
+                                <UniformGrid IsItemsHost="True" Columns="{Binding Items.Count, RelativeSource={RelativeSource Mode=FindAncestor,
+                                                         AncestorType={x:Type ListView}},
+                                                          Converter={StaticResource ModelDataGroupToNumColumnsConverter}}"/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                         <ListView.ItemContainerStyle>
@@ -376,11 +394,11 @@
 
                     <RadioButton Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" GroupName="{Binding GroupName}" />
 
-                    <TextBlock Grid.Column="1" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
-                    <TextBlock Grid.Column="2" Text="{Binding Equipment.Name}" TextWrapping="WrapWithOverflow" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
+                    <TextBlock Grid.Column="2" HorizontalAlignment="Left" Text="{Binding Equipment.Name}" TextWrapping="WrapWithOverflow" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
 
                     <TextBlock Grid.Row="1" Text="May replace with:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />
-                    <ListView Margin="10,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ReplacementOptions}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="2" Grid.ColumnSpan="3" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" > 
+                    <ListView Margin="10,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ReplacementOptions}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}" Grid.Row="2" Grid.ColumnSpan="3" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}"> 
 
                     </ListView>
                     <TextBlock Grid.Row="3" Text="Gives:" Visibility="{Binding GivenEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" />

@@ -1,16 +1,10 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
-
 using ArmyBuilder.Core.Models;
-using ArmyBuilder.Core.Models.Groups;
 using GalaSoft.MvvmLight.Command;
 using MoreLinq;
 using Slycoder.MVVM;
@@ -24,41 +18,33 @@ namespace ArmyBuilder.Core.ViewModels
         public string ArmyListDirectory => Path.Combine(DataRootDirectory, "ArmyLists");
 
         public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
-        public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
-        public ArmyListData SelectedUnit { get => selectedUnit; set => SetValue(ref selectedUnit, value); }
 
         public ObservableCollection<ArmyList> ArmyLists { get; } = new ObservableCollection<ArmyList>();
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
         public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
+        public ArmyListViewModel ArmyListEditor { get { return armyListEditor; } private set { SetValue(ref armyListEditor, value); } }
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
-        public RelayCommand<ArmyList> SaveListCommand => new RelayCommand<ArmyList>(async s=>await SaveArmyList(s));
-        public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
-        public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
+        public RelayCommand<ArmyList> SaveListCommand => new RelayCommand<ArmyList>(async s => await SaveArmyList(s));
+
         public RelayCommand AddListCommand => new RelayCommand(AddList);
 
         public IPlatformService PlatformService { get; set; }
-        public static SynchronizationContext UiContext;
 
         private ArmyList selectedArmyList;
-        private DetachmentData selectedDetachment;
-        private ArmyListData selectedUnit;
+        private ArmyListViewModel armyListEditor;
 
-    
-
-    // ReSharper disable once EmptyConstructor
         public MainViewModel()
         {
             PropertyChanged += MainViewModel_PropertyChanged;
-
-
-
         }
 
-        private async void MainViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private async void MainViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(SelectedArmyList) && SelectedArmyList != null)
             {
+                ArmyListEditor = new ArmyListViewModel(this, SelectedArmyList);
+
                 if ((await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Any(l => l.Contains(SelectedArmyList.Name)))
                 {
                     var data = await PlatformService.DeserializeXml<ArmyList>(Path.Combine(ArmyListDirectory, SelectedArmyList.Name + ".xml"));
@@ -75,7 +61,7 @@ namespace ArmyBuilder.Core.ViewModels
             PlatformService.CreateDirectory(ArmyListDirectory);
 
             (await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Select(n => new ArmyList {Name = Path.GetFileNameWithoutExtension(n)}).ForEach(ArmyLists.Add);
-            var dataFiles = (await PlatformService.DiscoverXmlFiles(ArmyDataDirectory));
+            var dataFiles = await PlatformService.DiscoverXmlFiles(ArmyDataDirectory);
 
             foreach (var file in dataFiles)
             {
@@ -88,6 +74,12 @@ namespace ArmyBuilder.Core.ViewModels
 
                 army.UnitEntries.ForEach(AvailableUnitEntries.Add);
             }
+
+            if (Debugger.IsAttached)
+            {
+                AddList();
+                ArmyListEditor.AddDetachmentToList(Armies.First().Detachments.ElementAt(1));
+            }
         }
 
         private void RemoveSelectedList(ArmyList list)
@@ -98,36 +90,9 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void AddList()
         {
-            ArmyLists.Add(SelectedArmyList = new ArmyList { Name = "New List "+ArmyLists.Count, PointsLimit = 1500});
+            ArmyLists.Add(SelectedArmyList = new ArmyList {Name = "New List " + ArmyLists.Count, PointsLimit = 1500});
         }
 
-        private void AddUnitEntryToDetachment(UnitEntry unit)
-        {
-            if (SelectedDetachment == null)
-            {
-
-            }
-
-            else
-            {
-                SelectedDetachment.DetachmentRequirementData.FirstOrDefault(d => d.Requirement.Slot == unit.ForceOrgSlot)?.Units?.Add(SelectedUnit = new ArmyListData(unit));
-            }
-
-            
-        }
-
-        private void AddDetachmentToList(Detachment detachment)
-        {
-            if (SelectedArmyList == null)
-            {
-
-            }
-
-            else
-            {
-				SelectedArmyList.Detachments.Add(SelectedDetachment = new DetachmentData(detachment)); 
-            }
-        }
 
         public async Task SaveArmyList(ArmyList list)
         {
