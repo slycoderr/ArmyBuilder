@@ -18,6 +18,12 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public int EquipmentId { get; set; }
 
+        /// <summary>
+        /// Difference cost from its parent. if null then this equipment has no parent
+        /// </summary>
+        [XmlIgnore]
+        public int? CostDifferenceFromParent => Equipment.Cost - ParentEquipment?.Equipment.Cost;
+
         [XmlArray]
         public List<EquipmentData> ReplacementOptions { get; set; } = new List<EquipmentData>();
 
@@ -62,7 +68,7 @@ namespace ArmyBuilder.Core.Models
         public EquipmentData(Equipment e, string id, EquipmentData parent)
         {
             Equipment = e;
-            //GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
+            GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
             ParentEquipment = parent;
             TempLimit = Equipment.Limit;
 

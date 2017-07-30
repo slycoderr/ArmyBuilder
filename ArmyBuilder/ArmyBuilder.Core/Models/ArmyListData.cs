@@ -23,6 +23,8 @@ namespace ArmyBuilder.Core.Models
         public int ArmyId { get; set; }
         [XmlIgnore]
         public int PointsTotal { get => pointsTotal; set => SetValue(ref pointsTotal, value); }
+        [XmlIgnore]
+        public int ModelCount { get => modelCount; set => SetValue(ref modelCount, value); }
 
         [XmlIgnore]
         public UnitEntry UnitEntry { get; private set; }
@@ -67,6 +69,7 @@ namespace ArmyBuilder.Core.Models
         private bool initialized;
 
         private int pointsTotal;
+        private int modelCount;
 
         public ArmyListData(UnitEntry unitEntry)
         {
@@ -109,11 +112,12 @@ namespace ArmyBuilder.Core.Models
 
         private void UpdatePointsTotal()
         {
-            int total = (SelectedDedicatedTransport?.PointsCostTotal ?? 0) + (SelectedDedicatedTransport?.Unit?.BaseCost ?? 0);
+            int total = (SelectedDedicatedTransport?.UpgradeCostTotal ?? 0) + (SelectedDedicatedTransport?.Unit?.BaseCost ?? 0);
 
             total += ModelGroups.Sum(m => m.PointsCostTotal);
 
             PointsTotal = total;
+            ModelCount = ModelGroups.Sum(g => g.CurrentUnitSize);
         }
 
 

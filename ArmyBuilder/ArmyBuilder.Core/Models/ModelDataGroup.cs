@@ -102,7 +102,7 @@ namespace ArmyBuilder.Core.Models
         private void UpdatePointsTotal()
         {
             Models.ForEach(m=>m.CalculatePointsCost());
-            UpgradesCostTotal = Models.Sum(m => m.PointsCostTotal);
+            UpgradesCostTotal = Models.Sum(m => m.UpgradeCostTotal);
             //PointsCostTotal = UpgradesCostTotal + (Unit.Minimum > 0 ? Unit.BaseCost : 0) + (CurrentUnitSize > Unit.Minimum ? Unit.CostPerModel * (CurrentUnitSize - Unit.Minimum) : 0);
             PointsCostTotal = UpgradesCostTotal + (Unit.BaseCost + (Unit.CostPerModel*CurrentUnitSize));
             var allEquipment = GetAllModelEquipment();

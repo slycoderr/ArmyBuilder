@@ -17,7 +17,18 @@ namespace ArmyBuilder.Core.ViewModels
         public ArmyList ArmyList { get; }
 
         public DetachmentData SelectedDetachment { get => selectedDetachment; set => SetValue(ref selectedDetachment, value); }
-        public ArmyListData SelectedUnit { get => selectedUnit; set => SetValue(ref selectedUnit, value); }
+
+        public ArmyListData SelectedUnit
+        {
+            get => selectedUnit;
+            set
+            {
+                //a hack to make only one unit selected at once in mutiple listviews
+                selectedUnit = null;
+                OnPropertyChanged(nameof(SelectedUnit));
+                SetValue(ref selectedUnit, value);
+            }
+        }
 
         public int PointsRemaining { get => pointsRemaining; set => SetValue(ref pointsRemaining, value); }
         public int PointsUsed { get => pointsUsed; set => SetValue(ref pointsUsed, value); }

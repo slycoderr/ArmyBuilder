@@ -28,7 +28,10 @@ namespace ArmyBuilder.Core.Models
 
         [XmlIgnore]
         public int PointsCostTotal { get => pointsCostTotal; set => SetValue(ref pointsCostTotal, value); }
+        [XmlIgnore]
+        public int UpgradeCostTotal { get => upgradeCostTotal; set => SetValue(ref upgradeCostTotal, value); }
 
+        private int upgradeCostTotal;
         private int pointsCostTotal;
 
         public ModelData()
@@ -90,7 +93,8 @@ namespace ArmyBuilder.Core.Models
 
         internal void CalculatePointsCost()
         {
-            PointsCostTotal = Equipment.Select(TotalEquipmentCost).Sum() + Upgrades.Select(TotalEquipmentCost).Sum();
+            UpgradeCostTotal = Equipment.Select(TotalEquipmentCost).Sum() + Upgrades.Select(TotalEquipmentCost).Sum();
+            PointsCostTotal = UpgradeCostTotal + Unit.CostPerModel;
         }
     }
 }

@@ -279,11 +279,13 @@ namespace ArmyBuilder.XMLEditor
                 if (SelectedDefaultEquipment != null)
                 {
                     SelectedDefaultEquipment.ReplacementOptions.Add(SelectedEquipmentDefinition.Clone());
+                    SelectedDefaultEquipment.ReplacementOptions.Last().GroupName = SelectedDefaultEquipment.GroupName;
                 }
 
                 else
                 {
                     SelectedUnit.DefaultEquipment.Add(SelectedEquipmentDefinition.Clone());
+                    SelectedUnit.DefaultEquipment.Last().GroupName = Guid.NewGuid().ToString();
                 }
 
                 OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
@@ -324,11 +326,13 @@ namespace ArmyBuilder.XMLEditor
                 {
 
                     SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition.Clone());
+                    SelectedUpgrade.ReplacementOptions.Last().GroupName = SelectedUpgrade.GroupName;
                 }
 
                 else
                 {
                     SelectedUnit.Upgrades.Add(SelectedEquipmentDefinition.Clone());
+                    SelectedUnit.Upgrades.Last().GroupName = Guid.NewGuid().ToString();
                 }
 
                 OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);

@@ -61,6 +61,8 @@
             <windows:ListCountToVisiblityConverter x:Key="ListCountToVisiblityConverter"/>
             <windows:ModelDataGroupToNumColumnsConverter x:Key="ModelDataGroupToNumColumnsConverter"/>
             <windows:DetachmentRequirementsToTextColorConverter x:Key="DetachmentRequirementsToTextColorConverter"/>
+            <windows:EquipmentCostDifferenceVisibilityConverter x:Key="EquipmentCostDifferenceVisibilityConverter"/>
+            <windows:EquipmentCostDifferenceColorConverter x:Key="EquipmentCostDifferenceColorConverter"/>
 
             <!--<CollectionViewSource x:Key="AvailableUnitsForceOrgGroupsCollection" Source="{Binding SelectedDetachment.AvailableUnits, Source={StaticResource MainViewModel}}" IsLiveGroupingRequested="True">
                 <CollectionViewSource.GroupDescriptions>
@@ -153,8 +155,15 @@
                                         <ListView.ItemTemplate>
                                             <DataTemplate DataType="models:ArmyListData">
                                                 <Grid>
-                                                    <!--<TextBlock Text="{Binding ModelGroups.Count}"/>-->
-                                                    <TextBlock Text="{Binding UnitEntry.Name}"/>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock>
+                                                        <Run Text="{Binding PointsTotal}"/>
+                                                        <Run Text="{Binding ModelCount, StringFormat='{}-{0} '}"/>
+                                                    </TextBlock>
+                                                    <TextBlock Grid.Column="1" Text="{Binding UnitEntry.Name}"/>
                                                 </Grid>
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
@@ -320,16 +329,23 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <TextBlock Text="{Binding Unit.Name}" FontSize="18" />
+                    <TextBlock FontSize="20" >
+                        <Run Text="{Binding Unit.Name}" />
+                        <Run Text="{Binding PointsCostTotal}"/>
+                    </TextBlock>
 
-                    <TextBlock Grid.Row="1" Text="Equipment" Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}" HorizontalAlignment="Left"/>
-                    <ListView Grid.Row="2" ItemsSource="{Binding  Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding DefaultEquipment, Converter={StaticResource ListCountToVisiblityConverter}}">
-
+                    <TextBlock Margin="10,0,0,0" FontSize="18" Grid.Row="1" Text="Equipment" Visibility="{Binding Equipment, Converter={StaticResource ListCountToVisiblityConverter}}" HorizontalAlignment="Left"/>
+                    <ListView Grid.Row="2" ItemsSource="{Binding Equipment}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding Equipment, Converter={StaticResource ListCountToVisiblityConverter}}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource MetroListViewItem}">
+                                <Setter Property="HorizontalContentAlignment" Value="Left"></Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         </ListView>
 
-                    <TextBlock Grid.Row="3" Text="Upgrades" Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}" />
+                    <TextBlock FontSize="18" Grid.Row="3" Text="Upgrades" Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}" />
                     <ListView Grid.Row="4" ItemsSource="{Binding Upgrades}" ItemTemplateSelector="{StaticResource EquipmentTemplateSelector}"  Visibility="{Binding Upgrades, Converter={StaticResource ListCountToVisiblityConverter}}">
-
+                
                     </ListView>
                 </Grid>
             </DataTemplate>
@@ -349,12 +365,19 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock FontSize="24" HorizontalAlignment="Left">
+                        <!--<TextBlock FontSize="24" HorizontalAlignment="Left">
                             <Run Text="{Binding CurrentUnitSize}" />
                             <Run Text="{Binding Unit.Name, StringFormat='{}{0}(s)'}"/>
                             <Run Text="{Binding Unit.CostPerModel, StringFormat='{}- {0} points each'}" />
+                        </TextBlock>-->
+                        <TextBlock FontSize="22" HorizontalAlignment="Left">
+                            <Run Text="{Binding Unit.Minimum}" />
+                            <Run Text="{Binding Unit.Maximum, StringFormat='{}- {0}'}" />
+                            <Run Text="{Binding Unit.Name, StringFormat='{}{0}(s)'}"/>
+                            <Run Text="{Binding Unit.CostPerModel, StringFormat='{}- {0} points each'}" />
                         </TextBlock>
-                        <Slider x:Name="UnitSizeSlider" Width="400" HorizontalAlignment="Left" Grid.Row="1" Visibility="{Binding Unit, Converter={StaticResource UnitSizeToVisibilityConverter}}" Minimum="{Binding Unit.Minimum}" Maximum="{Binding Unit.Maximum}" Value="{Binding CurrentUnitSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
+                        <controls:NumericUpDown Grid.Row="1" Visibility="{Binding Unit, Converter={StaticResource UnitSizeToVisibilityConverter}}" Minimum="{Binding Unit.Minimum}" Maximum="{Binding Unit.Maximum}" Value="{Binding CurrentUnitSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" />
+                        <!--<Slider x:Name="UnitSizeSlider" Width="400" HorizontalAlignment="Left" Grid.Row="1" Visibility="{Binding Unit, Converter={StaticResource UnitSizeToVisibilityConverter}}" Minimum="{Binding Unit.Minimum}" Maximum="{Binding Unit.Maximum}" Value="{Binding CurrentUnitSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10" />-->
                     </Grid>
                     <ListView Grid.Row="3" ItemsSource="{Binding Models, Mode=OneWay}"  ItemTemplate="{StaticResource ModelTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
 
@@ -367,9 +390,9 @@
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                         <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                        </Style>
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource MetroListViewItem}">
+                                <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            </Style>
                         </ListView.ItemContainerStyle>
 
                     </ListView>
@@ -392,9 +415,12 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
 
-                    <RadioButton Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" GroupName="{Binding GroupName}" />
+                    <RadioButton Margin="0,0,0,0" IsEnabled="{Binding CanAdd, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsChecked="{Binding IsTaken, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MinWidth="0" GroupName="{Binding GroupName, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
 
-                    <TextBlock Grid.Column="1" HorizontalAlignment="Left" Text="{Binding Equipment.Cost}" Margin="10,0,10,0" />
+                    <TextBlock Grid.Column="1" HorizontalAlignment="Left"  Margin="10,0,5,0" >
+                        <Run Text="{Binding Equipment.Cost}"/>
+                        <Run Text="{Binding CostDifferenceFromParent, Mode=OneWay, Converter={StaticResource EquipmentCostDifferenceVisibilityConverter}}" Foreground="{Binding CostDifferenceFromParent, Converter={StaticResource EquipmentCostDifferenceColorConverter}}"/>
+                    </TextBlock>
                     <TextBlock Grid.Column="2" HorizontalAlignment="Left" Text="{Binding Equipment.Name}" TextWrapping="WrapWithOverflow" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
 
                     <TextBlock Grid.Row="1" Text="May replace with:" Visibility="{Binding ReplacementOptions, Converter={StaticResource ListCountToVisiblityConverter}}" />

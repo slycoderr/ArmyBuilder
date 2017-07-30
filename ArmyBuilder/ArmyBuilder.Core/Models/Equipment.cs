@@ -20,6 +20,7 @@ namespace ArmyBuilder.Core.Models
         private int perX;
         private int id;
         private string name;
+        private string groupName;
 
         [XmlAttribute]
         public int Id { get => id; set => SetValue(ref id, value); }
@@ -51,11 +52,11 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public int PerX { get => perX; set => SetValue(ref perX, value); }
 
-        ///// <summary>
-        ///// todo: remove this. too annoying in the xml
-        ///// </summary>
-        //[XmlAttribute] 
-        //public string GroupName { get; set; }
+        /// <summary>
+        /// todo: remove this. too annoying in the xml
+        /// </summary>
+        [XmlAttribute]
+        public string GroupName { get => groupName; set => SetValue(ref groupName, value); }
 
         [XmlArray]
         public ObservableCollection<Equipment> ReplacementOptions { get; set; } = new ObservableCollection<Equipment>();

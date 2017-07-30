@@ -22,7 +22,7 @@ namespace ArmyBuilder.Core.ViewModels
         public ObservableCollection<ArmyList> ArmyLists { get; } = new ObservableCollection<ArmyList>();
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
         public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
-        public ArmyListViewModel ArmyListEditor { get { return armyListEditor; } private set { SetValue(ref armyListEditor, value); } }
+        public ArmyListViewModel ArmyListEditor { get => armyListEditor; private set => SetValue(ref armyListEditor, value); }
 
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand<ArmyList> SaveListCommand => new RelayCommand<ArmyList>(async s => await SaveArmyList(s));
