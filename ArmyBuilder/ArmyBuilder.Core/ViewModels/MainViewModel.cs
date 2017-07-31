@@ -50,6 +50,13 @@ namespace ArmyBuilder.Core.ViewModels
                     var data = await PlatformService.DeserializeXml<ArmyList>(Path.Combine(ArmyListDirectory, SelectedArmyList.Name + ".xml"));
                     SelectedArmyList.Detachments = data.Detachments;
                     SelectedArmyList.PointsLimit = data.PointsLimit;
+
+                    SelectedArmyList.Load(Armies.First(a => a.Name == "Generic Detachments").Detachments);
+
+                    foreach (var unit in SelectedArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).SelectMany(u=>u.Units))
+                    {
+                        unit.SetData(Armies.First(a=>a.Id == unit.ArmyId).UnitEntries.First(u=>u.Id == unit.UnitId));
+                    }
                 }
             }
         }
@@ -69,8 +76,6 @@ namespace ArmyBuilder.Core.ViewModels
                 Armies.Add(army);
 
                 army.Configure();
-
-                //ArmyLists.Where(a => a.ArmyId == army.Id).ForEach(a => a.Army = army);
 
                 army.UnitEntries.ForEach(AvailableUnitEntries.Add);
             }

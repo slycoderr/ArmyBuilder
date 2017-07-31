@@ -10,11 +10,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using System.Xml.Serialization;
+using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Windows;
 using ArmyBuilder.XMLEditor.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
+using MoreLinq;
 using Slycoder.MVVM;
 
 namespace ArmyBuilder.XMLEditor
@@ -70,7 +72,10 @@ namespace ArmyBuilder.XMLEditor
             //var files = Directory.GetFiles(ArmyDataPath).Where(f => Path.GetExtension(f) == ".xml");
             //var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
 
-            ArmyBuilderCore.Load(RootPath);
+            ArmyBuilderCore.Load(RootPath).ContinueWith((aa) =>
+            {
+                ArmyBuilderCore.Armies.ForEach(a => a.EquipmentDefinitions = new ObservableCollection<Equipment>(a.EquipmentDefinitions.OrderBy(e => e.Name)));
+            });
 
             PropertyChanged += OnPropertyChanged;
         }
@@ -286,6 +291,7 @@ namespace ArmyBuilder.XMLEditor
                 {
                     SelectedUnit.DefaultEquipment.Add(SelectedEquipmentDefinition.Clone());
                     SelectedUnit.DefaultEquipment.Last().GroupName = Guid.NewGuid().ToString();
+                    SelectedUnit.DefaultEquipment.Last().IsDefault = true;
                 }
 
                 OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);
@@ -327,12 +333,14 @@ namespace ArmyBuilder.XMLEditor
 
                     SelectedUpgrade.ReplacementOptions.Add(SelectedEquipmentDefinition.Clone());
                     SelectedUpgrade.ReplacementOptions.Last().GroupName = SelectedUpgrade.GroupName;
+                    SelectedUpgrade.ReplacementOptions.Last().Type = EquipmentType.Upgrade;
                 }
 
                 else
                 {
                     SelectedUnit.Upgrades.Add(SelectedEquipmentDefinition.Clone());
                     SelectedUnit.Upgrades.Last().GroupName = Guid.NewGuid().ToString();
+                    SelectedUnit.Upgrades.Last().Type = EquipmentType.Upgrade;
                 }
 
                 OnEquipmentTreeChanged?.Invoke(this, EventArgs.Empty);

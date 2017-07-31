@@ -11,18 +11,12 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <ListView x:Name="UnitEntriesListView" Margin="5" ItemsSource="{Binding SelectedUnitEntry.Units}" SelectedItem="{Binding SelectedUnit}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Margin="5" Content="Add (F3)" Command="{Binding AddUnitCommand}"/>
-            <Button x:Name="RemoveButton" Margin="5" Content="Remove" Command="{Binding RemoveUnitCommand}"/>
-        </StackPanel>
-
         <!-- Controls for editing a Unit -->
-        <Grid Grid.Row="2" DataContext="{Binding SelectedUnit}">
+        <Grid Grid.Row="1" DataContext="{Binding SelectedUnit}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -32,7 +26,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBox Grid.Row="0" Margin="5" Text="{Binding Id}" IsReadOnly="True" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Id" />
+         
             <TextBox Grid.Row="1" Margin="5" Text="{Binding Name}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Name" />
             <TextBox Grid.Row="2" Margin="5" Text="{Binding Minimum}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Minimum" />
             <TextBox Grid.Row="3" Margin="5" Text="{Binding Maximum}" Custom:TextBoxHelper.UseFloatingWatermark="True" Custom:TextBoxHelper.Watermark="Maximum" />

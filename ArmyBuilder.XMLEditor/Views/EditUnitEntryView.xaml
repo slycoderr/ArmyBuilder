@@ -1,29 +1,29 @@
-﻿<UserControl x:Class="ArmyBuilder.XMLEditor.Views.EditUnitEntryView"
+﻿ <UserControl x:Class="ArmyBuilder.XMLEditor.Views.EditUnitEntryView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
              d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <ListView x:Name="UnitEntriesListView" Margin="5" ItemsSource="{Binding SelectedArmy.UnitEntries}" SelectedItem="{Binding SelectedUnitEntry}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="AddButton" Margin="5" Content="Add (F2)" Command="{Binding AddUnitEntryCommand}"/>
-            <Button x:Name="RemoveButton" Content="Remove"  Margin="5" Command="{Binding RemoveUnitEntryCommand}"/>
-        </StackPanel>
-        
+
         <!-- Controls for editing a UnitEntry -->
 
-        <Grid Grid.Row="2" DataContext="{Binding SelectedUnitEntry}">
+        <Grid Grid.Row="1" DataContext="{Binding SelectedUnitEntry}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -31,26 +31,29 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition />
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBox Grid.Row="0" Margin="5" IsReadOnly="True"  Text="{Binding Id}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id"/>
-            <TextBox Grid.Row="1" Margin="5" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
-            <ComboBox Grid.Row="2" Margin="5" ItemsSource="{Binding Source={StaticResource ForceOrgCollection}}" SelectedItem="{Binding ForceOrgSlot}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Force Org Slot"/>
+          
+            <TextBox Grid.Row="0" Margin="5" Grid.ColumnSpan="2" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
+            <ComboBox Grid.Row="1" Grid.ColumnSpan="2" Margin="5" ItemsSource="{Binding Source={StaticResource ForceOrgCollection}}" SelectedItem="{Binding ForceOrgSlot}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Force Org Slot"/>
             <CheckBox Grid.Row="3" Margin="5" IsChecked="{Binding DoeNotCountsTowardForceOrg}" Content="doesnt use force org"/>
-            <TextBox Grid.Row="4" Margin="5" Text="{Binding MaxUnitSize}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Max Unit Size"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding MaxUnitSize}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Max Unit Size"/>
 
-            <TextBlock Grid.Row="5" Text="Dedicated Transports" HorizontalAlignment="Center"/>
-            <ListView Grid.Row="6" x:Name="TransportsListView" Margin="5" ItemsSource="{Binding DedicatedTransports}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
+            <GroupBox Grid.Row="4" Header="Transports" Grid.ColumnSpan="2">
+            <ListView Grid.Row="6" Height="50" x:Name="TransportsListView" Margin="5" ItemsSource="{Binding DedicatedTransports}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
 
-
-            <StackPanel Grid.Row="7" Orientation="Horizontal">
-                <ComboBox x:Name="DedicatedTransportsComboBox" Margin="5" ItemsSource="{Binding Army.UnitEntries}" Width="150" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
-                <Button Margin="5" Content="Add Transport" Command="{Binding AddDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=DedicatedTransportsComboBox}">
+            </GroupBox>
+<StackPanel Grid.Row="4" Grid.Column="1" Style="{StaticResource AppBarPanelStyle}">
+    <Button Style="{StaticResource AppBarButtonStyle}" ToolTip="Add Transport" Command="{Binding AddDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=DedicatedTransportsComboBox}">
+        <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Add"/>
                 </Button>
-                <Button Content="Remove transport"  Margin="5" Command="{Binding RemoveDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=TransportsListView}"/>
+                <Button ToolTip="Remove transport"  Style="{StaticResource AppBarButtonStyle}" Command="{Binding RemoveDedicatedTransportCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=TransportsListView}">
+                    <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Delete"/>
+                </Button>
+
             </StackPanel>
+            <ComboBox Grid.Row="5" Grid.ColumnSpan="2" x:Name="DedicatedTransportsComboBox" Margin="5" ItemsSource="{Binding Army.UnitEntries}" ItemTemplate="{StaticResource ArmyBuilderGenericModelTemplate}"/>
+
         </Grid>
     </Grid>
 </UserControl>

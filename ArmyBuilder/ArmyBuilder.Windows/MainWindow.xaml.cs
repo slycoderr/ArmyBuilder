@@ -1,18 +1,10 @@
-﻿using System.Threading;
-using ArmyBuilder.Core.ViewModels;
-
-namespace ArmyBuilder.Windows
+﻿namespace ArmyBuilder.Windows
 {
     public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void AddDetachmentButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            //AddDetachmentMenu.IsOpen = true;
         }
     }
 }

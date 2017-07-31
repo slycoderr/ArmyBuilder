@@ -15,31 +15,39 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <TextBlock Text="Default Equipment" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
-        <TextBlock Grid.Row="2" Text="Upgrades" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="22"/>
-
-        <TreeView Grid.Row="1" x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" ItemTemplate="{StaticResource DefaultEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"><!--PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"-->
-            <i:Interaction.Behaviors>
-                <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedDefaultEquipment, Mode=TwoWay}" />
-            </i:Interaction.Behaviors>
-        </TreeView>
-        <TreeView Grid.Row="3" Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"  ItemTemplate="{StaticResource UpgradeEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"><!---->
-            <i:Interaction.Behaviors>
-                <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedUpgrade, Mode=TwoWay}" />
-            </i:Interaction.Behaviors>
-        </TreeView>
-
-        <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
-        <local:EditEquipmentView Grid.Row="3" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
+        
+        <GroupBox Header="Default Equipment" Padding="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TreeView x:Name="DefaultEquipmentTreeView" ItemsSource="{Binding SelectedUnit.DefaultEquipment}" ItemTemplate="{StaticResource DefaultEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
+                    <!--PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown"-->
+                    <i:Interaction.Behaviors>
+                        <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedDefaultEquipment, Mode=TwoWay}" />
+                    </i:Interaction.Behaviors>
+                </TreeView>
+                <local:EditEquipmentView Grid.Row="1" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=DefaultEquipmentTreeView}"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Header="Upgrades" Padding="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <TreeView Grid.Column="0" x:Name="UpgradesTreeView"  ItemsSource="{Binding SelectedUnit.Upgrades}"  ItemTemplate="{StaticResource UpgradeEquipmentTemplate}" PreviewMouseRightButtonUp="OnPreviewMouseRightButtonDown">
+                    <!---->
+                    <i:Interaction.Behaviors>
+                        <xmlEditor:BindableSelectedItemBehavior SelectedItem="{Binding SelectedUpgrade, Mode=TwoWay}" />
+                    </i:Interaction.Behaviors>
+                </TreeView>
+                <local:EditEquipmentView Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=UpgradesTreeView}"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>

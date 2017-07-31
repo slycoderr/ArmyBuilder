@@ -12,7 +12,7 @@ namespace ArmyBuilder.Core.Models
         [XmlAttribute]
         public int DetachmentId { get; set; }
         [XmlIgnore]
-        public Detachment Detachment { get; }
+        public Detachment Detachment { get; private set; }
         [XmlArray]
         public ObservableCollection<DetachmentRequirementData> DetachmentRequirementData { get; } = new ObservableCollection<DetachmentRequirementData>();
 
@@ -23,10 +23,14 @@ namespace ArmyBuilder.Core.Models
 
         public DetachmentData(Detachment detachment)
         {
+            DetachmentId = detachment.Id;
             Detachment = detachment;
             DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r, this)));
+        }
 
-            
+        public void Initialize(Detachment detach)
+        {
+            Detachment = detach;
         }
 
         public override string ToString()
@@ -46,17 +50,25 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public int SlotsUsed { get => slotsUsed; set => SetValue(ref slotsUsed, value); }
         [XmlIgnore]
-        public DetachmentRequirement Requirement { get; }
+        public DetachmentRequirement Requirement { get; private set; }
+        [XmlAttribute]
+        public int RequirementId { get; }
         [XmlIgnore]
         public DetachmentData DetachmentData { get; }
         [XmlArray]
         public ObservableCollection<ArmyListData> Units { get; } = new ObservableCollection<ArmyListData>();
+
+        public void Initialize(DetachmentRequirement req)
+        {
+            Requirement = req;
+        }
 
 
         public DetachmentRequirementData(DetachmentRequirement require, DetachmentData detach)
         {
             Requirement = require;
             DetachmentData = detach;
+            RequirementId = Requirement.Id;
 
             Units.CollectionChanged += delegate { SlotsUsed = Units.Count; };
         } 

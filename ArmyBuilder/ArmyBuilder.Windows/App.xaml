@@ -51,6 +51,7 @@
                 </viewModels:MainViewModel.PlatformService>
             </viewModels:MainViewModel>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
+            <windows:NullToBoolConverter x:Key="NullToBoolConverter"/>
             <windows:EquipmentTemplateSelector x:Key="EquipmentTemplateSelector"/>
             <windows:ForceOrgGroupToText x:Key="ForceOrgGroupToText"/>
             <windows:UnitSizeToVisibilityConverter x:Key="UnitSizeToVisibilityConverter"/>

@@ -38,7 +38,7 @@ namespace ArmyBuilder.Core.Models
         public ObservableCollection<Detachment> Detachments { get; set; } = new ObservableCollection<Detachment>();
 
         [XmlArray]
-        public ObservableCollection<Equipment> EquipmentDefinitions { get; set; } = new ObservableCollection<Equipment>();
+        public ObservableCollection<Equipment> EquipmentDefinitions { get => equipmentDefinitions; set => SetValue(ref equipmentDefinitions, value); }
 
         public Army() { }
 
@@ -49,6 +49,7 @@ namespace ArmyBuilder.Core.Models
 
         private int id;
         private string name;
+        private ObservableCollection<Equipment> equipmentDefinitions = new ObservableCollection<Equipment>();
 
         /// <summary>
         /// Populates all navigation properties and overrides default values; 

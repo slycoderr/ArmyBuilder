@@ -27,6 +27,12 @@ namespace ArmyBuilder.Core.ViewModels
                 selectedUnit = null;
                 OnPropertyChanged(nameof(SelectedUnit));
                 SetValue(ref selectedUnit, value);
+
+                //if a unit is selected in another detachment, select the detachment its in
+                if (value != null)
+                {
+                    SetValue(ref selectedDetachment, value.Detachment);
+                }
             }
         }
 
@@ -36,8 +42,9 @@ namespace ArmyBuilder.Core.ViewModels
 
 
         public RelayCommand<Detachment> AddDetachmentToListCommand => new RelayCommand<Detachment>(AddDetachmentToList);
-        public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>(AddUnitEntryToDetachment);
-        public RelayCommand<ArmyListData> RemoveUnitCommand => new RelayCommand<ArmyListData>(RemoveUnit);
+        public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>((u)=> { AddUnitEntryToDetachment( SelectedDetachment, u); });
+        public RelayCommand RemoveUnitCommand => new RelayCommand(()=> RemoveUnit(SelectedDetachment, SelectedUnit));
+        public RelayCommand RemoveDetachmentCommand => new RelayCommand(()=> RemoveDetachment(ArmyList, SelectedDetachment));
 
 
         private ArmyListData selectedUnit;
@@ -70,6 +77,7 @@ namespace ArmyBuilder.Core.ViewModels
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     e.OldItems.Cast<DetachmentData>().SelectMany(d => d.DetachmentRequirementData).ForEach(d => d.Units.CollectionChanged -= UnitsOnCollectionChanged);
+                    UpdatePointsTotal();
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     break;
@@ -81,24 +89,18 @@ namespace ArmyBuilder.Core.ViewModels
         }
 
 
-        private void AddUnitEntryToDetachment(UnitEntry unit)
+        private void AddUnitEntryToDetachment(DetachmentData detachment, UnitEntry unit)
         {
-            if (SelectedDetachment == null)
-            {
-
-            }
-
-            else
-            {
-                SelectedDetachment.DetachmentRequirementData.FirstOrDefault(d => d.Requirement.Slot == unit.ForceOrgSlot)?.Units?.Add(SelectedUnit = new ArmyListData(unit));
-            }
-
-
+                detachment.DetachmentRequirementData.FirstOrDefault(d => d.Requirement.Slot == unit.ForceOrgSlot)?.Units?.Add(SelectedUnit = new ArmyListData(unit, detachment, unit.Army));
         }
 
-        private void RemoveUnit(ArmyListData unit)
+        private void RemoveUnit(DetachmentData detach, ArmyListData unit)
         {
-            //SelectedDetachment?.DetachmentRequirementData.
+            detach.DetachmentRequirementData.FirstOrDefault(d => d.Requirement.Slot == unit.UnitEntry.ForceOrgSlot).Units.Remove(unit);
+        }
+        private void RemoveDetachment(ArmyList list, DetachmentData detachment)
+        {
+            list.Detachments.Remove(detachment);
         }
 
 
@@ -151,7 +153,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdatePointsTotal()
         {
-            PointsUsed = SelectedDetachment?.DetachmentRequirementData.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0;
+            PointsUsed = ArmyList.Detachments.SelectMany(l=>l.DetachmentRequirementData)?.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0;
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
         }
     }

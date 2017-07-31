@@ -17,15 +17,17 @@
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
             <Button Content="Create List" Command="{Binding AddListCommand}"/>
-            <Button Content="Save List"  Command="{Binding SaveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
-            <Button Content="Delete List" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
-            <Button Content="Add Detachment" >
+            <Button Content="Save List"  IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}"  Command="{Binding SaveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
+            <Button Content="Delete List"  IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
+            <Button Content="Add Detachment"  IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                     <ei:ChangePropertyAction TargetObject="{Binding ElementName=UnitFlyout}" PropertyName="IsOpen" Value="True"/>
                 </i:EventTrigger>
                     </i:Interaction.Triggers>
             </Button>
+            <Button Content="Delete Detachment" IsEnabled="{Binding ArmyListEditor.SelectedDetachment, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveDetachmentCommand}"/>
+            <Button Content="Delete Unit" IsEnabled="{Binding ArmyListEditor.SelectedUnit, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveUnitCommand}"/>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
     
@@ -135,7 +137,7 @@
                                                                                 <Setter Property="Template">
                                                                                     <Setter.Value>
                                                                                         <ControlTemplate>
-                                                                                            <Expander Header="{Binding Name}" IsExpanded="False" d:DataContext="{d:DesignInstance CollectionViewGroup}">
+                                                                                            <Expander Header="{Binding Name}" IsExpanded="True" d:DataContext="{d:DesignInstance CollectionViewGroup}">
 
                                                                                                 <ItemsPresenter  />
 

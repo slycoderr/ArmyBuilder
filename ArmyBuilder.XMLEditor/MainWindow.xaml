@@ -6,10 +6,20 @@
         xmlns:local="clr-namespace:ArmyBuilder.XMLEditor"
         xmlns:views="clr-namespace:ArmyBuilder.XMLEditor.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
         Title="{Binding SelectedArmy.Name}" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     
-    
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
+            <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
+            <Button Content="Add Mass Units"  Margin="5" Click="AddMassUnits_OnClick" IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
+            <Button Content="Add Mass Equipment"  Margin="5" Click="AddMassEquipment_OnClick"  IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
+            <Button Content="Update Transports"  Margin="5" Command="{Binding UpdateTransportsCommand}"/>
+
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
     <Window.InputBindings>
         <KeyBinding Key="F1" Command="{Binding AddEquipmentToDefinitionsCommand}"/>
         <KeyBinding Key="F2" Command="{Binding AddUnitEntryCommand}"/>
@@ -18,13 +28,11 @@
         <KeyBinding Key="F5" Command="{Binding AddToUpgradesReplacements}"/>
         <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveXMLCommand}"/>
     </Window.InputBindings>
-    
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
@@ -33,29 +41,7 @@
             <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.RowSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <views:EditEquipmentDefinitionsView Grid.Row="0" Margin="0,25,0,0"/>
-
-            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
-            <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
-   
-        </Grid>
-
-        <TextBlock Text="Equipment Definitions" HorizontalAlignment="Center" FontSize="22" VerticalAlignment="Top" Margin="0"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Unit Entries" HorizontalAlignment="Center" FontSize="22"/>
-        <TextBlock Text="Units" HorizontalAlignment="Center" FontSize="22" Grid.Column="2"/>
-
-        <views:EditUnitEntryView Grid.Column="1" Grid.RowSpan="2" Margin="0,25,0,0"/>
-        <views:EditUnitView Grid.Column="2" Grid.RowSpan="2" Margin="0,25,0,0"/>
-        <views:EditUnitEquipmentView Grid.Column="3" Grid.RowSpan="2"/>
-
-        <WrapPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <ComboBox Width="200" Margin="5" ItemsSource="{Binding ArmyBuilderCore.Armies}" SelectedItem="{Binding SelectedArmy}">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
@@ -63,12 +49,56 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
-            <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
-            <Button Content="Add Mass Units"  Margin="5" Click="AddMassUnits_OnClick" IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
-            <Button Content="Add Mass Equipment"  Margin="5" Click="AddMassEquipment_OnClick"  IsEnabled="{Binding SelectedArmy, Converter={StaticResource NullToBoolConverter}}"/>
-            <Button Content="Update Transports"  Margin="5" Command="{Binding UpdateTransportsCommand}"/>
-        </WrapPanel>
+            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
+            <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
+
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Header="Equipment Definitions" Padding="2">
+            <views:EditEquipmentDefinitionsView />
+        </GroupBox>
+        <GroupBox Grid.Row="1"  Grid.Column="1" Header="Unit Entries" Padding="2">
+            <views:EditUnitEntryView />
+        </GroupBox>
+        <GroupBox  Grid.RowSpan="2" Grid.Column="2" Header="Unit" Padding="2">
+            <views:EditUnitView />
+        </GroupBox>
+
+        <views:EditUnitEquipmentView Grid.Column="3"  Grid.RowSpan="2" />
+
+        <StackPanel  Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource AppBarPanelStyle}">
+            <Button x:Name="AddButton" ToolTip="Add New Equipment Definition to Selected Army (F1)"  Style="{StaticResource AppBarButtonStyle}" Command="{Binding AddEquipmentToDefinitionsCommand}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Add"/>
+            </Button>
+            <Button x:Name="RemoveButton" ToolTip="Remove Selected equipment defintion from army."  Style="{StaticResource AppBarButtonStyle}" Command="{Binding RemoveEquipmentToDefinitionsCommand}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Delete"/>
+            </Button>
+            <Button ToolTip="Add selected equipment defintion to selected unit's default equipment. (F4)"  Style="{StaticResource AppBarButtonStyle}" Command="{Binding AddToDefaultEquipmentReplacements}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Tools"/>
+            </Button>
+            <Button ToolTip="Add sekected equipment definition to selected unit's upgrades. (F5)" Style="{StaticResource AppBarButtonStyle}" Command="{Binding AddToUpgradesReplacements}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="AppPlus"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"  Grid.Column="1" Style="{StaticResource AppBarPanelStyle}">
+            <Button Style="{StaticResource AppBarButtonStyle}" ToolTip="Add (F2)" Command="{Binding AddUnitEntryCommand}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Add"/>
+            </Button>
+            <Button  Style="{StaticResource AppBarButtonStyle}" ToolTip="Remove" Command="{Binding RemoveUnitEntryCommand}" >
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Delete"/>
+            </Button>
+        </StackPanel>
+
+        <StackPanel  Grid.Row="0" Grid.Column="2" Style="{StaticResource AppBarPanelStyle}">
+            <Button Style="{StaticResource AppBarButtonStyle}" ToolTip="Add (F2)" Command="{Binding AddUnitCommand}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Add"/>
+            </Button>
+            <Button Style="{StaticResource AppBarButtonStyle}" ToolTip="Remove" Command="{Binding RemoveUnitCommand}">
+                <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Delete"/>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </controls:MetroWindow>
 

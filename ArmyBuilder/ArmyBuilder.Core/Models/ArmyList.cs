@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Xml.Serialization;
 using Slycoder.MVVM;
 
@@ -37,6 +39,24 @@ namespace ArmyBuilder.Core.Models
             PointsLimit = points;
             ArmyListType = ArmyListType.MatchedPlay;
             UsePowerPoints = false;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        public void Load(IEnumerable<Detachment> detachments)
+        {
+            foreach (var detachment in Detachments)
+            {
+                detachment.Initialize(detachments.First(d => d.Id == detachment.DetachmentId));
+
+                foreach (var req in detachment.DetachmentRequirementData)
+                {
+                    req.Initialize(detachment.Detachment.Requirements.First(r => r.Id == req.RequirementId));
+                }
+            }
         }
     }
 }

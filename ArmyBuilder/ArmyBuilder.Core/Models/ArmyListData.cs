@@ -28,6 +28,8 @@ namespace ArmyBuilder.Core.Models
 
         [XmlIgnore]
         public UnitEntry UnitEntry { get; private set; }
+        [XmlIgnore]
+        public DetachmentData Detachment { get; private set; }
 
         [XmlArray]
         public ObservableCollection<ModelData> DedicatedTransports { get; set; }
@@ -71,9 +73,10 @@ namespace ArmyBuilder.Core.Models
         private int pointsTotal;
         private int modelCount;
 
-        public ArmyListData(UnitEntry unitEntry)
+        public ArmyListData(UnitEntry unitEntry, DetachmentData detach, Army army)
         {
-
+            ArmyId = army.Id;
+            Detachment = detach;
             SetData(unitEntry);
             UnitId = unitEntry.Id;
 

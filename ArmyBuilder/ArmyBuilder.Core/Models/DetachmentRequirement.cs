@@ -11,6 +11,8 @@ namespace ArmyBuilder.Core.Models
     public class DetachmentRequirement
     {
         [XmlAttribute]
+        public int Id { get; set; }
+        [XmlAttribute]
         public int Minimum { get; set; }
         [XmlAttribute]
         public int Maximum { get; set; }
