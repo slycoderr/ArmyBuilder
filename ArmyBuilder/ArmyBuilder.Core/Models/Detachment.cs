@@ -15,6 +15,9 @@ namespace ArmyBuilder.Core.Models
         public Army Army { get; set; }
         [XmlAttribute]
         public int Id { get; set; }
+        
+        [XmlAttribute]
+        public int BonusCommandPoints { get; set; }
 
         [XmlAttribute]
         public string Name { get; set; }
