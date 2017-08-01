@@ -19,6 +19,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
 
+        public ObservableCollection<Detachment> AvailableDetachments { get; } = new ObservableCollection<Detachment>();
         public ObservableCollection<ArmyList> ArmyLists { get; } = new ObservableCollection<ArmyList>();
         public ObservableCollection<Army> Armies { get; } = new ObservableCollection<Army>();
         public ObservableCollection<UnitEntry> AvailableUnitEntries { get; } = new ObservableCollection<UnitEntry>();
@@ -51,7 +52,7 @@ namespace ArmyBuilder.Core.ViewModels
                     SelectedArmyList.Detachments = data.Detachments;
                     SelectedArmyList.PointsLimit = data.PointsLimit;
 
-                    SelectedArmyList.Load(Armies.First(a => a.Name == "Generic Detachments").Detachments);
+                    //SelectedArmyList.Load(Armies.First(a => a.Name == "Generic Detachments").Detachments);
 
                     foreach (var unit in SelectedArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).SelectMany(u=>u.Units))
                     {
@@ -70,7 +71,7 @@ namespace ArmyBuilder.Core.ViewModels
             (await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Select(n => new ArmyList {Name = Path.GetFileNameWithoutExtension(n)}).ForEach(ArmyLists.Add);
             var dataFiles = await PlatformService.DiscoverXmlFiles(ArmyDataDirectory);
 
-            foreach (var file in dataFiles)
+            foreach (var file in dataFiles.Where(f=>!f.Contains("Detachments")))
             {
                 var army = await PlatformService.DeserializeXml<Army>(file);
                 Armies.Add(army);
@@ -80,10 +81,14 @@ namespace ArmyBuilder.Core.ViewModels
                 army.UnitEntries.ForEach(AvailableUnitEntries.Add);
             }
 
+            var detachmentFile = dataFiles.FirstOrDefault(f => f.Contains("Detachments"));
+            (await PlatformService.DeserializeXml<DetachmentCollection>(detachmentFile)).Detachments.ForEach(AvailableDetachments.Add);
+
+
             if (Debugger.IsAttached)
             {
                 AddList();
-                ArmyListEditor.AddDetachmentToList(Armies.First().Detachments.ElementAt(1));
+                ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(1));
             }
         }
 

@@ -173,6 +173,8 @@ namespace ArmyBuilder.Windows
                     return "Fortification";
                 case ForceOrgSlot.Flyer:
                     return "Flyer";
+                case ForceOrgSlot.DedicatedTransport:
+                    return "Dedicated Transport";
                 default:
                     throw new ArgumentOutOfRangeException(nameof(value), value, null);
             }

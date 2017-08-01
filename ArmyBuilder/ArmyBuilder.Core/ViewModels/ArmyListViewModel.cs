@@ -38,6 +38,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         public int PointsRemaining { get => pointsRemaining; set => SetValue(ref pointsRemaining, value); }
         public int PointsUsed { get => pointsUsed; set => SetValue(ref pointsUsed, value); }
+        public int CommandPoints { get => commandPoints; set => SetValue(ref commandPoints, value); }
 
 
 
@@ -52,6 +53,7 @@ namespace ArmyBuilder.Core.ViewModels
         private int pointsUsed;
         private DetachmentData selectedDetachment;
         private readonly MainViewModel mainViewModel;
+        private int commandPoints;
 
         public ArmyListViewModel( MainViewModel mv, ArmyList armyList)
         {
@@ -68,6 +70,7 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void DetachmentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            UpdatePointsTotal();
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -77,7 +80,6 @@ namespace ArmyBuilder.Core.ViewModels
                     break;
                 case NotifyCollectionChangedAction.Remove:
                     e.OldItems.Cast<DetachmentData>().SelectMany(d => d.DetachmentRequirementData).ForEach(d => d.Units.CollectionChanged -= UnitsOnCollectionChanged);
-                    UpdatePointsTotal();
                     break;
                 case NotifyCollectionChangedAction.Replace:
                     break;
@@ -155,6 +157,7 @@ namespace ArmyBuilder.Core.ViewModels
         {
             PointsUsed = ArmyList.Detachments.SelectMany(l=>l.DetachmentRequirementData)?.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0;
             PointsRemaining = ArmyList.PointsLimit - PointsUsed;
+            CommandPoints = 3 + ArmyList.Detachments.Sum(d => d.Detachment.BonusCommandPoints);
         }
     }
 }

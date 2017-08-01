@@ -35,9 +35,6 @@ namespace ArmyBuilder.Core.Models
         public ObservableCollection<UnitEntry> UnitEntries { get; set; } = new ObservableCollection<UnitEntry>();
 
         [XmlArray]
-        public ObservableCollection<Detachment> Detachments { get; set; } = new ObservableCollection<Detachment>();
-
-        [XmlArray]
         public ObservableCollection<Equipment> EquipmentDefinitions { get => equipmentDefinitions; set => SetValue(ref equipmentDefinitions, value); }
 
         public Army() { }
@@ -56,11 +53,6 @@ namespace ArmyBuilder.Core.Models
         /// </summary>
         public void  Configure()
         {
-            foreach(var detachment in Detachments)
-            {
-                detachment.Army = this;
-            }
-
             foreach (var unitEntry in UnitEntries)
             {
                 unitEntry.Army = this;

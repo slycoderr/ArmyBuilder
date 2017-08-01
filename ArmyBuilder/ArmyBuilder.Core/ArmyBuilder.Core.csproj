@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IPlatformService.cs" />
+    <Compile Include="Models\DetachmentCollection.cs" />
     <Compile Include="Models\DetachmentData.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Models\Army.cs" />
