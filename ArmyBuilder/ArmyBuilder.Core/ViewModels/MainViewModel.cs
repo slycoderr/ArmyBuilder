@@ -28,7 +28,7 @@ namespace ArmyBuilder.Core.ViewModels
         public RelayCommand<ArmyList> RemoveListCommand => new RelayCommand<ArmyList>(RemoveSelectedList);
         public RelayCommand<ArmyList> SaveListCommand => new RelayCommand<ArmyList>(async s => await SaveArmyList(s));
 
-        public RelayCommand AddListCommand => new RelayCommand(AddList);
+        public RelayCommand AddListCommand => new RelayCommand(async ()=>await AddList());
 
         public IPlatformService PlatformService { get; set; }
 
@@ -52,7 +52,7 @@ namespace ArmyBuilder.Core.ViewModels
                     SelectedArmyList.Detachments = data.Detachments;
                     SelectedArmyList.PointsLimit = data.PointsLimit;
 
-                    //SelectedArmyList.Load(Armies.First(a => a.Name == "Generic Detachments").Detachments);
+                    SelectedArmyList.Load(AvailableDetachments);
 
                     foreach (var unit in SelectedArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).SelectMany(u=>u.Units))
                     {
@@ -87,7 +87,7 @@ namespace ArmyBuilder.Core.ViewModels
 
             if (Debugger.IsAttached)
             {
-                AddList();
+                await AddList();
                 ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(1));
             }
         }
@@ -98,9 +98,17 @@ namespace ArmyBuilder.Core.ViewModels
         }
 
 
-        private void AddList()
+        private async Task AddList()
         {
-            ArmyLists.Add(SelectedArmyList = new ArmyList {Name = "New List " + ArmyLists.Count, PointsLimit = 1500});
+            var files = await PlatformService.DiscoverXmlFiles(ArmyListDirectory);
+            var count = 0;
+
+            while (files.Select(Path.GetFileNameWithoutExtension).Any(f => f == "New List " + count))
+            {
+                count++;
+            }
+
+            ArmyLists.Add(SelectedArmyList = new ArmyList {Name = "New List " + count, PointsLimit = 1500});
         }
 
 

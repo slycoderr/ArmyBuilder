@@ -52,7 +52,7 @@ namespace ArmyBuilder.Core.Models
         [XmlIgnore]
         public DetachmentRequirement Requirement { get; private set; }
         [XmlAttribute]
-        public int RequirementId { get; }
+        public int RequirementId { get; set; }
         [XmlIgnore]
         public DetachmentData DetachmentData { get; }
         [XmlArray]
