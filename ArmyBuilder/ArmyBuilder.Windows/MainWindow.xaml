@@ -67,7 +67,8 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock HorizontalAlignment="Center" FontSize="36">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock FontSize="36">
                     <Run Text="{Binding ArmyListEditor.PointsUsed, Source={StaticResource MainViewModel}}"/>
                     <Run Text="of"/>
                     <Run Text="{Binding ArmyListEditor.ArmyList.PointsLimit, Source={StaticResource MainViewModel}}"/>
@@ -75,8 +76,34 @@
                     <Run Text="{Binding ArmyListEditor.PointsRemaining, Source={StaticResource MainViewModel}, StringFormat='{}({0} remaining)'}"/>
                     <!--<Run Text="remaining)"/>-->
                     </TextBlock>
-               
-                <Grid x:Name="EditArmyListView" Grid.Row="1">
+                        <Button x:Name="EditButton" ToolTip="Edit the list points limit and name." Style="{StaticResource AppBarButtonStyle}" Margin="5" Height="25" Width="30">
+                            <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Edit" Foreground="Black" Height="Auto" Width="{Binding Height, ElementName=EditButton}" />
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Click">
+                                    <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="True"/>
+                                    
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        </StackPanel>
+
+                    <Popup Placement="Bottom" PlacementTarget="{Binding ElementName=EditButton}" StaysOpen="True" x:Name="EditPopup">
+                        <StackPanel>
+                            <TextBox Margin="5" x:Name="EditNNameTextbox" Text="{Binding ArmyListEditor.EditListName}"/>
+                            <controls:NumericUpDown Margin="5" x:Name="EditPointsTextbox" Minimum="0" Value="{Binding ArmyListEditor.EditListPoints}" />
+                            <Button Content="Done" Margin="5" Command="{Binding ArmyListEditor.EditListDetailsCommand}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="False"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Popup>
+
+                    <Grid x:Name="EditArmyListView" Grid.Row="1">
+                                
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>

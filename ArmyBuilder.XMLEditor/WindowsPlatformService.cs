@@ -13,16 +13,25 @@ namespace ArmyBuilder.Windows
 {
     public class WindowsPlatformService : IPlatformService
     {
-        public Task SerializeXml<T>(object obj, string path)
+        public Task SerializeXml<T>(object obj, string path, string oldName, string newName)
         {
             return Task.Run(() =>
             {
-                using (var stream = new FileStream(path, FileMode.Create))
+                if (!string.IsNullOrEmpty(oldName) && oldName != newName && File.Exists(Path.Combine(path, oldName + ".xml")))
                 {
-                    using (var writer = XmlWriter.Create(stream))
+                    File.Delete(Path.Combine(path, oldName + ".xml"));
+                }
+
+                using (var stream = new FileStream(Path.Combine(path, newName) + ".xml", FileMode.Create))
+                {
+                    using (var writer = XmlWriter.Create(stream, new XmlWriterSettings() { Indent = true }))
                     {
+
                         var dsArmy = new XmlSerializer(typeof(T));
-                        dsArmy.Serialize(writer, this);
+                        XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+                        ns.Add("", "");
+                        dsArmy.Serialize(writer, obj, ns);
+
                     }
                 }
             });
@@ -54,7 +63,7 @@ namespace ArmyBuilder.Windows
                     {
                         var dsArmy = new XmlSerializer(typeof(T));
 
-                        return (T) dsArmy.Deserialize(reader);
+                        return (T)dsArmy.Deserialize(reader);
                     }
                 }
             });

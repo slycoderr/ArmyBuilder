@@ -146,11 +146,11 @@ namespace ArmyBuilder.Core.Models
                                 eee.CanAdd = false;
                             });
 
-                            allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (eee.IsTaken)).ForEach(eee =>
-                            {
-                                GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
-                                eee.CanAdd = true;
-                            });
+                            //allEquipment.Where(eee => eee.Equipment.MutualId == targetMutualId && (eee.IsTaken)).ForEach(eee =>
+                            //{
+                            //    GetAllEquipmentSubEquipment(eee).ForEach(eq => eq.CanAdd = true);
+                            //    eee.CanAdd = true;
+                            //});
                         }
 
                         else if (numTaken > equip.TempLimit) //remove equipment until the rules are satisfied 

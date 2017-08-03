@@ -112,9 +112,9 @@ namespace ArmyBuilder.Core.ViewModels
         }
 
 
-        public async Task SaveArmyList(ArmyList list)
+        internal async Task SaveArmyList(ArmyList list, string oldName = "")
         {
-            await PlatformService.SerializeXml<ArmyList>(list, Path.Combine(ArmyListDirectory, list.Name));
+            await PlatformService.SerializeXml<ArmyList>(list, ArmyListDirectory, oldName, list.Name);
         }
     }
 }

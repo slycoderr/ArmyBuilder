@@ -11,7 +11,7 @@ namespace ArmyBuilder.Core.Models
     public class ArmyList : BindableBase
     {
         private string name;
-        private int pointsLimit;
+        private uint pointsLimit;
         private ObservableCollection<DetachmentData> detachments = new ObservableCollection<DetachmentData>();
         private bool usePowerPoints;
         private ArmyListType armyListType;
@@ -23,7 +23,7 @@ namespace ArmyBuilder.Core.Models
         public ObservableCollection<DetachmentData> Detachments { get => detachments; internal set => SetValue(ref detachments, value); }
 
         [XmlAttribute]
-        public int PointsLimit { get => pointsLimit; set => SetValue(ref pointsLimit, value); }
+        public uint PointsLimit { get => pointsLimit; set => SetValue(ref pointsLimit, value); }
 
         [XmlAttribute]
         public bool UsePowerPoints { get => usePowerPoints; set => SetValue(ref usePowerPoints, value); }
@@ -33,7 +33,7 @@ namespace ArmyBuilder.Core.Models
 
         public ArmyList() { }
 
-        public ArmyList(string newName, int points)
+        public ArmyList(string newName, uint points)
         {
             Name = newName;
             PointsLimit = points;

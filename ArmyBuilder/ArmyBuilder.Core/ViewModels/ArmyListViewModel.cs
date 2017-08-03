@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using ArmyBuilder.Core.Models;
 using ArmyBuilder.Core.Models.Groups;
 using GalaSoft.MvvmLight.Command;
@@ -37,8 +39,10 @@ namespace ArmyBuilder.Core.ViewModels
         }
 
         public int PointsRemaining { get => pointsRemaining; set => SetValue(ref pointsRemaining, value); }
-        public int PointsUsed { get => pointsUsed; set => SetValue(ref pointsUsed, value); }
+        public uint PointsUsed { get => pointsUsed; set => SetValue(ref pointsUsed, value); }
         public int CommandPoints { get => commandPoints; set => SetValue(ref commandPoints, value); }
+        public string EditListName { get => editListName; set => SetValue(ref editListName, value); }
+        public int EditListPoints { get => editListPoints; set => SetValue(ref editListPoints, value); }
 
 
 
@@ -46,14 +50,17 @@ namespace ArmyBuilder.Core.ViewModels
         public RelayCommand<UnitEntry> AddUnitEntryToDetachmentCommand => new RelayCommand<UnitEntry>((u)=> { AddUnitEntryToDetachment( SelectedDetachment, u); });
         public RelayCommand RemoveUnitCommand => new RelayCommand(()=> RemoveUnit(SelectedDetachment, SelectedUnit));
         public RelayCommand RemoveDetachmentCommand => new RelayCommand(()=> RemoveDetachment(ArmyList, SelectedDetachment));
+        public RelayCommand EditListDetailsCommand => new RelayCommand(async ()=>await EditListDetails(EditListName, (uint)EditListPoints));
 
 
         private ArmyListData selectedUnit;
         private int pointsRemaining;
-        private int pointsUsed;
+        private uint pointsUsed;
         private DetachmentData selectedDetachment;
         private readonly MainViewModel mainViewModel;
         private int commandPoints;
+        private int editListPoints;
+        private string editListName;
 
         public ArmyListViewModel( MainViewModel mv, ArmyList armyList)
         {
@@ -66,6 +73,9 @@ namespace ArmyBuilder.Core.ViewModels
             ArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
             ArmyList.Detachments.CollectionChanged += DetachmentsOnCollectionChanged;
             UpdatePointsTotal();
+
+            EditListName = ArmyList.Name;
+            EditListPoints = (int)ArmyList.PointsLimit;
         }
 
         private void DetachmentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -89,6 +99,29 @@ namespace ArmyBuilder.Core.ViewModels
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        private async Task EditListDetails(string newName, uint points)
+        {
+            if (string.IsNullOrEmpty(newName))
+            {
+                
+            }
+
+            else if (Path.GetInvalidFileNameChars().Any(c => newName.Contains(c.ToString())))
+            {
+                
+            }
+
+            else
+            {
+                var oldName = ArmyList.Name;
+
+                ArmyList.Name = newName;
+                ArmyList.PointsLimit = points;
+                await mainViewModel.PlatformService.SerializeXml<ArmyList>(ArmyList, mainViewModel.ArmyListDirectory, oldName, ArmyList.Name);
+            }
+        }
+
 
 
         private void AddUnitEntryToDetachment(DetachmentData detachment, UnitEntry unit)
@@ -155,8 +188,8 @@ namespace ArmyBuilder.Core.ViewModels
 
         private void UpdatePointsTotal()
         {
-            PointsUsed = ArmyList.Detachments.SelectMany(l=>l.DetachmentRequirementData)?.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0;
-            PointsRemaining = ArmyList.PointsLimit - PointsUsed;
+            PointsUsed = (uint)(ArmyList.Detachments.SelectMany(l=>l.DetachmentRequirementData)?.SelectMany(d=>d.Units)?.Sum(a => a.PointsTotal) ?? 0);
+            PointsRemaining = (int)(ArmyList.PointsLimit - PointsUsed);
             CommandPoints = 3 + ArmyList.Detachments.Sum(d => d.Detachment.BonusCommandPoints);
         }
     }
