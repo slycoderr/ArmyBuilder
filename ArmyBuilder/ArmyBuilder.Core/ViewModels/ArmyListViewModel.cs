@@ -72,6 +72,7 @@ namespace ArmyBuilder.Core.ViewModels
 
             ArmyList.Detachments.SelectMany(d=>d.DetachmentRequirementData).ForEach(d=>d.Units.CollectionChanged += UnitsOnCollectionChanged);
             ArmyList.Detachments.CollectionChanged += DetachmentsOnCollectionChanged;
+                ArmyList.Detachments.SelectMany(d => d.DetachmentRequirementData).SelectMany(u=>u.Units).ForEach(d => d.PropertyChanged += UnitPropertyChanged);
             UpdatePointsTotal();
 
             EditListName = ArmyList.Name;

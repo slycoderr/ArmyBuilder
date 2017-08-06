@@ -44,7 +44,6 @@ namespace ArmyBuilder.Core.ViewModels
         {
             if (e.PropertyName == nameof(SelectedArmyList) && SelectedArmyList != null)
             {
-                ArmyListEditor = new ArmyListViewModel(this, SelectedArmyList);
 
                 if ((await PlatformService.DiscoverXmlFiles(ArmyListDirectory)).Any(l => l.Contains(SelectedArmyList.Name)))
                 {
@@ -59,6 +58,9 @@ namespace ArmyBuilder.Core.ViewModels
                         unit.SetData(Armies.First(a=>a.Id == unit.ArmyId).UnitEntries.First(u=>u.Id == unit.UnitId));
                     }
                 }
+
+                ArmyListEditor = new ArmyListViewModel(this, SelectedArmyList);
+
             }
         }
 
@@ -109,6 +111,7 @@ namespace ArmyBuilder.Core.ViewModels
             }
 
             ArmyLists.Add(SelectedArmyList = new ArmyList {Name = "New List " + count, PointsLimit = 1500});
+            
         }
 
 
