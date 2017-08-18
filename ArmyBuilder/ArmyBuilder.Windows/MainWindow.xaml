@@ -11,12 +11,30 @@
                       xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                       xmlns:views1="clr-namespace:ArmyBuilder.UWP.Views" SaveWindowPosition="True"
-                      DataContext="{StaticResource MainViewModel}" TitleAlignment="Center"
+                      DataContext="{StaticResource MainViewModel}" 
+                      WindowTitleBrush="White" TitleAlignment="Left"
+                      TitleForeground="Black"
+                      
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="{Binding SelectedArmyList.Name, FallbackValue='Armybuilder', TargetNullValue='Armybuilder'}" Height="800" Width="1200" >
+    <controls:MetroWindow.WindowCloseButtonStyle>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
+            <Setter Property="Foreground" Value="Black"/>
+            <Style.Triggers>
 
-    <controls:MetroWindow.LeftWindowCommands>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#EB2F2F" />
+                    <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#7C0000" />
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+    </controls:MetroWindow.WindowCloseButtonStyle>
+    <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
-            <Button Content="Create List" Command="{Binding AddListCommand}"/>
+            <Button Margin="50,0,0,0" Content="Create List" Command="{Binding AddListCommand}"/>
             <Button Content="Save List"  IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}"  Command="{Binding SaveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
             <Button Content="Delete List"  IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}" Command="{Binding RemoveListCommand}" CommandParameter="{Binding SelectedArmyList}"/>
             <Button Content="Add Detachment" x:Name="AddDetachmentButton" IsEnabled="{Binding SelectedArmyList, Converter={StaticResource NullToBoolConverter}}">
@@ -29,7 +47,7 @@
             <Button Content="Delete Detachment" IsEnabled="{Binding ArmyListEditor.SelectedDetachment, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveDetachmentCommand}"/>
             <Button Content="Delete Unit" IsEnabled="{Binding ArmyListEditor.SelectedUnit, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveUnitCommand}"/>
         </controls:WindowCommands>
-    </controls:MetroWindow.LeftWindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
     
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=CreateListButton}">
@@ -56,9 +74,9 @@
     </i:Interaction.Triggers>
 
 <Grid>
-    <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}" >
+        <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}" DisplayMode="CompactOverlay">
 
-        <controls:HamburgerMenu.Content>
+            <controls:HamburgerMenu.Content>
 
             <Grid>
                 <Grid.RowDefinitions>

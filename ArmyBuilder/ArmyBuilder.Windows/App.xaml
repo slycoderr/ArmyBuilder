@@ -46,9 +46,6 @@
             </Style>
 
             <viewModels:MainViewModel x:Key="MainViewModel">
-                <viewModels:MainViewModel.PlatformService>
-                    <windows:WindowsPlatformService />
-                </viewModels:MainViewModel.PlatformService>
             </viewModels:MainViewModel>
             <windows:DetachmentDataTemplateSelector x:Key="DetachmentDataTemplateSelector"/>
             <windows:NullToBoolConverter x:Key="NullToBoolConverter"/>

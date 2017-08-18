@@ -54,12 +54,6 @@
     <Compile Include="MainViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ArmyBuilder\ArmyBuilder.Core\ArmyBuilder.Core.csproj">
-      <Project>{74043e51-ef7b-4ce1-af3f-7612ed1d05b6}</Project>
-      <Name>ArmyBuilder.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

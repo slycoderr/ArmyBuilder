@@ -12,12 +12,11 @@ using System.Xml;
 using System.Xml.Serialization;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
-using ArmyBuilder.Windows;
+using ArmyBuilder.Core.Models.Utility;
 using ArmyBuilder.XMLEditor.Models;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using MoreLinq;
-using Slycoder.MVVM;
 
 namespace ArmyBuilder.XMLEditor
 {
@@ -64,7 +63,7 @@ namespace ArmyBuilder.XMLEditor
         public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder","Data");
         public static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder");
 
-        public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel(){PlatformService = new WindowsPlatformService()};
+        public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 
         public MainViewModel()
         {

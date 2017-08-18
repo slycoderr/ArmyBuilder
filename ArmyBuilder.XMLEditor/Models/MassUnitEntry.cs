@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ArmyBuilder.Core;
-using Slycoder.MVVM;
+using ArmyBuilder.Core.Models.Utility;
 
 namespace ArmyBuilder.XMLEditor.Models
 {
