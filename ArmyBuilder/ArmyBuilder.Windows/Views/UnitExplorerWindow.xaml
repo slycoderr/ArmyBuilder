@@ -1,0 +1,82 @@
+﻿<controls:MetroWindow x:Class="ArmyBuilder.Windows.Views.UnitExplorerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ArmyBuilder.Windows.Views"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
+        mc:Ignorable="d"
+        Title="UnitExplorerWindow" Height="800" Width="300">
+    <Grid>
+        <ListView x:Name="AvailableUnitsListView"   ItemsSource="{Binding Source={StaticResource AvailableUnitsCollection}}" >
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate DataType="core:ForceOrgSlot">
+                            <Grid Margin="0,0,0,2" >
+                                <Border BorderThickness="0,0,0,2" BorderBrush="Black"/>
+                                <TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Name}" />
+                                <!--<TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Converter={StaticResource ForceOrgGroupToText}}" />-->
+                            </Grid>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                    <GroupStyle.ContainerStyle>
+                        <Style TargetType="{x:Type GroupItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <Expander Header="{Binding Name}" IsExpanded="False" d:DataContext="{d:DesignInstance CollectionViewGroup}" >
+                                            <Expander.Resources>
+                                                <CollectionViewSource x:Key="HoursByProjectCollection" Source="{Binding Items}" IsLiveGroupingRequested="True" IsLiveSortingRequested="True">
+                                                    <CollectionViewSource.GroupDescriptions>
+                                                        <PropertyGroupDescription PropertyName="ForceOrgSlot" />
+                                                    </CollectionViewSource.GroupDescriptions>
+                                                </CollectionViewSource>
+                                            </Expander.Resources>
+                                            <ListView ItemsSource="{Binding Source={StaticResource HoursByProjectCollection}}">
+                                                <ListView.GroupStyle>
+                                                    <GroupStyle>
+                                                        <GroupStyle.HeaderTemplate>
+                                                            <DataTemplate DataType="{x:Type CollectionViewGroup}" >
+
+                                                            </DataTemplate>
+                                                        </GroupStyle.HeaderTemplate>
+
+                                                        <GroupStyle.ContainerStyle>
+                                                            <Style TargetType="{x:Type GroupItem}">
+                                                                <Setter Property="Template">
+                                                                    <Setter.Value>
+                                                                        <ControlTemplate>
+                                                                            <Expander Header="{Binding Name}" IsExpanded="True" d:DataContext="{d:DesignInstance CollectionViewGroup}">
+
+                                                                                <ItemsPresenter  />
+
+                                                                            </Expander>
+                                                                        </ControlTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Style>
+                                                        </GroupStyle.ContainerStyle>
+                                                    </GroupStyle >
+                                                </ListView.GroupStyle>
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Button Content="{Binding Name}" Command="{Binding ArmyListEditor.AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}">
+
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </Expander>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GroupStyle.ContainerStyle>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+    </Grid>
+</controls:MetroWindow>
+

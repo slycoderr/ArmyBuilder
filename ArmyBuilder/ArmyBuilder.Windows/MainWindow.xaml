@@ -10,7 +10,9 @@
                       xmlns:models="clr-namespace:ArmyBuilder.Core.Models;assembly=ArmyBuilder.Core" 
                       xmlns:core="clr-namespace:ArmyBuilder.Core;assembly=ArmyBuilder.Core"
                       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-                      xmlns:views1="clr-namespace:ArmyBuilder.UWP.Views" SaveWindowPosition="True"
+                      xmlns:views1="clr-namespace:ArmyBuilder.UWP.Views"
+                      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                      SaveWindowPosition="True"
                       DataContext="{StaticResource MainViewModel}" 
                       WindowTitleBrush="White" TitleAlignment="Left"
                       TitleForeground="Black"
@@ -74,155 +76,102 @@
     </i:Interaction.Triggers>
 
 <Grid>
-        <controls:HamburgerMenu ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}" OptionsItemTemplate="{StaticResource HamburgerMenuItemTemplate}" DisplayMode="CompactOverlay">
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
 
-            <controls:HamburgerMenu.Content>
-
+                <DockPanel MinWidth="212">
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                  DockPanel.Dock="Top"
+                                  HorizontalAlignment="Right" Margin="16"
+                                  IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                    <ListView ItemsSource="{Binding ArmyLists}" SelectedItem="{Binding SelectedArmyList}"/>
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
 
-                </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                        <TextBlock FontSize="36">
-                    <Run Text="{Binding ArmyListEditor.PointsUsed, Source={StaticResource MainViewModel}}"/>
-                    <Run Text="of"/>
-                    <Run Text="{Binding ArmyListEditor.ArmyList.PointsLimit, Source={StaticResource MainViewModel}}"/>
-                    <!--<Run Text="("/>-->
-                    <Run Text="{Binding ArmyListEditor.PointsRemaining, Source={StaticResource MainViewModel}, StringFormat='{}({0} remaining)'}"/>
-                    <!--<Run Text="remaining)"/>-->
-                    </TextBlock>
-                        <Button x:Name="EditButton" ToolTip="Edit the list points limit and name." Style="{StaticResource AppBarButtonStyle}" Margin="5" Height="25" Width="30">
-                            <iconPacks:PackIconModern Style="{StaticResource AppBarIconStyle}" Kind="Edit" Foreground="Black" Height="Auto" Width="{Binding Height, ElementName=EditButton}" />
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="Click">
-                                    <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="True"/>
-                                    
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Button>
-                        </StackPanel>
+                <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                          Mode="PrimaryMid" >
+                    <Grid>
+                        <ToggleButton HorizontalAlignment="Left" Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False"
+                                      x:Name="MenuToggleButton"/>
 
-                    <Popup Placement="Bottom" PlacementTarget="{Binding ElementName=EditButton}" StaysOpen="True" x:Name="EditPopup">
-                        <StackPanel>
-                            <TextBox Margin="5" x:Name="EditNNameTextbox" Text="{Binding ArmyListEditor.EditListName}"/>
-                            <controls:NumericUpDown Margin="5" x:Name="EditPointsTextbox" Minimum="0" Value="{Binding ArmyListEditor.EditListPoints}" />
-                            <Button Content="Done" Margin="5" Command="{Binding ArmyListEditor.EditListDetailsCommand}">
+
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center"> 
+                                <Run Text="{Binding ArmyListEditor.PointsUsed, Source={StaticResource MainViewModel}}"/>
+                                <Run Text="of"/>
+                                <Run Text="{Binding ArmyListEditor.ArmyList.PointsLimit, Source={StaticResource MainViewModel}}"/>
+                                <!--<Run Text="("/>-->
+                                <Run Text="{Binding ArmyListEditor.PointsRemaining, Source={StaticResource MainViewModel}, StringFormat='{}({0} remaining)'}"/>
+                                <!--<Run Text="remaining)"/>-->
+                            </TextBlock>
+
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                            <Button Click="BrowseUnits_OnClick" ToolTip="Browse through a detailed view of all units and one them" Margin="5,0">
+                                <materialDesign:PackIcon  Kind="Plus"/>
+                            </Button>
+                            <Button x:Name="EditButton" ToolTip="Edit the list points limit and name."  Margin="5,0">
+                                <materialDesign:PackIcon Kind="Pencil"/>
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
-                                        <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="False"/>
+                                        <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="True"/>
+
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
                         </StackPanel>
-                    </Popup>
+                    </Grid>
+</materialDesign:ColorZone>
 
-                    <Grid x:Name="EditArmyListView" Grid.Row="1">
-                                
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+            <Popup Placement="Bottom" PlacementTarget="{Binding ElementName=EditButton}" StaysOpen="True" x:Name="EditPopup">
+                <StackPanel>
+                    <TextBox Margin="5" x:Name="EditNNameTextbox" Text="{Binding ArmyListEditor.EditListName}"/>
+                    <controls:NumericUpDown Margin="5" x:Name="EditPointsTextbox" Minimum="0" Value="{Binding ArmyListEditor.EditListPoints}" />
+                    <Button Content="Done" Margin="5" Command="{Binding ArmyListEditor.EditListDetailsCommand}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ei:ChangePropertyAction TargetObject="{Binding ElementName=EditPopup}" PropertyName="IsOpen" Value="False"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+                </StackPanel>
+            </Popup>
+
+            <Grid x:Name="EditArmyListView" Grid.Row="1">
+
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                         <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
 
-                    <Expander Grid.Row="1" Grid.Column="0" ExpandDirection="Left" Header="Available Units" IsExpanded="False">
-                        <Expander.HeaderTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding}">
-                                    <TextBlock.LayoutTransform>
-                                        <RotateTransform Angle="-90"/>
-                                    </TextBlock.LayoutTransform>
-                                </TextBlock>
-                            </DataTemplate>
-                        </Expander.HeaderTemplate>
-                        <ListView x:Name="AvailableUnitsListView"   ItemsSource="{Binding Source={StaticResource AvailableUnitsCollection}}" >
-                            <ListView.GroupStyle>
-                                <GroupStyle>
-                                    <GroupStyle.HeaderTemplate>
-                                        <DataTemplate DataType="core:ForceOrgSlot">
-                                            <Grid Margin="0,0,0,2" >
-                                                <Border BorderThickness="0,0,0,2" BorderBrush="Black"/>
-                                                <TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Name}" />
-                                                <!--<TextBlock Margin="5,0,0,2" FontSize="18" Text="{Binding Converter={StaticResource ForceOrgGroupToText}}" />-->
-                                            </Grid>
-                                        </DataTemplate>
-                                    </GroupStyle.HeaderTemplate>
-                                    <GroupStyle.ContainerStyle>
-                                        <Style TargetType="{x:Type GroupItem}">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate>
-                                                        <Expander Header="{Binding Name}" IsExpanded="False" d:DataContext="{d:DesignInstance CollectionViewGroup}" >
-                                                            <Expander.Resources>
-                                                                <CollectionViewSource x:Key="HoursByProjectCollection" Source="{Binding Items}" IsLiveGroupingRequested="True" IsLiveSortingRequested="True">
-                                                                    <CollectionViewSource.GroupDescriptions>
-                                                                        <PropertyGroupDescription PropertyName="ForceOrgSlot" />
-                                                                    </CollectionViewSource.GroupDescriptions>
-                                                                </CollectionViewSource>
-                                                            </Expander.Resources>
-                                                            <ListView ItemsSource="{Binding Source={StaticResource HoursByProjectCollection}}">
-                                                                <ListView.GroupStyle>
-                                                                    <GroupStyle>
-                                                                        <GroupStyle.HeaderTemplate>
-                                                                            <DataTemplate DataType="{x:Type CollectionViewGroup}" >
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+        
+                </Grid.ColumnDefinitions>
 
-                                                                            </DataTemplate>
-                                                                        </GroupStyle.HeaderTemplate>
+                    <ComboBox x:Name="QuickAddCombobox" IsEditable="True" StaysOpenOnEdit="True" ItemsSource="{Binding Source={StaticResource AvailableUnitsCollection}}" Margin="5" SelectedItem="{x:Null}" materialDesign:HintAssist.Hint="Select a Unit to Add">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Selected">
+                                <i:InvokeCommandAction Command="{Binding ArmyListEditor.AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding SelectedItem, ElementName=QuickAddCombobox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </ComboBox>
 
-                                                                        <GroupStyle.ContainerStyle>
-                                                                            <Style TargetType="{x:Type GroupItem}">
-                                                                                <Setter Property="Template">
-                                                                                    <Setter.Value>
-                                                                                        <ControlTemplate>
-                                                                                            <Expander Header="{Binding Name}" IsExpanded="True" d:DataContext="{d:DesignInstance CollectionViewGroup}">
+                <ListView SelectedItem="{Binding ArmyListEditor.SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" Grid.Row="2" Grid.Column="0" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}" />
 
-                                                                                                <ItemsPresenter  />
-
-                                                                                            </Expander>
-                                                                                        </ControlTemplate>
-                                                                                    </Setter.Value>
-                                                                                </Setter>
-                                                                            </Style>
-                                                                        </GroupStyle.ContainerStyle>
-                                                                    </GroupStyle >
-                                                                </ListView.GroupStyle>
-                                                                <ListView.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <Button Content="{Binding Name}" Command="{Binding ArmyListEditor.AddUnitEntryToDetachmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}">
-
-                                                                        </Button>
-                                                                    </DataTemplate>
-                                                                </ListView.ItemTemplate>
-                                                            </ListView>
-                                                        </Expander>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </GroupStyle.ContainerStyle>
-                                </GroupStyle>
-                            </ListView.GroupStyle>
-                        </ListView>
-                    </Expander>
-
-                        <GroupBox Header="{Binding ArmyListEditor.CommandPoints}" HeaderStringFormat="{}List Detachments - {0} Command Points" Grid.Row="1" Grid.Column="1">
-                            <ListView SelectedItem="{Binding ArmyListEditor.SelectedDetachment}" ItemsSource="{Binding SelectedArmyList.Detachments}" BorderThickness="0" ItemTemplateSelector="{StaticResource DetachmentDataTemplateSelector}" />
-                    </GroupBox>
-
-                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding ArmyListEditor.SelectedUnit.UnitEntry.Name, Source={StaticResource MainViewModel}}"/>
-                    <views1:UnitEditor Grid.Row="1" Grid.Column="2" DataContext="{Binding ArmyListEditor.SelectedUnit}"/>
-                </Grid>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Grid.RowSpan="2"  Text="{Binding ArmyListEditor.SelectedUnit.UnitEntry.Name, Source={StaticResource MainViewModel}}"/>
+                <views1:UnitEditor Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" DataContext="{Binding ArmyListEditor.SelectedUnit}"/>
             </Grid>
-        </controls:HamburgerMenu.Content>
-    </controls:HamburgerMenu>
+    </Grid>
+    </materialDesign:DrawerHost>
 
         <Popup StaysOpen="True"  x:Name="DetachmentsPopup" PlacementTarget="{Binding ElementName=AddDetachmentButton}" Placement="Bottom">
         <ListView Width="200" Height="400" ItemsSource="{Binding AvailableDetachments}">

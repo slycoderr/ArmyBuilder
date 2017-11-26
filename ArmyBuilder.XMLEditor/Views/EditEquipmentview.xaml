@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ArmyBuilder.XMLEditor.Views"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" d:DataContext="{Binding SelectedEquipmentDefinition, Source={StaticResource MainViewModel}}"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
@@ -22,14 +23,14 @@
         </Grid.RowDefinitions>
 
        
-        <TextBox Grid.Row="1" Grid.ColumnSpan="2"  Margin="5" Text="{Binding Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name" />
-        <TextBox Grid.Row="0" Grid.Column="1"   Margin="5" Text="{Binding Cost}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Cost" />
-        <CheckBox Grid.Row="2"  Margin="5" IsChecked="{Binding IsDefault}" Content="Is Default" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" />
-        <CheckBox Grid.Row="2" Grid.Column="1"   Margin="5" IsChecked="{Binding IsGiven}" Content="Is Given" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Id" HorizontalAlignment="Right" />
-        <TextBox Grid.Row="3"  Margin="5" Text="{Binding MutualId}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Mutual Id" />
-        <TextBox Grid.Row="3" Grid.Column="1"   Margin="5" Text="{Binding MaxPerArmy}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Max Per Army" />
-        <TextBox Grid.Row="4"  Margin="5" Text="{Binding Limit}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Limit" />
-        <TextBox Grid.Column="1" Grid.Row="4"  Margin="5" Text="{Binding PerX}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="PerX" />
-        <ComboBox Grid.Row="0"  Margin="5" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedItem="{Binding Type}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Type" />
+        <TextBox Grid.Row="1" Grid.ColumnSpan="2"  Margin="5" Text="{Binding Name}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Name" />
+        <TextBox Grid.Row="0" Grid.Column="1"   Margin="5" Text="{Binding Cost}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Cost" />
+        <CheckBox Grid.Row="2"  Margin="5" IsChecked="{Binding IsDefault}" Content="Is Default" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Id" />
+        <CheckBox Grid.Row="2" Grid.Column="1"   Margin="5" IsChecked="{Binding IsGiven}" Content="Is Given" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Id" HorizontalAlignment="Right" />
+        <TextBox Grid.Row="3"  Margin="5" Text="{Binding MutualId}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Mutual Id" />
+        <TextBox Grid.Row="3" Grid.Column="1"   Margin="5" Text="{Binding MaxPerArmy}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Max Per Army" />
+        <TextBox Grid.Row="4"  Margin="5" Text="{Binding Limit}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Limit" />
+        <TextBox Grid.Column="1" Grid.Row="4"  Margin="5" Text="{Binding PerX}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="PerX" />
+        <ComboBox Grid.Row="0"  Margin="5" ItemsSource="{Binding Source={StaticResource EquipmentTypeCollection}}" SelectedItem="{Binding Type}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Type" />
     </Grid>
 </UserControl>

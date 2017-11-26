@@ -293,23 +293,26 @@ namespace ArmyBuilder.Windows
             IList f = (IList)value;
 
             return f.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        }
 
-            //if (value is List<ArmyListData>)
-            //{
-            //    return ((List<ArmyListData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-            //}
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
-            //if (value is List<EquipmentData>)
-            //{
-            //    return ((List<EquipmentData>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-            //}
+    public class DetachmentListCountToVisiblityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return Visibility.Visible;
+            }
 
-            //if (value is List<Detachment>)
-            //{
-            //    return ((List<Detachment>)value).Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-            //}
+            IList f = (IList)value;
 
-            
+            return f.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -93,7 +93,7 @@ namespace ArmyBuilder.Core.Models
 
         internal void CalculatePointsCost()
         {
-            UpgradeCostTotal = Equipment.Select(TotalEquipmentCost).Sum() + Upgrades.Select(TotalEquipmentCost).Sum();
+            UpgradeCostTotal = Unit.IsWargearCostIncludedInBaseCost ? 0 : Equipment.Select(TotalEquipmentCost).Sum() + Upgrades.Select(TotalEquipmentCost).Sum();
             PointsCostTotal = UpgradeCostTotal + Unit.CostPerModel;
         }
     }

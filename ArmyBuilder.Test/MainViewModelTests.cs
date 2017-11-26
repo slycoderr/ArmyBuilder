@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using ArmyBuilder.Core.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ArmyBuilder.Core.ViewModels;
 
 namespace ArmyBuilder.Test
 {

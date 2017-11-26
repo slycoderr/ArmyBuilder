@@ -7,6 +7,7 @@
         xmlns:views="clr-namespace:ArmyBuilder.XMLEditor.Views"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
         Title="{Binding SelectedArmy.Name}" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
     
@@ -49,8 +50,8 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" controls:TextBoxHelper.Watermark="Id" controls:TextBoxHelper.UseFloatingWatermark="True"/>
-            <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" controls:TextBoxHelper.UseFloatingWatermark="True" controls:TextBoxHelper.Watermark="Name"/>
+            <TextBox Grid.Row="1" Margin="5" Text="{Binding SelectedArmy.Id}" materialDesign:HintAssist.Hint="Id" materialDesign:HintAssist.IsFloating="True"/>
+            <TextBox Grid.Row="2" Margin="5" Text="{Binding SelectedArmy.Name}" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Name"/>
 
         </StackPanel>
 

@@ -14,6 +14,7 @@ namespace ArmyBuilder.Core.Models
         private int maximum;
         private int costPerModel;
         private int baseCost;
+        private bool isWargearCostIncludedInBaseCost;
 
         [XmlAttribute]
         public int Id { get => id; set => SetValue(ref id, value); }
@@ -32,6 +33,11 @@ namespace ArmyBuilder.Core.Models
 
         [XmlAttribute]
         public int BaseCost { get => baseCost; set => SetValue(ref baseCost, value); }
+
+
+        [XmlAttribute]
+        public bool IsWargearCostIncludedInBaseCost { get => isWargearCostIncludedInBaseCost; set => SetValue(ref isWargearCostIncludedInBaseCost, value); }
+
 
         /// <summary>
         /// Needed for loading since transports don't know what unit entry they're from.
