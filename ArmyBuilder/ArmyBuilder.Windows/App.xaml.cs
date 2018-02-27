@@ -7,13 +7,9 @@ namespace ArmyBuilder.Windows
 {
     public partial class App
     {
-        public static string DataPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ArmyBuilder");
-
         protected override async void OnStartup(StartupEventArgs e)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
-
-            await ((MainViewModel) FindResource("MainViewModel")).Load(DataPath);
             base.OnStartup(e);
         }
 

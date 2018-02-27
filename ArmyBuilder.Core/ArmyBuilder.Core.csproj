@@ -5,6 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Tyranids.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Tyranids.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="morelinq" Version="2.8.0" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.0.1-alpha" />
   </ItemGroup>

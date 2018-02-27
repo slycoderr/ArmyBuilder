@@ -13,11 +13,17 @@ using MoreLinq;
 namespace ArmyBuilder.Core.ViewModels
 {
     public class MainViewModel : BindableBase
-    {
+    {public RelayCommand LoadCommand => new RelayCommand(async ()=>await Load(DataRootDirectory));
+
+#if DEBUG
+        public string DataRootDirectory { get; set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\ArmyBuilder.Core"));
+
+#else
         public string DataRootDirectory { get; set; }  = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ArmyBuilder");
+#endif
+
         public string ArmyDataDirectory => Path.Combine(DataRootDirectory, "Data");
         public string ArmyListDirectory => Path.Combine(DataRootDirectory, "ArmyLists");
-
         public ArmyList SelectedArmyList { get => selectedArmyList; set => SetValue(ref selectedArmyList, value); }
 
         public ObservableCollection<Detachment> AvailableDetachments { get; } = new ObservableCollection<Detachment>();
@@ -85,8 +91,12 @@ namespace ArmyBuilder.Core.ViewModels
             }
 
             var detachmentFile = dataFiles.FirstOrDefault(f => f.Contains("Detachments"));
-            (await XmlHelpers.DeserializeXml<DetachmentCollection>(detachmentFile)).Detachments.ForEach(AvailableDetachments.Add);
 
+
+            if (detachmentFile != null)
+            {
+                (await XmlHelpers.DeserializeXml<DetachmentCollection>(detachmentFile)).Detachments.ForEach(AvailableDetachments.Add);
+            }
 
             if (Debugger.IsAttached)
             {
