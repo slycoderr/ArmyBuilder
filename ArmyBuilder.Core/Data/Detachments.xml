@@ -1,0 +1,12 @@
+﻿<DetachmentCollection>
+  <Detachment Id="1" Name ="Patrol">
+    <Detachment.Requirements>
+      <DetachmentRequirement Id="1" ForceOrgSlot="HQ" Minimum="1" Maximum="2"/>
+      <DetachmentRequirement Id="2" ForceOrgSlot="Troop" Minimum="2" Maximum="4"/>
+      <DetachmentRequirement Id="3" ForceOrgSlot="Elite" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="4" ForceOrgSlot="FastAttack" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="5" ForceOrgSlot="HeavySupport" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="6" ForceOrgSlot="LordOfWar" Minimum="0" Maximum="0"/>
+    </Detachment.Requirements>
+  </Detachment>
+</DetachmentCollection>

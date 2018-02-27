@@ -16,7 +16,7 @@ namespace ArmyBuilder.Core.ViewModels
     {public RelayCommand LoadCommand => new RelayCommand(async ()=>await Load(DataRootDirectory));
 
 #if DEBUG
-        public string DataRootDirectory { get; set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\ArmyBuilder.Core"));
+        public string DataRootDirectory { get; set; } = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\..\\ArmyBuilder.Core"));
 
 #else
         public string DataRootDirectory { get; set; }  = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ArmyBuilder");
@@ -101,7 +101,7 @@ namespace ArmyBuilder.Core.ViewModels
             if (Debugger.IsAttached)
             {
                 await AddList();
-                ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(1));
+                ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(0));
             }
         }
 

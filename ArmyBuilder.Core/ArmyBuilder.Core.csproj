@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Tyranids.xml" />
+    <Content Include="Data\Tyranids.xml" />
   </ItemGroup>
 
   <ItemGroup>
