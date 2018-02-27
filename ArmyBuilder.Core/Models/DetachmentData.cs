@@ -25,6 +25,7 @@ namespace ArmyBuilder.Core.Models
         {
             DetachmentId = detachment.Id;
             Detachment = detachment;
+
             DetachmentRequirementData = new ObservableCollection<DetachmentRequirementData>(Detachment.Requirements.Select(r=> new DetachmentRequirementData(r, this)));
         }
 
