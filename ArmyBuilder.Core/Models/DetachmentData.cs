@@ -72,6 +72,16 @@ namespace ArmyBuilder.Core.Models
             RequirementId = Requirement.Id;
 
             Units.CollectionChanged += delegate { SlotsUsed = Units.Count; };
+
+            for (int i = 0; i < require.Maximum; i++)
+            {
+                if (i < require.Minimum)
+                {
+                    Units.Add(new ArmyListData());
+                }
+
+                Units.Add(new ArmyListData());
+            }
         } 
     }
 }

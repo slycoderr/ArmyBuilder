@@ -184,6 +184,21 @@
       <Name>ArmyBuilder.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\transport.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lord.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\elite.JPG" />
+    <Resource Include="Images\fast.JPG" />
+    <Resource Include="Images\flyer.JPG" />
+    <Resource Include="Images\fort.JPG" />
+    <Resource Include="Images\heavy.JPG" />
+    <Resource Include="Images\hq.JPG" />
+    <Resource Include="Images\troop.JPG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
