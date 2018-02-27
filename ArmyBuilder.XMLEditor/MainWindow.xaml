@@ -8,10 +8,15 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d" DataContext="{StaticResource MainViewModel}"
         Title="{Binding SelectedArmy.Name}" Height="800" Width="1200" WindowStartupLocation="CenterScreen">
-    
-    <controls:MetroWindow.RightWindowCommands>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand, Source={StaticResource MainViewModel}}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+            <controls:MetroWindow.RightWindowCommands>
         <controls:WindowCommands>
             <Button Content="Create Army"  Margin="5" Command="{Binding CreateArmyCommand}"/>
             <Button Content="Save ArmyData"  Margin="5" Command="{Binding SaveXMLCommand}"/>
