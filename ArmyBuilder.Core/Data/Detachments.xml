@@ -1,0 +1,12 @@
+﻿<DetachmentCollection>
+  <Detachment Id="1" Name ="Patrol">
+    <Requirements>
+      <DetachmentRequirement Id="1" Slot="0" Minimum="1" Maximum="2"/>
+      <DetachmentRequirement Id="2" Slot="1" Minimum="2" Maximum="4"/>
+      <DetachmentRequirement Id="3" Slot="2" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="4" Slot="3" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="5" Slot="4" Minimum="0" Maximum="2"/>
+      <DetachmentRequirement Id="6" Slot="5" Minimum="0" Maximum="0"/>
+    </Requirements>
+  </Detachment>
+</DetachmentCollection>

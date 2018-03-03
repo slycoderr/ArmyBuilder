@@ -18,6 +18,7 @@
                       TitleForeground="Black"
                       
                       WindowStartupLocation="CenterScreen" mc:Ignorable="d" Title="{Binding SelectedArmyList.Name, FallbackValue='Armybuilder', TargetNullValue='Armybuilder'}" Height="800" Width="1200" >
+    
     <controls:MetroWindow.WindowCloseButtonStyle>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
             <Setter Property="Foreground" Value="Black"/>
@@ -43,8 +44,8 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <ei:ChangePropertyAction TargetObject="{Binding ElementName=DetachmentsPopup}" PropertyName="IsOpen" Value="True"/>
-                </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Button>
             <Button Content="Delete Detachment" IsEnabled="{Binding ArmyListEditor.SelectedDetachment, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveDetachmentCommand}"/>
             <Button Content="Delete Unit" IsEnabled="{Binding ArmyListEditor.SelectedUnit, Converter={StaticResource NullToBoolConverter}}" Command="{Binding ArmyListEditor.RemoveUnitCommand}"/>
@@ -52,6 +53,9 @@
     </controls:MetroWindow.RightWindowCommands>
     
     <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadCommand}" />
+        </i:EventTrigger>
         <i:EventTrigger EventName="Click" SourceObject="{Binding ElementName=CreateListButton}">
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ArmyListsListView}" PropertyName="Visibility" Value="Collapsed"/>
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=ManageArmyListPanel}" PropertyName="Visibility" Value="Collapsed"/>

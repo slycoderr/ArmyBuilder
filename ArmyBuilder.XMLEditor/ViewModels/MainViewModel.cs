@@ -59,7 +59,7 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<MassUnitEntryCollection> AddMassUnitsCommand => new RelayCommand<MassUnitEntryCollection>(AddMassUnits);
         public RelayCommand<MassEquipmentEntryCollection> AddMassEquipmentCommand => new RelayCommand<MassEquipmentEntryCollection>(AddMassEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
-
+        public RelayCommand LoadCommand => new RelayCommand(async () => await Load());
         public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder","Data");
         public static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder");
 
@@ -67,16 +67,13 @@ namespace ArmyBuilder.XMLEditor
 
         public MainViewModel()
         {
-            //var files = Directory.GetParent("DataFiles").Parent.Parent.GetDirectories().FirstOrDefault(d => d.Name == "DataFiles").GetFiles().Where(f=>f.Extension == ".xml");
-            //var files = Directory.GetFiles(ArmyDataPath).Where(f => Path.GetExtension(f) == ".xml");
-            //var streams = files.Select(f => new FileStream(f, FileMode.Open)).Cast<Stream>().ToList();
-
-            ArmyBuilderCore.Load(RootPath).ContinueWith((aa) =>
-            {
-                ArmyBuilderCore.Armies.ForEach(a => a.EquipmentDefinitions = new ObservableCollection<Equipment>(a.EquipmentDefinitions.OrderBy(e => e.Name)));
-            });
-
             PropertyChanged += OnPropertyChanged;
+        }
+
+        public async Task Load()
+        {
+            await ArmyBuilderCore.Load(Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\ArmyBuilder.Core")));
+            ArmyBuilderCore.Armies.ForEach(a => a.EquipmentDefinitions = new ObservableCollection<Equipment>(a.EquipmentDefinitions.OrderBy(e => e.Name)));
         }
 
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)

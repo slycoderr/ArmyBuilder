@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ArmyBuilder.Core;
 using ArmyBuilder.Core.Models;
 
@@ -37,6 +38,9 @@ namespace ArmyBuilder.Windows
             //            throw new ArgumentOutOfRangeException();
             //    }
             //}
+
+
+
 
             return null;
         }
@@ -155,28 +159,61 @@ namespace ArmyBuilder.Windows
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            switch ((ForceOrgSlot)(int)value)
+            if (parameter == null)
             {
-                case ForceOrgSlot.HQ:
-                    return "HQ";
-                case ForceOrgSlot.Troop:
-                    return "Troop";
-                case ForceOrgSlot.Elite:
-                    return "Elite";
-                case ForceOrgSlot.FastAttack:
-                    return "Fast Attack";
-                case ForceOrgSlot.HeavySupport:
-                    return "Heavy Support";
-                case ForceOrgSlot.LordOfWar:
-                    return "Lord Of War";
-                case ForceOrgSlot.Fortification:
-                    return "Fortification";
-                case ForceOrgSlot.Flyer:
-                    return "Flyer";
-                case ForceOrgSlot.DedicatedTransport:
-                    return "Dedicated Transport";
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
+
+
+
+                switch ((ForceOrgSlot) (int) value)
+                {
+                    case ForceOrgSlot.HQ:
+                        return "HQ";
+                    case ForceOrgSlot.Troop:
+                        return "Troop";
+                    case ForceOrgSlot.Elite:
+                        return "Elite";
+                    case ForceOrgSlot.FastAttack:
+                        return "Fast Attack";
+                    case ForceOrgSlot.HeavySupport:
+                        return "Heavy Support";
+                    case ForceOrgSlot.LordOfWar:
+                        return "Lord Of War";
+                    case ForceOrgSlot.Fortification:
+                        return "Fortification";
+                    case ForceOrgSlot.Flyer:
+                        return "Flyer";
+                    case ForceOrgSlot.DedicatedTransport:
+                        return "Dedicated Transport";
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                }
+            }
+
+            else
+            {
+                switch ((ForceOrgSlot)(int)value)
+                {
+                    case ForceOrgSlot.HQ:
+                        return new BitmapImage(new Uri("Images/hq.JPG"));
+                    case ForceOrgSlot.Troop:
+                        return new BitmapImage(new Uri("Images/troop.JPG"));
+                    case ForceOrgSlot.Elite:
+                        return new BitmapImage(new Uri("Images/elite.JPG"));
+                    case ForceOrgSlot.FastAttack:
+                        return new BitmapImage(new Uri("Images/fast.JPG"));
+                    case ForceOrgSlot.HeavySupport:
+                        return new BitmapImage(new Uri("Images/heavy.JPG"));
+                    case ForceOrgSlot.LordOfWar:
+                        return new BitmapImage(new Uri("Images/lord.JPG"));
+                    case ForceOrgSlot.Fortification:
+                        return new BitmapImage(new Uri("Images/fort.JPG"));
+                    case ForceOrgSlot.Flyer:
+                        return new BitmapImage(new Uri("Images/flyer.JPG"));
+                    case ForceOrgSlot.DedicatedTransport:
+                        return new BitmapImage(new Uri("Images/transport.JPG"));
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                }
             }
         }
 
