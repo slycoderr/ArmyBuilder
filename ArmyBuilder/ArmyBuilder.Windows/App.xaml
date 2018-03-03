@@ -166,9 +166,9 @@
                                         <ColumnDefinition SharedSizeGroup="Group1" Width="Auto"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}}"/>
+                                    <!--<TextBlock FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}}"/>-->
 
-                                    <Image Source="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}, ConverterParameter='icon'}"/>
+                                    <Image Width="75" Height="75" Source="{Binding Requirement.Slot, Converter={StaticResource ForceOrgTextConverter}, ConverterParameter='icon'}"/>
 
                                     <ListView Grid.RowSpan="3" Grid.Column="1" ItemsSource="{Binding Units}" SelectedItem="{Binding ArmyListEditor.SelectedUnit, Source={StaticResource MainViewModel}}" >
                                         <ListView.ItemsPanel>

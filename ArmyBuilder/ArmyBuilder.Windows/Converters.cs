@@ -194,23 +194,23 @@ namespace ArmyBuilder.Windows
                 switch ((ForceOrgSlot)(int)value)
                 {
                     case ForceOrgSlot.HQ:
-                        return new BitmapImage(new Uri("Images/hq.JPG"));
+                        return new BitmapImage(new Uri("Images/hq.JPG", UriKind.Relative));
                     case ForceOrgSlot.Troop:
-                        return new BitmapImage(new Uri("Images/troop.JPG"));
+                        return new BitmapImage(new Uri("Images/troop.JPG", UriKind.Relative));
                     case ForceOrgSlot.Elite:
-                        return new BitmapImage(new Uri("Images/elite.JPG"));
+                        return new BitmapImage(new Uri("Images/elite.JPG", UriKind.Relative));
                     case ForceOrgSlot.FastAttack:
-                        return new BitmapImage(new Uri("Images/fast.JPG"));
+                        return new BitmapImage(new Uri("Images/fast.JPG", UriKind.Relative));
                     case ForceOrgSlot.HeavySupport:
-                        return new BitmapImage(new Uri("Images/heavy.JPG"));
+                        return new BitmapImage(new Uri("Images/heavy.JPG", UriKind.Relative));
                     case ForceOrgSlot.LordOfWar:
-                        return new BitmapImage(new Uri("Images/lord.JPG"));
+                        return new BitmapImage(new Uri("Images/lord.JPG", UriKind.Relative));
                     case ForceOrgSlot.Fortification:
-                        return new BitmapImage(new Uri("Images/fort.JPG"));
+                        return new BitmapImage(new Uri("Images/fort.JPG", UriKind.Relative));
                     case ForceOrgSlot.Flyer:
-                        return new BitmapImage(new Uri("Images/flyer.JPG"));
+                        return new BitmapImage(new Uri("Images/flyer.JPG", UriKind.Relative));
                     case ForceOrgSlot.DedicatedTransport:
-                        return new BitmapImage(new Uri("Images/transport.JPG"));
+                        return new BitmapImage(new Uri("Images/transport.JPG", UriKind.Relative));
                     default:
                         throw new ArgumentOutOfRangeException(nameof(value), value, null);
                 }
