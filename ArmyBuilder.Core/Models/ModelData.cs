@@ -46,6 +46,9 @@ namespace ArmyBuilder.Core.Models
             Upgrades = new List<EquipmentData>(Unit.Upgrades.Select(e => new EquipmentData(e, null)));
             ModelId = m.Id;
 
+            //when a unit entry is created, auto select all the default equipment
+            Equipment.ForEach(e=>e.IsTaken = true);
+
             Equipment.ForEach(SubscribeToEquipment);
             Upgrades.ForEach(SubscribeToEquipment);
         }

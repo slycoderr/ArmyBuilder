@@ -108,7 +108,7 @@ namespace ArmyBuilder.Core.Models
                 initialized = true;
                 PropertyChanged += OnPropertyChanged;
                 ModelGroups.ForEach(m => m.PropertyChanged += ModelGroupOnPropertyChanged);
-
+                
             }
         }
 
