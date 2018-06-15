@@ -21,7 +21,7 @@ namespace ArmyBuilder.XMLEditor.Views
 
         private static TreeViewItem VisualUpwardSearch(DependencyObject source)
         {
-            while ((source != null) && !(source is TreeViewItem))
+            while ((source != null) && !(source is TreeViewItem) && source is Visual)
                 source = VisualTreeHelper.GetParent(source);
 
             return source as TreeViewItem;

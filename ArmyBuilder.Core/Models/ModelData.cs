@@ -42,7 +42,7 @@ namespace ArmyBuilder.Core.Models
         {
             Id = Guid.NewGuid();
             Unit = m;
-            Equipment = new List<EquipmentData>(Unit.DefaultEquipment.Select(e => new EquipmentData(e, Id.ToString(), null)));
+            Equipment = new List<EquipmentData>(Unit.DefaultEquipment.Select(e => new EquipmentData(e,null, null)));
             Upgrades = new List<EquipmentData>(Unit.Upgrades.Select(e => new EquipmentData(e, null)));
             ModelId = m.Id;
 
