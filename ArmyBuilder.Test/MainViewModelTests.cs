@@ -25,7 +25,7 @@ namespace ArmyBuilder.Test
 
             using (var stream = new FileStream(path, FileMode.Open))
             {
-                mv.LoadArmyData(stream);
+                //mv.LoadArmyData(stream);
             }
 
             var army = mv.Armies.First(a => a.Id == checkArmyId); //make sure the army is there

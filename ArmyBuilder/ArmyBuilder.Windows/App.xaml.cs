@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using ArmyBuilder.Core.ViewModels;
+using MahApps.Metro;
 
 namespace ArmyBuilder.Windows
 {
@@ -9,6 +10,7 @@ namespace ArmyBuilder.Windows
     {
         protected override async void OnStartup(StartupEventArgs e)
         {
+            MahApps.Metro.Accent a = new Accent();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             base.OnStartup(e);
         }
