@@ -1,10 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Army Id="9" Name="Tyranids" Version="28">
+<Army Id="9" Name="Tyranids" Version="34">
   <UnitEntries>
     <UnitEntry Id="1" MaxUnitSize="1" Name="Hive Tyrant" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hive Tyrant" Minimum="1" Maximum="1" CostPerModel="143" BaseCost="0" UnitEntryId="0">
-          <DefaultEquipment />
+        <Unit Id="1" Name="Hive Tyrant" Minimum="1" Maximum="1" CostPerModel="143" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="0">
+          <DefaultEquipment>
+            <Equipment Id="22" Name="Monstrous scything talons (two pairs)(Hive Tyrant)" Cost="41" Limit="0" MaxPerArmy="0" IsDefault="true" IsGiven="false" MutualId="1" Type="0" PerX="0" GroupName="e88d4a14-7363-42fe-a0c0-e61e7a36f97b">
+              <ReplacementOptions />
+            </Equipment>
+            <Equipment Id="74" Name="Other" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="1" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+              <ReplacementOptions>
+                <Equipment Id="20" Name="Monstrous scything talons (Hive Tyrant)" Cost="31" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="true" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                  <ReplacementOptions>
+                    <Equipment Id="18" Name="Monstrous rending claws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                      <ReplacementOptions />
+                    </Equipment>
+                    <Equipment Id="16" Name="Monstrous boneswords" Cost="35" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                      <ReplacementOptions />
+                    </Equipment>
+                    <Equipment Id="11" Name="Lash whip and monstrous bonesword" Cost="25" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                      <ReplacementOptions />
+                    </Equipment>
+                  </ReplacementOptions>
+                </Equipment>
+                <Equipment Id="18" Name="Monstrous rending claws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="true" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                  <ReplacementOptions>
+                    <Equipment Id="11" Name="Lash whip and monstrous bonesword" Cost="25" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                      <ReplacementOptions />
+                    </Equipment>
+                    <Equipment Id="16" Name="Monstrous boneswords" Cost="35" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0" GroupName="f6c351cd-55bb-4c55-b95b-3cdc437ba59f">
+                      <ReplacementOptions />
+                    </Equipment>
+                  </ReplacementOptions>
+                </Equipment>
+              </ReplacementOptions>
+            </Equipment>
+          </DefaultEquipment>
           <Upgrades />
         </Unit>
       </Units>
@@ -12,7 +43,7 @@
     </UnitEntry>
     <UnitEntry Id="2" MaxUnitSize="1" Name="Hive Tyrant with Wings" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hive Tyrant with Wings" Minimum="1" Maximum="1" CostPerModel="170" BaseCost="0" UnitEntryId="0">
+        <Unit Id="1" Name="Hive Tyrant with Wings" Minimum="1" Maximum="1" CostPerModel="170" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="0">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -21,7 +52,7 @@
     </UnitEntry>
     <UnitEntry Id="3" MaxUnitSize="1" Name="The Swarmlord" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="The Swarmlord" Minimum="1" Maximum="1" CostPerModel="300" BaseCost="0" UnitEntryId="0">
+        <Unit Id="1" Name="The Swarmlord" Minimum="1" Maximum="1" CostPerModel="300" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="0">
           <DefaultEquipment>
             <Equipment Id="40" Name="Bone Sabres" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -37,7 +68,7 @@
     </UnitEntry>
     <UnitEntry Id="4" MaxUnitSize="1" Name="Old One Eye" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Old One Eye" Minimum="1" Maximum="1" CostPerModel="140" BaseCost="0" UnitEntryId="5">
+        <Unit Id="1" Name="Old One Eye" Minimum="1" Maximum="1" CostPerModel="140" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="5">
           <DefaultEquipment>
             <Equipment Id="17" Name="Monstrous crushing claws" Cost="15" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -56,7 +87,7 @@
     </UnitEntry>
     <UnitEntry Id="5" MaxUnitSize="1" Name="Broodlord" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Broodlord" Minimum="1" Maximum="1" CostPerModel="162" BaseCost="0" UnitEntryId="7">
+        <Unit Id="1" Name="Broodlord" Minimum="1" Maximum="1" CostPerModel="162" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="7">
           <DefaultEquipment>
             <Equipment Id="18" Name="Monstrous rending claws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -69,7 +100,7 @@
     </UnitEntry>
     <UnitEntry Id="6" MaxUnitSize="1" Name="Tyranid Prime" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyranid Prime" Minimum="1" Maximum="1" CostPerModel="100" BaseCost="0" UnitEntryId="9">
+        <Unit Id="1" Name="Tyranid Prime" Minimum="1" Maximum="1" CostPerModel="100" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="9">
           <DefaultEquipment>
             <Equipment Id="28" Name="Scything talons" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -115,7 +146,7 @@
     </UnitEntry>
     <UnitEntry Id="7" MaxUnitSize="1" Name="Tervigon" ForceOrgSlot="0" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tervigon" Minimum="1" Maximum="1" CostPerModel="217" BaseCost="0" UnitEntryId="11">
+        <Unit Id="1" Name="Tervigon" Minimum="1" Maximum="1" CostPerModel="217" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="11">
           <DefaultEquipment>
             <Equipment Id="13" Name="Massive scything talons (Tervigon and Malceptor)" Cost="22" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -142,7 +173,7 @@
     </UnitEntry>
     <UnitEntry Id="8" MaxUnitSize="9" Name="Tyranid Warriors" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyranid Warriors" Minimum="3" Maximum="9" CostPerModel="20" BaseCost="0" UnitEntryId="9">
+        <Unit Id="1" Name="Tyranid Warriors" Minimum="3" Maximum="9" CostPerModel="20" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="9">
           <DefaultEquipment>
             <Equipment Id="50" Name="Devourer" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -194,7 +225,7 @@
     </UnitEntry>
     <UnitEntry Id="9" MaxUnitSize="20" Name="Genestealers" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Genestealers" Minimum="5" Maximum="20" CostPerModel="10" BaseCost="0" UnitEntryId="11">
+        <Unit Id="1" Name="Genestealers" Minimum="5" Maximum="20" CostPerModel="10" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="11">
           <DefaultEquipment>
             <Equipment Id="26" Name="Rending claws" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -214,7 +245,7 @@
     </UnitEntry>
     <UnitEntry Id="10" MaxUnitSize="30" Name="Hormagaunts" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hormagaunts" Minimum="10" Maximum="30" CostPerModel="5" BaseCost="0" UnitEntryId="13">
+        <Unit Id="1" Name="Hormagaunts" Minimum="10" Maximum="30" CostPerModel="5" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="13">
           <DefaultEquipment>
             <Equipment Id="28" Name="Scything talons" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -234,7 +265,7 @@
     </UnitEntry>
     <UnitEntry Id="11" MaxUnitSize="30" Name="Termagaunts" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Termagaunts" Minimum="10" Maximum="30" CostPerModel="4" BaseCost="0" UnitEntryId="15">
+        <Unit Id="1" Name="Termagaunts" Minimum="10" Maximum="30" CostPerModel="4" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="15">
           <DefaultEquipment>
             <Equipment Id="55" Name="Fleshborer" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions>
@@ -267,7 +298,7 @@
     </UnitEntry>
     <UnitEntry Id="12" MaxUnitSize="9" Name="Ripper Swarm" ForceOrgSlot="1" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Ripper Swarm" Minimum="3" Maximum="9" CostPerModel="11" BaseCost="0" UnitEntryId="17">
+        <Unit Id="1" Name="Ripper Swarm" Minimum="3" Maximum="9" CostPerModel="11" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="17">
           <DefaultEquipment>
             <Equipment Id="6" Name="Claws and teeth" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
               <ReplacementOptions />
@@ -284,7 +315,7 @@
     </UnitEntry>
     <UnitEntry Id="13" MaxUnitSize="6" Name="Tyrant Guard" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyrant Guard" Minimum="3" Maximum="6" CostPerModel="35" BaseCost="0" UnitEntryId="13">
+        <Unit Id="1" Name="Tyrant Guard" Minimum="3" Maximum="6" CostPerModel="35" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="13">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -293,7 +324,7 @@
     </UnitEntry>
     <UnitEntry Id="14" MaxUnitSize="6" Name="Hive Guard" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hive Guard" Minimum="3" Maximum="6" CostPerModel="18" BaseCost="0" UnitEntryId="14">
+        <Unit Id="1" Name="Hive Guard" Minimum="3" Maximum="6" CostPerModel="18" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="14">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -302,7 +333,7 @@
     </UnitEntry>
     <UnitEntry Id="15" MaxUnitSize="1" Name="Lictor" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Lictor" Minimum="1" Maximum="1" CostPerModel="41" BaseCost="0" UnitEntryId="15">
+        <Unit Id="1" Name="Lictor" Minimum="1" Maximum="1" CostPerModel="41" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="15">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -311,7 +342,7 @@
     </UnitEntry>
     <UnitEntry Id="16" MaxUnitSize="6" Name="Zoanthropes" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Zoanthropes" Minimum="3" Maximum="6" CostPerModel="40" BaseCost="0" UnitEntryId="16">
+        <Unit Id="1" Name="Zoanthropes" Minimum="3" Maximum="6" CostPerModel="40" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="16">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -320,7 +351,7 @@
     </UnitEntry>
     <UnitEntry Id="17" MaxUnitSize="6" Name="VenomThropes" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="VenomThropes" Minimum="3" Maximum="6" CostPerModel="25" BaseCost="0" UnitEntryId="17">
+        <Unit Id="1" Name="VenomThropes" Minimum="3" Maximum="6" CostPerModel="25" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="17">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -329,7 +360,7 @@
     </UnitEntry>
     <UnitEntry Id="18" MaxUnitSize="1" Name="Haruspex" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Haruspex" Minimum="1" Maximum="1" CostPerModel="267" BaseCost="0" UnitEntryId="18">
+        <Unit Id="1" Name="Haruspex" Minimum="1" Maximum="1" CostPerModel="267" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="18">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -338,7 +369,7 @@
     </UnitEntry>
     <UnitEntry Id="19" MaxUnitSize="1" Name="Deathleaper" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Deathleaper" Minimum="1" Maximum="1" CostPerModel="90" BaseCost="0" UnitEntryId="19">
+        <Unit Id="1" Name="Deathleaper" Minimum="1" Maximum="1" CostPerModel="90" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="19">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -347,7 +378,7 @@
     </UnitEntry>
     <UnitEntry Id="20" MaxUnitSize="1" Name="The Red Terror" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="The Red Terror" Minimum="1" Maximum="1" CostPerModel="75" BaseCost="0" UnitEntryId="20">
+        <Unit Id="1" Name="The Red Terror" Minimum="1" Maximum="1" CostPerModel="75" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="20">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -356,7 +387,7 @@
     </UnitEntry>
     <UnitEntry Id="21" MaxUnitSize="9" Name="Tyranid Shrikes" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyranid Shrikes" Minimum="3" Maximum="9" CostPerModel="26" BaseCost="0" UnitEntryId="21">
+        <Unit Id="1" Name="Tyranid Shrikes" Minimum="3" Maximum="9" CostPerModel="26" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="21">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -365,7 +396,7 @@
     </UnitEntry>
     <UnitEntry Id="22" MaxUnitSize="9" Name="Raveners" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Raveners" Minimum="3" Maximum="9" CostPerModel="23" BaseCost="0" UnitEntryId="22">
+        <Unit Id="1" Name="Raveners" Minimum="3" Maximum="9" CostPerModel="23" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="22">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -374,7 +405,7 @@
     </UnitEntry>
     <UnitEntry Id="23" MaxUnitSize="9" Name="Sky-Slasher Swarm" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Sky-Slasher Swarm" Minimum="3" Maximum="9" CostPerModel="11" BaseCost="0" UnitEntryId="23">
+        <Unit Id="1" Name="Sky-Slasher Swarm" Minimum="3" Maximum="9" CostPerModel="11" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="23">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -383,7 +414,7 @@
     </UnitEntry>
     <UnitEntry Id="24" MaxUnitSize="1" Name="Harpy" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Harpy" Minimum="1" Maximum="1" CostPerModel="78" BaseCost="0" UnitEntryId="24">
+        <Unit Id="1" Name="Harpy" Minimum="1" Maximum="1" CostPerModel="78" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="24">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -392,7 +423,7 @@
     </UnitEntry>
     <UnitEntry Id="25" MaxUnitSize="1" Name="Hive Crone" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Hive Crone" Minimum="1" Maximum="1" CostPerModel="92" BaseCost="0" UnitEntryId="25">
+        <Unit Id="1" Name="Hive Crone" Minimum="1" Maximum="1" CostPerModel="92" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="25">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -401,7 +432,7 @@
     </UnitEntry>
     <UnitEntry Id="26" MaxUnitSize="3" Name="Mucolid Spores" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Mucolid Spores" Minimum="1" Maximum="3" CostPerModel="20" BaseCost="0" UnitEntryId="26">
+        <Unit Id="1" Name="Mucolid Spores" Minimum="1" Maximum="3" CostPerModel="20" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="26">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -410,7 +441,7 @@
     </UnitEntry>
     <UnitEntry Id="27" MaxUnitSize="6" Name="Spore Mines" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Spore Mines" Minimum="3" Maximum="6" CostPerModel="10" BaseCost="0" UnitEntryId="27">
+        <Unit Id="1" Name="Spore Mines" Minimum="3" Maximum="6" CostPerModel="10" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="27">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -419,7 +450,7 @@
     </UnitEntry>
     <UnitEntry Id="28" MaxUnitSize="1" Name="Tyrannocyte" ForceOrgSlot="8" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyrannocyte" Minimum="1" Maximum="1" CostPerModel="98" BaseCost="0" UnitEntryId="28">
+        <Unit Id="1" Name="Tyrannocyte" Minimum="1" Maximum="1" CostPerModel="98" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="28">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -428,7 +459,7 @@
     </UnitEntry>
     <UnitEntry Id="29" MaxUnitSize="3" Name="Carnifex" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Carnifex" Minimum="1" Maximum="3" CostPerModel="67" BaseCost="0" UnitEntryId="29">
+        <Unit Id="1" Name="Carnifex" Minimum="1" Maximum="3" CostPerModel="67" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="29">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -437,7 +468,7 @@
     </UnitEntry>
     <UnitEntry Id="30" MaxUnitSize="1" Name="Trygon" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Trygon" Minimum="1" Maximum="1" CostPerModel="103" BaseCost="0" UnitEntryId="30">
+        <Unit Id="1" Name="Trygon" Minimum="1" Maximum="1" CostPerModel="103" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="30">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -446,7 +477,7 @@
     </UnitEntry>
     <UnitEntry Id="31" MaxUnitSize="1" Name="Mawloc" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Mawloc" Minimum="1" Maximum="1" CostPerModel="104" BaseCost="0" UnitEntryId="31">
+        <Unit Id="1" Name="Mawloc" Minimum="1" Maximum="1" CostPerModel="104" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="31">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -455,7 +486,7 @@
     </UnitEntry>
     <UnitEntry Id="32" MaxUnitSize="3" Name="Biovores" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Biovores" Minimum="1" Maximum="3" CostPerModel="24" BaseCost="0" UnitEntryId="32">
+        <Unit Id="1" Name="Biovores" Minimum="1" Maximum="3" CostPerModel="24" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="32">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -464,7 +495,7 @@
     </UnitEntry>
     <UnitEntry Id="33" MaxUnitSize="1" Name="Trygon Prime" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Trygon Prime" Minimum="1" Maximum="1" CostPerModel="128" BaseCost="0" UnitEntryId="33">
+        <Unit Id="1" Name="Trygon Prime" Minimum="1" Maximum="1" CostPerModel="128" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="33">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -473,7 +504,7 @@
     </UnitEntry>
     <UnitEntry Id="34" MaxUnitSize="1" Name="Exocrine" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Exocrine" Minimum="1" Maximum="1" CostPerModel="150" BaseCost="0" UnitEntryId="34">
+        <Unit Id="1" Name="Exocrine" Minimum="1" Maximum="1" CostPerModel="150" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="34">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -482,7 +513,7 @@
     </UnitEntry>
     <UnitEntry Id="35" MaxUnitSize="1" Name="Tyrannofex" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Tyrannofex" Minimum="1" Maximum="1" CostPerModel="174" BaseCost="0" UnitEntryId="35">
+        <Unit Id="1" Name="Tyrannofex" Minimum="1" Maximum="1" CostPerModel="174" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="35">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -491,7 +522,7 @@
     </UnitEntry>
     <UnitEntry Id="36" MaxUnitSize="1" Name="Toxicrene" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Toxicrene" Minimum="1" Maximum="1" CostPerModel="135" BaseCost="0" UnitEntryId="36">
+        <Unit Id="1" Name="Toxicrene" Minimum="1" Maximum="1" CostPerModel="135" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="36">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -500,7 +531,7 @@
     </UnitEntry>
     <UnitEntry Id="37" MaxUnitSize="1" Name="Sporocyst" ForceOrgSlot="4" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Sporocyst" Minimum="1" Maximum="1" CostPerModel="79" BaseCost="0" UnitEntryId="37">
+        <Unit Id="1" Name="Sporocyst" Minimum="1" Maximum="1" CostPerModel="79" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="37">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -509,7 +540,7 @@
     </UnitEntry>
     <UnitEntry Id="38" MaxUnitSize="3" Name="Pyrovores" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Pyrovores" Minimum="1" Maximum="3" CostPerModel="23" BaseCost="0" UnitEntryId="38">
+        <Unit Id="1" Name="Pyrovores" Minimum="1" Maximum="3" CostPerModel="23" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="38">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -518,7 +549,7 @@
     </UnitEntry>
     <UnitEntry Id="39" MaxUnitSize="1" Name="Maleceptor" ForceOrgSlot="2" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Maleceptor" Minimum="1" Maximum="1" CostPerModel="162" BaseCost="0" UnitEntryId="39">
+        <Unit Id="1" Name="Maleceptor" Minimum="1" Maximum="1" CostPerModel="162" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="39">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -527,7 +558,7 @@
     </UnitEntry>
     <UnitEntry Id="40" MaxUnitSize="30" Name="Gargoyles" ForceOrgSlot="3" DoeNotCountsTowardForceOrg="false">
       <Units>
-        <Unit Id="1" Name="Gargoyles" Minimum="10" Maximum="20" CostPerModel="6" BaseCost="0" UnitEntryId="40">
+        <Unit Id="1" Name="Gargoyles" Minimum="10" Maximum="20" CostPerModel="6" BaseCost="0" IsWargearCostIncludedInBaseCost="false" UnitEntryId="40">
           <DefaultEquipment />
           <Upgrades />
         </Unit>
@@ -535,34 +566,32 @@
       <DedicatedTransports />
     </UnitEntry>
   </UnitEntries>
-  <Detachments>
-	<Detachment Id="1" Name="Patrol">
-		<Requirements>
-			<DetachmentRequirement Value="0" Minimum="1" Maximum="2"/>
-			<DetachmentRequirement Value="1" Minimum="1" Maximum="3"/>
-			<DetachmentRequirement Value="2" Minimum="0" Maximum="2"/>
-			<DetachmentRequirement Value="3" Minimum="0" Maximum="2"/>
-			<DetachmentRequirement Value="4" Minimum="0" Maximum="2"/>
-			<DetachmentRequirement Value="5" Minimum="0" Maximum="0"/>
-			<DetachmentRequirement Value="6" Minimum="0" Maximum="0"/>
-			<DetachmentRequirement Value="7" Minimum="0" Maximum="2"/>
-		</Requirements>
-	</Detachment>
-	<Detachment Id="2" Name="Battalion">
-		<Requirements>
-			<DetachmentRequirement Value="0" Minimum="2" Maximum="3"/>
-			<DetachmentRequirement Value="1" Minimum="3" Maximum="6"/>
-			<DetachmentRequirement Value="2" Minimum="0" Maximum="6"/>
-			<DetachmentRequirement Value="3" Minimum="0" Maximum="3"/>
-			<DetachmentRequirement Value="4" Minimum="0" Maximum="3"/>
-			<DetachmentRequirement Value="5" Minimum="0" Maximum="0"/>
-			<DetachmentRequirement Value="6" Minimum="0" Maximum="0"/>
-			<DetachmentRequirement Value="7" Minimum="0" Maximum="2"/>
-		</Requirements>
-	</Detachment>
-  </Detachments>
   <EquipmentDefinitions>
     <Equipment Id="1" Name="Acid Maw" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="41" Name="Acid Spray" Cost="31" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="34" Name="Adrenal glands (Monster)" Cost="5" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="35" Name="Adrenal glands (Non-monsters)" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="42" Name="Barbed strangler" Cost="15" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="45" Name="Bio plasma" Cost="9" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="43" Name="Bio-electric pulse" Cost="11" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="44" Name="Bio-electric pulse with containment spines" Cost="21" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="46" Name="Bio-plasma cannon" Cost="66" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="2" Name="Biostatic rattle" Cost="5" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -574,7 +603,13 @@
     <Equipment Id="4" Name="Bone Mace" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="40" Name="Bone Sabres" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="5" Name="Boneswords" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="47" Name="Choking spores" Cost="13" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="6" Name="Claws and teeth" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -583,10 +618,46 @@
     <Equipment Id="7" Name="Crushing claws" Cost="24" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="48" Name="Deathspitter" Cost="8" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="49" Name="Deathspitter with slimer maggots" Cost="10" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="50" Name="Devourer" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="51" Name="Devourer with brainleech worms" Cost="7" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="8" Name="Distensible jaws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="52" Name="Drool cannon" Cost="16" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="53" Name="Flamespurt" Cost="15" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="54" Name="Flesh hooks" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="55" Name="Fleshborer" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="56" Name="Fleshborer hive" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="9" Name="Grasping talons" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="57" Name="Grasping tongue" Cost="11" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="58" Name="Heavy venom cannon" Cost="30" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="59" Name="Impaler cannon" Cost="30" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="10" Name="Lash whip and bone sword" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -605,6 +676,9 @@
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="15" Name="Massive toixic lashes" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="60" Name="Massive toxic lashes" Cost="17" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="16" Name="Monstrous boneswords" Cost="35" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -628,6 +702,9 @@
     <Equipment Id="22" Name="Monstrous scything talons (two pairs)(Hive Tyrant)" Cost="41" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="74" Name="Other" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="23" Name="Powerful limbs" Cost="12" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
@@ -640,7 +717,7 @@
     <Equipment Id="26" Name="Rending claws" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
-    <Equipment Id="27" Name="Shovelling claws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+    <Equipment Id="61" Name="Rupture cannon" Cost="46" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="28" Name="Scything talons" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -649,103 +726,10 @@
     <Equipment Id="29" Name="Scything wings" Cost="13" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
-    <Equipment Id="30" Name="Thresher scythe tail" Cost="7" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="31" Name="Toxic lashes" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="32" Name="Toxinspike" Cost="1" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="33" Name="Wicked spur" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="34" Name="Adrenal glands (Monster)" Cost="5" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="35" Name="Adrenal glands (Non-monsters)" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="36" Name="Toxin sacs (Hormagaunt)" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="37" Name="Toxin sacs (Hive Guard, Gargoyle, Mawloc, Termagaunt, Tervigon, Tyrant Guard)" Cost="1" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="38" Name="Toxin sacs (Trygon and Trygon Prime)" Cost="8" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="39" Name="Toxin sacs (Carnifex, Genestealer, Hive Tyrant, Tyranid Prime, Tyranid Shrike, Tyranid Warrior)" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="40" Name="Bone Sabres" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="41" Name="Acid Spray" Cost="31" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="42" Name="Barbed strangler" Cost="15" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="43" Name="Bio-electric pulse" Cost="11" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="44" Name="Bio-electric pulse with containment spines" Cost="21" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="45" Name="Bio plasma" Cost="9" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="46" Name="Bio-plasma cannon" Cost="66" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="47" Name="Choking spores" Cost="13" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="48" Name="Deathspitter" Cost="8" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="49" Name="Deathspitter with slimer maggots" Cost="10" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="50" Name="Devourer" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="51" Name="Devourer with brainleech worms" Cost="7" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="52" Name="Drool cannon" Cost="16" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="53" Name="Flamespurt" Cost="15" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="54" Name="Flesh hooks" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="55" Name="Fleshborer" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="56" Name="Fleshborer hive" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="57" Name="Grasping tongue" Cost="11" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="58" Name="Heavy venom cannon" Cost="30" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="59" Name="Impaler cannon" Cost="30" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="60" Name="Massive toxic lashes" Cost="17" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
-    <Equipment Id="61" Name="Rupture cannon" Cost="46" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
-      <ReplacementOptions />
-    </Equipment>
     <Equipment Id="62" Name="Shock cannon" Cost="21" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="27" Name="Shovelling claws" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
     <Equipment Id="63" Name="Spike rifle" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
@@ -775,10 +759,34 @@
     <Equipment Id="71" Name="Tentaclids" Cost="24" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="30" Name="Thresher scythe tail" Cost="7" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="31" Name="Toxic lashes" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="72" Name="Toxic lashes" Cost="6" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
+    <Equipment Id="39" Name="Toxin sacs (Carnifex, Genestealer, Hive Tyrant, Tyranid Prime, Tyranid Shrike, Tyranid Warrior)" Cost="4" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="37" Name="Toxin sacs (Hive Guard, Gargoyle, Mawloc, Termagaunt, Tervigon, Tyrant Guard)" Cost="1" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="36" Name="Toxin sacs (Hormagaunt)" Cost="2" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="38" Name="Toxin sacs (Trygon and Trygon Prime)" Cost="8" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="32" Name="Toxinspike" Cost="1" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
     <Equipment Id="73" Name="Venom cannon" Cost="9" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
+      <ReplacementOptions />
+    </Equipment>
+    <Equipment Id="33" Name="Wicked spur" Cost="0" Limit="0" MaxPerArmy="0" IsDefault="false" IsGiven="false" MutualId="0" Type="0" PerX="0">
       <ReplacementOptions />
     </Equipment>
   </EquipmentDefinitions>

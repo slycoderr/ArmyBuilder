@@ -96,13 +96,21 @@
             </HierarchicalDataTemplate>
 
             <HierarchicalDataTemplate x:Key="DefaultEquipmentTemplate" DataType="models:Equipment" ItemsSource="{Binding ReplacementOptions}">
-                <Grid>
+                <Grid Background="Transparent">
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Content="X" Focusable="False" Command="{Binding RemoveDefaultEquipmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Items>
+                                <MenuItem Header="Remove" Command="{Binding RemoveDefaultEquipmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                            </ContextMenu.Items>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
+
                     <TextBlock  Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" TextWrapping="WrapWithOverflow">
                     <Run Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:000} -'}"/>
                     <Run Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -117,7 +125,13 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Focusable="False" Content="X" Command="{Binding RemoveUpgradeCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                    <Grid.ContextMenu>
+                        <ContextMenu>
+                            <ContextMenu.Items>
+                                <MenuItem Header="Remove" Command="{Binding RemoveDefaultEquipmentCommand, Source={StaticResource MainViewModel}}" CommandParameter="{Binding}"/>
+                            </ContextMenu.Items>
+                        </ContextMenu>
+                    </Grid.ContextMenu>
                     <TextBlock  Grid.Column="1" VerticalAlignment="Center" Margin="5,0,0,0" TextWrapping="WrapWithOverflow">
                         <Run Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat='{}{0:000} -'}"/>
                         <Run Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

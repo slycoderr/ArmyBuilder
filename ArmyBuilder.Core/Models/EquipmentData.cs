@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using ArmyBuilder.Core.Models.Utility;
 using MoreLinq;
@@ -68,9 +70,21 @@ namespace ArmyBuilder.Core.Models
         public EquipmentData(Equipment e, string id, EquipmentData parent)
         {
             Equipment = e;
-            GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
+
             ParentEquipment = parent;
             TempLimit = Equipment.Limit;
+
+            //incase theres 2 different pieces of equipment in seperate trees with the same name, keep the id for each tree unique 
+            if (ParentEquipment == null)
+            {
+                id = Guid.NewGuid().ToString();
+                GroupName = (Equipment.GroupName ?? Equipment.Name) + id;
+            }
+
+            else
+            {
+                GroupName = ParentEquipment.GroupName;
+            }
 
             EquipmentId = e.Id;
 

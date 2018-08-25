@@ -60,8 +60,12 @@ namespace ArmyBuilder.XMLEditor
         public RelayCommand<MassEquipmentEntryCollection> AddMassEquipmentCommand => new RelayCommand<MassEquipmentEntryCollection>(AddMassEquipment);
         public RelayCommand UpdateTransportsCommand => new RelayCommand(UpdateAllDedicatedTransports);
         public RelayCommand LoadCommand => new RelayCommand(async () => await Load());
-        public static readonly string ArmyDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder","Data");
-        public static readonly string RootPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) ,"ArmyBuilder");
+
+        public static readonly string ArmyDataPath = new DirectoryInfo(Environment.CurrentDirectory).Parent.Parent
+            .Parent.EnumerateDirectories()
+            .First(d => d.Name.Contains("ArmyBuilder.Core")).EnumerateDirectories()
+            .First(d => d.Name.Contains("Data"))
+            .FullName;
 
         public Core.ViewModels.MainViewModel ArmyBuilderCore { get; } = new Core.ViewModels.MainViewModel();
 

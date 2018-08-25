@@ -101,7 +101,7 @@ namespace ArmyBuilder.Core.ViewModels
             if (Debugger.IsAttached)
             {
                 await AddList();
-                ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(0));
+                //ArmyListEditor.AddDetachmentToList(AvailableDetachments.ElementAt(0));
             }
         }
 
